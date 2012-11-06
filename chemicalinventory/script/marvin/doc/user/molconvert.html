@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta name="author" content="Peter Csizmadia">
+  <link rel="stylesheet" type="text/css" href="../../marvinmanuals.css"
+ title="Style">
+  <title>MolConverter</title>
+</head>
+<body>
+<h1 align="center">Molecule file conversion with MolConverter</h1>
+<h3 align=center>Version 4.0.5</h3>
+
+MolConverter is a command line program in Marvin Beans and JChem
+that converts between various file types.
+<p>Installation:
+</p>
+<blockquote>
+  <ul>
+    <li><a href="../../do-download-marvinbeans.html">Download</a> and launch
+platform specific installer by following the <a
+ href="installguide.html">installation instructions</a>. </li>
+  </ul>
+  <p> </p>
+</blockquote>
+<h2>Usage:</h2>
+<blockquote> <font color="#333399"><strong>molconvert</strong></font>
+[options]
+outformat[<font color="#333399"><strong>:</strong></font>basic-export-opts.html]
+[files...]
+</blockquote>
+<p>
+<a name="outformat">The <em>outformat</em></a>
+argument must be one of the following strings:
+</p>
+<blockquote>
+  <table cellspacing="5" cellpadding="0">
+    <tbody>
+      <tr valign="top">
+        <td align="center" valign="top"> <a href="mrv-doc.html"><code>mrv</code></a>,</td>
+        <td valign="top">(document formats)</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top"> <a
+ href="mol-csmol-doc.html#mol"><code>mol</code>, <code>rgf</code>, <code>sdf</code>,
+        <code>rdf</code></a>, <a href="mol-csmol-doc.html#csmol"><code>csmol</code>,
+        <code>csrgf</code>, <code>cssdf</code>, <code>csrdf</code></a>,<br>
+        <a href="cml-doc.html"><code>cml</code></a>, <a
+ href="smiles-doc.html"><code>smiles</code></a>, <a
+ href="cxsmiles-doc.html"><code>cxsmiles</code></a>, <a
+ href="sybyl-doc.html"><code>sybyl</code></a>, <a href="pdb-doc.html"><code>pdb</code></a>,
+        <a href="xyz-doc.html"><code>xyz</code></a>, <a href="inchi-doc.html"><code>inchi</code></a></td>
+        <td valign="top">(molecule file formats)</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top">
+	<a HREF="jpeg-doc.html"><code>jpeg</code></a>,
+        <a HREF="msbmp-doc.html"><code>msbmp</code></a>,
+        <a HREF="png-doc.html"><code>png</code></a>,
+	<a HREF="pov-doc.html"><code>pov</code></a>,
+	<a HREF="ppm-doc.html"><code>ppm</code></a>,
+        <a HREF="svg-doc.html"><code>svg</code></a>,</td>
+        <td valign="top">(graphics formats)</td>
+      </tr>
+      <tr>
+        <td align="center" valign="top"> <a href="gzip-doc.html"><code>gzip</code></a>,
+        <a href="base64-doc.html"><code>base64</code></a></td>
+        <td valign="top">(compression and encoding)</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+Options:
+<table cellspacing="5" cellpadding="0">
+  <tbody>
+    <tr VALIGN="TOP">
+      <td><code>-o</code> <em>file</em></td>
+      <td>Write output to specified file instead of standard output</td>
+    </tr>
+    <tr VALIGN="TOP">
+      <td><code>-e</code> <em>charset</em><code></td>
+      <td>Set the input character encoding.
+	  The encoding must be supported by Java.</td>
+    </tr>
+    <tr VALIGN="TOP">
+      <td><code>-e</code> [<em>in</em><code>]..[</code><em>out</em>]</td>
+      <td>Set the input (<em>in</em>) and/or output (<em>out</em>) character
+	  encodings. Examples: UTF-8, ASCII, Cp1250 (Windows Eastern
+       European), Cp1252 (Windows Latin 1), ms932 (Windows Japanese).
+          </td>
+    </tr>
+    <tr VALIGN="TOP">
+      <td><code>-s</code> <em>string</em></td>
+      <td>Read a molecule from specified SMILES string</td>
+    </tr>
+    <tr VALIGN="TOP">
+      <td><code>-Y</code></td>
+      <td>Remove explicit H atoms</td>
+    </tr>
+    <tr VALIGN="TOP">
+      <td><code>-F</code></td>
+      <td>Remove small fragments, keep the largest</td>
+    </tr>
+    <tr VALIGN="TOP">
+      <td><a name="option_T"><code>-T</code> <em>f1</em>:<em>f2</em>...</a></td>
+      <td>Print a table containing fields from SDF separated by tab in
+	  case of SMILES export.<br>
+	  Colon characters in field names can be escaped by backslash.</td>
+    </tr>
+    <tr VALIGN="TOP">
+      <td><code>-c</code> "<em>f1</em><em>OP</em><em>value</em>&amp;<em>f2</em><em>OP</em><em>value</em>..."</td>
+      <td>Filtering by the values of fields in the case of SDF import.<br>
+      <em>OP</em> may be: =,&lt;,&gt;,&lt;=,&gt;=</td>
+    </tr>
+    <tr VALIGN="TOP">
+      <td><code>-v</code></td>
+      <td>Verbose</td>
+    </tr>
+    <tr VALIGN="TOP">
+      <td><code>-vv</code></td>
+      <td>Very verbose (print stack trace at error)</td>
+    </tr>
+    <tr VALIGN="TOP">
+      <td><code>-n</code></td>
+      <td>Skip valence checking</td>
+    </tr>
+    <tr valign="top">
+      <td><code>-2</code><em>[</em><code>:</code><em>options]</em></td>
+      <td>Calculate 2D coordinates (default if the input is <a
+ href="smiles-doc.html">SMILES</a>)<br>
+      <a href="cleanoptions.html#2d">Options</a> for coordinate
+calculation. </td>
+    </tr>
+    <tr valign="top">
+      <td><code>-3</code><em>[</em><code>:</code><em>options]</em></td>
+      <td>Calculate 3D coordinates<br>
+      <a href="cleanoptions.html#3d">Options</a> for coordinate
+calculation. </td>
+    </tr>
+    <tr valign="top">
+      <td><code>-<span style="font-style: italic;">H3D</span></code><em></em></td>
+      <td>Detailed list on Clean3D options<a href="cleanoptions.html#3d"></a><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+Import options can be specified between braces, in one of the following
+forms:
+<blockquote>
+  <table cellspacing="5" cellpadding="0">
+    <tbody>
+      <tr>
+        <td>filename{options}</td>
+        <td><br>
+        </td>
+      </tr>
+      <tr>
+        <td>filename{MULTISET,options}</td>
+        <td>to merge molecules into one that contains multiple atom sets</td>
+      </tr>
+      <tr>
+        <td>filename{format:}</td>
+        <td>to skip automatic format recognition</td>
+      </tr>
+      <tr>
+        <td>filename{format:options}</td>
+        <td><br>
+        </td>
+      </tr>
+      <tr>
+        <td>filename{format:MULTISET,options}</td>
+        <td><br>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+<p>
+</p>
+<h2>Examples:</h2>
+<ol>
+  <li>Printing the SMILES string of a molecule in a molfile:
+    <blockquote> <code>molconvert smiles caffeine.mol</code> </blockquote>
+  </li>
+  <li>Dearomatizing an aromatic molecule:</li>
+  <blockquote> <code>molconvert smiles:<a
+ href="basic-export-opts.html#minus_a">-a</a> -s "c1ccccc1"</code>
+  </blockquote>
+  <li>Aromatizing a molecule:</li>
+  <blockquote> <code>molconvert smiles:<a href="basic-export-opts.html#a">a</a>
+-s "C1=CC=CC=C1"</code> </blockquote>
+   (The default level 1 aromatization is used.)
+   <li>Aromatizing a molecule using the
+	Daylight algorithm:</li>
+  <blockquote> <code>molconvert smiles:<a
+ href="basic-export-opts.html#a_daylight">a_day</a> -s
+"CN1C=NC2=C1C(=O)N(C)C(=O)N2C"</code> </blockquote>
+  <li>Converting a SMILES file to MDL Molfile:
+    <blockquote> <code>molconvert mol caffeine.smiles -o caffeine.mol</code>
+    </blockquote>
+  </li>
+  <li>Making an SDF from molfiles:
+    <blockquote> <code>molconvert sdf *.mol -o molecules.sdf</code> </blockquote>
+  </li>
+  <li>SMILES to Molfile with optimized 2D coordinate calculation,
+converting double bonds with unspecified cis/trans to "either"
+    <blockquote> <code>molconvert -2:O2e mol caffeine.smiles -o
+caffeine.mol</code> </blockquote>
+  </li>
+  <li>Import a file as XYZ, do not try to recognize the file format:
+    <blockquote> <code>molconvert smiles "foo.xyz{xyz:}"</code> </blockquote>
+    <strong>Note:</strong> This is just an example. XYZ and other
+formats known by Marvin are always recognized (send us a bug report
+otherwise), so the specification of the input format is usually not
+needed. It is only relevant if a user-defined import module is used.
+    <p> </p>
+  </li>
+  <li>Import a file as XYZ, with bond-length cut-off = 1.4, and max.
+number of Carbon connections = 4, export to SMILES:
+    <blockquote> <code>molconvert smiles "foo.xyz{f1.4C4}"</code> </blockquote>
+  </li>
+  <li>Import a file as Gzipped XYZ, with the same import options as in
+the previous example:
+    <blockquote> <code>molconvert smiles "foo.xyz.gz{gzip:xyz:f1.4C4}"</code>
+    </blockquote>
+  </li>
+  <li>Like the previous example but merge the molecules into one
+molecule that contains multiple atom sets. MDL molfile is exported.
+    <blockquote> <code>molconvert mol
+"foo.xyz.gz{gzip:xyz:MULTISET,f1.4C4}"</code> </blockquote>
+  </li>
+  <li>Import an SDF and export a table containing selected molecules
+with columns: SMILES, ID, and logP:
+    <blockquote> <code>molconvert smiles -c
+"ID&lt;=1000&amp;logP&gt;=-2&amp;logP&lt;=4" -T ID:logP foo.sdf</code> </blockquote>
+  </li>
+</ol>
+</body>
+</html>

@@ -1,0 +1,57 @@
+#!/bin/sh
+unsign_help() {
+   echo "unsigner [<option> | <filename>]"
+   echo " "
+   echo "<filename>   Unsign specified jar file."
+   echo " "
+   echo " OPTIONS:"
+   echo "   -a        Unsign all signed jar files in Marvin."
+   echo "   -h        Print this file."
+   echo " "
+   echo "Example: unsigner -a   or   unsigner sjars/svgexport.jar"
+}
+
+unsign() {
+    echo "unsign $1"
+    dir=`dirname $1`
+    echo "$dir" >dir.tmp
+    sed -e 's/\//\\\//g' dir.tmp > pattern.tmp
+    sed -e 's/^/s\//' pattern.tmp| sed -e 's/$/\\\/\/\//' > pattern1.tmp
+    fname=`echo $1 |sed -f pattern1.tmp`
+    rm -f pattern.tmp patter1.tmp
+
+    cd $dir
+    rm -rf unzip_tmp
+    mkdir unzip_tmp
+    unzip $fname -d unzip_tmp
+    rm -f unzip_tmp/META-INF/CHEMCERT.SF
+    rm -f unzip_tmp/META-INF/CHEMCERT.RSA
+    
+    cd unzip_tmp
+    zip -r $fname *
+    mv $fname ../.
+    cd ..
+    rm -rf unzip_tmp
+}
+
+unsign_all() {
+    basedir=`dirname $0`
+    echo basedir=$basedir
+    cd $basedir
+    echo "unsign all signed jar in `pwd`"
+    sh unsigner.sh jmarvin.jar
+    echo "other"
+    find sjars -name "*.jar" -exec ./unsigner.sh {} \;
+}
+
+if [[ -n "$1" ]]; then
+    if [[ "$1" == "-a" ]]; then
+	unsign_all;
+    elif [[ "$1" == "-h" ]]; then
+	unsign_help;
+    else
+	unsign $1;
+    fi
+else
+    unsign_help;
+fi

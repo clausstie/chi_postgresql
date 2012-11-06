@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Gabor Bartha">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>MarvinSketch with Java Web Start Example</title>
+</head>
+<body>
+
+<h1>MarvinSketch with Java Web Start Example</h1>
+<p>
+The MarvinSketch application can be launched via the Internet using
+Java<sup>TM</sup> Web Start.</p> 
+<center>
+<a href="http://java.sun.com/products/javawebstart/downloads/index.html?" target="_blank">
+<img SRC="../../img/javaws.jpg" BORDER="0" width="168" height="71" ALT="Get Java Web Start NOW!"></a>
+</center>
+<p>If Java Web Start is not installed on your machine or there are any problems 
+when you try to open the link, please click on the graphic above to download 
+Java Web Start. 
+<p>
+For users of Netscape 6 and higher or Mozilla 1.x web browsers, manual configuration 
+is also required. 
+Please set up the Java Web Start MIME 
+type <code>JNLP</code> in the <code>Edit-&gt;Preferences-&gt;Navigator-&gt;
+Helper Applications</code> section.<br>
+To do this:
+<ul>
+    <li>Open the Edit-&gt;Preferences-&gt;Navigator-&gt;Helper Applications 
+    menu</li>
+    <li>Click on <code>New Type...</code> button and fill the fields:
+	<blockquote>
+	<table>
+	  <tr>
+	    <td>File extension:</td><td><code>jnlp</code></td>
+	  </tr><tr>
+	    <td>Mime type:</td>
+	    <td><code>application/x-java-jnlp-file</code></td>
+	  </tr><tr>
+	    <td>Application to use:</td>
+	    <td><code>JAVAWEBSTART_HOME/javaws/javaws</code>
+	  </tr>
+	</table>
+	</blockquote>
+    </li>
+</ul>
+</p>
+If you want to use MarvinSketch application from your browser, 
+you just have to 
+<a href="../../jnlp/msketch.jnlp" target="_blank">open the msketch.jnlp</a> file 
+from your browser.</p>
+<p>
+Source of msketch.jnlp:
+<blockquote>
+<PRE>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;<strong>jnlp codebase</strong>=&quot;http://www.chemaxon.com/marvin/&quot;
+<strong>href</strong>=&quot;http://www.chemaxon.com/marvin/jnlp/msketch.jnlp&quot;&gt;
+  &lt;information&gt;
+    &lt;title&gt;MarvinSketch&lt;/title&gt;
+    &lt;vendor&gt;ChemAxon&lt;/vendor&gt;
+    &lt;homepage href=&quot;.&quot;/&gt;
+    &lt;description&gt;Application for drawing chemical structures.&lt;/description&gt; 
+    &lt;offline-allowed/&gt;
+    &lt;icon href=&quot;jnlp/msketch32.gif&quot;/&gt;
+  &lt;/information&gt;
+  &lt;security&gt;
+    &lt;<strong>all-permissions</strong>/&gt; 
+  &lt;/security&gt;
+  &lt;resources&gt;
+    &lt;j2se version=&quot;1.1+&quot;/&gt;
+    &lt;<strong>jar href</strong>=&quot;MarvinBeans.jar&quot;/&gt;
+    &lt;<strong>jar href</strong>=&quot;./sjars/batik-core.jar&quot;/&gt;
+    &lt;<strong>jar href</strong>=&quot;./sjars/chart.jar&quot;/&gt;    
+  &lt;/resources&gt;
+  &lt;application-desc <strong>main-class</strong>=&quot;chemaxon.marvin.Sketch&quot;/&gt;
+&lt;/jnlp&gt;
+</PRE>
+</blockquote>
+</p>
+</body>
+</html>

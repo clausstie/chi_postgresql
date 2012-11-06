@@ -1,0 +1,361 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Tamas Vertse">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Running Marvin Applets under Mac OS</title>
+</head>
+<body>
+<h1>Running Marvin Applets under Mac OS</h1>
+
+<p>&nbsp;</p>
+<ul>
+<li><a href="#javaver">About Java Versions</a></li>
+<li><a href="#osx104">OS X 10.4 (Tiger)</a></li>
+<li><a href="#osx103">OS X 10.3 (Panther)</a></li>
+<li><a href="#osx102">OS X 10.2 (Jaguar)</a></li>
+<li><a href="#osx101">OS X 10.1</a></li>
+<li><a href="#os9">OS 9.x</a></li>
+</ul>
+<p>&nbsp;</p>
+
+<a name="javaver"></a><h2>About Java Versions</h2>
+<p>Each Mac OS X system contains a built-in Java (version 1.3.1 or later). 
+This built-in Java is also called MRJ 3.x. Under this platform, most browsers use it
+for running applets. The following links provide more info about the features of 
+these Java releases:
+<ul>
+<li><a href="http://developer.apple.com/releasenotes/Java/Java50Release3RN/Introduction/chapter_1_section_1.html">Java 1.5</a> (from OS X 10.4)
+<li><a href="http://developer.apple.com/documentation/ReleaseNotes/Java/Java142RN/index.html">Java 1.4.2</a>
+(from OS X 10.3)
+<li><a href="http://developer.apple.com/documentation/ReleaseNotes/Java/Java141Update1/index.html">Java 1.4.1</a>
+(from OS X 10.2.3)
+<li><a href="http://developer.apple.com/techpubs/macosx/ReleaseNotes/java10.2.html">
+Mac OS X Java 10.2</a>
+<li><a href="http://developer.apple.com/techpubs/macosx/ReleaseNotes/java131update1/index.html">
+Java 1.3.1 Update 1</a>
+<li><a href="http://developer.apple.com/techpubs/macosx/ReleaseNotes/java10.1.html">
+Mac OS X Java 10.1</a>
+<li><a href="http://developer.apple.com/techpubs/macosx/ReleaseNotes/java10.0.html">
+Mac OS X Java 10.0</a>
+</ul></p>
+<p>From OS X 10.2.3, 
+<a href="http://www.apple.com/java">Java 1.4.1</a> is available. 
+After you upgrade from Java 1.3.1 to 1.4.1 the previous Java version is also available. 
+Among the Java enabled browsers on this platform, only Safari (and Firefox) supports 1.4.1. and above versions of Java.
+The others use either built-in Java or an MRJ plugin that only supports Java 1.3.1.</p>
+<p>Note: There is a Java plugin: <a href="http://javaplugin.sourceforge.net/">JEP (Java Embedding Plugin)</a> that 
+also supports 1.4.1 and above versions of Java. But it is not compatible with all browsers. It is 
+still a beta quality software, and may have bugs and cause problems. 
+You can download it from the <a href="http://sourceforge.net/projects/javaplugin/">JEP project site</a>.
+To install it, follow its <a href="http://javaplugin.sourceforge.net/Readme.html">installation instructions</a>.
+</p>
+<p>&nbsp;</p>
+
+<a name="osx104"></a><h2>OS X 10.4 (Tiger)</h2>
+<p>&nbsp;</p>
+<h3>Safari 2.0</h3>
+This is the default browser for Tiger. Safari uses Java 1.4.2 for 
+running applets. Java - JavaScript communication is fully supported.
+This browser is recommended for Marvin applets.
+
+<p>&nbsp;</p>
+<h3>Firefox 1.5</h3>
+It is not part of the operating system but it is downloadeable.
+Like Safari, it also support Java 1.4.2 for running applets.
+Although, MAYSCRIPT (calling JavaScript from Java applets) works, there are 
+a couple of shortcomings in this browser.
+<h4>Shortcomings</h4>
+<ul>
+    <li>Accessing the methods of Java applets from JavaScript is not supported.
+    </li>
+    <li>The applet never losts the focus.</li>
+</ul>
+
+<p>&nbsp;</p>
+<h3>Mozilla 1.7</h3>
+Mozilla does not support Java 1.4.2, in default. It still use Java
+1.3.1 for running applets.
+<h4>Shortcomings</h4>
+<ul>
+<li>Java - JavaScript communication does not work.</li>
+<li>The applet never losts the focus.</li>
+</ul>
+
+<p>&nbsp;</p>
+<a name="osx103"></a><h2>OS X 10.3 (Panther)</h2>
+<p>&nbsp;</p>
+<h3>Safari 1.2</h3>
+This is the default browser in OS X 10.3. Panther supports several Java 
+versions (1.3.1, 1.4.1 and 1.4.2). Safari always uses the latest Java version
+ to run applets.
+Java - JavaScript communication is supported (if Java 1.4.2 is installed).
+
+<p>&nbsp;</p>
+<h3>Netscape 7.1 / Mozilla 1.4 and above</h3>
+These browsers contains a built-in Java Plugin that can automatically detect
+the built-in Java of OS X (only Java 1.3.1) for running applets.
+<h4>Shortcomings (with built-in Plugin)</h4>
+<ul>
+    <li>Java - JavaScript communication does not work.</li>
+    <li>Java 1.4.1 and above Java versions are not supported.</li>
+</ul>
+To run applets with Java 1.4.2, install 
+<a href="http://javaplugin.sourceforge.net/">JEP (Java Embedding Plugin)</a>.
+
+<p>&nbsp;</p>
+<h3>Netscape 6.2.1 - 7.0.2</h3>
+The Netscape 6 family applies Apple's Java 1.3.1 which is built into OS X
+for running applets. Although the methods of Java applets are available from
+JavaScript in these browser they also has got a few shorcomings.
+<h4>Shortcoming</h4>
+<ul>
+    <li>Java 1.4.1 and above version is not supported.</li>
+    <li>Calling JavaScript from Java (MAYSCRIPT) does not work.</li>
+    <li>Focus lost bug: the browser can crash if the applet is active and 
+    you click somewhere (outside of the applet area).</li>
+</ul>
+<h4>Troubleshooting</h4>
+<a name="installCarbonPlugin"></a>
+If the browser requests a plugin for the applet, install MRJ Carbon Plugin:
+<ul>
+    <li>Download 
+        <a href="http://homepage.mac.com/pcbeard/MRJPlugin/MRJPluginCarbon-1.0.1.sit">MRJ Carbon Plugin</a>.</li>
+    <li>Install it by double clicking on the downloaded archive file. If the 
+        archive is not extracted automatically, start the 
+        <code>Stuffit Expander</code> and extract the archive manually.</li>
+    <li>Move the <code>MRJPluginCarbon</code> file from the created 
+        <code>MRJPluginCarbon-1.0</code> directory into 
+        <code>Library/Internet Plug-Ins</code> folder.
+    </li>
+</ul>
+
+<p>&nbsp;</p>
+<h3>Internet Explorer 5.x</h3>
+Although Internet Explorer is still part of the operating system but we do
+not recommend it because of the following shortcomings.
+<h4>Shortcomings</h4>
+<ul>
+    <li>Only Java 1.3.1 is supported for running applets.</li>
+    <li>Java - JavaScript communication does not work.</li>   
+</ul>
+
+<p>&nbsp;</p>    
+<a name="osx102"></a><h2>OS X 10.2 (Jaguar)</h2>
+<p>&nbsp;</p>
+<h3>Netscape 7.1 / Mozilla 1.4 and above</h3>
+Netscape 7.1 and newer Mozilla packages contain an built-in Java plugin that 
+can automatically detect the built-in Java of OS X (only Java 1.3.1) for 
+running applets.
+<h4>Shortcomings (with built-in Plugin)</h4>
+<ul>
+    <li>Java - JavaScript communication does not work.</li>
+    <li>Java 1.4.1 and above Java versions are not supported.</li>
+</ul>
+To run applets with Java 1.4.1, install 
+<a href="http://javaplugin.sourceforge.net/">JEP (Java Embedding Plugin)</a>.
+
+<p>&nbsp;</p>
+<h3>Netscape 6.2.1 - 7.0.2</h3>
+The Netscape 6 family applies Apple's Java 1.3.1 which is built into OS X
+for running applets.
+In these browsers, methods of Java applets are accessible from JavaScript code.
+<h4>Shortcomings</h4>
+<ul>
+    <li>Java 1.4.1 and above Java versions are not supported.</li>
+    <li>Processing JavaScript code from a Java applet (MAYSCRIPT)
+    does not work.*</li>
+</ul>
+<small>* In a few configuration, applets can call JavaScript code but it may
+cause freezing.</small>
+<h4>Troubleshooting</h4>
+If Java Plugin is not available for applets, 
+<a href="#installCarbonPlugin">install MRJ Carbon Plugin</a>.
+
+<p>&nbsp;</p>
+<h3>Safari 1.0</h3>
+Safari recommends Java 1.4.1 for running applets.
+<h4>Shortcomings</h4>
+<ul>
+    <li>Java - JavaScript communication does not work.</li>
+    <li>Copy/Paste functionality is not yet supported between Marvin and other
+    application</li>
+</ul>
+<h4>Troubleshooting</h4>
+If the current Java version is 1.3.1, the browser may freeze up during the
+loading of a signed applet. In this case, upgrade your Java (to 1.4.1 or 
+later).
+
+<p>&nbsp;</p>
+<h3>Internet Explorer 5.x</h3>
+Although Internet Explorer is the default browser in OS X 10.2, we do
+not recommend it because of the following shortcomings.
+<h4>Shortcomings</h4>
+<ul>
+    <li>Only Java 1.3.1 is supported for running applets.</li>
+    <li>Java - JavaScript communication does not work.</li>   
+</ul>
+
+
+<p>&nbsp;</p>
+<a name="osx101"></a><h2>OS X 10.1</h2>
+<p>&nbsp;</p>
+<h3>Netscape 7.1 / Mozilla 1.4 and above</h3>
+Netscape 7.1 and newer Mozilla packages are not compatible with the previous
+MRJ plugins. If you would like to run applets on this platform, you should
+install 
+<a href="http://javaplugin.sourceforge.net/">JEP (Java Embedding Plugin)</a>.
+
+<p>&nbsp;</p>
+<h3>Netscape 6.2.1 - 7.0.2</h3>
+The Netscape 6 family applies Apple's Java 1.3.1 which is built into OS X
+for running applets.
+In these browsers, methods of Java applets are accessible from JavaScript code.
+<h4>Shortcomings</h4>
+<em>Mac OS X 10.1.x</em> is distributed with a Java version which is 
+compatible with Sun's 1.3.1_02 Java.
+If your applet runs with this Java version, calling JavaScript from Java 
+is not fully supported.
+The MarvinView applet may not be able to run JavaScript commands in the 
+following cases:
+    <ul>
+    <li><em>Netscape 6.x</em> and <em>7.0</em> (with <em>MRJ Carbon Plugin 
+    1.0</em>)*
+    <li><em>Netscape 7.0x</em> (works only in AWT mode)**
+    </ul><p>
+    <small>*: <a href="#installCarbonPlugin">Upgrade plugin with MRJ Carbon 
+    Plugin 1.0.1</a> 
+    to be able to use this feature in unsigned applet in Netscape 6.x.</small>
+    <br>
+    <small>**: In Swing mode running JavaScript command may cause freezing.
+    </small><p>
+</ul>
+<h4>Troubleshooting</h4>
+If Java Plugin is not available for applets, 
+<a href="#installCarbonPlugin">install MRJ Carbon Plugin</a>.
+
+<p>&nbsp;</p>
+<h3>Internet Explorer 5.x</h3>
+Although Internet Explorer is the default browser in OS X 10.1, we do
+not recommend it because of the following shortcomings.
+<h4>Shortcomings</h4>
+<ul>
+    <li>Java - JavaScript communication does not work.</li>
+    <li>Repeated reloading of applets causes a memory leak.*</li>
+</ul>
+<small>* It is an MRJ specific bug that is fixed in OS X 10.2</small>
+
+<p>&nbsp;</p>
+<a name="os9"></a><h2>OS 9.x</h2>
+<p>&nbsp;</p>
+<a name="os9.netscape4"></a><h3>Netscape 4.7x</h3>
+<p>Under Mac OS 9 <em>Netscape 4.7x with built-in Java</em> (without the MRJ plugin) is 
+    the <em>recommended browser</em> for Marvin. This browser includes a built-in Java (which uses AWT 1.0).</p>
+
+<h4>Shortcomings</h4>
+    <ul>
+    <li>Swing is not supported in this browser. Both built-in Java and the MRJ plugin use pre-1.2  versions of Java
+    (Swing is available in 1.2 and later).
+    <li>Popup menu functionality does not work in. Marvin does not use popup menus in this platform.</li>
+    </ul>
+
+<h4>The MRJ plugin</h4>
+    <h5>Why remove the MRJ plugin?</h5>
+	<p>Although you can install a Java plugin (the MRJ plugin) for Netscape 4.7x, we do not suggest using the MRJ plugin
+	    on this platform because the MRJ plugin has some limitations
+	    (<a href="#limit_MRJ_Netscape47">Limitations of the MRJ plugin under Netscape 4.7x</a>) which can cause
+	    problems with running applets.
+	    If the MRJ plugin is already installed on your browser, we suggest that you remove it.
+    <h5>How to remove the MRJ plugin?</h5>
+	<p>Check the plugin list by choosing <code>Help/About Plug-ins</code> menu options in the browser. If you find the
+	MRJ plugin in the list, remove the <code>MRJPlugin</code> and <code>MRJPlugin.jar</code> files from the 
+	<code>Applications/Netscape Communicator Folder/Plug-ins</code> folder.
+    
+    <a name="limit_MRJ_Netscape47"></a><h5>Limitations of the MRJ plugin under Netscape 4.7x</h5>
+	<ul>
+	<li>If the Java plugin (MRJ plugin) is installed in Netscape 4.7x and your HTML page also has an APPLET tag, the 
+	    browser will use the MRJ instead of Netscape's built-in Java.</li>
+	<li>LiveConnect capabilities between JavaScript and Java do not work with applets that are using MRJ plugin
+	    <!-- at APPLET and EMBED tag -->.
+	    This means that applet methods cannot be accessed from JavaScript in Netscape.</li>
+	<li> The applet's menubar will be displayed in the system's menubar and not the applet frame.  This will make the Help menu choices unavailable.</li>
+	</ul>
+    
+<p>&nbsp;</p>
+<a name="os9.netscape6"></a><h3>Netscape 6.2.1 - 7, Mozilla 1:</h3>
+<p>Mac OS 9 does not include a Java by default. <code>Mac OS Runtime for Java (MRJ)</code> is required 
+    for running applets. Though these browsers have no built-in JVM; they can use the Java plugin. 
+    When you install one of these browsers, 
+    the installer automatically detects MRJ under OS and the browser uses it for running applets.</p>
+
+<h4>Shortcomings</h4>
+    <ul>
+    <li>The latest version of MRJ for OS 9 (2.2.5) implements SUN's Java Runtime Environment (JRE) 1.1. 
+    Thus, Swing cannot be used (since it is supported only in JRE 1.2 and later).</li>
+    <li>When using the EMBED tag, the JavaScript to Java communication does not work.
+    In these browser versions, using Marvin with plugin mode is not suggested.</li>
+    <li>The menu bar is unusable. These browsers merge the menu of the applet frame 
+	with the system's menu. If an applet launches a frame, its menu bar is appended to the system's one. The 
+	result is a confusing menu bar where the applet's menu items are not selectable and most menu 
+	options are not displayed. Links to the corresponding bug reports:
+	<a href="http://bugzilla.mozilla.org/show_bug.cgi?id=84934">84934</a>,
+	<a href="http://bugzilla.mozilla.org/show_bug.cgi?id=87125">87125</a>,
+	<a href="http://bugzilla.mozilla.org/show_bug.cgi?id=132376">132376</a>,
+	<a href="http://bugzilla.mozilla.org/show_bug.cgi?id=132594">132594</a></li>
+    </ul>
+
+<p>
+
+<p>&nbsp;</p>
+<a name="os9.ie5"></a><h3>Internet Explorer 5.1:</h3>
+<p>As with Netscape 6, <code>Mac OS Runtime for Java (MRJ)</code> is required  for Internet Explorer
+    to run applets. This browser also contains a few shortcomings.</p>
+
+<h4>Shortcomings</h4>
+    <ul>
+    <li>As with Netscape 6, IE does not support Swing (since it uses the same MRJ as Netscape 6).</li>
+    <li>JavaScript to Java communication does not work.</li>
+    </ul>
+
+<h4>Troubleshooting</h4>
+    <p>The menu bar of the applet detached frame may be inactive if you close
+    the frame and open it again. The problem is that the focus is not on the 
+    specified window. In IE5, changing the focus between the applet detached frame 
+    and the browser window is not perfect.</p>
+    <strong>Workaround:</strong> Click on another window to deactivate your frame then click on yours to 
+    pass the focus to it. You can get the same result by pressing the <em>Command</em> and
+    the <em>Tab</em> buttons together again and again until your frame is active again.</p>
+
+
+<p>&nbsp;</p>
+<a name="os9.opera5"></a><h3>Opera 5.0:</h3>
+Like IE and Netscape 6.x, it also uses 
+<code>Mac OS Runtime for Java (MRJ)</code> for running applets. We do not recommend it, because this Opera distribution 
+has most of the same bugs as Netscape and several other serious bugs.
+
+<h4>Shortcomings</h4>
+    <ul>
+    <li>The menubar is unusable. It has the same menu bar bugs as Netscape 6.</li>
+    <li>There is no JavaScript to Java communication.</li>
+    <li>When a frame is launched and displayed from an applet, the frame's content is drawn on the applet's panel
+     instead of creating a separate display frame window.</li>
+    <li>Although in theory Opera accepts EMBED or OBJECT tags (by identifying itself as Mozilla/Netscape or MSIE),
+	we have experienced several cases in which the EMBED and OBJECT tag were 
+	not handled properly by the browser. We suggest using the APPLET tag only. 
+    </li>
+    <li>When an applet tag is dynamically generated by a JavaScript code in the HTML page, an error is
+	raised. The example below causes an error: <code>The specified Java applet could not be found</code>
+	<pre>
+    &lt;script language="Javascript1.1"&gt;
+    &lt;!--
+    document.write("&lt;applet code='MSketch' codebase='.' width=400 height=300&gt;&lt;/applet&gt;");
+    //--&gt;
+    &lt;/script&gt;	
+	</pre>
+	Static version of this example works:
+	<pre>
+    &lt;applet code='MSketch' codebase='.' width=400 height=300&gt;&lt;/applet&gt;
+	</pre></li>
+    </ul>
+
+</body>
+</html>

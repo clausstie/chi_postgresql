@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 2.1 - Molecule tables</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinView Example 2.1</h1>
+
+Two downloaded and two inline molecules are placed into a 2x2 molecule table,
+each scaled to occupy 150x150 pixels.
+The cells are numbered from zero, in left to right, up to down order.
+
+<p>
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+mview_begin("../..", 300, 300);
+mview_param("rows", "2");
+mview_param("cols", "2");
+mview_param("cell0", "|../../mols-2d/caffeine.csmol");
+mview_param("cell1", "|O[C@H](\C=C\[C@@H](O)C1=CC=CC=C1)C2=CC=CC=C2");
+mview_param("cell2", "|Ethane\n"
++"  Marvin  07119915552D\n"
++"\n"
++"  2  1  0  0  0  0  0  0  0  0999 V2000\n"
++"   -0.5625    1.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
++"   -0.5625    0.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
++"  1  2  1  0  0  0  0\n"
++"M  END");
+mview_param("cell3", "|C[C@]12CC[C@@H]3[C@H](CC[C@H]4CC(=O)C(\C[C@]34C)=C\O)[C@@H]1CCC(=O)O2");
+mview_end();
+//-->
+</script>
+</center>
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>mview_begin(</strong>&quot;../..&quot;<strong>,</strong> 300<strong>,</strong> 300<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.rows">rows</a>&quot;<strong>,</strong> &quot;2&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cols">cols</a>&quot;<strong>,</strong> &quot;2&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell0</a>&quot;<strong>,</strong> &quot;|../../mols-2d/caffeine.csmol&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;cell1&quot;<strong>,</strong> &quot;|O[C@H](\C=C\[C@@H](O)C1=CC=CC=C1)C2=CC=CC=C2&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;cell2&quot;<strong>,</strong> &quot;|Ethane\n&quot;
++&quot;  Marvin  07119915552D\n&quot;
++&quot;\n&quot;
++&quot;  2  1  0  0  0  0  0  0  0  0999 V2000\n&quot;
++&quot;   -0.5625    1.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n&quot;
++&quot;   -0.5625    0.2500    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n&quot;
++&quot;  1  2  1  0  0  0  0\n&quot;
++&quot;M  END&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;cell3&quot;<strong>,</strong> &quot;|C[C@]12CC[C@@H]3[C@H](CC[C@H]4CC(=O)C(\C[C@]34C)=C\O)[C@@H]1CCC(=O)O2&quot;<strong>);</strong>
+<strong>mview_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+<p>
+The &quot;<code>|</code>&quot; characters before the Molfile names/contents
+and SMILES strings are separator characters.
+They seem to be superfluous now, because each cell contains only one
+object, no need to separate anything.
+But you will see their significance in the forthcoming examples.
+
+<p>
+This is only a toy example.
+In reality, the greatest advantages of a molecule table over an html table
+with many small applets can be seen if you have a large number of molecules.
+This may be the case if the molecules are the result of a database search.
+100 separate molecule applets consumes much more memory and are much slower
+then one molecule table with 100 molecules.
+
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+<p>
+
+If you have a large number of molecules, it would be nice
+if the user would see some additional information next to the molecule.
+You will see how to do this and more in the
+<a HREF="example-view2.2.html">next example.</a>
+
+</body>
+</html>

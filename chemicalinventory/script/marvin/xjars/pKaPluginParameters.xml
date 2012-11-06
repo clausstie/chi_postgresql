@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ParameterPanel>
+<Group>
+    <Precision Key="precision" Label="Precision"/>
+    <SingleSelection Key="mode" Label="Mode">
+	<Choice Value="macro" Text="macro" Selected="true"/>
+	<Choice Value="micro" Text="micro"/>
+    </SingleSelection>
+<!--
+    <Number Key="ions" Label="Ionizable atoms" Value="8" Type="int">
+	<Dependencies>
+	    <Item Key="mode" Range="macro"/>
+	</Dependencies>
+    </Number>
+-->
+    <Number Key="min" Label="Min basic pKa" Value="-10" Type="real"/>
+    <Number Key="max" Label="Max acidic pKa" Value="20" Type="real"/>
+    <Number Key="temperature" Label="Temperature" Value="298" Type="real"/>
+    <Boolean Key="mscalc" Label="Show microspecies distribution" Value="true">
+	<Dependencies>
+	    <Item Key="mode" Range="macro"/>
+	</Dependencies>
+    </Boolean>
+</Group>
+<Group Title="Microspecies">
+    <Number Key="lower" Label="pH lower limit" Value="0" Range="[0.0, 14.0]" Type="real">
+	<Dependencies>
+            <Item Key="mode" Range="macro"/>
+	    <Item Key="mscalc" Range="true"/>
+	</Dependencies>
+    </Number>
+    <Number Key="upper" Label="pH upper limit" Value="14" Range="[0.0, 14.0]" Type="real">
+	<Dependencies>
+            <Item Key="mode" Range="macro"/>
+	    <Item Key="mscalc" Range="true"/>
+	</Dependencies>
+    </Number>
+    <Number Key="step" Label="pH step size" Value="0.2" Type="real">
+	<Dependencies>
+            <Item Key="mode" Range="macro"/>
+	    <Item Key="mscalc" Range="true"/>
+	</Dependencies>
+    </Number>
+</Group>
+<Group>
+    <LICENSE Label="License key"/>
+</Group>
+</ParameterPanel>

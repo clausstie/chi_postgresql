@@ -1,0 +1,35 @@
+<!-- **************** CHEMICALINVENTORY TEST START***************** -->
+       
+
+<Context path="/chemicalinventory_test" docBase="chemicalinventory_test" debug="5" reloadable="true" crossContext="true">
+
+
+<Resource name="jdbc/chemicalinventory_test" 
+	auth="Container" 
+	type="javax.sql.DataSource" 
+	maxActive="100" 
+	maxIdle="30" 
+	maxWait="10000" 
+	removeAbandoned="true"
+	removeAbandonedTimeout="200"
+	logAbandoned="true"
+	username="chemicals_test" 
+	password="chemicals_test" 
+	driverClassName="com.mysql.jdbc.Driver" 
+	url="jdbc:mysql://localhost:3306/chemicals_test?autoReconnect=true"/> 
+
+  <Realm
+        className="org.apache.catalina.realm.DataSourceRealm" 
+	debug="99"
+   	dataSourceName="jdbc/chemicalinventory_test"
+	userTable="user" 
+	userNameCol="user_name" 
+	userCredCol="password"
+   	userRoleTable="roles" 
+	roleNameCol="role"
+	digest="MD5"
+	localDataSource="true"/>
+
+</Context>
+
+<!-- **************** CHEMICALINVENTORY TEST END***************** -->

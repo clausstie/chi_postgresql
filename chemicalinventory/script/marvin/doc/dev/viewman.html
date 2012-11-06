@@ -1,0 +1,823 @@
+<html>
+<head>
+<meta NAME="description" CONTENT="MarvinView: parameters and events">
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>MarvinView: parameters and events</title>
+</head>
+<body>
+
+<h1 align=center>MarvinView: parameters and events</h1>
+<h3 align=center>Version 4.0.5</h3>
+
+<h2>Contents</h2>
+
+<ol>
+<li><a HREF="#parameters"></a>Parameters
+    <ol><!--APPLETONLY_BEGIN-->
+    <li><a HREF="#appletonly">Applet only parameters</a></li><!--APPLETONLY_END-->
+    <li><a HREF="#3d">3D and animation</a></li>
+    <li><a HREF="#advanced">Molecule tables</a>
+	<ol>
+	<li><a HREF="#advanced.layout"><code>layout</code></a></li>
+	<li><a HREF="#advanced.param"><code>param</code></a></li>
+	<li><a HREF="#advanced.cell"><code>cell</code><em>i</em></a></li>
+	</ol>
+	</li>
+    </ol>
+    </li>
+
+<!--APPLETONLY_BEGIN--><li><a HREF="#troubleshooting">Troubleshooting -
+    MView and JMView tables</a></li><!--APPLETONLY_END-->
+</ol>
+
+<center><div class="lenia">&nbsp;</div></center>
+
+<h2><a NAME="parameters"></a>1 &nbsp; Parameters</h2>
+
+Parameters of the <em>MView</em> and <em>JMView</em> applets can be set using
+the <code>&lt;param&gt;</code> HTML tag. 
+
+<p>
+<blockquote>
+<table cellpadding="5" cellspacing="0" border="0" id="colored-grid">
+<tr ALIGN=CENTER><th>Parameter</th><th>Meaning</th><th>Default</th></tr>
+<tr VALIGN=TOP><td><code>dispQuality</code></td>
+    <td><a NAME="parameters.dispQuality"></a>Display quality.
+	<ul>
+	<li><code>0</code> - low quality, faster rendering</li>
+	<li><code>1</code> - high quality (antialiasing), slower rendering</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>1</code></td></tr>
+<tr VALIGN=TOP><td><code>implicitH</code></td>
+    <td><a NAME="parameters.implicitH"></a>How to display H labels.
+	<ul>
+	<li><code>off</code></li>
+	<li><code>hetero</code> - on heteroatoms</li>
+	<li><code>heteroterm</code> - on hetero or terminal atoms</li>
+	<li><code>all</code> - all atoms</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>heteroterm</code></td></tr>
+<tr VALIGN=TOP><td><code>explicitH</code></td>
+    <td><a NAME="parameters.explicitH"></a>Show explicit hydrogens.
+	</td>
+    <td ALIGN=CENTER><code>true</code></td></tr>
+<tr VALIGN=TOP><td><code>chiralitySupport</code></td>
+    <td><a NAME="parameters.chiralitySupport"></a>When to show atom chirality
+	(R/S).
+	<ul>
+	<li><code>off</code> - never</li>
+	<li><code>selected</code> - if the chiral flag is set for the molecule
+	or the atom's enhanced stereo type is absolute</li>
+	<li><code>all</code> - always</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>off</code></td></tr>
+<tr VALIGN=TOP><td><code>ezVisible</code></td>
+    <td><a NAME="parameters.ezVisible"></a>Show (<code>true</code>)
+	or hide (<code>false</code>) E/Z labels.
+	</td>
+    <td ALIGN=CENTER><code>false</code></td></tr>
+<tr VALIGN=TOP><td><code>navmode</code></td>
+    <td><a NAME="parameters.navmode"></a>Mouse drag action.
+	<ul>
+	<li><code>translate</code> - move the structure</li>
+	<li><code>zoom</code> - change magnification</li>
+	<li><code>rotZ</code> - rotate in the screen's plane</li>
+	<li><code>rot3d</code> - 3D rotation</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>rotZ</code></td></tr>
+<tr VALIGN=TOP><td><code>background</code></td>
+    <td><a NAME="parameters.background"></a>Background color in hexa.
+    Sets the background color of the components (like menubar, toolbar,
+    labels and buttons), 
+    excluding the molecule canvas. See also: 
+    <a href="#parameters.molbg">molbg</a></td>
+    <td ALIGN=CENTER>&nbsp;</td></tr>
+<tr VALIGN=TOP><td><code>molbg</code></td>
+    <td><a NAME="parameters.molbg"></a>Molecule background color in hexa.
+    Sets the background color of the molecule canvas. See also:
+    <a href="#parameters.background">background</a></td>
+    <td ALIGN=CENTER>&nbsp;</td></tr>
+<tr VALIGN=TOP><td><code>colorScheme</code></td>
+    <td><a NAME="parameters.colorScheme"></a>Color scheme.
+	<ul>
+	<li><code>mono</code> - monochrome</li>
+	<li><code>cpk</code> - Corey-Pauling-Kultun</li>
+	<li><code>shapely</code> -
+	    <a HREF="../user/shapely-scheme.html">shapely</a> (residue types)</li>
+	<li><code>group</code> - residue sequence numbers</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>cpk</code></td></tr>
+<!-- <tr VALIGN=TOP><td><code>labels</code></td>
+    <td><a NAME="parameters.labels"></a>Atom labels
+	<ul>
+	<li><code>true</code> - display</li>
+	<li><code>false</code> - do not display</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>true</code></td></tr> -->
+<tr VALIGN=TOP><td><code>winScale</code></td>
+    <td><a NAME="parameters.winScale"></a>Magnification in the zoom window.
+	A 1.54 &Aring; long C-C bond is magnified to <em>winScale</em> pixels.
+	</td>
+    <td ALIGN=CENTER>26.4</td></tr>
+<tr VALIGN=TOP><td><code>tabScale</code></td>
+    <td><a NAME="parameters.tabScale"></a>Magnification in the molecule table.
+	Each cell has the specified magnification if positive.
+	The scaling is automatic if negative (-1).</td>
+    <td ALIGN=CENTER>-1</td></tr>
+<tr VALIGN=TOP><td><code>autoTabScale</code></td>
+    <td><a NAME="parameters.autoTabScale"></a>Automatically change scale when
+	component size changed. Only in the swing version, only
+	applicable to the MViewPane bean.</td>
+    <td ALIGN=CENTER>false</td></tr>
+<tr VALIGN=TOP><td><code>atomFont</code></td>
+    <td><a NAME="parameters.atomFont"></a>Atom symbol/label font:
+	<code>Serif</code>, <code>SansSerif</code> or <code>Monospaced</code>
+	</td>
+    <td ALIGN=CENTER><code>SansSerif</code></td></tr>
+<tr VALIGN=TOP><td><code>atomsize</code></td>
+    <td><a NAME="parameters.atomsize"></a>Atom symbol font size
+	in C-C bond length units:<br>
+	<center>
+	<em>atomsize</em>*1.54 &Aring; = <em>atomsize</em>*<em>scale</em> points,
+	</center>
+	where <em>scale</em> is the current magnification.
+	</td>
+    <td ALIGN=CENTER>0.4</td></tr>
+<tr VALIGN=TOP><td><code>bondWidth</code></td>
+    <td><a NAME="parameters.bondSpacing"></a>Double bond spacing
+	in C-C bond length units:<br>
+	<center>
+	<em>width</em>*1.54 &Aring; = <em>width</em>*<em>scale</em> pixels,
+	</center>
+	where <em>scale</em> is the current magnification.
+	</td>
+    <td ALIGN=CENTER>0.18</td></tr>
+<tr VALIGN=TOP><td><code>molFormat</code></td>
+    <td>Default file format:
+	<code>mol</code>, <code>csmol</code>,
+	<code>smiles</code>, <code>cxsmiles</code>,
+	<code>cml</code>, <code>pdb</code>, <code>pov</code>, <code>sybyl</code>, 
+	or <code>xyz</code>.</td>
+    <td ALIGN=CENTER><code>mol</code></td></tr>
+<tr VALIGN=TOP><td><code>debug</code></td>
+    <td>Debug mode. Possible values: 0, 1, 2.</td>
+    <td ALIGN=CENTER>0</td></tr>
+<tr VALIGN=TOP><td><code>selectable</code></td>
+    <td><a NAME="parameters.selectable"></a>Use <code>selectable=false</code> to forbid
+	molecule selection with mouse click.</td>
+    <td ALIGN=CENTER><code>true</code></td></tr>
+<tr VALIGN=TOP><td><code>selection0<br>selection1<br>selection2<br>...</code></td>
+    <td VALIGN=TOP><a NAME="parameters.selection"></a>Comma-separated list of
+	atom numbers (0, ..., n-1).<br>
+	Selected atoms are highlighted.<br>
+	In a simple one-molecule viewer, <code>selection0</code> must be used.
+	In a molecule table, <code>selection</code><em>n</em> corresponds to
+	molecule cell <em>n</em>.</td>
+    <td ALIGN=CENTER>&nbsp;</td></tr>
+<tr VALIGN=TOP><td><code>editable</code></td>
+    <td><a NAME="parameters.editable"></a>Modes: display only (0) or
+	editable (1, 2).
+	If <code>editable=2</code>, then doubleclick launches
+	MarvinSketch (instead of a viewer window).</td>
+    <td ALIGN=CENTER><code>0</code></td></tr>
+<tr VALIGN=TOP><td><code>downWedge</code></td>
+    <td><a NAME="parameters.downWedge"></a>Wedge bond display convention.
+	Down wedge points downward in MDL's convention (<code>mdl</code>),
+	upward (at the chiral center) in Daylight's (<code>daylight</code>).
+	</td>
+    <td ALIGN=CENTER><code>mdl</code></td></tr>
+<tr VALIGN=TOP><td><code>importConv</code></td>
+    <td><a NAME="parameters.importConv"></a>Conversion(s) after molecule
+	loading. Currently the following options are implemented:
+	<table cellpadding="5" cellspacing="0" border="0" id="no-grid">
+	<tr><td NOWRAP>&quot;a&quot; or &quot;+a&quot;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	    <td>aromatization (level 1)</td></tr>
+    	<tr><td NOWRAP>&quot;a_day&quot; or &quot;+a_day&quot;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	    <td>Daylight compatible aromatization (level 2) </td></tr>
+	<tr><td NOWRAP>&quot;-a&quot;</td>
+	    <td>dearomatization</td></tr>
+	<tr VALIGN=TOP><td NOWRAP>&quot;H&quot; or &quot;+H&quot;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	    <td>add explicit H atoms</td></tr>
+	<tr VALIGN=TOP><td NOWRAP>&quot;-H&quot;</td>
+	    <td>remove explicit H atoms</td></tr>
+	<tr VALIGN=TOP><td NOWRAP>&quot;c&quot;</td>
+	    <td>automatic cleaning</td></tr>
+	</table></td>
+    <td ALIGN=CENTER>&nbsp;</td></tr>
+<tr VALIGN=TOP><td><code>cleanOpts</code></td>
+    
+    <td><a NAME="parameters.cleanOpts"></a>Options for 2D or 3D cleaning.<br>
+        <code>cleanOpts</code> accepts the same parameter values as 
+        <a href="#parameters.clean2dOpts">clean2dOpts</a> or
+        <a href="#parameters.clean3dOpts">clean3dOpts</a>
+	depending on the cleaning dimension
+        (<a HREF="#parameters.cleanDim">cleanDim</a>).
+        </td>
+    <td ALIGN=CENTER><code>&nbsp;</code></td></tr>
+    </tr>
+<tr VALIGN=TOP><td><code>clean2dOpts</code></td>
+    <td><a NAME="parameters.clean2dOpts"></a>Options for 2D cleaning (0D-&gt;2D)
+        See <a href="../user/cleanoptions.html#base.2d">base 2D cleaning 
+        options</>
+	</td>
+    <td ALIGN=CENTER><code>&nbsp;</code></td></tr>
+<tr VALIGN=TOP><td><code>clean3dOpts</code></td>
+    <td><a NAME="parameters.clean3dOpts"></a>Options for 3D cleaning (0D-&gt;3D)
+        See <a href="../user/cleanoptions.html#base.3d">base 3D cleaning 
+        options</a>
+	</td>
+    <td ALIGN=CENTER><code>&nbsp;</code></td></tr>
+<tr VALIGN=TOP><td><code>cleanDim</code></td>
+    <td><a NAME="parameters.cleanDim"></a>Number of space dimensions for cleaning.
+	<ul>
+	<li><code>2</code> - two-dimensional cleaning</li>
+	<li><code>3</code> - three-dimensional cleaning</li>
+	</ul>
+	See also: <a href="#parameters.cleanOpts">cleanOpts</a>,
+		  <a href="#parameters.importConv">importConv</a>.</td>
+    <td ALIGN=CENTER><code>2</code></td></tr>
+<tr VALIGN=TOP><td><code>atomSet0.1 ... atomSet0.63<br>atomSet1.1 ... atomSet1.63<br>...</code></td>
+    <td><a NAME="parameters.atomSet"></a>Atom sets. Comma separated list of
+	atom indices (0, ..., <i>n</i>-1). An atom in molecule cell number
+	<i>N</i> will be in set <i>M</i> if its number appears in the
+	atomSet<i>N</i>.<i>M</i> list. By default, all atoms are in set 0.</td>
+    <td ALIGN=CENTER>&nbsp;</td></tr>
+<tr VALIGN=TOP><td><code>atomSetColor0<br>...<br>atomSetColor63</code></td>
+    <td><a NAME="parameters.atomSetColor"></a>Atom set color in hexa.</td>
+    <td ALIGN=CENTER>&nbsp;</td></tr>
+<tr VALIGN=TOP><td><code>bondSet0.1 ... bondSet0.63<br>bondSet1.1 ... bondSet1.63<br>...</code></td>
+    <td><a NAME="parameters.bondSet"></a>Bond sets. Comma separated list of
+	atom index pairs in <i>i</i>-<i>j</i> format,
+	where <i>i</i>, <i>j</i> = 0, ..., <i>n</i>-1.
+	A bond in molecule cell number <i>N</i>
+	will be in set <i>M</i> if the corresponding atom pair appears in the
+	bondSet<i>N</i>.<i>M</i> list.
+	By default, all bonds are in set 0.</td>
+    <td ALIGN=CENTER>&nbsp;</td></tr>
+<tr VALIGN=TOP><td><code>bondSetColor1<br>...<br>bondSetColor63</code></td>
+    <td><a NAME="parameters.bondSetColor"></a>Bond set color in hexa.</td>
+    <td ALIGN=CENTER>&nbsp;</td></tr>
+<tr VALIGN=TOP><td><code>showSets</code></td>
+    <td><a NAME="parameters.showSets"></a>Show the specified atom sets only.
+	Comma separated list of set sequence numbers (0, ..., 63).</td>
+    <td ALIGN=CENTER>&nbsp;</td></tr>
+<tr VALIGN=TOP><td><code>setColoringEnabled</code></td>
+    <td><a NAME="parameters.setColoringEnabled"></a>Atom/bond set coloring.</td>
+    <td ALIGN=CENTER><code>true</code></td></tr>
+<tr VALIGN=TOP><td><code>bondLengthVisible</code></td>
+    <td><a NAME="parameters.bondLengthVisible"></a>Shows bond length labels
+	<ul>
+	<li><code>true</code> - display</li>
+	<li><code>false</code> - do not display</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>false</code></td></tr>
+<tr VALIGN=TOP><td><code>atomSymbolsVisible</code></td>
+    <td><a NAME="parameters.atomSymbolsVisible"></a>Show atom symbols
+	<ul>
+	<li><code>true</code> - display</li>
+	<li><code>false</code> - do not display</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>true</code></td></tr> 
+<tr VALIGN=TOP><td><code>atomNumbersVisible</code></td>
+    <td><a NAME="parameters.atomNumbersVisible"></a>Show atom numbers
+	<ul>
+	<li><code>true</code> - display</li>
+	<li><code>false</code> - do not display</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>false</code></td></tr>    
+<tr VALIGN=TOP><td><code>atomMappingVisible</code></td>
+    <td><a NAME="parameters.atomMappingVisible"></a>Show atom mapping
+	<ul>
+	<li><code>true</code> - display</li>
+	<li><code>false</code> - do not display</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>true</code></td></tr> 
+<tr VALIGN=TOP><td><code>lonePairsVisible</code></td>
+    <td><a NAME="parameters.lonePairsVisible"></a>Show lone pairs
+	<ul>
+	<li><code>true</code> - display</li>
+	<li><code>false</code> - do not display</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>false</code></td></tr> 
+<tr VALIGN=TOP><td><code>grinv</code></td>
+    <td><a NAME="parameters.grinv"></a>Display graph invariants
+	<ul>
+	<li><code>true</code> - display</li>
+	<li><code>false</code> - do not display</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>false</code></td></tr> 
+<tr VALIGN=TOP><td><code>detachable</code></td>
+    <td><a NAME="parameters.detachable"></a>Enable or disable popping up detached viewer window. If this 
+    parameter is true, the selected molecule can be displayed in separate window 
+    by selecting "Window" menu item in the popup menu or by doubleclicking
+    on the canvas. 
+    Viewer is not detachable if detachable parameter is false.
+     (See also <a href="#parameters.editable">editable</a>.)
+	</td>
+    <td ALIGN=CENTER><code>true</code></td></tr>
+<tr VALIGN=TOP><td><code>importEnabled</code></td>
+    <td><a NAME="parameters.importEnabled"></a>Allow or forbid molecule import.
+    If this parameter is false, paste function is disabled in MarvinView, also 
+    <code>Import</code> option is disabled in the Molecule Source window.
+    (Use <a href="#parameters.editable">editable</a> parameter to forbid the 
+    editing of the molecules.)
+	</td>
+    <td ALIGN=CENTER><code>true</code></td></tr>    
+<tr VALIGN=TOP><td><code><a NAME="sketchHelp"></a>sketchHelp</code></td>
+    <td><a NAME="parameters.sketchHelp"></a>Sketcher help contents.
+	</td>
+    <td ALIGN=LEFT><code>chemaxon/marvin/help<br>
+		/sketch-index.html</code></td></tr>
+<tr VALIGN=TOP><td><code><a NAME="sketchHelp"></a>sketchQuickHelp</code></td>
+    <td><a NAME="parameters.sketchQuickHelp"></a>Sketcher quick help.
+	</td>
+    <td ALIGN=LEFT><code>chemaxon/marvin/help<br>
+		/sketch.html</code></td></tr>
+<tr VALIGN=TOP><td><code><a NAME="viewHelp"></a>viewHelp</code></td>
+    <td><a NAME="parameters.viewHelp"></a>Viewer help contents.</td>
+    <td ALIGN=LEFT><code>chemaxon/marvin/help<br>
+		/view-index.html</code></td></tr>
+<tr VALIGN=TOP><td><code><a NAME="viewHelp"></a>viewQuickHelp</code></td>
+    <td><a NAME="parameters.viewQuickHelp"></a>Viewer quick help.</td>
+    <td ALIGN=LEFT><code>chemaxon/marvin/help<br>
+		/view.html</code></td></tr>
+<tr VALIGN=TOP><td><code><a NAME="parameters.addRemoveHatomsEnabled"
+    ></a>addRemoveHatomsEnabled</code></td>
+    <td><b>Add/Remove -&gt; Explicit Hydrogens</b> is enabled or disabled
+    in the <b>Edit</b> menu. It will be disabled if this parameter is
+    false. (available only in Swing)</td>
+    <td ALIGN=CENTER>true</td></tr>
+</table>
+</blockquote>
+<p><!--APPLETONLY_BEGIN-->
+Simple viewer applet example:
+<blockquote><pre>
+&lt;applet CODE=MView WIDTH=100 HEIGHT=100&gt;
+&lt;param NAME=&quot;molbg&quot; VALUE=&quot;#a0ffa0&quot;&gt;
+&lt;param NAME=&quot;mol&quot; VALUE=&quot;Pyrrole\
+...
+M  END\
+&quot;&gt;&lt;/applet&gt;
+</pre></blockquote>
+
+<h3><a NAME="appletonly"></a>1.1 &nbsp; Applet only parameters</h3>
+
+<blockquote>
+<table cellpadding="5" cellspacing="0" border="0" id="colored-grid">
+<tr ALIGN=CENTER><th>Parameter</th><th>Meaning</th></tr>
+<tr VALIGN=TOP><td><code>mol</code></td>
+    <td><a NAME="parameters.mol"></a>The URL of the molecule file
+	or the file itself (inline) in MDL mol, compressed mol, SMILES
+	or SMARTS format.<br>
+	If you specify the molfile inline in an HTML file (as an applet
+	parameter), then you <em>must</em> end all lines with &quot;\&quot;
+	(backslash).
+	The file format and/or import options can be specified if one
+	of the following forms is used:<br>
+	&quot;file{options}&quot;,<br>
+	&quot;file{MULTISET,options}&quot;,<br>
+	&quot;file{format:}&quot;,<br>
+	&quot;file{format:options}&quot;, or<br>
+	&quot;file{format:MULTISET,options}&quot;.<br>
+	If the MULTISET option is specified, then a multi-molecule file is
+	read into one molecule object containing multiple atom sets.<br>
+	Examples: "foo.xyz{f1.4C4}",
+	"foo.xyz.gz{gzip:xyz:MULTISET,f1.4C4}"
+    </tr>
+<tr VALIGN=TOP><td><code>preload</code></td>
+    <td><a NAME="parameters.preload"></a>Comma-separated list
+	of external <a HREF="modules.html">modules</a> to preload.
+	External modules are class files in the
+	<code>chemaxon/marvin/modules</code> directory.
+	<blockquote>
+	<table cellpadding="5" cellspacing="0" border="0" id="no-grid">
+	<tr><th>module</th><th>argument of getM() call that requires it</th>
+	    </tr>
+	<tr><td><code>MolExport</code></td>
+	    <td><code>&quot;mol&quot;</code>,
+		<code>&quot;csmol&quot;</code></td>
+	<tr><td><code>SmilesExport</code></td>
+	    <td><code>&quot;smiles&quot;</code></td>
+	<tr><td><code>CmlExport</code></td>
+	    <td><code>&quot;cml&quot;</code></td>
+	<tr><td><code>Parity</code></td>
+	    <td><code>&quot;mol&quot;</code>,
+                <code>&quot;smiles&quot;</code> (but not
+                <code>&quot;smiles:<a HREF="../user/smiles-doc.html#option_0">0</a>&quot;</code>)
+		</td>
+	<tr><td><code>PdbExport</code></td>
+	    <td><code>&quot;pdb&quot;</code></td>
+	<tr><td><code>PovExport</code></td>
+	    <td><code>&quot;pov&quot;</code></td>
+	<tr><td><code>SybylExport</code></td>
+	    <td><code>&quot;sybyl&quot;</code></td>
+	<tr><td><code>XYZExport</code></td>
+	    <td><code>&quot;xyz&quot;</code></td>
+	</table>
+	</blockquote>
+	<strong>Note.</strong> Preloading is required if you call <code>getM</code> from
+	JavaScript in a buggy browser/JVM combination. Without preloading,
+	<code>getM</code> might freeze Netscape 6 (Sun Java 1.3) and Netscape 3
+	would also fail because these browsers cannot call network functions
+	from JavaScript.
+	</td>
+    </tr>
+<tr VALIGN=TOP><td><code>cacheMols</code></td>
+    <td><a NAME="parameters.cacheMols"></a>Store loaded molecules in an internal
+	cache (<code>true</code> or <code>false</code>).
+	</td>
+    </tr>
+<tr VALIGN=TOP><td><code>loadMols</code></td>
+    <td><a NAME="parameters.loadMols"></a>Comma-separated list of molfiles to
+	preload.
+	Useful for caching molecules in JavaScript &quot;slideshows&quot;.
+	</td>
+    </tr>
+<tr VALIGN=TOP><td><code>molChanged0<br>molChanged1<br>molChanged2<br>...</code>
+    </td><td><a name="molChanged0"></a>Evaluates a JavaScript code when the molecule
+     is loaded or changed in the specified cell. The number in the 
+     parameter name determines the cell index. If no molecule table, use 
+     <i>molChanged0</i> to refer to the molecule. The parameter value should 
+     be a JavaScript code. E.g.:
+    <pre>
+    &lt;param name="molChanged0" value="alert('First molecule is modified')"&gt;
+    </pre>
+</td></tr>    
+<tr VALIGN=TOP><td><code>skin</code></td>
+    <td><a NAME="parameters.skin"></a>Change the component's Look & Feel (only in SWING applet). 
+    	If you do not specify this parameter, 
+	Marvin will use the default LookAndFeel style.<BR> 
+	This parameter value is the name of the new LookAndFeel class.
+	</td>
+    <td ALIGN=LEFT><code>javax.swing.plaf<br>
+			 .metal<br>
+			 .MetalLookAndFeel</code></td></tr>
+</table>
+</blockquote>
+<!--APPLETONLY_END-->
+<p>
+
+<h3><a NAME="3d"></a>1.2 &nbsp; 3D and animation</h3>
+<blockquote>
+<table cellpadding="5" cellspacing="0" border="0" id="colored-grid">
+<tr ALIGN=CENTER><th>Parameter</th><th>Meaning</th><th>Default</th></tr>
+<tr VALIGN=TOP><td><code>rendering</code></td>
+    <td><a NAME="3d.rendering"></a>Rendering style.
+	<ul>
+	<li><code>wireframe</code> - wireframe</li>
+	<li><code>wireknobs</code> - wireframe with knobs</li>
+	<li><code>sticks</code> - 3D sticks</li>
+	<li><code>ballstick</code> - ball &amp; stick</li>
+	<li><code>spacefill</code> - balls</li>
+	</ul>
+	</td>
+    <td ALIGN=CENTER><code>wireframe</code></td></tr>
+<tr VALIGN=TOP><td><code>wireThickness</code></td>
+    <td><a NAME="3d.wireThickness"></a>line thickness for
+	&quot;wireframe&quot; and &quot;wireknobs&quot;
+	<a HREF="#3d.rendering">rendering modes</a>,
+	in Angstroms.</td>
+    <td ALIGN=CENTER>0.064</td></tr>
+<tr VALIGN=TOP><td><code>stickThickness</code></td>
+    <td><a NAME="3d.stickThickness"></a>3D stick diameter for
+	&quot;sticks&quot; and &quot;ballstick&quot;
+	<a HREF="#3d.rendering">rendering modes</a>,
+	in Angstroms.</td>
+    <td ALIGN=CENTER>0.1</td></tr>
+<tr VALIGN=TOP><td><code>ballRadius</code></td>
+    <td><a NAME="3d.ballRadius"></a>Ball radius for
+	&quot;ballstick&quot; <a HREF="#3d.rendering">rendering mode</a>,
+	in units of covalent radius.</td>
+    <td ALIGN=CENTER>0.5</td></tr>
+<tr VALIGN=TOP><td><code>animate</code></td>
+    <td><a NAME="3d.animate"></a>Start an XYZ animation sequence, or starts
+	rotating the specified 3D molecule(s).<br>
+	Possible values: <code>off</code>, <code>all</code>, or a
+	comma-separated list of molecule indices (0...n-1).<br>
+	<strong>Note:</strong> This parameter does not apply to beans, only to applet.
+	</td>
+    <td ALIGN=CENTER><code>off</code></td></tr>
+<tr VALIGN=TOP><td><code>animFPS</code></td>
+    <td><a NAME="3d.animFPS"></a>Number of frames per second
+	in 3D animation.</td>
+    <td ALIGN=CENTER><code>10</code></td></tr>
+<tr VALIGN=TOP><td><code>animDelay</code></td>
+    <td><a NAME="3d.animDelay"></a>Delay (seconds) before repeating
+	the animation.</td>
+    <td ALIGN=CENTER><code>0</code></td></tr>
+<tr VALIGN=TOP><td><code>animSync</code></td>
+    <td><a NAME="3d.animSync"></a>Whether the animations in
+	different cells should be synchronized.</td>
+    <td ALIGN=CENTER><code>false</code></td></tr>
+<tr VALIGN=TOP><td><code>spin</code><br>
+    <code>spin0</code><br>
+    <code>spin1</code><br>
+    <code>spin2</code><br>
+    ...</td>
+    <td><a NAME="3d.spin"></a>Spinning rate and axis for
+	<a HREF="#3d.animate">animated</a> molecules. Spinning rate is
+	specified in degrees per second, the axis is specified with a 3D
+	vector. Numbers are separated by commas.<br>
+	<strong>Note:</strong> XYZ animations do not spin by default, only if this
+	parameter is set.</td>
+    <td ALIGN=CENTER><code>36,0,1,0</code></td></tr>
+<tr VALIGN=TOP><td><code>script</code><br>
+    <code>script0</code><br><code>script1</code><br><code>script2</code><br><code>...</code>
+    </td>
+    <td VALIGN=TOP><a NAME="3d.script"></a>Script containing
+	a subset of <a HREF="rasmol-doc.html">RasMol commands</a> delimited by
+	semicolons.
+	If this applet parameter is specified, then the
+	<a HREF="#parameters.mol">mol</a> parameter is neglected.
+	The molecule(s) must be loaded using the
+	<a HREF="rasmol-doc.html#load">load</a> command in the script.<br>
+	<strong>Note:</strong> To load the script from a file, use the
+	<a HREF="rasmol-doc.html#script">script</a> command:<br>
+	<code>&lt;param NAME=&quot;script&quot;
+	    VALUE=&quot;script myscript.spt&quot&gt;</code>
+	</td>
+    <td ALIGN=CENTER>&nbsp;</td></tr>
+</table>
+</blockquote>
+
+<p>
+
+<h3><a NAME="advanced"></a>1.3 &nbsp; Molecule tables</h3>
+<blockquote>
+<table cellpadding="5" cellspacing="0" border="0" id="colored-grid">
+<tr VALIGN=TOP><td><code>rows</code></td>
+    <td><a NAME="advanced.rows"></a>Number of &quot;molecule rows&quot;,
+	including the optional header row.
+	</td></tr>
+<tr VALIGN=TOP><td><code>cols</code></td>
+    <td><a NAME="advanced.cols"></a>Number of &quot;molecule columns&quot;.
+	</td></tr>
+<tr VALIGN=TOP><td><code>visibleRows</code></td>
+    <td><a NAME="advanced.visibleRows"></a>Number of visible rows.
+	The table is scrollable if less than <a HREF="#advanced.rows">rows</a>.
+	Default value: visibleRows = rows.
+	</td></tr>
+<tr VALIGN=TOP><td><code>visibleCols</code></td>
+    <td><a NAME="advanced.visibleCols"></a>Number of visible columns.
+	The table is scrollable if less than <a HREF="#advanced.cols">cols</a>.
+	Default value: visibleCols = cols.
+	</td></tr>
+<tr VALIGN=TOP><td><code>layout</code></td>
+    <td><a HREF="#advanced.layout">Layout</a> of
+	molecule, label, button and checkbox components in a cell.</td></tr>
+<tr VALIGN=TOP><td><code>layoutH</code></td>
+    <td>Layout for the header row.</td></tr>
+<tr VALIGN=TOP><td><code>param</code></td>
+    <td><a HREF="#advanced.param">Parameters</a> of the components.
+	</td></tr>
+<tr VALIGN=TOP><td><code>paramH</code></td>
+    <td>Parameters for the header row.</td></tr>
+<tr VALIGN=TOP><td><code>cell0<br>cell1<br>cell2<br>...</code></td>
+    <td>Contents of the <a HREF="#advanced.cell">cells</a>.<br>
+	Use these instead of the <code>mol</code> parameter.</td></tr>
+<tr VALIGN=TOP><td><code>border</code></td>
+    <td><a NAME="advanced.border"></a>Border width in pixels.
+	Default: 0 (no border between cells).<br>
+	Increases the total applet <code>WIDTH</code> by <em>border*(cols-1)</em>,
+	and the <code>HEIGHT</code> by <em>border*(rows-1)</em>.</td></tr>
+</table>
+</blockquote>
+
+<h4><a NAME="advanced.layout"></a>1.3.1 &nbsp; <code>layout</code></h4>
+The <code>layout</code> and <code>layoutH</code> parameters are in the
+following format:
+&quot;<em>:rows:cols:type:k:l:h:w:anchor:fill:[weighty:[weightx:]]type:k:l:...</em>&quot;,
+where <em>:</em> is the field separator,
+<em>rows</em> is the number of rows in the cell,
+<em>cols</em> is the number of columns, <em>type</em> is the type of the
+component in row <em>k</em>, column <em>l</em> of the current cell,
+<em>h</em> is the height of the component (rows),
+<em>w</em> is the width (columns).<br>
+The <em>anchor</em> parameter determines where to place the component if its
+size is smaller than its display area.
+It the component size is larger than the size of its text label,
+then anchor also sets the label alignment.
+Possible values:
+<code>c</code> (center), <code>n</code> (north), <code>s</code> (south),
+<code>e</code> (east), <code>w</code> (west), <code>ne</code> (northeast), etc.
+<br>
+The <em>fill</em> parameter determines how to resize the component if its
+size is smaller then its display area.
+Possible values: <code>n</code> (none), <code>h</code> (horizontal),
+<code>v</code> (vertical) or <code>b</code> (both).
+<br>
+The <em>weights</em> are nonnegative integers, zero by default.
+They determine how to distribute space.
+If all the weights are zero, all the components clump together in the center of
+the applet.
+<p>
+<small>
+If you are familiar with Java, you might have noticed that <em>anchor</em>,
+<em>fill</em>, <em>weightx</em> and <em>weighty</em> have the same names as the
+fields of the
+<a HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/awt/GridBagConstraints.html">GridBagConstraints</a>
+class. The reason is that MarvinView uses the
+<a HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/awt/GridBagLayout.html">GridBagLayout</a>
+ class to determine the places and sizes of the components.
+</small>
+<p>
+Component types: <code>M</code> (molecule), <code>L</code> (label),
+<code>B</code> (button), <code>C</code> (checkbox), <code>T</code> (text field) and
+<em>I</em> (image).
+
+<p>
+Example:
+<blockquote><pre>
+&lt;param NAME=layout VALUE=&quot;:4:3:
+M:0:0:4:1:c:n:
+L:0:2:1:1:c:n:0:10:
+L:1:2:1:1:c:n:0:10:
+C:0:1:1:1:c:n:
+C:1:1:1:1:c:n:
+C:2:1:1:1:c:n:
+B:3:1:1:1:c:n:10&quot;&gt;
+</pre></blockquote>
+
+<p>
+<h4><a NAME="advanced.param"></a>1.3.2 &nbsp; <code>param</code></h4>
+In a <code>param</code> or <code>paramH</code> parameter, the first character is
+the field separator (`:' here).
+The first field is the type of the first component
+(<code>M</code>, <code>L</code>, <code>B</code>, <code>C</code> or <code>T</code>),
+followed by its <em>n</em> parameters in the forthcoming <em>n</em> fields.
+Then the same for the second component, etc.
+Component parameters:
+<blockquote>
+<table cellpadding="5" cellspacing="0" border="0" id="colored-grid">
+<tr VALIGN=TOP>
+    <td><code>:M:</code><em>width</em><code>:</code><em>height</em></td>
+    <td><em>width</em> and <em>height</em> are in pixel units.</td></tr>
+<tr VALIGN=TOP>
+    <td><code>:L:</code><em>fontprops</em></td>
+    <td><em>fontprops:</em> font properties.</td></tr>
+<tr VALIGN=TOP>
+    <td><code>:B:</code><em>fontprops</em><code>::</code><br>
+	<code>:B:</code><em>fontprops</em><code>:</code><em>description</em><code>:</code><br>
+	<code>:B:</code><em>fontprops</em><code>:</code><em>description</em><code>:</code><em>frame</em></td>
+    <td><em>fontprops:</em> font properties,<br>
+	<em>description:</em> description string,<br>
+	<em>target:</em> target frame.</td></tr>
+<tr VALIGN=TOP>
+    <td><code>:C:</code><em>fontprops</em><code>:</code><br>
+	<code>:C:</code><em>fontprops</em><code>:</code><em>description</em></td>
+    <td><em>fontprops:</em> font properties,<br>
+	<em>description:</em> description string.<br>
+	You may specify the checkbox group number in the type field, by writing
+	<code>g</code><em>n</em> next to the type-specifying character
+	<code>C</code>, where <em>n</em> is the group number.
+	No more than one button in a group can be pressed at the same time.
+	</td></tr>
+<tr VALIGN=TOP>
+    <td><code>:T:</code><em>fontprops</em><br>
+	<code>:T:</code><em>fontprops</em><code>:</code><em>columns</em><br>
+	<code>:T:</code><em>fontprops</em><code>:</code><em>columns</em><code>:</code><em>editable</em></td>
+    <td><em>fontprops:</em> font properties,<br>
+	<em>columns:</em> number of columns,<br>
+	<em>editable:</em> editable (rw) or read only (r).</td></tr>
+</table>
+</blockquote>
+The <em>fontprops</em> field usually contains only one number, the
+font size. Additional properties are &quot;b&quot; (bold font) and
+&quot;i&quot; (italic). A 12pt bold italic font is specified as
+&quot;12bi&quot;.
+<p>
+Example:
+<blockquote><pre>
+&lt;param NAME=param VALUE=&quot;:
+M:100:100:
+L:10b:
+C:10:select this molecule:
+Cg0:10:include this structure:
+B:10:search for more molecules like this:_self:
+T:10:
+T:10:15:
+T:10:15:rw&quot;&gt;
+</pre></blockquote>
+
+<p>
+<h4><a NAME="advanced.cell"></a>1.3.3 &nbsp; <code>cell</code><em>i</em></h4>
+In a <code>cell</code><em>i</em> parameter, the first character is
+the field separator (`|' here).
+The fields contain the component parameters in order.
+<p>
+<table cellpadding="5" cellspacing="0" border="0" id="colored-grid">
+<tr VALIGN=TOP><th>Component</th><th>Parameters</th><th>Description</th></tr>
+<tr VALIGN=TOP>
+    <td ALIGN=CENTER><code>M</code></td>
+    <td><code>|</code><em>molfile</em></td>
+    <td><em>molfile:</em> the molecule URL or the molecule itself (inline)
+	in MDL mol or compressed mol format.</td></tr>
+<tr VALIGN=TOP>
+    <td ALIGN=CENTER><code>L</code></td>
+    <td><code>|</code><em>label</em></td>
+    <td><em>label:</em> the label string.</td></tr>
+<tr VALIGN=TOP>
+    <td ALIGN=CENTER><code>B</code></td>
+    <td><code>|</code><em>label</em><code>|</code><em>spec</em><code>|</code><em>action</em></td>
+    <td><em>label:</em> the button label,<br>
+	<em>spec:</em> the special character (<code>%</code> from now),<br>
+	<em>action:</em> the action string.</td></tr>
+<tr VALIGN=TOP>
+    <td ALIGN=CENTER><code>C</code></td>
+    <td><code>|||||</code><br>
+	<code>|||</code><em>state</em><code>||</code><br>
+	<code>|||</code><em>state</em><code>|-|-</code><br>
+	...<br>
+	<code>|</code><em>label0</em><code>|</code><em>label1</em><code>|</code><em>state</em><code>|</code><em>action0</em><code>|</code><em>action1</em></td>
+    <td><em>label0:</em> label for the unchecked state,<br>
+      <em>label1:</em> label for the checked state,<br>
+      <em>state:</em> default state (0, 1 or nothing),<br>
+      <em>action0:</em> action string for unchecking,<br>
+      <em>action1:</em> action string for checking.<br>
+      For a &quot;real&quot; checkbox, both labels have to be empty string,
+      otherwise the &quot;checkbox&quot; will be buttonlike.<br>
+      If both <em>action</em> strings are empty, then the checkbox is disabled.
+      To make it enabled without specifying JavaScript actions, the
+      <em>action</em> values must be &quot;<code>-</code>&quot;. Example:
+      &quot;<code>|||1|-|-</code>&quot;</td></tr>
+<tr VALIGN=TOP>
+    <td ALIGN=CENTER><code>T</code></td>
+    <td><code>|</code><br>
+	<code>|</code><em>string</em></td>
+    <td><em>string:</em> initial value.</td></tr>
+<tr VALIGN=TOP>
+    <td ALIGN=CENTER><code>I</code></td>
+    <td><code>|</code><em>iconfile</em><code>||</code><br>
+	<code>|</code><em>iconfile</em><code>|</code><em>action</em><code>|</code><em>title</em></td>
+    <td><em>iconfile:</em> GIF or JPEG file containing the icon,<br>
+	<em>action:</em> image file or <code>js:</code>JavaScript code<br>
+	<em>title:</em> window title, only used if action is an image file.</td></tr>
+</table>
+</p>
+The action string can be an URL for buttons, a JPEG, PNG or GIF file for
+images, or
+<code>js:</code><em>javascript expression</em> for buttons, checkboxes and images.
+The button action string may contain <code>%C</code>
+(where <code>%</code> is the special character), which is
+substituted with the checkbox states represented as a hexadecimal number.
+The n<sup>th</sup> bit in this number is the state of the n<sup>th</sup>
+checkbox.
+<p><!--APPLETONLY_BEGIN-->
+A javascript expression can be used <em>only</em> if you specify the
+<code>MAYSCRIPT</code> attribute in the applet tag.
+<p><!--APPLETONLY_END-->
+
+<p>
+Example:
+<blockquote><pre>
+&lt;param NAME=cell2 VALUE=&quot;|\
+  MSketch 04169816382D\\ 66 72  0  0  0  0  0  0  0  0999 V2000\mcIWFRwV60\
+l0i01\M  END\|
+1002|
+not bad|
+||1|js:cbx(1002,'not selected')|js:cbx(1002,'selected')|
+ Include | Include ||js:cbx(1002,'no include')|js:cbx(1002,'include')|
+ Exclude | Exclude ||js:cbx(1002,'no exclude')|js:cbx(1002,'exclude')|
+ Search |%|searchmore.cgi?mol=1002&amp;n=5&amp;cbx=%C&quot;&gt;
+</pre></blockquote>
+
+<p>
+
+<p>
+<!--APPLETONLY_BEGIN-->
+<hr WIDTH="50%">
+
+<h2><a NAME="troubleshooting"></a>3 &nbsp; Troubleshooting - MView and JMView tables</h2>
+<ul>
+<li>JavaScript Error: uncaught Java exception
+    java/lang/ArrayIndexOutOfBoundsException<br>
+    <strong>Cause:</strong> <code>getC</code>, <code>setC</code>,
+    <code>setActionC</code>, <code>setActionB</code> or <code>setM</code>
+    called with too large argument.
+<li>Molecule cells hang out of the applet, some inner rows intertwine.<br>
+    <strong>Possible causes:</strong>
+    <ul>
+    <li>Applet size too small.<br>
+    <li>There are some rows of labels, buttons or checkboxes in a cell between
+	the molecule, and their total height is bigger than the molecule height
+	you specified.<br>
+	<strong>Solution</strong>: increase molecule height, decrease
+	font size or reduce the number of rows per cell.</li>
+    </ul>
+</ul><!--APPLETONLY_END-->
+
+</body>
+</html>

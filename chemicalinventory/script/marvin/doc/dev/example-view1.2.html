@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 1.2 - Simple parameters</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinView Example 1.2</h1>
+
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+mview_begin("../..", 200, 200);
+mview_param("mol", "../../mols-2d/caffeine.csmol");
+mview_param("molbg", "#ffffff");
+mview_param("colorScheme", "mono");
+mview_param("winScale", "50");
+mview_param("atomsize", "0.5");
+mview_param("implicitH", "all");
+mview_end();
+//-->
+</script>
+</center>
+<p>
+
+Differences from the previous example:
+<ul>
+<li>The molecule is downloaded from a compressed molfile
+    (notice the <code>.csmol</code> extension).</li>
+<li>The molecule has the same background color as the web page.</li>
+<li>The atoms are in black and white (monochrome display).</li>
+<li>The magnification of the zoom window (which appears if you click the
+    molecule) is bigger.</li>
+<li>Atom labels are bigger.</li>
+<li>Hydrogens labels are shown for all the atoms.</li>
+</ul>
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>mview_begin(</strong>&quot;../..&quot;<strong>,</strong> 200<strong>,</strong> 200<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.mol">mol</a>&quot;<strong>,</strong> &quot;../../mols-2d/caffeine.csmol&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.molbg">molbg</a>&quot;<strong>,</strong> &quot;#ffffff&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.colorScheme">colorScheme</a>&quot;<strong>,</strong> &quot;mono&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.winScale">winScale</a>&quot;<strong>,</strong> &quot;50&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.atomsize">atomsize</a>&quot;<strong>,</strong> &quot;0.5&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.implicitH">implicitH</a>&quot;<strong>,</strong> &quot;all&quot;<strong>);</strong>
+<strong>mview_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+<center><div class="lenia">&nbsp;</div></center>
+<p>
+
+Now you will see
+<a HREF="example-view2.1.html">how to view many molecules
+in one viewer applet</a>.
+
+</body>
+</html>

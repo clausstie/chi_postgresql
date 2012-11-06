@@ -1,0 +1,2196 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Changes</title>
+</head>
+<body>
+
+<h1 align=center>Changes, new parameters, upgrade problems</h1>
+
+
+<!--<li><a href="http://www.chemaxon.com/test/marvin/doc/dev/changes.html">Latest Test Version</a>-->
+<h3><a NAME="v4005"></a>Marvin 4.0.5</h3>
+    <ul>
+    <li>Import/Export:
+        <ul>
+        <li>Minor bugfixes in SMILES and in SMARTS import.</li>
+        <li>Atom value in molfile.</li>
+        <li>Bugfix in PDB import.</li>
+        <li>Fix RXN incompatibility in MDLCompressor and in MolImporter.</li>
+        </ul></li>
+    <li>GUI:
+        <ul>
+        <li>Speed-up slow viewer/sketcher performance on very large structures.</li>
+        <li>Shortcut for clear screen.</li>
+        </ul></li>
+    <li>Plugins:
+        <ul>
+        <li>Adding the dot-disconnected molecule formula calculation to Elemental Analyser.</li>
+        </ul></li>
+    <li>MarvinSpace:
+        <ul>
+        <li>Proper handling of H and LP on hetero groups.</li>
+        <li>Bond order perception.</li>
+        </ul></li>
+    </ul>
+<h3><a NAME="v4004"></a>Marvin 4.0.4</h3>
+    <ul>
+    <li>Import/Export:
+        <ul>
+        <li>Non-ASCII characters are escaped in MRV import/export.</li>
+        <li>SMILES fields can be separated with TAB separators.</li>
+        <li>Slow image export bug fixed.</li>
+        <li>Minor bugs fixed in CML import.</li>
+        <li>Bugfixes in PDB import. Note, that PDB import is no longer
+            compatible with the original implementation which is still
+            applied for <code>XYZ</code> files. See <a href="../user/pdb-doc.html#notes">
+            release notes</a>.</li>
+        <li>Bugfix in the SMILES import of aromatic bonds.</li>
+        <li>Minor CxSmiles import/export bug.</li>
+        </ul>
+    </li>
+    <li>API: 
+        <ul>
+        <li>Skin parameter/menu is denied in MViewPane and in
+        MSketchPane. It is available ony in Marvin applets/applications.</li>
+        <li>Giving of the encoding in MolConverter was changed. Both input and output
+        encoding can be specified.</li>
+        </ul>
+    <li>GUI Bugfixes:
+        <ul>
+        <li>Link node drawing problem.</li>
+        <li>Copy from R-group definition did not work.</li>
+        <li>Last page of the view table was not printed if there were empty
+        cells.</li>
+        <li>PropertyChangeEvent was not invoked when molecule was changed.</li>
+        <li>Down wedge looked like Up wedge on the toolbar.</li>
+        <li>Pseudo atom exception in sketcher.</li>
+        <li>Missing attachment point option in popup menu.</li>
+        <li>Right click raises exception for reactions with abbrev. groups.</li>
+        <li>Opening molfile with embedded groups caused exception.</li>
+        </ul> 
+    </li>
+    <li>Other Bugfixes:
+        <ul>
+        <li>Minor bugs in Calculator Plugins.</li>
+        <li>Clean 2D produced zero coordinates.</li>
+        <li>Edit source bullet import bug.</li>
+        <li>Potential deadlock at the closing of a MarvinSketch applet.</li>
+        <li>H removal throws exception on Markush structures.</li>
+        <li>Bug in Molecule.clone().</li>
+        </ul>
+    </li>
+    </ul>
+<h3><a NAME="v4003"></a>Marvin 4.0.3</h3>
+    <ul>
+        <li>Bugfixes:
+            <ul>
+                <li>Minor bugfixes in MarvinSpace</li>
+                <li>In mol file export</li>
+            </ul>
+        </li>
+    </ul>
+<h3><a NAME="v4002"></a>Marvin 4.0.2</h3>
+    <ul>
+    <li>Import/Export:
+	<ul>
+	<li><a href="../user/inchi-doc.html">IUPAC InChi</a></li>
+	<li><a href="../user/mol-csmol-doc.html">MDL Molfiles, RGfiles etc.</a>:
+	    Implicit H is stored as attached data when needed.</li>
+	<li>Improved <a HREF="../user/pdb-doc.html">PDB</a> import.</li>
+        <li>Hydrogenize bug fixed: tetrahedral geometry of alcohol Oxygen atom is now maintained.</li>
+	<li>Volumetric data import/export for <a HREF="../user/cube-doc.html">CUBE files</a>
+            (not processed by Marvin)
+	</ul>
+	</li>
+    <li>Implemented trivalent doublet and quartet.
+	(<a HREF="../api/chemaxon/struc/MolAtom.html#RAD3_DOUBLET">RAD3_DOUBLET</a>,
+	<a HREF="../api/chemaxon/struc/MolAtom.html#RAD3_DOUBLET">RAD3_QUARTET</a>)
+	</li>
+    <li>Applets:
+	<ul>
+	<li>New methods:
+        <a href="../api/MSketch.html#getSelectedMol(java.lang.String)">MSketch.getSelectedMol</a>,
+        <a href="../api/MSketch.html#getMolMass()">MSketch.getMolMass</a>,
+        <a href="../api/MSketch.html#getMolExactMass()">MSketch.getMolExactMass</a>,
+        <a href="../api/MSketch.html#getMolFormula()">MSketch.getMolFormula</a>,
+        <a href="../api/MView.html#getMolMass(int)">MView.getMolMass</a>,
+        <a href="../api/MView.html#getMolExactMass(int)">MView.getMolExactMass</a>,
+        <a href="../api/MView.html#getMolFormula(int)">MView.getMolFormula</a>,
+        <a href="../api/JMSketch.html#getMolMass()">JMSketch.getMolMass</a>,
+        <a href="../api/JMSketch.html#getMolExactMass()">JMSketch.getMolExactMass</a>,
+        <a href="../api/JMSketch.html#getMolFormula()">JMSketch.getMolFormula</a>,
+        <a href="../api/JMView.html#getMolMass(int)">JMView.getMolMass</a>,
+        <a href="../api/JMView.html#getMolExactMass(int)">JMView.getMolExactMass</a>,
+        <a href="../api/JMView.html#getMolFormula(int)">JMView.getMolFormula</a>
+	<li>New sketcher parameter:
+	    <a HREF="sketchman.html#parameters.undetachByX">undetachByX</a>.
+	    </li>
+	</li>
+	</ul>
+	</li>
+    <li><a href="http://www.chemaxon.com/shared/MarvinSpace/">MarvinSpace</a> beta, includes public
+            <a href="../api/chemaxon/marvin/space">API</a>:
+        <ul>
+            <li>Dynamic loading of JOGL libraries.</li>
+            <li>Better handling of PDB files including not standard complient variants.</li>
+            <li>Save graphic scene as PNG image file.</li>
+            <li>Basic Gaussian Cube file support.</li>
+            <li>Improved User Interface.</li>
+            <li>Bugfixes.</li>
+        </ul>
+    </li>
+    <li>Plugin: 
+        <ul>
+            <li>New parameter in 
+                <a href="../api/chemaxon/marvin/calculations/ResonancePlugin.html#setTakeMajorContributors(boolean)">ResonancePlugin</a>: 
+	        take major contributors (-m, --mcontrib).</li>
+            <li>New parameter in 
+                <a href="../api/chemaxon/marvin/calculations/TautomerizationPlugin.html#setTakeDominantTautomers(boolean)">TautomerizationPlugin</a>: 
+	        take dominant tautomers (--d, --dominants).</li>
+            <li>Bugfix in 
+                <a href="../api/chemaxon/marvin/calculations/TautomerizationPlugin.html">TautomerizationPlugin</a>.</li>
+        </ul>
+    </li>
+    <li>Sgroup names can contain almost any ascii character.</li>
+    <li>Bugfixes:
+        <ul>
+            <li>Hydrogenize bug fixed: tetrahedral geometry of alcohol O is now
+             maintained.</li>
+            <li>Minor bugfixes in aromatization, in 2D cleaning and in
+            molconverter.</li>
+    </ul>
+</li>
+<h3><a NAME="v4001"></a>Marvin 4.0.1</h3>
+    <ul>
+    <li>Trivalent radicals are displayed and their
+	<a HREF="../user/mrv-doc.html">MRV</a> import is fixed.</li>
+    <li>Bugfixes in cxsmiles, in 2D cleaning and in parity calculation.</li>
+    </ul>
+    </li>
+<h3><a NAME="v4000"></a>Marvin 4.0</h3>
+    <ul>
+    <li><a href="http://www.chemaxon.com/shared/MarvinSpace">MarvinSpace 1.0-alpha</a>
+        is released as part of Marvin 4.0. <br>
+        MarvinSpace is a 3D molecular structure visualization tool for
+        displaying macromolecules, protein-ligand complexes as well as small
+        molecules.<br>
+        Release notes: At present MarvinSpace is available as standalone desktop
+        application and as Java Applet.
+        Java Beans and the public API will be released later.
+        See also <a href="http://www.chemaxon.com/shared/MarvinSpace/#issues">Known Issues</a>.</li>
+    <li>Import/export
+	<ul>
+	<li>Link node outer bonds imported and exported in CML, MRV and MDL.
+	    </li>
+	<li><a HREF="../user/mrv-doc.html">MRV</a>:
+	    atom and bond set colors are stored, animation of a chemical
+	    process can be stored. Parity is stored in 0D.
+	    </li>
+	<li><a HREF="../user/mrv-doc.html">CML</a>:
+	    MRV tags and attributes are no longer supported but they
+	    can be imported. If you have a CML document that is created by an
+	    older Marvin, it is recommended to save that in MRV format!
+	    </li>
+	<li>RDfiles with missing &quot;M  END&quot;s are also imported.</li>
+	<li><a HREF="../user/msbmp-doc.html">MS BMP</a> image format 
+        (only export).</li>
+        <li>SDF import: reading sdf-s containing empty structures</li>
+        <li>Atom types are read in case insensitive manner in mol/sdf 
+        import.</li>
+        <li>cxsmiles import/export: Pseudo atom types</li>
+        <li>SMILES import/export: Handling of radicals and unusual valences</li>
+        <li>Support for localized encoding of structure files.</li>
+	</ul>
+    </li>
+    <li>Double bond with a wiggly bond neighbour are treated as unspecified
+	E/Z configuration.</li>
+    <li>Improved unique smiles canonicalization</li>
+    <li>Improvements in chirality calculation</li>
+    <li>Clean wedges function</li>        
+    <li>GUI:
+    <ul>
+        <li>New templates in MarvinSketch: Aromatics, Bridged Polycycles,
+        Bicycles, Crown Ethers, Cycloalkanes, Fullerenes</li>
+        <li>My Templates are available in the MarvinSketch applet (only in 
+        Swing).</li>
+        <li>Wrap long data fields in MarvinView</li>
+        <li>Shortcut + SHIFT click: automatically ungroup abbreviated 
+        groups</li>
+        <li>View implied lone pairs</li>
+        <li>Improved rendering quality</li>
+        <li>Attach data to atoms (Data S-groups)</li>
+        <li>Drawing of h&lt;n&gt;, D&lt;n&gt;, s&lt;n&gt;, s*, rb&lt;n&gt;,
+        rb*, u query properties</li>
+    </ul>
+    </li>
+    <li>Plugins
+	<ul>
+	<li><a href="plugins.html">Calculator plugin</a> handling is completely rewritten:
+            <ul>
+            <li>Dynamical loading of plugins and parameter panels based on configuration by
+    	    <a href="../api/chemaxon/marvin/plugin/PluginFactory.html">PluginFactory</a></li>
+	    <li>Separated graphical plugin result display:
+	    <a href="../api/chemaxon/marvin/plugin/CalculatorPluginDisplay.html">
+	CalculatorPluginDisplay</a></li>
+	    <li>Graphical parameter panels are generated from XML: 
+	&lt;plugin class name&gt;Parameters.xml if exists, otherwise asked from the display class: 
+	<a href="../api/chemaxon/marvin/plugin/CalculatorPluginDisplay.html#getParameterPanel()">
+	CalculatorPluginDisplay.getParameterPanel()</a></li>
+	    <li>Configuration files <a href="../../xjars/calc.properties">calc.properties</a> 
+	(<a href="../user/calc.html">Calculator</a>) and 
+	<a href="../../xjars/plugins.properties">plugins.properties</a> (MarvinSketch, MarvinView) 
+	together with the parameter panel configuration XMLs and custom plugin JARs are placed
+	in the <a href="../../xjars">xjars</a> directory under Marvin root.</li>
+	    <li>CalculatorOutput used by <a href="../user/calc.html">Calculator</a> is renamed:
+	<a href="../api/chemaxon/marvin/plugin/CalculatorPluginOutput.html">
+	CalculatorPluginOutput</a>
+	(and subclasses are found automatically by the following naming convention: 
+	output class name = &lt;plugin class name&gt;Output)</li>
+	    <li><a href="../api/chemaxon/marvin/plugin/CalculatorPlugin.html">
+	CalculatorPlugin</a> API is slightly changed.</li>
+	    <li>A <a href="../../examples/plugin/index.html">custom plugin example with test application</a>
+	is added.</li>
+	    </ul>
+        </li>
+	<li>Added MRV result molecule output to <a href="../user/calc.html">cxcalc</a>.
+	</li>
+	<li>Added options JPEG / PNG image save and copy &amp; paste image to chart result display
+	in MarvinSketch / MarvinView.
+	</li>
+	<li>Changes in specific plugin calculations:
+            <ul>
+	    <li>Added <a href="../api/chemaxon/marvin/calculations/IsoelectricPointPlugin.html">
+	IsoelectricPointPlugin</a>.</li>
+	    <li>Added <a href="../api/chemaxon/marvin/calculations/TautomerizationPlugin.html">
+	TautomerizationPlugin</a> and <a href="../api/chemaxon/marvin/calculations/ResonancePlugin.html">
+	ResonancePlugin</a>.</li>
+	    <li>Added microspecies distribution calculation (msdistr) to 
+	<a href="../user/calc.html">cxcalc</a>.</li>
+	    <li>New topological properties in 
+	<a href="../api/chemaxon/calculations/TopologyAnalyser.html">TopologyAnalyser</a> and
+	<a href="../api/chemaxon/marvin/calculations/TopologyAnalyserPlugin.html">
+	TopologyAnalyserPlugin</a>:<br>
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#asymmetricAtomCount()">
+	       asymmetricAtomCount()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#balabanIndex()">
+	       balabanIndex()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#carboRingCount()">
+	       carboRingCount()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#carboaromaticRingCount()">
+	       carboaromaticRingCount()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#cyclomaticNumber()">
+	       cyclomaticNumber()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#distanceCount(int, int)">
+	       distanceCount(int atom, int distance)</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#distanceDegree(int)">
+	       distanceDegree(int atom)</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#eccentricity(int)">
+	       eccentricity(int atom)</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#hararyIndex()">
+	       hararyIndex()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#hyperWienerIndex()">
+	       hyperWienerIndex()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#isAsymmetricAtom()">
+	       isAsymmetricAtom()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#isConnected()">
+	       isConnected()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#isConnected(int, int)">
+	       isConnected(int atom1, int atom2)</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#plattIndex()">
+	       plattIndex()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#randicIndex()">
+	       randicIndex()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#shortestPath(int, int)">
+	       shortestPath(int atom1, int atom2)</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#stericEffectIndex()">
+	       stericEffectIndex()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#szegedIndex()">
+	       szegedIndex()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#wienerIndex()">
+	       wienerIndex()</a>,
+	   <a href="../api/chemaxon/calculations/TopologyAnalyser.html#wienerPolarity()">
+	       wienerPolarity()</a>.
+	    </li>
+	    </ul>
+        </li>
+	</ul>
+    </li>
+    <li>API
+	<ul>
+	<li><a href="../api/chemaxon/struc/PeriodicSystem.html">PeriodicSystem</a>:
+	    new radius functions
+	   <a href="../api/chemaxon/struc/PeriodicSystem.html#getAtomicRadius(int)">getAtomicRadius(int z)</a>,
+	   <a href="../api/chemaxon/struc/PeriodicSystem.html#getCovalentRadius(int)">getCovalentRadius(int z)</a>,
+	   <a href="../api/chemaxon/struc/PeriodicSystem.html#getVanDerWaalsRadius(int)">getVanDerWaalsRadius(int z)</a>.
+	    </li>    
+        <li><a href="../api/chemaxon/marvin/beans/MSketchPane.html">MSketchPane</a>:
+	    new methods
+            <a href="../api/chemaxon/marvin/beans/MSketchPane.html#isCloseEnabled">isCloseEnabled()</a>,
+            <a href="../api/chemaxon/marvin/beans/MSketchPane.html#setCloseEnabled(boolean)">setCloseEnabled(boolean)</a>,
+            <a href="../api/chemaxon/marvin/beans/MSketchPane.html#getMrvWithSettings()">getMrvWithSettings()</a>,
+            <a href="../api/chemaxon/marvin/beans/MSketchPane.html#setMrvWithSettings(java.lang.String)">setMrvWithSettings(String)</a>,
+            <a HREF="../api/chemaxon/marvin/beans/MSketchPane.html#getImage(double)">getImage(scale)</a>,
+            <a HREF="../api/chemaxon/marvin/beans/MSketchPane.html#getImage(java.awt.Dimension)">getImage(size)</a>,
+            <a HREF="../api/chemaxon/marvin/beans/MSketchPane.html#getBoundRectSize()">getBoundRectSize()</a>.
+	    </li>
+        <li><a href="../api/chemaxon/struc/MoleculeGraph.html#getLocalParity(int)">MoleculeGraph.getLocalParity(int)</a> to calculate local
+        parity of an atom</li>
+	<li>Incompatible API changes:
+	    <ul>
+	    <li>MarvinPane.<a HREF="../api/chemaxon/marvin/beans/MarvinPane.html#setAtomSymbolsVisible(boolean)">setAtomSymbolsVisible</a>
+		applies to 3D molecules only; atom symbols are always visible
+		in 2D.</li>
+	    <li>MolAtom.<a HREF="../api/chemaxon/struc/MolAtom.html#getAtomSymbol(int, int, int[], chemaxon.struc.CTransform3D)">getAtomSymbol</a>(opts,
+		aflags, lcenter, transform) uses SYM_* constant flags in its
+		first argument instead of magic numbers.</li>
+	    </ul>
+	    </li>
+        </li>
+        </ul>
+    </li>
+    <!-- new features -->
+    </ul>
+</li>
+<h3><a NAME="v3509"></a>Marvin 3.5.9</h3>
+
+    <ul>
+        <li>Improved aromatization</li>
+        <li>Svg export gives UTF-8 encoded output.</li>
+        <li>Bugfixes:
+            <ul>
+            <li>In CmlImport</li>
+            <li>In 3D cleaning</li>
+
+            <li>In dearomatization</li>
+            </ul>
+        </li>
+    </ul>
+</li>
+<h3><a NAME="v3508"></a>Marvin 3.5.8</h3>
+    <ul>
+    <li>Bugfixes:
+    <ul>
+        <li>In plugin calculations.</li>
+        <li>In parity.</li>
+        <li>In 3D cleaning.</li>
+        <li>In displaying of implicit hydrogens</li>
+    </ul>
+    </li>
+    </ul>
+</li>
+<h3><a NAME="v3507"></a>Marvin 3.5.7</h3>
+    <ul>
+    <li>Minor bugfixes in plugin calculations.</li>
+    </ul>
+</li>
+<h3><a NAME="v3506"></a>Marvin 3.5.6</h3>
+    <ul>
+    <li>R/S and canonical smiles calculation speedup.</li>
+
+    <li>3D:
+    <ul>
+        <li>Improved 3D cleaning efficiency.</li>
+        <li>New Clean3D options. Time limit in the 3D cleaning process.</li>
+    </ul></li>
+    <li>Bugfixes:
+        <ul>
+        <li>The R/S label is not displayed on the first atom of the 
+        structure.</li>
+
+        <li>Fonts are not scaled on the printed page.</li>
+        <li>Bug fixes in R/S calculation.</li>
+        <li>Implicit hydrogen hides upper bond.</li>
+        <li>Bug fix in cxsmiles export.</li>
+        </ul>
+    </li>
+    </ul>
+</li>
+<h3><a NAME="v3505"></a>Marvin 3.5.5</h3>
+    <ul>
+    <li>Plugins: logP calculation is supplemented with metal fragments.</li>
+    <li>Bugfixes:
+        <ul>
+        <li>RGfile import with nonstandard header.</li>
+        <li>Fixing bugs according to the user's response and improvement of pKa
+        calculation quality.</li>
+        </ul></li>
+    </ul>
+    </li>
+<h3><a NAME="v3504"></a>Marvin 3.5.4</h3>
+    <ul>
+    <li>Smarts import: atom expressions of type [C,c] are imported as [#6].</li>
+    <li>Bugfix: 3D cleaning can cause Java 1.4.2_06 VM to crash.</li>
+    </ul>
+</li>
+<h3><a NAME="v3503"></a>Marvin 3.5.3</h3>
+    <ul>
+    <li>Bugfix: Import of SMILES containing atoms with &quot;unspecified atomic
+    number&quot; (*) is fixed.</li>
+    </ul>
+<h3><a NAME="v3502"></a>Marvin 3.5.2</h3>
+    <ul>
+    <li>Colored MarvinView labels at celular level</li>
+    <li>Bugfixes:
+        <ul>
+            <li>Error in extended SMILES export</li>
+            <li>NullPointerException at adding new structure to My Templates</li>
+            <li>Error in drawing multiple groups</li>
+        </ul>
+    </ul>
+</li>
+<h3><a NAME="v3501"></a>Marvin 3.5.1</h3>
+    <ul>
+    <li>Extended SMILES export: <a href="../user/cxsmiles-doc.html#option_d">d</a>
+        option to write C/T info for ring double bonds.</li>
+    <li>API:
+        <ul>
+        <li>New methods: <a href="../api/JMView.html#isEmpty(int)">JMView.isEmpty()</a>, 
+        <a href="../api/MView.html#isEmpty(int)">MView.isEmpty</a>,
+        <a href="../api/JMSketch.html#isEmpty()">JMSketch.isEmpty()</a>,
+        <a href="../api/JMSketch.html#getAtomCount()">JMSketch.getAtomCount()</a>, 
+        <a href="../api/JMSketch.html#isAtomSelected(int)">JMSketch.isAtomSelected</a>,
+        <a href="../api/JMSketch.html#isEmpty()">MSketch.isEmpty()</a>,
+        <a href="../api/MSketch.html#getAtomCount()">MSketch.getAtomCount</a>, 
+        <a href="../api/JMSketch.html#isAtomSelected(int)">MSketch.isAtomSelected()</a>.
+        </ul>
+    </li>
+    </ul>
+</li>
+<h3><a NAME="v3500"></a>Marvin 3.5</h3>
+    <ul>
+    <li>Plugins:
+        <ul>
+	<li><a href="../api/chemaxon/marvin/calculations/TopologyAnalyserPlugin.html">
+	    TopologyAnalyserPlugin</a> is available: calculates molecule properties from topology like number of various ring types, rotatable bonds.
+	<li>Calculation of molecular polarizability is available in 
+	    <a href="../api/chemaxon/marvin/calculations/PolarizabilityPlugin.html">PolarizabilityPlugin</a>.
+	<li>Improved pKa and logP predictions.<a href="../../chemaxon/marvin/help/Validations.html#Top">Test Results</a>
+	<li>Added calculation of aromatic system and aromatic ring total charges in
+	    <a href="../api/chemaxon/marvin/calculations/ChargePlugin.html">ChargePlugin</a>.
+	</ul>
+	</li>
+    <li><a NAME="v3500io"></a>Import/export:
+	<ul>
+	<li>Link nodes are imported and exported in
+	    <a HREF="../user/mol-csmol-doc.html">MDL molfiles</a> and
+	    <a HREF="../user/mrv-doc.html">MRV</a>/<a HREF="../user/cml-doc.html">CML</a>.
+	    See also the <a HREF="#v3500linknodeAPI">related API changes</a>.
+	    </li>
+	<li>MDL Molfiles:
+	    <ul>
+	    <li><a HREF="../user/mol-csmol-doc.html#ioption_Usg">Usg</a> import
+		option to ungroup all S-groups.</li>
+	    <li>Atom coordinates are not rescaled in 2D V2 molfiles if the
+		<a HREF="../user/mol-csmol-doc.html#ioption_b">b import</a>/<a HREF="../user/mol-csmol-doc.html#option_b">export</a>
+		option is used with 0 argument.</li>
+	    <li><a HREF="molcompress-doc.html#java">MdlCompressor</a> can
+		compress Rxnfiles.</li>
+	    </ul>
+	    </li>
+	<li>SMARTS import:
+	    <a HREF="../user/smiles-doc.html#ioption_d"><b>d</b> option for Daylight-conform meaning of "H"</a>.
+	    Importing ambiguous SMARTS gets a warning message when not using
+	    this option.</li>
+	<li><a HREF="../user/mrv-doc.html">MRV</a> (Marvin Document) and
+	    <a HREF="../user/cml-doc.html">CML</a>:
+	    <ul>
+	    <li><a NAME="v3500rxnarrow"></a><i>reaction arrow type</i> is stored
+		(default, resonance, retrosynthetic or equilibrium),
+		see also the <a HREF="#v3500api.rxnarrow">API changes</a>.</li>
+	    <li>valence is imported and exported</li>
+	    </ul>
+	    </li>
+	<li>Image export:
+	    <ul>
+	    <li><a HREF="../user/images-doc.html#chiral">Options
+		for displaying chiral structures.</a>
+	    <li>Automatic generation of atom coordinates for 0D molecules.</li>
+	    </ul>
+	    </li>
+	</ul>
+	</li>
+    <li>API:
+	<ul>
+	<li>New methods and functions:
+	    <ul>
+	    <li><a NAME="v3500linknodeAPI"><a href="../api/chemaxon/struc/MolAtom.html">MolAtom</a></a>
+		methods related to link nodes:
+		<a href="../api/chemaxon/struc/MolAtom.html#getMaxRepetitions()">getMaxRepetitions()</a>,
+		<a href="../api/chemaxon/struc/MolAtom.html#setMaxRepetitions(int)">setMaxRepetitions(int)</a>,
+		<a href="../api/chemaxon/struc/MolAtom.html#getMinRepetitions()">getMinRepetitions()</a>,
+		<a href="../api/chemaxon/struc/MolAtom.html#setMinRepetitions(int)">setMinRepetitions(int)</a>,
+		<a href="../api/chemaxon/struc/MolAtom.html#isLinkNode()">isLinkNode()</a>.
+		</li>
+	    <li><a NAME="v3500api.rxnarrow"><a href="../api/chemaxon/struc/RxnMolecule.html">RxnMolecule</a></a>
+		methods for accessing reaction arrow type:
+		<a href="../api/chemaxon/struc/RxnMolecule.html#getReactionArrowType()">getReactionArrowType()</a>,
+		<a href="../api/chemaxon/struc/RxnMolecule.html#getReactionArrowTypeName()">getReactionArrowTypeName()</a>,
+		<a href="../api/chemaxon/struc/RxnMolecule.html#setReactionArrowType(int)">setReactionArrowType(int)</a>,
+		<a href="../api/chemaxon/struc/RxnMolecule.html#setReactionArrowType(java.lang.String)">setReactionArrowType(String)</a>.
+		</li>
+	    <li><a href="../api/MSketch.html">MSketch</a>,
+		<a href="../api/JMSketch.html">JMSketch</a>,
+		<a href="../api/MView.html">MView</a> and
+		<a href="../api/JMView.html">JMView</a> applet methods
+		<ul>
+		<li>for accessing molecule properties:
+		<a href="../api/JMSketch.html#getMolProperty(java.lang.String)">getMolProperty(String)</a>,
+		<a href="../api/JMSketch.html#setMolProperty(java.lang.String, java.lang.String)">setMolProperty(String, String)</a>,
+		<a href="../api/JMSketch.html#getMolPropertyCount()">getMolPropertyCount()</a>,
+		<a href="../api/JMSketch.html#getMolPropertyKey(int)">getMolPropertyKey(int)</a>,
+		<a href="../api/JMView.html#getMProperty(int, java.lang.String)">getMProperty(int, String)</a>,
+		<a href="../api/JMView.html#setMProperty(int, java.lang.String, java.lang.String)">setMProperty(int, String, String)</a>,
+		<a href="../api/JMView.html#getMPropertyCount(int)">getMPropertyCount(int)</a>,
+		<a href="../api/JMView.html#getMPropertyKey(int, int)">getMPropertyKey(int, int)</a>,
+		</li>
+		<li>for accessing extra atom label and alias strings:
+		<a href="../api/JMSketch.html#setAtomAlias(int, java.lang.String)">setAtomAlias(int, String)</a>,
+		<a href="../api/JMSketch.html#getAtomAlias(int)">getAtomAlias(int)</a>,
+		<a href="../api/JMSketch.html#setAtomExtraLabel(int, java.lang.String)">setAtomExtraLabel()</a>,
+		<a href="../api/JMSketch.html#getAtomExtraLabel(int)">getAtomExtraLabel(int)</a>,
+		<a href="../api/JMView.html#setAtomAlias(int, int, java.lang.String)">setAtomAlias(int, int, String)</a>,
+		<a href="../api/JMView.html#getAtomAlias(int, int)">getAtomAlias(int, int)</a>,
+		<a href="../api/JMView.html#setAtomExtraLabel(int, int, java.lang.String)">setAtomExtraLabel(int, int, String)</a>,
+		<a href="../api/JMView.html#getAtomExtraLabel(int, int)">getAtomExtraLabel(int, int)</a>.
+		</li>
+		</ul>
+		</li>
+	    <li>Added JavaScript functions in <code>marvin.js</code> to get JVM
+		and GUI ("awt" or "swing"):
+		<code>marvin_get_jvm()</code> and <code>marvin_get_gui()</code>.
+		</li>
+	    </ul>
+	    </li>
+	<li>Changes:
+	    <ul>
+	    <li>Valence is not a query property any more, use
+		<a href="../api/chemaxon/struc/MolAtom.html">MolAtom</a>.<a href="../api/chemaxon/struc/MolAtom.html#setValenceProp(int)">setValenceProp</a>(v)
+		and
+		<a href="../api/chemaxon/struc/MolAtom.html#getValenceProp()">getValenceProp</a>()
+		instead of
+		<a href="../api/chemaxon/struc/MolAtom.html#setQProp(java.lang.String, int)">setQProp</a>("v", v)
+		and
+		<a href="../api/chemaxon/struc/MolAtom.html#getQPropAsInt(java.lang.String)">getQPropAsInt</a>("v").
+		</li>
+	    <li>The simpView applet parameter and MSketchPane.setSimpView(int)
+		are deprecated, the simpView = 2 setting is removed. Use
+		<a HREF="sketchman.html#parameters.bondDraggedAlong">bondDraggedAlong</a>
+		and
+		<a HREF="../api/chemaxon/marvin/beans/MSketchPane.html">MSketchPane</a>.<a HREF="../api/chemaxon/marvin/beans/MSketchPane.html#setBondDraggedAlong(boolean)">setBondDraggedAlong(boolean)</a> instead.
+		</li>
+	    <li>Serialization:
+		<a HREF="../api/chemaxon/struc/DPoint3.html">DPoint3</a> and
+		<a HREF="../api/chemaxon/struc/CTransform3D.html">CTransform3D</a>
+		became Externalizable.</li>
+	    </ul>
+	    </li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3><a NAME="v3403"></a>Marvin 3.4.3</h3>
+    <ul>
+    <li>New applet parameter: <a href="viewman.html#molChanged0">molChanged0</a>
+     to evaluate a JavaScript code when the molecule is loaded.</li>
+    <li>Bugfixes: NullPointerException in shapely color mode,
+    deadlock in MarvinSketch applet.</li>
+    </ul>
+<h3><a NAME="v3402"></a>Marvin 3.4.2</h3>
+    <ul>
+    <li>Bugfixes: memory leak and deadlock in sketcher bean.</li>
+    </ul></li>
+<h3><a NAME="v3401"></a>Marvin 3.4.1</h3>
+    <ul>
+    <li>Reaction <a href='../api/chemaxon/marvin/modules/AutoMapper.html'>AutoMapper</a> class API is available.</li>
+    <li><a href="plugins.html#examples">Calculator Plugin API usage examples</a>
+	in class headers.</li>
+    <li>Atom symbol/label font can be changed using the
+	<a HREF="viewman.html#parameters.atomFont">atomFont</a>
+	applet parameter.</li>
+    </ul>
+    </li>
+<h3><a NAME="v3400"></a>Marvin 3.4</h3>
+    <ul>
+    <li>Import/Export
+	<ul>
+	<li>New formats:
+	    <a HREF="../user/cxsmiles-doc.html">ChemAxon Extended SMILES
+	    and SMARTS</a>,
+	    <a HREF="../user/cube-doc.html">Gaussian Cube</a>.
+	    </li>
+	<li>Full support of <a HREF="../user/smiles_doc.html">SMARTS</a>.
+	    Added features:
+	    <ul>
+	        <li>Recursive SMARTS $()</li>
+	        <li>Logical expressions in atom and bond: high and low priority "and"(& and ;), "or" (,) and "not" (!).</li>
+	        <li>Degree atom query property (D)</li>
+	        <li>Implicit hydrogens atom query property (h)</li>
+	        <li>Chiral or unspecified atoms @?, @@?</li>
+	        <li>Ring bond query property (@)</li>
+	        <li>Conditional directional bonds: /?,\?</li>
+	    </ul></li>
+	<li><a HREF="../user/cml-doc.html">CML</a> and
+	    <a HREF="../user/mrv-doc.html">Marvin Document Format</a> fix:
+	    atom aliases and query strings are imported and exported.</li>
+	<li><a HREF="../user/mol-csmol-doc.html">MDL Molfiles</a>:
+	    S-group parent list (M  SPL in V2, PARENT in V3) and expansion
+	    information (M  SDS EXP in V2, ESTATE in V3) are stored.</li>
+	<li>Incompatible API change in the
+	    <a HREF="../api/chemaxon/marvin/util/MolImportIface.html">MolImportIface</a>
+	    interface: molecule import modules must implement the
+	    <a HREF="../api/chemaxon/marvin/util/MolImportIface.html#createMol()">createMol()</a>
+	    method.</li>
+	<li><a HREF="../api/chemaxon/formats/MolConverter.html">MolConverter</a>
+	    and
+	    <a HREF="../api/chemaxon/formats/MolExporter.html">MolExporter</a>
+	    fix: created text files are in the local text format (instead of
+	    unix) if the useSysEOL boolean argument is <code>true</code>.
+	    The molconvert program writes OS dependent end of lines always.</li>
+	</ul>
+	</li>
+    <li>S-groups
+	<ul>
+	<li>Embedded S-group support (in MDL Molfiles and Marvin Document
+	    Format).</li>
+	<li>API changes in
+	    <a HREF="../api/chemaxon/struc/Sgroup.html">Sgroup</a>,
+	    <a HREF="../api/chemaxon/struc/sgroup/SuperatomSgroup.html">SuperatomSgroup</a>,
+	    and
+	    <a HREF="../api/chemaxon/struc/sgroup/MultipleSgroup.html">MultipleSgroup</a>:
+	    the copy and the newInstance methods are replaced by copy
+	    constructors and cloneSgroup.</li>
+	</ul>
+	</li>
+    <li>Other
+	<ul>
+	<li>Line thickness can be set for wireframe mode using the
+	    <a HREF="viewman.html#3d.wireThickness">wireThickness</a> applet
+	    parameter and the
+	    MarvinPane.<a HREF="../api/chemaxon/marvin/beans/MarvinPane.html#setWireThickness(double)">setWireThickness</a>
+	    bean method.</li>
+	<li>Line thickness for graphics line, polyline, rectangle and text box
+	    objects can be set using
+	    MPolyline.<a HREF="../api/chemaxon/struc/graphics/MPolyline.html#setThickness(double)">setThickness</a>.
+	    </li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3><a NAME="v3303"></a>Marvin 3.3.3</h3>
+    <ul>
+    <li>MDL Molfile import: S-groups are contracted by default.
+	Importing in expanded form; use the
+	<a HREF="../user/mol-csmol-doc.html#ioption_Xsg">Xsg</a>
+	option.</li>
+    <li>Abbreviated groups: Abbreviations are given a priority over the element symbols.
+    New abbreviations in the default abbeviated group list.</li>
+	<li>Improved p<i>K</i><sub>a</sub>, log<i>P</i>, log<i>D</i> calculation.</li>
+    <li>New methods in MolPrinter: 
+        <a href="../api/chemaxon/marvin/MolPrinter.html#getChiralitySupport()">getChiralitySupport()</a>,
+        <a href="../api/chemaxon/marvin/MolPrinter.html#getExplicitH()">getExplicitH()</a>,
+        <a href="../api/chemaxon/marvin/MolPrinter.html#isAtomSymbolsVisible()">isAtomSymbolsVisible()</a>,
+        <a href="../api/chemaxon/marvin/MolPrinter.html#isEzVisible()">isEzVisible()</a>,
+        <a href="../api/chemaxon/marvin/MolPrinter.html#setAtomSymbolsVisible(boolean)">setAtomSymbolsVisible()</a>,
+        <a href="../api/chemaxon/marvin/MolPrinter.html#setChiralitySupport(int)">setChiralitySupport()</a>,
+        <a href="../api/chemaxon/marvin/MolPrinter.html#setExplicitH(boolean)">setExplicitH()</a>,
+        <a href="../api/chemaxon/marvin/MolPrinter.html#setEzVisible(boolean)">setEzVisible()</a>.</li>
+    <li>Marvin Applets: <a href="index.html#noliveconnect">Workaround for browsers without
+        Java - JavaScript communication</a>.</li>
+    <li>Mac friendly shortcuts for Cut, Copy and Paste.</li>
+    <li>Bugfixes:</li>
+        <ul>
+        <li>In MolConverter</li>
+        <li>In the opening of the edit source window.</li>
+        </ul></li>
+    </ul>
+    </li>
+<h3><a NAME="v3302"></a>Marvin 3.3.2</h3>
+    <ul>
+    <li>Bugfixes: in SMILES import.</li>
+    </ul>
+    </li>
+<h3><a NAME="v3301"></a>Marvin 3.3.1</h3>
+    <ul>	
+	    <li>Mac OS X: MarvinSketch and MarvinView applications use the 
+		screen menu bar.</li>
+	    <li>Bugfix in the drawing of R-group attachment points.</li>
+    </ul>
+    </li>
+<h3><a NAME="v3300"></a>Marvin 3.3</h3>
+    <ul>
+    <li>Atom and bond sets
+	<ul>
+	<li>Colorable <b>bond sets</b> are introduced, see the
+	    <a HREF="viewman.html#parameters.bondSet">bondSet</a> and
+	    <a HREF="viewman.html#parameters.bondSetColor">bondSetColor</a>
+	    applet parameters, the
+	    MView.<a HREF="../api/MView.html#setBondSetColor(int, int)">setBondSetColor</a>()
+	    applet method and the <code>MarvinPane.setBondSetColor()</code> bean
+	    method.</li>
+	<li>Atom and bond set coloring can be used together with other color
+	    schemes. Atoms and bonds in set 0 are displayed in Monochrome,
+	    CPK, Shapely or Group color scheme, but other sets are displayed
+	    with atom/bond set colors if the value of the
+	    <a HREF="viewman.html#parameters.setColoringEnabled">setColoringEnabled</a>
+	    applet parameter is <code>true</code> (default).
+	    </li>
+	<li>Deprecation:
+	    <ul>
+	    <li>Use the 
+		<a HREF="viewman.html#parameters.atomSet">atomSet</a>
+		applet parameter instead of set,
+		<a HREF="viewman.html#parameters.atomSetColor">atomSetColor</a>
+		instead of setColor and the
+		MView.<a HREF="../api/MView.html#setAtomSetColor(int, int)">setAtomSetColor</a>()
+		and <code>MarvinPane.setBondSetColor()</code> methods instead of
+		setSetColor.</li>
+	    <li>Use
+		<a HREF="viewman.html#parameters.colorScheme">colorScheme</a>="mono"
+		and
+		<a HREF="viewman.html#parameters.setColoringEnabled">setColoringEnabled</a>=<code>true</code>
+		settings instead of the deprecated
+		"atomset" color scheme.
+	    </ul>
+	    </li>
+	</ul>
+	</li>
+    <li>Import/export:
+	<ul>
+	<li><a HREF="../user/mrv-doc.html">Marvin Document</a> file format</li>
+	<li>Multiple Sgroup support for
+	    <a HREF="../user/mol-csmol-doc.html">MDL molfiles</a></li>
+	<li>New <a HREF="../user/images-doc.html">image export</a>
+	    option to switch off antialiasing: <code>noantialias</code>.
+	    </li>
+	<li><a HREF="../user/cml-doc.html">CML</a> improvements:
+	    support of CML2 atom/bond attributes (instead of the deprecated
+	    builtins), reactions, stereochemistry, residues.
+	    Because of efficiency reasons, deprecated CML-1 data types are
+	    not supported any more.</li>
+	<li><a HREF="../user/base64-doc.html">Base64</a> encoding/decoding.</li>
+	<li>Import options for input files are specified in braces instead of
+	    parantheses (&quot;file{options}&quot;) to avoid conflicts with
+	    ugly SMILES strings ending with a branch specification.
+	    For backward compatibility, parantheses still work after
+	    filenames (but not after SMILES strings).</li>
+	</ul>
+	</li>
+    <li>3D:
+	<ul>
+	<li>Analitic gradients implemented in Dreiding forcefield for optimization and Clean 3D</li>
+	</ul>
+	</li>
+    <li>Document editing with graphics objects in sketcher
+	<ul>
+	<li>The <a HREF="../api/chemaxon/struc/MDocument.html">MDocument</a>
+	    class stores the molecule and other graphics objects like
+	    polylines and rectangles. The document can be saved in
+	    <a HREF="../user/mrv-doc.html">Marvin Document</a> format.</li>
+	</ul>
+	</li>
+	<li>Calculator plugins
+    <ul>
+	<li>Support electrolite concentration is taken into account in log<i>P</i> and log<i>D</i> calculations.
+	</li>
+	</ul>
+    <ul>
+	<li>Concentration of K, Na and Cl ions can be adjusted in the range of 0 - 0.25 mol/l.</li>
+	</ul>
+    <ul>
+	<li>log<i>P</i> calculation of zwitterionic compounds also have been improved with considering distance correction 
+	factors.
+	</li>
+	</ul>
+	<ul>
+	<li>p<i>K</i><SUB>a</SUB> calculation have been extended to carbon-bases. Now basic p<i>K</i><SUB>a</SUB> estimation of Indole derivatives available.
+	Both acidic and basic p<i>K</i><SUB>a</SUB> values are displayed.
+	Microspecies distribution is shown on chart.
+	</li>
+	</ul>
+	<ul>
+	<li>Accuracy of p<i>K</i><SUB>a</SUB> calculations is improved for heterocyclic compounds.
+	</li>
+	<li>
+	Calculation of polar surface area (PSA) based on 2D topological (TPSA) information of molecules are available.
+	</li>
+	</ul>
+	
+	</li>
+	
+    <li>Others:
+	<ul>
+	<li>Recognition of more than four hundred chemical abbreviations.</li>
+	<li>Help documents can be specified by applet parameters:
+	    <a HREF="sketchman.html#parameters.sketchHelp">sketchHelp</a>,
+	    <a HREF="sketchman.html#parameters.sketchQuickHelp">sketchQuickHelp</a>,
+	    <a HREF="viewman.html#parameters.viewHelp">viewHelp</a>,
+	    <a HREF="viewman.html#parameters.viewQuickHelp">viewQuickHelp</a>.
+	    </li>
+	<li><a href="../api/chemaxon/struc/Molecule.html#draw(java.awt.Graphics,%20java.lang.String)">Molecule.draw</a>
+	paints the molecule to a graphics context.</li>
+<!-- ez nem idevalo	<li>New menu item in <em>View/Misc</em> menu to set the visibility of atom chirality (<em>R/S</em>) labels. -->
+	<li>Standard residue names returned by
+	    <a href="../api/chemaxon/struc/MolAtom.html#residueSymbolOf(int)">MolAtom.residueSymbolOf(int)</a>
+	    are not all upper case, only the first letter (&quot;Ala&quot;
+	    instead of &quot;ALA&quot;).</li>
+	<li>Marvin GUI: Set the visibility of the atom chirality (<em>R</em>/<em>S</em>) labels from
+		<em>View/Misc</em> menu.
+	<li>Double click in Windows operating systems opens chemical files with 
+		the MarvinView application.</li>
+	<li>Deprecation: SketchMolecule (replaced by MDocument),
+	    SuperAtom.updateSgroupCrossings() (replaced by
+	    Sgroup.findCrossingBonds())</li>
+	<li>Incompatible change: chemaxon.struc.sgroup.Contractable
+	    interface removed,
+	    <a href="../api/chemaxon/struc/sgroup/Expandable.html">Expandable</a>
+	    changed. This change was required because MDL's incomplete
+	    multiple group expansion had to be simulated for proper
+	    molfile export.</li>
+	</ul>
+	</li>
+    <li>Bugfixes: in MViewPanel.setParams, in Dreiding forcefield, PDB import,
+    atom lists in V3 molfiles, resize of MViewPanel and MSketchPanel, 
+    R-logic, etc.</li>
+    </ul>
+    </li>
+<h3><a NAME="v3200"></a>Marvin 3.2</h3>
+    <ul>
+	<li>Enhanced 
+	<a HREF="../user/stereo-doc.html">stereochemical representation</a>
+	 support in
+	<a HREF="../user/mol-csmol-doc.html#molV3">extended molfiles</a>.
+	</li>
+	<li>Improved <em>Charge</em> and <em>pKa</em> calculation.</li>
+	<li>Bugfixes: 
+		<ul>
+		<li>In SMILES <em>q</em> option.</li>
+		<li>In flip.</li>
+		</ul></li>
+	</ul>
+	</li>
+<h3><a NAME="v3104"></a>Marvin 3.1.4</h3>
+    <ul>
+    <li>RDfiles containing internal and external regnos: the first molecule
+	or reaction type property is supposed to be the main structure.</li>
+    <li>API changes
+	<ul>
+	<li>Removed the broken RxnMolecule.moveReactionArrow method.</li>
+	</ul>
+	</li>
+	<li>Calculator plugins:
+		<ul>
+		<li>logP: New atom types.</li>
+		<li>pKa:
+			<ul>
+			<li>Hydrogen bound defined between aromatic carboxyl and phenolic 
+				hidroxyl groups in pKa plugin.</li>
+			<li>Calculation of the sulphonamid acid molecules were improved.</li>
+			<li>In calculation of third order amins strain is considered.</li>
+			</ul>
+		</ul>
+    </ul>
+    </li>
+<h3><a NAME="v3103"></a>Marvin 3.1.3</h3>
+    <ul>
+    <li>Molecule file formats:
+	<ul>
+	<li><a HREF="../user/mol-csmol-doc.html#rxnV3">Extended reaction
+	    files</a>: AGENTS are imported and exported (in a
+	    non-standard way, because MDL's standard format does not support
+	    them).</li>
+	<li><a HREF="../user/smiles-doc.html">SMILES</a> import:
+	    error checking improved.</li>
+	<li><a HREF="../user/pdb-doc.html">PDB</a> import/export:
+	    bonds of standard residues are not exported and
+	    not guessed from coordinates at import. Full atom names (including
+	    remoteness indicator and branch designator) are imported and
+	    exported.</li>
+	</ul>
+	</li>
+    <li>2D and 3D:
+	<ul>
+	<li>Background color, rendering style and navigation mode are stored
+	    separately for 2D and 3D. Cleaning a molecule in 3D also switches
+	    automatically to the 3D parameter set in that cell. Cleaning in 2D
+	    switches back to the 2D parameters.</li>
+	<li><a HREF="viewman.html#parameters.clean2dOpts">clean2dOpts</a> and
+	    <a HREF="viewman.html#parameters.clean3dOpts">clean3dOpts</a>
+	    parameters.</li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3><a NAME="v3102"></a>Marvin 3.1.2</h3>
+    <ul>
+    <li>MDL import/export improvements:
+	<ul>
+	<li><a HREF="../user/mol-csmol-doc.html#rxnV3">Extended reaction file</a>
+	    import/export (&quot;rxn:V3&quot;).</li>
+	<li>Rgroups are supported in
+	    <a HREF="../user/mol-csmol-doc.html#molV3">extended molfile</a>
+	    import/export.</li>
+	<li>RDfiles: Molecule and reaction type properties ($MFMT and
+	    $RFMT) are also imported and exported. Use the
+	    <a HREF="../api/chemaxon/struc/Molecule.html#getPropertyObject(java.lang.String)">Molecule.getPropertyObject</a>
+	    function to get such properties.</li>
+	</ul>
+	</li>
+    <li>S-groups: automatic contraction after import in sketcher and viewer.
+	</li>
+    <li>API changes:
+	<ul>
+	<li><a HREF="../api/chemaxon/struc/MoleculeGraph.html#calcCenter()">MoleculeGraph.calcCenter</a>
+	    returns the geometrical center instead of the center of mass.</li>
+	</ul>
+	</li>
+    <li>Bugfixes: R-logic bug.</li>
+    </ul>
+    </li>
+<h3><a NAME="v3101"></a>Marvin 3.1.1</h3>
+    <ul>
+	<li>JRE bug workaround (inappropriate lines were drawn on the Marvin panel).</li>
+	</ul>
+	</li>
+<h3><a NAME="v3100"></a>Marvin 3.1</h3>
+    <ul>
+    <li>Applets
+	<ul>
+	<li>Java 1.0 compatibility is no longer maintained.
+	    The minimum Java VM version required to run the applets is 1.1
+	    <small>(Netscape 4.06, MSIE 4 or later version)</small>.
+	    </li>
+	<li>The Swing version of the unsigned applets are no longer
+	    available. Use the signed applets instead. To unsign signed
+	    jar files, see the <a href="appletfaq.html#unsign_jar">FAQ</a>.</li>
+	<li>The deprecated installer for Marvin Applets is no longer maintained.
+	    The set of downloadable Marvin Applets packages has been reduced.
+	    </li>
+	</ul>
+	</li>
+    <li>Plugins: 
+	<ul>
+	    <li>New plugin: Atom polarizability</li>
+	    <li>Chart display in log<i>D</i> plugin</li>
+	</ul></li>
+    <li>Molecule import/export improvements:
+	<ul>
+	<li><a HREF="../user/smiles-doc.html">SMILES:</a>
+	    <ul>
+	    <li><a HREF="../user/smiles-doc.html#ioption_f">Data fields
+		can be imported from multi-column files.</a></li>
+	    <li>Better error checking at import: exception is thrown if a ring
+		is formed from two neighboring atoms.</li>
+	    </ul>
+	    </li>
+	<li><a NAME="v3100pdb" HREF="../user/pdb-doc.html">PDB:</a>
+	    residues are imported as Sgroups,
+	    Sgroups are exported as residues.</li>
+	<li><a HREF="../user/mol-csmol-doc.html">Molfiles:</a>
+	    <ul>
+	    <li>Sgroups are also imported as (PDB) residues. As a consequence,
+		the PDB-specific coloring styles, &quot;shapely&quot;
+		and &quot;group&quot;, are also applicable to molfiles
+		containing Sgroups.</li>
+	    <li><a HREF="../user/mol-csmol-doc.html#molV3">Extended (V3) molfile
+		export.</a></li>
+	    <li>Changes in V2 format:
+		<ul>
+		<li>3D molecule coordinates are stored in
+		    Angstrom units. The unit can be specified as an
+		    <a HREF="../user/mol-csmol-doc.html#ioptions">import
+		    option</a>.
+		    </li>
+		<li>Illegal atom map values (from molfiles generated by the
+		    IDBS ChemXtra data cartridge) are not considered to be
+		    error at import.</li>
+		</ul>
+		</li>
+	    </ul>
+	    </li>
+	</ul>
+	</li>
+    <li>API changes
+	<ul>
+	<li>New RgMolecule method:
+	    <a HREF="../api/chemaxon/struc/RgMolecule.html#addRgroupsTo(chemaxon.struc.Molecule)">RgMolecule.addRgroupsTo</a>.
+	    </li>
+	<li>New flag
+	    <a HREF="../api/chemaxon/struc/RxnMolecule.html#RGROUPED">RxnMolecule.RGROUPED</a>
+	    for the
+	    <a HREF="../api/chemaxon/struc/RxnMolecule.html#getStructure(int, int)">getStructure(flags, f)</a>
+	    method.</li>
+	<li>New methods related to explicit Hydrogen removal:
+	    MoleculeGraph.<a HREF="../api/chemaxon/struc/MoleculeGraph.html#calcDehydrogenizedGrinv(int[])">calcDehydrogenizedGrinv</a>,
+	    <a HREF="../api/chemaxon/struc/MoleculeGraph.html#implicitizeHydrogens(int)">implicitizeHydrogens</a>,
+	    MolAtom.<a HREF="../api/chemaxon/struc/MolAtom.html#isImplicitizableH(int)">isImplicitizableH</a>.
+	    </li>
+	<li>The protected removeNode(..., boolean changeNodes) and
+	    removeEdge(..., boolean changeNodes) methods in CGraph,
+	    MoleculeGraph, Molecule, etc. are replaced by
+	    <a HREF="../api/chemaxon/struc/Molecule.html#removeNode(int, int)">removeNode(int i, int cleanupFlags)</a>,
+	    <a HREF="../api/chemaxon/struc/Molecule.html#removeNode(chemaxon.struc.CNode, int)">removeNode(CNode node, int cleanupFlags)</a>,
+	    <a HREF="../api/chemaxon/struc/Molecule.html#removeEdge(int, int)">removeEdge(int i, int cleanupFlags)</a>,
+	    <a HREF="../api/chemaxon/struc/Molecule.html#removeEdge(chemaxon.struc.CEdge, int)">removeEdge(CEdge edge, int cleanupFlags)</a>.
+	    </li>
+	<li>Removed the malfunctioning RxnMolecule(parent) and
+	    RgMolecule(parent) constructors.</li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3><a NAME="v3002"></a>Marvin 3.0.2</h3>
+    <ul>
+    <li><a NAME="v3002bugfixes"></a>Bugfixes:
+	contracted S-groups are automatically expanded before exporting in
+	molecule file formats (PDB, SMILES, XYZ, ...)
+	</li>
+    </ul>
+    </li>
+<h3><a NAME="v3001"></a>Marvin 3.0.1</h3>
+    <ul>
+    <li><a NAME="v3001rgrxn" HREF="../user/mol-csmol-doc.html">RGfile</a>
+	import/export:
+	root structure can be a reaction.<br>
+	<small>Note that mixing RGfiles and Rxnfiles is not possible in
+	a standard way so these files can only be imported by Marvin.</small>
+	</li>
+    <li><a NAME="v3001pdb" HREF="../user/pdb-doc.html">PDB</a> import:
+	HETATM records are recognized.</li>
+    <li><a NAME="v3001bugfixes"></a>Bugfixes:
+	Invisible atom symbols at image export in 
+	<a href="../api/chemaxon/struc/Molecule.html#toObject(java.lang.String)">
+	Molecule.toObject(String)</a>, Sgroup export in MDL formats,
+	Sgroup-related NullPointerException in viewer.
+	</li>
+    </ul>
+    </li>
+<h3><a NAME="v3000"></a>Marvin 3.0</h3>
+    <ul>
+    <li>3D cleaning.</li>
+    <li>New applet paremeters and bean properties
+	<ul>
+	<li><a href="viewman.html#parameters.detachable">detachable</a>
+	    paremeter in the viewer.</li>
+	<li><a href="sketchman.html#parameters.atomSymbolsVisible">
+	    atomSymbolsVisible</a> parameter instead of <code>labels</code>
+	    which became deprecated.</li>
+	</ul>
+	</li>
+    <li>API improvements and simplifications:
+	<ul>
+	<li>chemaxon.struc:
+	    <ul>
+	    <li><a NAME="v3000unsync"
+		   HREF="../api/chemaxon/struc/CGraph.html">CGraph</a> and
+		<a HREF="../api/chemaxon/struc/Molecule.html">Molecule</a>
+		are not thread safe any more but their methods became 20-30%
+		faster.</li>
+	    <li>Created the
+		<a HREF="../api/chemaxon/struc/SelectionMolecule.html">SelectionMolecule</a>
+		class for molecule selections, removed the CGraph.selection field.
+		</li>
+	    <li>Created the
+		<a HREF="../api/chemaxon/struc/MoleculeGraph.html">MoleculeGraph</a>
+		class as the direct ancestor of SelectionMolecule and Molecule.
+		</li>
+	    <li><a NAME="v3000rg_and_rxn"></a>RgMolecule and RxnMolecule
+		changes:
+		<ul>
+		<li>Nodes and edges are only stored in subgraphs (root structure,
+		    R-groups, product/reactant/agent structures).</li>
+		<li>The graph union is returned by the
+		    <a HREF="../api/chemaxon/struc/MoleculeGraph.html#getGraphUnion()">MoleculeGraph.getGraphUnion()</a>
+		    method.
+		    </li>
+		<li>Methods like getNodeCount(), getEdgeCount(), getNode(i),
+		    getEdge(i) call the root structure's corresponding
+		    method in RgMolecule or the graph union's method in
+		    RxnMolecule.</li>
+		</ul>
+		</li>
+	    <li>CGraph.findFrags() and CGraph.findFrags(boolean) are replaced by
+		CGraph.<a HREF="../api/chemaxon/struc/CGraph.html#findFrags(java.lang.Class)">findFrags(Class)</a>
+		and
+		Molecule.<a HREF="../api/chemaxon/struc/Molecule.html#findFrags()">findFrags()</a>
+		</li>
+	    <li>CGraph.cloneNodes() and cloneEdges() renamed to
+		<a HREF="../api/chemaxon/struc/CGraph.html#getNodeVector()">getNodeVector</a>,
+		<a HREF="../api/chemaxon/struc/CGraph.html#getEdgeVector()">getEdgeVector</a>.
+		</li>
+	    <li>CGraph.reallyContains(CEdge) and countRealEdges() removed.</li>
+	    <li><a HREF="../api/chemaxon/struc/CGraph.html#getSSSR()">CGraph.getSSSR()</a>
+		returns an int[][] array instead of CEdge[][]</li>
+	    <li>The MolAtom.flags, MolAtom.countFlags and MolBond.flags fields
+		became private.</li>
+	    </ul>
+	    </li>
+	<li>Molecule import/export:
+	    <ul>
+	    <li><a HREF="../api/chemaxon/marvin/util/MolExportModule.html">MolExportModule</a>.<a HREF="../api/chemaxon/marvin/util/MolExportModule.html#convert(chemaxon.struc.Molecule)">convert(Molecule)</a>
+		and
+		<a HREF="../api/chemaxon/marvin/util/MolExportModule.html#close()">close()</a>
+		throw
+		<a HREF="../api/chemaxon/marvin/util/MolExportException.html">MolExportException</a>
+		instead of IOException.</li>
+	    <li><a HREF="../api/chemaxon/formats/MolImporter.html">MolImporter</a>.<a HREF="../api/chemaxon/formats/MolImporter.html#read()">read()</a>
+		and <a HREF="../api/chemaxon/formats/MolImporter.html#importMol(byte[])">importMol(byte[])</a>
+		returns RgMolecule object only if R-groups are present.</li>
+	    </ul>
+	    </li>
+	<li>Initialization file saving:
+	    <ul>
+	    <li>MarvinSketch and MarvinView has a common initialization file
+		in the $HOME/.chemaxon subdirectory.</li>
+	    <li>MarvinPane.saveIni(), loadIni(), getIniFile() and setIniFile()
+		are removed and replaced by
+		<a HREF="../api/chemaxon/marvin/common/UserSettings.html">UserSettings</a>.<a HREF="../api/chemaxon/marvin/common/UserSettings.html#save(java.lang.String)">save(String)</a>,
+		<a HREF="../api/chemaxon/marvin/common/UserSettings.html">UserSettings</a>.<a HREF="../api/chemaxon/marvin/common/UserSettings.html#tryToLoad()">tryToLoad()</a>,
+		and
+		<a HREF="../api/chemaxon/util/DotfileUtil.html">DotfileUtil</a>.<a HREF="../api/chemaxon/util/DotfileUtil.html#setDotDirName(java.lang.String)">setDotDirName(String)</a>.
+		</li>
+	    </ul>
+	    </li>
+	<li>Other bean related changes
+	    <ul>
+	    <li>Buttons and checkboxes in molecule <a href="viewman.html#advanced.cell">cells</a> can fire
+		<a href="http://java.sun.com/j2se/1.4.1/docs/api/java/awt/event/ActionEvent.html">ActionEvent</a>s and
+		<a href="http://java.sun.com/j2se/1.4.1/docs/api/java/awt/event/ItemEvent.html">ItemEvent</a>s as
+		<a href="http://java.sun.com/j2se/1.4.1/docs/api/javax/swing/AbstractButton.html">AbstractButton</a>
+		objects.
+	    <li><a href="../api/chemaxon/marvin/beans/MViewPane.html#getCanvasComponent(int)">MViewPane.getCanvasComponent</a> is deprecated. Use
+		<a href="../api/chemaxon/marvin/beans/MViewPane.html#getVisibleCellComponent(int)">MViewPane.getVisibleCellComponent</a>.
+		</li>
+	    </ul>
+	    </li>
+	</ul>
+	</li>
+    <li>Template button title is specified using the <em>abbreviation</em>
+	SDF property instead of <em>title</em>.</li>
+    <li>Bugfix: in Rxnfile import</li>
+    </ul>
+    </li>
+<h3><a NAME="v2105"></a>Marvin 2.10.5</h3>
+    <ul>
+	<li><a href="sketchman.html#parameters.atomMappingVisible">atomMappingVisible</a> 
+	is a new applet/bean parameter and property.</li>
+	<li>Bugfixes:
+	    <em>Copy</em> and <em>Copy as smiles</em> bugs under Mac.
+	    Hotkey bug in swing version of Marvin applets at Java 1.4.</li>
+    </ul>
+</li>
+<h3><a NAME="v2104"></a>Marvin 2.10.4</h3>
+    <ul>
+	<li><a href="sketchman.html#skin">skin</a> applet/bean parameter and new menu option (only in SWING).</li>
+	<li>Improved SD file import (DTn fields).</li>
+        <li>Bugfix:
+	    NoSuchMethodError at drawing R-group definition in AWT mode (if Java version is earlier
+		than 1.2).</li>
+    </ul>
+</li>
+<h3><a NAME="v2103"></a>Marvin 2.10.3</h3>
+    <ul>
+	<li><a href="sketchman.html#parameters.grinv">grinv</a> is a new applet/bean 
+	parameter and property.
+	<li>Bugfix: in SDfile import.</li>
+    </ul>
+</li>
+<h3><a NAME="v2102"></a>Marvin 2.10.2</h3>
+    <ul>
+	<li>Bugfixes:
+	    <ul>
+		<li>Improved printing layout of MView tables.</li>
+		<li>Improvements in Copy / Paste of reactions.</li>
+		<li>Fixed calculation of molecule bounds.</li>
+	    </ul></li>
+    </ul>
+</li>
+<h3><a NAME="v2101"></a>Marvin 2.10.1</h3>
+    <ul>
+	<li>Molweight calculation.</li>
+	<li>Handling agents of reactions.</li>
+	<li>Bugfix:
+	    <code>MolConvert.convert()</code> cleans imported SMILES.
+	    </li>
+    </ul>
+</li>
+<h3><a NAME="v2913"></a>Marvin 2.10 (2.9.13)</h3>
+    <ul>
+	<li><a href="signing.html">Signed</a> Marvin applets</li>
+	    <ul>
+		<li>Open, save, cut and paste can be used with signed 
+		    applets. <a href="index.html#examples">Examples</a> 
+		    can be launched by selecting "<em>Signed applets</em>".
+		    </li>
+	    </ul>
+	<li>Marvin applications with 
+	    <a href="example-jws-intro.html">Java Web Start</a>
+	    <ul>
+		<li><a href="index.html#javawebstart">Examples</a> for using
+		    the MarvinSketch and the MarvinView applications via 
+		    Internet.
+		    </li>
+	    </ul>
+    <li>New applet/bean parameters</li>
+	<ul>
+	<li>
+	<a HREF="sketchman.html#parameters.valenceErrorVisible">valenceErrorVisible</a>
+	applet/bean parameter and property in MarvinSketch. Its value can be also modified from
+	menu: <strong>View</strong>/<strong>Misc</strong>/<strong>Valence&nbsp;Errors</strong>.</li>
+	<li>
+	<a HREF="sketchman.html#parameters.reactionErrorVisible">reactionErrorVisible</a> 
+	applet/bean parameter and propert in MarvinSketch. It can also be 
+	set from menu: <strong>View</strong>/<strong>Misc</strong>/<strong>Reaction&nbsp;Errors</strong>.</li>
+	</ul>
+    </ul>
+</li>
+<h3><a NAME="v2912"></a>Marvin 2.9.12</h3>
+    <ul>
+    <li>Import/Export
+	<ul>
+	<li><a HREF="../user/cml-doc.html">CML</a> import and better export.</li>
+	<li>Atom map support for <a HREF="../user/mol-csmol-doc.html">Rxnfiles</a>
+	    and reaction <a HREF="../user/smiles-doc.html">SMILES</a>.
+	    </li>
+	<li>Atom label font size and double bond width can be set for image
+	    export using the <a HREF="../user/images-doc.html#atsiz">atsiz</a> and
+	    <a HREF="../user/images-doc.html#bondw">bondw</a> options.</li>
+	<li>If an error occurs while reading a multi-molecule file (an SDfile
+	    for example), the remaining parts of the current molecule can be
+	    skipped and the file pointer can be positioned to the next one.
+	    <ul>
+	    <li><a HREF="../api/chemaxon/marvin/util/MolImportIface.html">MolImportIface</a>
+		interface changed, the
+		<a HREF="../api/chemaxon/marvin/util/MolImportIface.html#skipToNext()">skipToNext()</a>
+		method introduced
+		</li>
+	    <li>MolImporter.skipToNext()</li>
+	    </ul>
+	    </li>
+	</ul>
+	</li>
+    <li>Stereochemistry
+	<ul>
+	<li><a HREF="sketchman.html#parameters.chiralitySupport">chiralitySupport</a>
+	    applet/bean parameter</li>
+	<li><a HREF="sketchman.html#parameters.ezVisible">ezVisible</a>
+	    applet/bean parameter</li>
+	</ul>
+	</li>
+    <li>Other new applet/bean parameters and properties
+	<ul>
+	<li><a HREF="sketchman.html#propchanges">popupMenusEnabled</a>
+	    bean property</li>
+	<li><a HREF="sketchman.html#parameters.atomNumbersVisible">atomNumbersVisible</a>
+	    applet/bean parameter</li>
+	</ul>
+	</li>
+    <li>Other API changes
+	<ul>
+	<li>The <code>MolAtom.SELECTED</code> and <code>VALENCE_ERROR</code> constants are not public any
+	    more, they are replaced by the
+	    <a HREF="../api/chemaxon/struc/MolAtom.html#isSelected()">isSelected</a>,
+	    <a HREF="../api/chemaxon/struc/MolAtom.html#setSelected(boolean)">setSelected</a>,
+	    <a HREF="../api/chemaxon/struc/MolAtom.html#hasValenceError()">hasValenceError</a>
+	    and
+	    <a HREF="../api/chemaxon/struc/MolAtom.html#setValenceError(boolean)">setValenceError</a>
+	    methods.
+	    </li>
+	<li>deprecated methods removed: <code>MolAtom.getAbbrev()</code> and <code>abbrevOf()</code>
+	    replaced by <code>getSymbol()</code> and <code>symbolOf()</code></li>
+	<li><code>CNode.copy(CNode)</code>, <code>MolAtom.copy(CNode)</code> does not copy the edges,
+	    <code>CNode.clone()</code> became abstract, <code>MolAtom.clone()</code> does not clone the
+	    edges.</li>
+	</ul>
+	</li>
+    <li>Fixed: memory leak and printing problems with Java Plugin, atom lists
+	in molfile, bugs during reaction drawing, MarvinView stdin
+	reading, etc.</li>
+    </ul>
+    </li>
+<h3><a NAME="v2911"></a>Marvin 2.9.11</h3>
+    <ul>
+    <li>SMARTS improvements: &quot;a&quot; (aromatic) and &quot;A&quot;
+	(aliphatic) atom primitives recognized even outside of brackets,
+	&quot;:&quot; (aromatic bond) symbol recognized at file format
+	recognition.
+    <li>New <a HREF="sketchman.html#parameters.importConv">importConv</a>
+	option (c) to automatically clean up the molecule.</li>
+    <li>Image export improvements
+	<ul>
+	<li><a HREF="../user/images-doc.html#scale">scale</a> option</li>
+	<li><a HREF="../api/chemaxon/struc/Molecule.html#getImageSize(java.lang.String)">getImageSize</a>
+	    method</li>
+	</ul>
+	</li>
+    <li><a HREF="sketchman.html#parameters.bondSpacing">bondWidth</a> applet
+	parameter and setBondWidth bean method.</li>
+    <li>API changes
+	<ul>
+	<li>Molecule.toFormat, toBinFormat, toObject, MolExportModule.open and
+	    MolExportModule.parseOption throw IllegalArgumentException instead
+	    of IOException if bad format string was specified</li>
+	<li>&quot;mag&quot; property renamed to &quot;scale&quot;,
+	    setMag, getMag, maxMag methods became deprecated (MSketchPane,
+	    MSketch, JMSketch, MolPrinter) and replaced by setScale, getScale,
+	    maxScale</li>
+	</ul>
+	</li>
+    <li>Fixed: delayed printing, image export option parsing, cml:A, etc.</li>
+    </ul>
+<h3><a NAME="v2910"></a>Marvin 2.9.10</h3>
+    <ul>
+    <li>Occassional NullPointerException in MolInputStream.canBeJTF() fixed.</li>
+    </ul>
+<h3>Marvin 2.9.9</h3>
+    <ul>
+    <li>Extra templates can be specified using the
+	<a HREF="sketchman.html#parameters.xtmpls">xtmpls</a> parameter.</li>
+    <li>New <a HREF="sketchman.html#parameters.importConv">importConv</a>
+	option (H) to add/remove explicit Hydrogen atoms.</li>
+    <li>Common aromatization and explicit Hydrogen addition/removal options for
+	molecule export modules: a, +a, -a, H, +H, -H</li>
+    <li>Incompatibilities:
+	<ul>
+	<li>In PdbExport, Hydrogens are added with the common &quot;H&quot; option
+	instead of &quot;h&quot;.</li>
+	<li>MolExportModule.getOptions() became protected</li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3>Marvin 2.9.8</h3>
+    <ul>
+    <li>Apache Batik 1.1.1 classes needed for SVG export are included with
+	Marvin Beans and Applications</li>
+    </ul>
+    </li>
+<h3>Marvin 2.9.7</h3>
+    <ul>
+    <li>Image export:
+	<ul>
+	<li><a HREF="../user/svg-doc.html">Scalable Vector Graphics</a> (svg) format.</li>
+	<li><a NAME="v2907H" HREF="../user/images-doc.html#H_off">Implicit
+	    Hydrogen display options</a>
+	    can be specified for the
+	    <a HREF="../user/molconvert.html">MolConverter</a> utility and the
+	    <a HREF="../api/chemaxon/struc/Molecule.html#toObject(java.lang.String)">toObject</a>
+	    and
+	    <a HREF="../api/chemaxon/struc/Molecule.html#toBinFormat(java.lang.String)">toBinFormat</a>
+	    methods.</li>
+	</ul>
+	</li>
+    <li>MViewPane.applyRotationMatrix, applyRotationMatrixes: methods to
+	apply the viewing transformation on the atomic
+	coordinates appearing in the molfile</li>
+    </ul>
+    </li>
+<h3>Marvin 2.9.6</h3>
+    <ul>
+    <li>No autoscale is the default in the sketcher.</li>
+    </ul>
+    </li>
+<h3>Marvin 2.9.3</h3>
+    <ul>
+    <li>MView applet: atom sets can be selected for different coloring, using
+	the <a HREF="viewman.html#parameters.atomSet">set<em>N</em>.<em>M</em></a>
+	parameters.</li>
+	<li>MolPanel changes:
+	<ul>
+		<li>autoScale property was added, it can be accessed via 
+		<em>setAutoScale()</em> and <em>getAutoScale()</em> methods.
+		</li>
+	</ul>	
+	<li>SketchPanel improvements:
+	<ul>
+		<li>
+		Autoscale is avaible both in AWT and Swing versions.</li>
+		<li>
+		depending on the autoScale property automatic scaling 
+		is done when loading molecules</li>
+		<li>
+		The <em>select all</em> function can be triggered by Ctrl+A. </li>
+		<li> Bug fixes.
+	</ul>
+	</li>	
+	
+    </ul>
+    </li>
+<h3>Marvin 2.9.2</h3>
+    <ul>
+    <li>New applet and bean methods:
+	<ul>
+	<li><code>getTabScale(i)</code> to query the magnification in a cell</li>
+	<li><code>getBestTabScale(i)</code> to query the best magnification value for a
+	    cell</li>
+	<li><code>getBestTabScale()</code> to query the smallest best scale value</li>
+	</ul>
+	</li>
+    <li>MViewPane bean only:
+	<ul>
+	<li><a HREF="viewman.html#parameters.autoTabScale">autoTabScale</a>
+	    property enables automatic uniform scaling of cells.</li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3>Marvin 2.9.1</h3>
+    <ul>
+    <li><a NAME="v2901mview">MarvinView improvements</a>
+	<ul>
+	<li>JavaScript code can be called at image click in the applet
+	    using the &quot;js:<em>javascript</em>&quot; syntax.</li>
+	<li>Use <a HREF="viewman.html#parameters.tabScale">tabScale</a> to set
+	    the magnification in the molecule cells (instead of automatic
+	    scaling), use
+	    <a HREF="viewman.html#parameters.winScale">winScale</a> to set
+	    the magnification in the zoom windows (same as the old <code>mag</code>
+	    parameter).</li>
+	<li>Many molecules in one cell. Molecules coming from multi-molecule
+	    files are merged into one molecule object containing
+	    <em>atom sets</em> if MULTISET is specified as the first import
+	    option in the <a HREF="viewman.html#parameters.mol">mol</a>
+	    parameter. To display only the specified sets, use the
+	    <a HREF="viewman.html#parameters.showSets">showSets</a> applet
+	    parameter, the
+	    MView.<a HREF="../api/MView.html#setSetVisible(int, boolean)">setSetVisible</a>()
+	    applet method or the MarvinPane.setInvisibleSets bean method.</li>
+	<li>Atom set colors can be changed using the
+	    <a HREF="viewman.html#parameters.atomSetColor">setColor</a> applet
+	    parameters, the
+	    MView.<a HREF="../api/MView.html#setAtomSetColor(int, int)">setSetColor</a>()
+	    applet method or the <code>MarvinPane.setSetColor()</code> bean method.
+	    </li>
+	<li>&quot;<a HREF="../user/shapely-scheme.html">Shapely</a>&quot; and
+	    &quot;Group&quot; color schemes (for PDB input).</li>
+	</ul>
+	</li>
+    <li>Class library changes
+	<ul>
+	<li>MULTISET can also be passed to the MolImporter constructor
+	    through the option string</li>
+	<li>The <code>newInstance()</code> method of CGraph, Molecule, etc.
+	    became public.
+	    </li>
+	</ul>
+    <li><a NAME="v2901pdb" HREF="../user/pdb-doc.html">PDB</a>
+	<ul>
+	<li>Residue symbol is imported for standard residues.</li>
+	<li>Residue sequence number is imported.</li>
+	<li>New export and import options.</li>
+	<li>Export does not hydrogenize the molecule automatically, use the
+	    <strong>h</strong> option for this.</li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3>Marvin 2.9</h3>
+    <ul>
+    <li><a HREF="../user/mol-csmol-doc.html">Rxnfile, RDfile</a> and
+	Reaction <a HREF="../user/smiles-doc.html">SMILES</a> import/export</li>
+    <li><code>Molecule.getComment()</code> and <code>setComment()</code> methods</li>
+    <li>New MarvinSketch applet parameter and bean methods:
+	<a HREF="sketchman.html#parameters.reactionSupport">reactionSupport</a>,
+	<code>getReactionSupport()</code>, <code>setReactionSupport()</code>.</li>
+    <li><a HREF="../api/chemaxon/marvin/util/MolExportModule.html">MolExportModule</a>
+	API changed: the
+	<a HREF="../api/chemaxon/marvin/util/MolExportModule.html#open(java.lang.String)">open</a>
+	method has a return value</li>
+    </ul>
+    </li>
+<h3>Marvin 2.8.4</h3>
+    <ul>
+    <li>Default value of the &quot;format&quot; property is &quot;DEFAULT&quot;
+	instead of null</li>
+    </ul>
+    </li>
+<h3>Marvin 2.8.3</h3>
+    <ul>
+    <li><a NAME="v2803ini">Beans:</a>
+	<ul>
+	<li>List of properties to save/load to/from the initialization file
+	    (<code>~/.mview</code>, <code>~/.msketch</code>) can be set using the setIniProps method.</li>
+	<li>Beans can be used in applets that cannot access to disk files:
+	    <ul>
+	    <li>Ini file is not loaded
+		automatically, only when <code>sketchPane.loadIni()</code> or
+		<code>viewPane.loadIni()</code> is called.</li>
+	    <li>Ini file is not saved automatically, only if the
+		value of the saveIniEnabled property is true.</li>
+	    </ul>
+	    </li>
+	</ul>
+	</li>
+    <li>The dispopts applet parameter is deprecated, use
+	<a HREF="viewman.html#parameters.implicitH">implicitH</a>,
+	<a HREF="viewman.html#parameters.explicitH">explicitH</a> or
+	<a HREF="viewman.html#parameters.navmode">navmode</a> instead.
+	</li>
+    </ul>
+    </li>
+<h3>Marvin 2.8.1</h3>
+    <ul>
+    <li>New bean methods and applet parameters for customizing 3D rendering:
+	<a HREF="viewman.html#3d.stickThickness">stickThickness</a>,
+	<a HREF="viewman.html#3d.ballRadius">ballRadius</a>.
+	</li>
+    <li><a NAME="v2801image">java.awt.Image</a> objects can be created from
+	molecules using
+	mol.<a HREF="../api/chemaxon/struc/Molecule.html#toObject(java.lang.String)">toObject</a>("image");
+	</li>
+    <li><a HREF="formats.html#ioapi">API</a> for import module
+	creation (MolImportIface).</li>
+    <li>Import file format can be specified, by writing
+	"filename(format:)" or "filename(format:options)" in the
+	<a HREF="viewman.html#parameters.mol">mol</a> applet parameter,
+	or in the command line of <a HREF="../user/molconvert.html">molconvert</a>,
+	<a HREF="../user/msketch.html">msketch</a>
+	or <a HREF="../user/mview.html">mview</a>.
+	</li>
+    <li>MSketchPane: <code>setMol(File, String)</code> method added, where string can
+	contain the import options, in one of the following forms:
+	"format:options", "format:", "options". The old <code>setMol(File)</code> method
+	removed. MViewPane: <code>setM(int, File, String)</code> added.</li>
+    <li><code>MolExportModule.sbuf</code> field renamed to <code>stringBuffer</code>.</li>
+    <li><code>MolAtom.getAbbrev()</code> and <code>abbrevOf</code> are deprecated, use <code>getSymbol()</code> and
+	<code>symbolOf()</code> instead.</li>
+    </ul>
+    </li>
+<h3>Marvin 2.8</h3>
+    <ul>
+    <li>New 3D <a HREF="viewman.html#3d.rendering">rendering mode</a>: sticks.
+	</li>
+    <li>Display quality can be controlled with an
+	<a HREF="viewman.html#parameters.dispQuality">applet parameter</a>.
+	</li>
+    <li>Molecule import/export:
+	<ul>
+	<li>New XYZ import options:
+	    <a HREF="../user/xyz-doc.html#option_f">bond length cut-off</a> (f...) and
+	    <a HREF="../user/xyz-doc.html#option_Z">maximum number of connections</a>
+	    (C4,H1,Cl1)</li>
+	<li><a HREF="viewman.html#parameters.importConv">Automatic
+	    dearomatization</a> after molecule loading.</li>
+	<li>All export modules recognize the
+	    <a HREF="../user/basic-export-opts.html">&quot;a&quot;,
+	    &quot;+a&quot; (aromatize) and &quot;-a&quot; (dearomatize)</a>
+	    options.
+	    Example: &quot;<a HREF="../user/smiles-doc.html">smiles</a>:a&quot;
+	    </li>
+	</ul>
+	</li>
+    <li>Class library, beans
+	<ul>
+	<li><code>Molecule.aromatize()</code></li>
+	<li>Bugfix: <code>MViewPane.getCellCount()</code> returns the total number of cells,
+	    not just the number of visible cells.
+	    </li>
+	<li>PropertyChangeEvents generated when the molecule is changed in the
+	    <a HREF="sketchman.html#propchanges.mol">sketcher</a> or
+	    <a HREF="viewman.html#propchanges.mols">viewer</a> component.</li>
+	<li>Event handling fix: PropertyChangeEvent source is the
+	    the bean component, not the internal SketchPanel or ViewPanel.</li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3>Marvin 2.7.11</h3>
+    <ul>
+    <li>New <a HREF="viewman.html#3d.rendering">rendering</a> style:
+	&quot;ball &amp; stick&quot;.</li>
+    <li>Class library, beans:
+	<ul>
+	<li>New <a HREF="../user/images-doc.html">image export options</a>:
+	    rendering style and color scheme.</li>
+	<li>Image export options must be separated by commas in format
+	    descriptor strings.</li>
+	<li>Molecule.toBinFormat method to convert molecules into binary
+	    formats such as JPEG/PNG/PPM.</li>
+	<li>The type of the <code>rendering</code>, <code>colorScheme</code>,
+	    <code>implicitH</code>, <code>downWedge</code>, <code>navmode</code>
+	    properties in
+	    <a HREF="viewman.html#propchanges">PropertyChange events</a>
+	    is <code>String</code> just like the argument type of their
+	    <code>set</code> methods.
+	    (Previously, the two types did not match.)
+	    </li>
+	</ul>
+	</li>
+    </ul>
+<h3>Marvin 2.7.9</h3>
+    <ul>
+    <li>Binary export formats: <a HREF="../user/gzip-doc.html">GZIP</a>,
+	<a HREF="../user/jpeg-doc.html">JPEG</a>, <a HREF="../user/png-doc.html">PNG</a>,
+	<a HREF="../user/ppm-doc.html">PPM</a></li>
+    <li>User defined export module creation by overriding
+	<code>chemaxon/marvin/util/MolExportModule</code>.</li>
+    </ul>
+    </li>
+<h3>Marvin 2.7.6</h3>
+    <ul>
+    <li>Text field (<code>T</code>) component for MView
+	<a HREF="viewman.html#advanced">tables</a>.</li>
+    <li><a HREF="viewman.html#parameters.cacheMols">cacheMols</a> applet
+	parameter for caching loaded molecules.</li>
+    <li><a HREF="viewman.html#parameters.loadMols">loadMols</a> applet
+	parameter for preloading molecules.</li>
+    <li><code>Molecule.getProperty(key)</code> is not case sensitive.</li>
+    </ul>
+    </li>
+<h3>Marvin 2.7.5:</h3> Optional <a HREF="viewman.html#3d.spin"></a>spin vector.
+    </li>
+<h3>Marvin 2.7</h3>
+    <ul>
+    <li>File formats
+	<ul>
+	<li><em>New:</em> <a HREF="../user/xyz-doc.html#import">XYZ import</a></li>
+	<li><em>New:</em> <a HREF="../user/mol-csmol-doc.html#molV3">Extended Molfile
+	    (V3.0) import.</a></li>
+	<li><a HREF="../user/cml-doc.html">CML export</a> options changed,
+	    cml:1 -&gt; cml, cml:0 -&gt; cml:A, cml:A writes three coordinates
+	    for each atom even if the molecule is 2D
+	    (so <em>Jmol</em> can read the file)
+	    </li>
+	</ul>
+	</li>
+    <li>MView applet:
+	<ul>
+	<li><strong>Animated</strong> XYZ files can be displayed</li>
+	<li>New parameters:
+	    <a HREF="viewman.html#3d.animFPS">animFPS</a>,
+	    <a HREF="viewman.html#3d.animDelay">animDelay</a>,
+	    <a HREF="viewman.html#3d.animSync">animSync</a>.
+	    </li>
+	</ul>
+	</li>
+    <li>MarvinSketch Applet/Bean:
+	<ul>
+	<li><em>New:</em> <strong>File</strong>/<strong>New</strong> menu item in the bean.
+	    If your application using the bean has a
+	    <strong>File</strong>/<strong>New&nbsp;Window</strong>
+	    menu item, then <strong>File</strong>/<strong>New</strong> should be moved to
+	    <strong>File</strong>/<strong>New</strong>/<strong>Clear&nbsp;current</strong>, and
+	    <strong>File</strong>/<strong>New&nbsp;Window</strong> should be moved to
+	    <strong>File</strong>/<strong>New</strong>/<strong>New&nbsp;Window</strong>. See the MarvinSketch
+	    application source
+	    (<code>marvinbeans/examples/sketch/chemaxon/marvin/Sketch.java</code>)
+	    for details.
+	    </li>
+	<li>&quot;Visual fragment placement&quot; can be disabled: use the
+	    simpView parameter or the
+	    <strong>View</strong>/<strong>Misc</strong>/<strong>Object&nbsp;in&nbsp;Hand</strong>
+	    option if you do not like to see what you are doing.
+	    </li>
+	<li><a HREF="#2607bondlen">Bond length related changes.</a>
+	</ul>
+	</li>
+    <li>Class library:
+	<ul>
+	<li>Changes related to atomic coordinates and transformations
+	    <ul>
+	    <li><em>New:</em> CTransform3D class for general 3D transformations
+	    (like in Java3D)</li>
+	    <li>Molecule.rot(...), tra(...), magnify(...) removed, use
+	    transform(CTransform3D T) instead</li>
+	    <li>Atom coordinates became absolute</li>
+	    <li><code>Molecule.getO()</code> and <code>setO()</code> replaced by <code>getLocation()</code> and
+	    <code>setLocation()</code></li>
+	    <li><code>Molecule.getCenter()</code> renamed to <code>calcCenter()</code>, and it
+		calculates center of mass instead of geometrical center</li>
+	    <li><em>New:</em><code>Molecule.moveTo(location)</code></li>
+	    </ul>
+	    </li>
+	<li><code>CGraph.indexOf</code> changes
+	    <ul>
+	    <li>Splitted into two methods, <code>indexOf(CNode atom)</code>
+		and <code>indexOf(CEdge bond)</code></li>
+	    <li>Speed improvement.
+		CNode and CEdge has an index field that contains the object's
+		index in its parent graph.
+		Calling the parent graph's indexOf method returns the value
+		of this field. The index is only searched (in the old way) when
+		the CGraph is not the direct parent.</li>
+	    </ul>
+	    </li>
+	<li>Valence rules
+	    <ul>
+	    <li><em>New:</em> <code>MolAtom.ionChargeOf(Z)</code></li>
+	    <li><code>MolAtom.negoxOf(Z, boolean)</code> removed, <code>negOxOf(Z)</code>, <code>posOxOf(Z)</code>
+		created instead</li>
+	    </ul>
+	    </li>
+	<li>SDF properties
+	    <ul>
+	    <li>&quot;name&quot; and &quot;informat&quot; are no longer stored
+		in the properties hashtable, they became fields of Molecule
+		</li>
+	    <li><code>Molecule.getProperties()</code> removed</li>
+	    <li><code>Molecule.clearForImport()</code> -&gt; <code>clearForImport(name)</code></li>
+	    <li><em>New</em> methods in Molecule:
+		getName, setName, getInputFormat, setInputFormat,
+		getPropertyCount(), getPropertyKey(n), getPropertyKeys()</li>
+	    </ul>
+	    </li>
+	<li><a HREF="#2607bondlen">Bond length related changes.</a>
+	</ul>
+	</li>
+    <li><a NAME="2607bondlen">API simplification:</a>
+	internal bond length of Marvin fixed to be MolBond.CCLENGTH
+	<ul>
+	<li>bondlen, rescaling applet/bean parameters, setBondlen, getBondlen,
+	    setRescaling, getRescaling methods removed, use
+	    <code>MSketch.getMol(&quot;<a HREF="../user/mol-csmol-doc.html#options">mol:b=XXX</a>&quot;)</code>
+	    instead of
+	    &lt;param NAME=&quot;bondlen&quot; VALUE=&quot;XXX&quot;&gt;</li>
+	<li>The bondlen argument of <code>Molecule.clean(dim, bondlen, opts)</code> removed,
+	    use <code>clean(dim, opts)</code></li>
+	<li><code>MolBond.DEFAULT_LENGTH</code> renamed to <code>MolBond.CCLENGTH</code></li>
+	<li><code>MolBond.getDesiredLengthRatio()</code> removed, use the new
+	    dimension dependent <code>Molecule.getDesiredLength(bond)</code> method instead
+	    </li>
+	<li><code>MolAtom.covalentRadiusOf(Z)</code> -&gt; <code>covalentRadiusOf(Z, bondOrder)</code></li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3>Marvin 2.6</h3>
+    <ul>
+    <li>The &quot;style&quot; applet parameter renamed to &quot;
+	<a HREF="sketchman.html#3d.rendering">rendering</a> because of
+	a conflict with a Netscape keyword. The getStyle, setStyle methods
+	of the beans are also renamed to getRendering, setRendering.
+	</li>
+    <li>New <a HREF="sketchman.html#3d.rendering">rendering</a> style:
+	&quot;Wireframe with Knobs&quot;.</li>
+    <li>Atoms can be highlighted in the MView/JMView applets by specifying a
+	<a HREF="viewman.html#parameters.selection">selection</a>.</li>
+    <li>All query atoms and extra bond types can be enabled by omitting the
+	<a HREF="sketchman.html#parameters.queryAtoms"><code>queryAtoms</code></a>,
+	<a HREF="sketchman.html#parameters.atomStrings"><code>atomStrings</code></a>,
+	and <a HREF="sketchman.html#parameters.extraBonds"><code>extraBonds</code></a>
+	parameters.
+	</li>
+    <li>&quot;Cis or Unspecified&quot; and &quot;Trans or Unspecified&quot;
+	bond types; &quot;ctu&quot; in
+	<a HREF="sketchman.html#parameters.extraBonds"><code>extraBonds</code></a>.
+	</li>
+    <li>Cleaning options can be specified using the
+	<a HREF="sketchman.html#parameters.cleanOpts"><code>cleanOpts</code></a>
+	applet parameter.
+	</li>
+    <li>Optional down wedge bond orientation (MDL or Daylight) using the
+	<a HREF="sketchman.html#parameters.downWedge"><code>downWedge</code></a>
+	parameter.</li>
+    <li>New MView/JMView applet methods:
+	<ul>
+	<li><code>getAtomCount(moleculeIndex)</code> to query the number of atoms
+	    in a molecule cell</li>
+	<li><code>isSelected(moleculeIndex, atomIndex)</code> to query whether the specified
+	    atom is selected or not</li>
+	<li><code>selectAtom(moleculeIndex, atomIndex, select)</code> to (un)select
+	    an atom</li>
+	<li><code>selectAllAtoms(moleculeIndex, select)</code> to (un)select all
+	    atoms</li>
+	</ul>
+	</li>
+    <li>Real scrolling in MView!
+	<ul>
+	<li>The applet is scrollable if 
+	    <a HREF="viewman.html#advanced.visibleRows">visibleRows</a>
+	    is less than 
+	    <a HREF="viewman.html#advanced.rows">rows</a> or
+	    <a HREF="viewman.html#advanced.visibleCols">visibleCols</a>
+	    is less than 
+	    <a HREF="viewman.html#advanced.cols">cols</a>.
+	    </li>
+	<li>The names of the layout<em>i</em> and param<em>i</em>
+	    <strong>parameters changed</strong> to
+	    <a HREF="viewman.html#advanced.layout"><code>layout</code></a> and
+	    <a HREF="viewman.html#advanced.param"><code>param</code></a>
+	    for the molecule cells, <code>layoutH</code> and <code>paramH</code>
+	    for the optional header.
+	    </li>
+	<li>The <code>scroll</code> parameter ceased to exist.</li>
+	</ul>
+	</li>
+    <li>Class library:
+	<ul>
+	<li>RgMolecule for R-groups</li>
+	<li>Thread safe API for molecules</li>
+	<li>New methods in CGraph: <code>getCtab()</code>, <code>getBtab()</code>, <code>fragments()</code>,
+	    <code>findFrag()</code>, <code>getFragIds()</code>, <code>getLock()</code>, <code>getParent()</code>, etc.</li>
+	<li>New methods in CNode: <code>getLigand(i)</code>, <code>getEdge(i)</code>,
+	    <code>getEdgeCount()</code>
+	    </li>
+	<li><code>CNode.findFrag()</code> and <code>CGraph.fuseFrag()</code> removed</li>
+	<li><code>CGraph.getEdge(i)</code>, <code>CGraph.getNode(i)</code>, <code>Molecule.getAtomArray()</code>
+	    created;
+	    <code>CGraph.getEdges()</code>, <code>CGraph.getNodes()</code>, <code>Molecule.getAtoms()</code>,
+	    <code>Molecule.getBonds()</code> removed</li>
+	<li><code>Molecule.reuseAtom(Z, i)</code> and <code>Molecule.endReuse(na)</code> created,
+	    <code>MolAtom.reuse(Z, mol, i)</code> removed</li>
+	<li>The two-argument <code>MolAtom.setCharge</code> method removed. Instead of
+	    <code>a.setCharge(charge, false)</code>, use <code>a.setCharge(charge);
+	    a.setFlags(0, MolAtom.FIX_CHARGE);</code></li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3>Marvin 2.5</h3>
+    <ul>
+    <li><a HREF="../user/smiles-doc.html">SMILES</a> import</li>
+    <li>Class library:
+	<ul>
+	<li><code>CGraph.fuseFrag(CNode a)</code> has only one argument.</li>
+	<li>CGraph.removeNode and removeEdge instead of remove and removeRef;
+	    removeEdge leaves edge.node1 and edge.node2 unchanged
+	    (they were set to <code>null</code> in removeRef).</li>
+	<li><code>MolBond.setFlags(int flags, int mask)</code> method introduced.</li>
+	<li>Stereochemistry: double bonds can also be UP/DOWN
+	    (not just CIS/TRANS);
+	    CIS and TRANS information can also be stored (not just EITHER).
+	    The MolBond.getStereo and setStereo methods and the UP, DOWN,
+	    EITHER constants ceased to exists, the
+	    STEREO1_UP, STEREO1_DOWN,
+	    STEREO1_EITHER, STEREO2_CIS, STEREO2_TRANS,
+	    STEREO2_EITHER, STEREO_CARE flags introduced instead.</li>
+	<li>MolBond.getTopology/setTopology ceased to exist, the
+	    TOPOLOGY_RING, TOPOLOGY_CHAIN flags introduced instead.</li>
+	</ul>
+	</li>
+    </ul>
+    </li>
+<h3>Marvin 2.4.2</h3>
+    <ul>
+    <li><a NAME="v2402scroll">Scrolling</a> in the MView and JMView applets.
+	See the <a HREF="viewman.html#advanced.visibleRows">visibleRows</a>
+	parameter.</li>
+    </ul>
+    </li>
+<h3>Marvin 2.4</h3>
+    <ul>
+    <li><a NAME="v2400colors">Structures are colorful by default.</a>
+	Colorization can be disabled by setting <code>colors=mono</code>,
+	both in the
+	<a HREF="sketchman.html#parameters.colorScheme">sketcher</a> and the
+	<a HREF="viewman.html#parameters.colorScheme">viewer</a>.</li>
+    <li>Spacefill rendering can be enabled instead of wireframe by using
+	the <a HREF="viewman.html#3d.rendering">style</a> parameter.</li>
+    <li>Atom labels can be hidden with the <code>labels</code> parameter.</li>
+    <li>Up/down and cis/trans either
+	<a HREF="sketchman.html#parameters.extraBonds">bonds</a></li>
+    <li>Classes in <code>chemaxon/beans</code> moved to
+	<code>chemaxon/marvin/beans</code>. The MarvinSketch bean is
+	<code>chemaxon.marvin.beans.MSketchPane</code>, the MarvinView bean is
+	<code>chemaxon.marvin.beans.MViewPane</code>.</li>
+    </ul>
+    </li>
+<h3>Marvin 2.3.1</h3>
+    The basic applet tag for MSketch and MView is simplified,
+    and also generalized to work with or without Sun's Java Plugin.
+    </li>
+<h3>Marvin 2.3</h3>
+    <ul>
+    <li>New file format: <a HREF="../user/pdb-doc.html">PDB</a> (for simple, non-macro
+	molecules)</li>
+    <li><a NAME="v2300tmpls">Changes</a> in
+	<a HREF="sketchman.html#parameters.tmpls">template</a> handling
+	<ul>
+	<li>The four template sets that come with Marvin became default.
+	    Templates only have to be specified as applet parameter if
+	    you need a different template set.</li>
+	<li>Templates moved to directory <code>chemaxon/marvin/templates/</code>
+	    (from <code>templates/</code>).</li>
+	<li>File extension changed to <code>.t</code> (from <code>.cssdf</code>).<br>
+	    This change was required because of a Netscape restriction
+	    related to the loading of JAR file resources.
+	<li>The JAR files marvin.jar and jmarvin.jar contain
+	    <code>chemaxon/marvin/templates/generic.t</code>, so the
+	    <font COLOR="red">firewall</font> problem ceased for the
+	    generic template set.<br>
+	    If needed, the additional templates may also be put into the
+	    JARs by the user with the JAR utility
+	    (part of <a HREF="http://java.sun.com/jdk/">Sun's JDK</a>).
+	    However, doing this increases the JAR size with a noticable
+	    amount.
+	</ul>
+	</li>
+    <li>The <code>MolImport</code> module moved into marvin.jar because of the
+	firewall problem.</li>
+    </ul>
+<h3>Marvin 2.2</h3>
+    <ol>
+    <li>New
+	<a HREF="sketchman.html#parameters.extraBonds">query bond types</a>:
+	&quot;single or double&quot;, &quot;single or aromatic&quot;,
+	&quot;double or aromatic&quot;, &quot;chain&quot; and
+	&quot;ring&quot;.</li>
+    <li>SMARTS export handles the heteroatom (Q in molfile) type
+	intelligently.</li>
+    <li>The heteroatom and the any atom types are specified in the
+	<a HREF="sketchman.html#parameters.queryAtoms">queryAtoms</a> parameter.
+	The <code>anyatom</code> parameter became deprecated but is
+	still present for backward compatibility, with slightly changed
+	behaviour. Specifying <code>anyatom</code> with any value
+	(empty string also) is equivalent to specifying
+	&quot;<code>any,hetero</code>&quot; in <code>queryAtoms</code>.</li>
+    <li>Cell selection in MarvinView can be controlled using the
+	<a HREF="viewman.html#parameters.selectable">selectable</a>
+	parameter.</li>
+    <li>New methods in MarvinSketch:
+	<code>getBondlen</code>.
+	<code>getMag</code>,
+	<a HREF="../api/MSketch.html#getPiece(java.lang.String)"><code>getPiece</code></a>,
+	<code>getRescaling</code>.
+	New method in MarvinView:
+	<a HREF="../api/MView.html#setSelectedIndex(int)"><code>setSelectedIndex</code></a>,
+	The <code>setDispopts</code> method ceased to exist.
+	Display options can be set using the dispopts applet parameter only.
+	</li>
+    <li><a NAME="v2200noclasses">In Marvin 2.2 and later, the Java classes come
+	only in packaged forms:</a> marvin.jar and marvin.zip.
+	It means that support is ceased for those archaic Java-compatible
+	browsers that cannot handle the <code>ARCHIVE</code> option in the applet
+	tag (Netscape 2 and MS Explorer 3).
+	Reasons:
+	<ol>
+	<li>Under certain circumstances, some Netscape versions try to load the
+	class files one by one instead of using <code>marvin.jar</code>. The
+	simplest way to keep Netscape from doing so is to remove the class
+	files.</li>
+	<li>Most of our users don't understand what <code>ARCHIVE</code> is, and
+	don't use it properly. The consequence is a significantly increased
+	download time.<br>
+	From now, a missing <code>ARCHIVE</code> option cannot be left unnoticed,
+	because Marvin will simply not run. Much better than turning your
+	user's hair gray.</li>
+	<li>Marvin is rarely tested in the oldest (and buggiest) browsers.</li>
+	</ol>
+	<p><small>
+	If you are absolutely sure that you want your Marvin page work with
+	Netscape 2 and MS Explorer 3 too, you must unpack marvin.zip manually.
+	However, we do not recommend this, because you will probably do
+	something wrong. For example, once you will upgrade Marvin and
+	forget to unpack the new marvin.zip. Mixing two different versions
+	will result in malfunction.
+	</small></p>
+	</li>
+    </ol>
+    </li>
+<h3>Marvin 2.1.5:</h3> Molecules in MarvinView are only editable if the
+    <a HREF="viewman.html#parameters.editable"></a>editable applet parameter
+    is set.</li>
+<h3>Marvin 2.1.1</h3>
+    <ul>
+    <li><a HREF="../api/MView.html#getCellCount()">getCellCount()</a>
+	method in MarvinView.</li>
+    <li>The <em>anchor</em> parameter in the
+	<a HREF="viewman.html#advanced.layout">layout</a> also sets label
+	alignment.</li>
+    </ul>
+    </li>
+<h3>Marvin 2.1</h3>
+    <ol>
+    <li>CML (XML) export.</li>
+    <li>The
+	<a HREF="../api/MView.html#getSelectedIndex()">getSelectedIndex()</a>
+	method in MarvinView.
+	</li>
+    <li>Default value of the <code>rescaling</code>
+	parameter in MarvinSketch is changed to &quot;<code>mag</code>&quot;
+	because generally this value is the most useful.</li>
+    <li>The MarvinView-only package ceased to exist, the new Edit/Structure
+	function made it irrelevant.</li>
+    </ol>
+    </li>
+<h3>Marvin 2.0</h3>
+    <ol>
+    <li><a NAME="marvin2000templates"><strong>Templates in MarvinSketch:</strong></a>
+	From now on templates are stored in SDfiles (.sdf) or
+	compressed SDfiles (.cssdf).
+	The template file can be optionally compressed with GZIP, but the
+	applet will only work in Java 1.1 compatible browsers in that case.
+	The <code>tmplmol</code>, <code>tmplpar</code>, and <code>ntmpls</code> parameters
+	<strong>no longer exist</strong> and are <strong>replaced by</strong> the much more easy
+	to use <a HREF="sketchman.html#parameters.tmpls">tmpls</a> parameters.
+	The unit rotation angle can be specified as a new Marvin-specific
+	property <code>M  MRV PHI</code> in the template molecule files
+	(instead of the <code>tmplpar</code> parameters).
+	</li>
+    <li><strong>Applet tags changed:</strong>
+	Rewrite your applet tags according to the
+	<em>last solution</em> in <em>MarvinSketch Example 1</em>.
+	This applet tag can load the AWT and the Swing applets as well.
+	<br>
+	Note that the file <code>&amp;{marvinjar};</code> is not packaged now
+	(its name caused too many problems), so you must rewrite your applet
+	tags, otherwise the download time with MS Explorer will not be
+	optimal.
+	</li>
+    <li><strong>New in MarvinSketch:</strong>
+	The <a HREF="sketchman.html#parameters.menubar">menubar</a> parameter
+	enables or disables the menu bar in the Swing sketcher.
+	</li>
+    <li><a NAME="marvin2000animate"><strong>New in MarvinView:</strong></a>
+	Molecules start rotating in 3D automatically if you set the
+	<a HREF="viewman.html#3d.animate">animate</a>
+	parameter in MarvinView.
+	</li>
+    <li><a NAME="marvin2000border"><strong>New in MarvinView:</strong></a>
+	<a HREF="viewman.html#advanced.border">Border</a> between cells in
+	molecule tables.
+	</li>
+    <li><strong>Change in MarvinView:</strong>
+	From now the colors can be specified in the same way as in
+	MarvinSketch.
+	Molecule background is <a HREF="viewman.html#parameters.molbg">molbg</a>,
+	normal table background is
+	<a HREF="viewman.html#parameters.background">bgcolor</a>.
+	(Previously, bgcolor was also the molecule background.)
+	</li>
+    <li><a NAME="marvin2000javascripter"><strong>JavaScripter</strong></a>
+	applet ceased to exist.<br>
+	Its functionality is moved into a MarvinView module that is
+	automatically loaded at the first <code>js:</code> action.<br>
+	<blockquote>
+	<small>
+	In the past, JavaScripter was required because scripting applets are
+	not cached by older browsers (namely Netscape 3). An applet that has
+	the MAYSCRIPT attribute is loaded from the net for each page that
+	contains it. In Netscape 4 and later, there is no such problem. On the
+	other hand, a bug (or feature?) in Netscape 4.6 makes the use of
+	JavaScripter impossible as a separate applet. That's why we merged the
+	two applets now.
+	</small>
+	</blockquote>
+	</li>
+    <li><a NAME="marvin2000formats"><strong>New:</strong></a>
+	Three new molecule file formats:
+	<a HREF="../user/sybyl-doc.html">&quot;sybyl&quot;</a>
+	(the <em>SybylImport</em> and <em>SybylExport</em> modules),
+	<a HREF="../user/xyz-doc.html">&quot;xyz&quot;</a> (<em>XyzExport</em>),
+	and <a HREF="../user/pov-doc.html">&quot;pov&quot;</a> (<em>PovExport</em>).
+	</li>
+    <li><strong>New and changed:</strong>
+	The &quot;<code>implicitH</code>&quot; option in the dispopts applet
+	parameter instead of the <code>showH</code> parameter which ceased to exist.
+	<ul>
+	<li>&quot;<code>off</code>&quot; -&gt; &quot;<code>implicitH=off</code>&quot;</li>
+	<li>&quot;<code>term</code>&quot; -&gt; &quot;<code>implicitH=heteroterm</code>&quot;
+	    (because &quot;<code>term</code>&quot; ceased to exist)</li>
+	<li>&quot;<code>hetero</code>&quot; -&gt;
+	    &quot;<code>implicitH=hetero</code>&quot;</li>
+	<li>&quot;<code>heteroterm</code>&quot; -&gt;
+	    &quot;<code>implicitH=heteroterm</code>&quot; (default)</li>
+	<li>&quot;<code>all</code>&quot; -&gt;
+	    &quot;<code>implicitH=all</code>&quot;</li>
+	</ul>
+	New features: if you want the explicit H atoms to be invisible, use
+	&quot;<code>explicitH=off</code>&quot; (default: &quot;<code>all</code>&quot;).
+	<br>
+	If you have 3D molecules, use &quot;dim=3&quot; for MarvinView, to
+	let him know that you want 3D rotation as the default mouse drag
+	action.
+	</li>
+    </ol>
+    </li>
+<h3>Marvin 1.3</h3>
+    <ol>
+    <li><strong>New:</strong>
+	The <a HREF="sketchman.html#parameters.atomStrings">atomStrings</a>
+	parameter enables the usage of atom aliases and SMARTS strings in the
+	sketcher.
+	</li>
+    <li><strong>Incompatible change:</strong>
+	The <code>setAtoms</code>, <code>setNoatoms</code>,
+	<code>setNobonds</code> methods, and the <code>atoms</code>,
+	<code>noatoms</code>, <code>nobonds</code> 
+	applet parameters ceased to exist and replaced by
+	<a HREF="sketchman.html#parameters.elements"><code>elements</code></a>,
+	<code>anyatom</code>,
+	<a HREF="sketchman.html#parameters.queryAtoms"><code>queryAtoms</code></a>,
+	and
+	<a HREF="sketchman.html#parameters.extraBonds"><code>extraBonds</code></a>.
+	</li>
+    <li><strong>New:</strong>
+	The new <a HREF="sketchman.html#parameters.detach">detach</a>
+	parameter makes it possible to detach the sketcher from the web page
+	immediately when the applet is loaded.
+	</li>
+    <li><strong>Recommended:</strong>
+	In molfiles and compressed molfiles written directly in HTML, you
+	should end all the molfile lines with backslash <strong>and</strong> also a real
+	newline character like here:
+	<blockquote>
+	<pre>
+...
+000Wun+V70\
+iuzV000W60\
+iuzVGS2W60\
+K72WGS2W60\
+...
+	</pre>
+	</blockquote>
+	Omitting the real newlines like in
+	&quot;<code>000Wun+V70\iuzV000W60\iuzVGS2W60\K72WGS2W60\</code>&quot;,
+	seemed to be safe so far, while the
+	Marvin applets were tested only in Sun, Netscape, Symantec, and
+	Microsoft JVM's.
+	The reason for discontinuing this practice is that the
+	AppletViewer in Kaffe 1.0b3
+	has problems if you write more than one molfile lines in one HTML line.
+	</li>
+    <li><strong>Removed:</strong>
+	Backward compatibility with the old style (1.0-1.1) usage of
+	<code>getMol()</code> and <code>getM()</code> removed.
+	It didn't work with MSIE anyway.
+	</li>
+    </ol>
+    </li>
+<h3>Marvin 1.2</h3>
+    <ol>
+    <li><strong>Incompatible change:</strong>
+	<a HREF="../api/MSketch.html#getMol(java.lang.String)">MSketch.getMol(x)</a> and
+	<a HREF="../api/MView.html#getM(int, java.lang.String)">MView.getM(n,x)</a>.
+	<p>
+	In Marvin 1.1.4 and before, <code>x</code> was a boolean variable
+	specifying the format of the generated molfile: MDL mol
+	(<code>false</code>) or compressed mol (<code>true</code>).
+	<p>
+	From version 1.2, <code>x</code> is a <em>format descriptor string</em>
+	to ease the introduction of new molecule file formats as Marvin evolves.
+	MDL molfile format is denoted by the string
+	&quot;<code>mol</code>&quot;,
+	compressed mol is &quot;<code>csmol</code>&quot;,
+	SMILES is &quot;<code>smiles</code>&quot;.
+	</li>
+    <li><strong>New:</strong>
+	The <a HREF="sketchman.html#parameters.preload">preload</a>
+	applet parameter.
+	<p>
+	&quot;Extra features&quot; are planned to be available as external
+	modules in future releases of Marvin.
+	External modules are downloaded only when needed.
+	In Marvin 1.2.3, MDL mol, compressed mol and SMILES export are
+	external modules.
+	<p>
+	The problem is that older browsers such as Netscape 3, cannot
+	load the external modules when the module is needed by a public method
+	which is called from JavaScript.
+	So if you want your web page containing Marvin to work perfectly with
+	earlier releases of Netscape than 4, then you should preload all
+	the modules which may be needed by JavaScript calls.
+	<p>
+	For example, if you are using
+	<code>MSketch.getMol(&quot;smiles&quot;)</code> on your page,
+	then you should also have the following applet parameter:<br>
+	<code>&lt;param NAME=&quot;preload&quot; VALUE=&quot;SmilesExport&quot;&gt;</code>.
+	</li>
+    </ol>
+    </li>
+</ul>
+
+</body>
+</html>

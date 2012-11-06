@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 1.1 - The &lt;applet&gt; tag</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinView Example 1.1</h1>
+
+The basic applet tag that works with AWT, Swing, with and without Java-Plugin
+is similar to the one in
+<a HREF="example-sketch1.1.html">MarvinSketch Example 1.1</a>.
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<em>// marvin_jvm = &quot;builtin&quot;; // &quot;builtin&quot; or &quot;plugin&quot;</em>
+<em>// marvin_gui = &quot;awt&quot;; // &quot;awt&quot; or &quot;swing&quot;</em>
+<strong>mview_begin(</strong>&quot;../..&quot;<strong>,</strong> 200<strong>,</strong> 200<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.mol">mol</a>&quot;<strong>,</strong> &quot;../../mols-2d/caffeine.mol&quot;<strong>);</strong>
+<strong>mview_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+// marvin_jvm = "builtin"; // "builtin" or "plugin"
+// marvin_gui = "awt"; // "awt" or "swing"
+mview_begin("../..", 200, 200);
+mview_param("mol", "../../mols-2d/caffeine.mol");
+mview_end();
+//-->
+</script>
+</center>
+
+<p><em>Warning:</em>
+Scripting (JavaScript to Java communicaton) does <em>not</em> work in
+Netscape 4.x with the Java Plugin. Use the built-in JVM if you need scripting.
+
+<p>The traditional applet tag for MarvinView/AWT and the built-in JVM is the
+following:
+<blockquote>
+<pre>
+<strong>&lt;applet CODEBASE</strong>="../.." <strong>ARCHIVE</strong>=&quot;marvin.jar&quot; <strong>CODE</strong>=&quot;MView&quot; <strong>WIDTH</strong>=200 <strong>HEIGHT</strong>=200<strong>&gt;</strong>
+<strong>&lt;param NAME</strong>=&quot;<a HREF="viewman.html#parameters.mol">mol</a>&quot; <strong>VALUE</strong>=&quot;../../mols-2d/caffeine.mol&quot;<strong>&gt;</strong>
+<strong>&lt;strong&gt;</strong>(YOU CANNOT SEE A JAVA APPLET HERE)<strong>&lt;/strong&gt;</strong>
+<strong>&lt;/applet&gt;</strong>
+</pre>
+</blockquote>
+
+To use Swing instead of AWT, you have change the following attributes:
+<code><strong>ARCHIVE</strong>=&quot;jmarvin.jar&quot;</tt> and
+<code><strong>CODE</strong>=&quot;JMView.class&quot;</tt>.
+
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+<p>
+<a HREF="example-view1.2.html">And now let us customize it.</a>
+
+</body>
+</html>

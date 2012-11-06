@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 2.5 - Background colors, 3D, rotation</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinView Example 2.5</h1>
+
+All the molecules are 3D now. Other changes:
+<ul>
+<li>table background color is the same as the page color</li>
+<li>molecule background is black</li>
+<li>default mouse drag action is &quot;Rotate in 3D&quot;</li>
+<li>two molecules are rotating</li>
+<li>the rendering style is &quot;ball and stick&quot;</li>
+</ul>
+
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+mview_begin("../..", 201, 241);
+mview_param("background", "#ffffff");
+mview_param("molbg", "#000000");
+mview_param("navmode", "rot3d");
+mview_param("animate", "1,2");
+mview_param("rendering", "ballstick");
+mview_param("rows", "2");
+mview_param("cols", "2");
+mview_param("border", "1");
+mview_param("layout", ":2:1:M:1:0:1:1:L:0:0:1:1:c:n:1:1");
+mview_param("param", ":M:100:100:L:10b");
+mview_param("cell0", "|../../mols-3d/nci1949.csmol|1949");
+mview_param("cell1", "|../../mols-3d/nci1683.csmol|1683");
+mview_param("cell2", "|../../mols-3d/nci1659.csmol|1659");
+mview_param("cell3", "|../../mols-3d/nci15976.csmol|15976");
+mview_end();
+//-->
+</script>
+</center>
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>mview_begin(</strong>&quot;../..&quot;<strong>,</strong> 201<strong>,</strong> 241<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.background">background</a>&quot;<strong>,</strong> &quot;#ffffff&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.molbg">molbg</a>&quot;<strong>,</strong> &quot;#000000&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.navmode">navmode</a>&quot;<strong>,</strong> &quot;rot3d&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#3d.animate">animate</a>&quot;<strong>,</strong> &quot;1,2&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#3d.rendering">rendering</a>&quot;<strong>,</strong> &quot;ballstick&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.rows">rows</a>&quot;<strong>,</strong> &quot;2&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cols">cols</a>&quot;<strong>,</strong> &quot;2&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.border">border</a>&quot;<strong>,</strong> &quot;1&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.layout">layout</a>&quot;<strong>,</strong> &quot;:2:1:M:1:0:1:1:L:0:0:1:1:c:n:1:1&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.param">param</a>&quot;<strong>,</strong> &quot;:M:100:100:L:10b&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell0</a>&quot;<strong>,</strong> &quot;|../../mols-3d/nci1949.csmol|1949&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;cell1&quot;<strong>,</strong> &quot;|../../mols-3d/nci1683.csmol|1683&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;cell2&quot;<strong>,</strong> &quot;|../../mols-3d/nci1659.csmol|1659&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;cell3&quot;<strong>,</strong> &quot;|../../mols-3d/nci15976.csmol|15976&quot;<strong>);</strong>
+<strong>mview_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+<center><div class="lenia">&nbsp;</div></center>
+<p>
+The next example demonstrates how to <a HREF="example-view2.6.html">display 
+an SD file</a>.
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ParameterPanel>
+    <Precision Key="precision" Label="Precision"/>
+    <SingleSelection Key="type" Label="Type">
+	<Choice Value="order" Text="Aromatic E(+)/Nu(-) order" Selected="true"/>
+	<Choice Value="localizationEnergy" Text="Localization energy L(+)/L(-)"/>
+	<Choice Value="piEnergy" Text="Pi energy"/>
+	<Choice Value="piChargeDensity" Text="Pi charge density"/>
+	<Choice Value="totalChargeDensity" Text="Total charge density"/>
+    </SingleSelection>
+    <MultipleSelection Key="subtype" Label="Subtype">
+	<Choice Value="E(+)" Text="E(+)" Selected="true"/>
+	<Choice Value="Nu(-)" Text="Nu(-)" Selected="true"/>
+        <Dependencies>
+	    <Item Key="type" Range="order,localizationEnergy"/>
+	</Dependencies>
+    </MultipleSelection>
+    <Boolean Key="microspecies" Label="Take major microspecies" Value="false"/>
+    <Number Key="pH" Label="at pH" Range="[0.0,14.0]" Value="7.4">
+	<Dependencies>
+	    <Item Key="microspecies" Range="true"/>
+	</Dependencies>
+    </Number>
+    <LICENSE Label="License key"/>
+</ParameterPanel>

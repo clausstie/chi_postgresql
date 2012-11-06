@@ -1,0 +1,16 @@
+
+chemaxon.calculations
+chemaxon.formats
+chemaxon.marvin
+chemaxon.marvin.calculations
+chemaxon.marvin.modules
+chemaxon.marvin.plugin
+chemaxon.marvin.plugin.gui
+chemaxon.marvin.sketch
+chemaxon.marvin.sketch.modules
+chemaxon.marvin.space
+chemaxon.marvin.space.monitor
+chemaxon.marvin.util
+chemaxon.struc
+chemaxon.struc.graphics
+chemaxon.struc.sgroup

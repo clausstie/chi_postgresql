@@ -1,0 +1,164 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="marvinmanuals.css" TITLE="Style">
+<title>Welcome to Marvin!</title>
+<script LANGUAGE="JavaScript">
+<!--
+function changegui() {
+	var sel = document.guiform.guisel;
+	var v = sel.options[sel.selectedIndex].value;
+	for(i=0; i<document.links.length; ++i) {
+		var s = document.links[i].pathname;
+		if(s.indexOf("doc/dev/index.html") >= 0 ||
+		   s.indexOf("sketch.html") >= 0) {
+			var href = document.links[i].href;
+			var k = href.indexOf('?');
+			if(k > 0) {
+				href = href.substring(0, k);
+			}
+			document.links[i].href = href + v;
+		}
+	}
+}
+//-->
+</script>
+</head>
+<body>
+
+<h1 align=center>Marvin Applets 4.0.5</h1>
+
+<p>
+
+<form NAME="guiform">
+<select NAME="guisel" onChange="changegui()">
+<script LANGUAGE="JavaScript1.1">
+<!--
+var jvmguis = new Array(
+	"", "Default JVM and GUI</option>",
+	"?jvm=builtin&gui=awt", "Builtin JVM and AWT</option>",
+	"?jvm=builtin&gui=swing", "Builtin JVM and Swing</option>",
+	"?jvm=plugin&gui=awt", "Java Plugin and AWT</option>",
+	"?jvm=plugin&gui=swing", "Java Plugin and Swing</option>");
+for(var i=0; i<jvmguis.length; i+=2) {
+	document.write('<option');
+	if(location.search == jvmguis[i]) {
+		document.write(' SELECTED');
+	}
+	document.writeln(' VALUE="'+jvmguis[i]+'">'+jvmguis[i+1]+'</option>');
+}
+// -->
+</script>
+</select>
+</form>
+
+<font FACE="Helvetica, Arial">
+<p>
+<big><a HREF="sketch.html">Sketch a Molecule</a></big>
+<p>
+<big><a HREF="doc/dev/index.html">Marvin Developer's Guide</a></big>
+<ul>
+<li><a HREF="doc/dev/index.html#examples">Examples</a></li>
+<li><a HREF="doc/dev/formats.html">File formats</a></li>
+<li><a HREF="http://www.chemaxon.com/marvin/doc/dev/changes.html">Changes, new parameters, upgrade problems</a></li>
+<li><a HREF="doc/dev/appletfaq.html">FAQ</a></li>
+<li><a HREF="doc/bugs/faq.html">Bugs FAQ</a></li>
+</ul>
+<p>
+<big><a HREF="chemaxon/marvin/help/help-index.html">Marvin Help</a></big>
+<ul>
+<li><a HREF="chemaxon/marvin/help/sketch-index.html">Marvin Sketch</a></li>
+<li><a HREF="chemaxon/marvin/help/view-index.html">Marvin View</a></li>
+<li><a HREF="chemaxon/marvin/help/space-index.html">MarvinSpace</a></li>
+<li><a HREF="chemaxon/marvin/help/calculator-plugins.html">Calculator Plugins</a></li>
+</ul>
+<p>
+</font>
+
+<font SIZE="+1" FACE="Helvetica, Arial">Files</font>
+<ul>
+<li><a HREF="chemaxon"><tt>chemaxon/</tt></a>
+    <font FACE="Helvetica, Arial"> - Java classes loaded at runtime</font></li>
+<li><a HREF="chemaxon/marvin/templates/"><tt>chemaxon/marvin/templates/</tt></a>
+    <font FACE="Helvetica, Arial"> - template molecules</font></li>
+<li><tt>marvin.jar</tt>
+    <font FACE="Helvetica, Arial"> - JAR file containing the Marvin/AWT
+    applets
+    </font>
+    </li>
+<li><tt>jmarvin.jar</tt>
+    <font FACE="Helvetica, Arial"> - signed JAR file containing the Marvin/Swing
+    applets
+    </font>
+    </li>
+<li><tt>sjars</tt>
+    <font FACE="Helvetica, Arial"> - signed modules loaded at runtime for
+    Marvin/Swing applets
+    </font>
+    </li>
+<li><tt>xjars</tt>
+    <font FACE="Helvetica, Arial"> - extra resources for Calculator Plugins</font>
+    </li>
+<li><a HREF="mols-2d/"><tt>mols-2d/</tt></a>,
+    <a HREF="mols-3d/"><tt>mols-3d/</tt></a>
+    <font FACE="Helvetica, Arial"> - molecules used in the examples</font></li>
+<li><tt>mspace.jar</tt>
+    <font FACE="Helvetica, Arial"> - JAR file containing the MarvinSpace 
+    applet</font>
+</li>
+<li><tt>jogl.jar</tt>
+    <font FACE="Helvetica, Arial"> - Java binding for OpenGL (required by 
+    MarvinSpace)</font>
+</li>
+<li><tt>jogl.dll</tt> 
+    <font FACE="Helvetica, Arial"> - Windows native library for jogl.jar</font>
+</li>
+<li><tt>libjogl.so</tt> 
+    <font FACE="Helvetica, Arial"> - Linux native library for jogl.jar</font>
+</li>
+<li><tt>libjogl.jnilib</tt> 
+    <font FACE="Helvetica, Arial"> - OS X native library for jogl.jar</font>
+</li>
+<li><tt>inchi.dll</tt> 
+    <font FACE="Helvetica, Arial"> - Windows native library for IUPAC InChi import/export</font>
+</li>
+<li><tt>libinchi.so</tt> 
+    <font FACE="Helvetica, Arial"> - Linux native library for IUPAC InChi import/export</font>
+</li>
+<li><tt>libinchi.jnilib</tt> 
+    <font FACE="Helvetica, Arial"> - OS X native library for IUPAC InChi import/export</font>
+</li>
+</ul>
+
+<font FACE="Helvetica, Arial">
+<big><a HREF="license.html">License Agreement</a></big>
+<p>
+
+<big><a HREF="http://www.chemaxon.com">ChemAxon Ltd</a></big>
+<ul>
+<li><a HREF="http://www.chemaxon.com/marvin/">The Marvin homepage</a>
+    </li>
+<li>These applets are free for you <b>only</b> if you use them on a free
+    internet web site and also place a link to us:
+    <a HREF="http://www.chemaxon.com">http://www.chemaxon.com</a><br>
+    See our <a HREF="http://www.chemaxon.com/prices.html">prices</a> for
+    details.
+    </li>
+</ul>
+</font>
+
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+
+<p ALIGN=center><font SIZE=-2>
+&copy; 1998-2006 <a HREF="http://www.chemaxon.com">ChemAxon Ltd.</a>,
+<a HREF="http://www.kfki.hu/~cspeter/" TARGET="_top">P&eacute;ter Csizmadia</a>
+</font>
+
+<script LANGUAGE="JavaScript">
+<!--
+changegui();
+//-->
+</script>
+</body>
+</html>

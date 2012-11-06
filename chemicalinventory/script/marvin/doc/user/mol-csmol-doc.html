@@ -1,0 +1,332 @@
+<html>
+<head>
+<meta NAME="description" CONTENT="Molfiles in Marvin, molfile compression to reduce download time of molecules.">
+<meta NAME="keywords" CONTENT="MDL, mol">
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Molfiles and compressed molfiles in Marvin</title>
+</head>
+<body>
+
+<h1><a NAME="mol"></a>MDL Molfiles, RGfiles, SDfiles, Rxnfiles, RDfiles</h1>
+
+<p>
+Code names: <strong>mol</strong>, <strong>mol:V3</strong>,
+      <strong>mol:V3ec</strong>, <strong>mol:V3ea</strong>,  <strong>rgf</strong>,
+<strong>sdf</strong>, <strong>rxn</strong>, <strong>rxn:V3</strong>,
+<strong>rdf</strong>,
+file extensions: <strong>.mol</strong>, <strong>.sdf</strong>, <strong>.rxn</strong>, <strong>.rdf</strong>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#mol-formats">MDL Molfiles, RGfiles, SDfiles, Rxnfiles, RDfiles 
+formats</a></li>
+    <ul>
+    <li><a href="#molV3">Extended molfiles (V3.0)</a></li>
+    <li><a href="#rxnV2">Reaction files (V2.0)</a></li>
+    <li><a href="#rxnV3">Extended reaction files (V3.0)</a></li>
+    </ul>
+<li><a href="#csmol">Molfile compression</a></li>
+<li><a href="#implicith">Implicit hydrogens on aromatic nitrogen</a></li>
+<li><a href="#ioptions">Import options</a></li>
+<li><a href="#options">Export options</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul>
+
+<a name="mol-formats"></a><h2>MDL Molfiles, RGfiles, SDfiles, Rxnfiles, RDfiles
+formats</h2>
+<p>
+Marvin imports and exports MDL Molfiles, RGfiles, SDfiles, REACCS Rxnfiles
+and RDfiles. The following features are supported in V2.0 molfiles:
+<ul>
+<li>Atom block:
+    <ul>
+    <li>x, y, z coordinates</li>
+    <li>atom type:
+	<ul>
+	<li><sub>1</sub>H,
+	    <sub>2</sub>He, <sub>3</sub>Li, ...,
+	    <sub>103</sub>Lr,</li>
+	<li>atom list and exclusive list L,</li>
+	<li>&quot;any&quot; atoms A, Q, *,</li>
+	<li>lonely pair LP</li>
+	</ul>
+	</li>
+    <li>charge</li>
+    <li>stereo care box</li>
+    <li>valence</li>
+    <li>atom-atom mapping (for reactions)</li>
+    <li>inversion/retention flag (for reactions)</li>
+    </ul>
+    </li>
+<li>Bond block:
+    <ul>
+    <li>bond type: 1, 2, 3, aromatic, &quot;any&quot;,
+	&quot;single or double&quot;, &quot;single or aromatic&quot;,
+	&quot;double or aromatic&quot;</li>
+    <li>bond stereo information: up or down</li>
+    <li>bond topology: ring or chain
+    </ul>
+    </li>
+<li>Properties block:
+    <ul>
+    <li><code>M  ALS</code> - atom list and exclusive list</li>
+    <li><code>M  APO</code> - Rgroup attachment point</li>
+    <li><code>M  CHG</code> - charge</li>
+    <li><code>M  RAD</code> - radical</li>
+    <li><code>M  ISO</code> - isotope mass numbers</li>
+    <li><code>M  RGP</code> - Rgroup labels on root structure</li>
+    <li><code>M  LIN</code> - link nodes</li>
+    <li><a name="molV2.subst"><code>M  SUB</code></a>
+	- substitution count query property (s)</li>
+    <li><a name="molV2.unsat"><code>M  UNS</code></a>
+	- unsaturated atom query property (u)</li>
+    <li><a name="molV2.rbcnt"><code>M  RBC</code></a>
+	- ring bond count query property (rb)</li>
+    <li><code>M  STY</code> - Sgroup type</li>
+    <li><code>M  SST</code> - Sgroup subtype</li>
+    <li><code>M  SCN</code> - Sgroup connectivity (head-to-head, head-to-tail
+	or either/unknown)</li>
+    <li><code>M  SAL</code> - atoms that define the Sgroup</li>
+    <li><code>M  SPA</code> - multiple group parent atom list (paradigmatic
+                              repeating unit atoms)</li>
+    <li><code>M  SBL</code> - Sgroup's crossing bonds</li>
+    <li><code>M  SMT</code> - Sgroup label</li>
+    <li><code>M  SPL</code> - Sgroup parent list</li>
+    <li><code>M  SDS EXP</code> - Sgroup expansion</li>
+    <li><code>M  SDT</code> - Data sgroup field description</li>
+    <li><code>M  SDD</code> - Data sgroup display information</li>
+    <li><code>M  SCD</code> - Data sgroup data</li>
+    <li><code>M  SED</code> - Data sgroup data end of line</li>
+    <li><code>M  MRV SMA</code> - SMARTS H, X, R, r, a, A properties
+	(Marvin extension)</li>
+    <li><code>A  </code> - Atom alias</li>
+    <li><code>V  </code> - Atom value</li>
+    </ul>
+    </li>
+</ul>
+
+<a NAME="molV3"></a><b>Extended molfiles (V3.0).</b> If the number of atoms or
+bonds in a molecule exceeds 999, then the extended format is used. In an
+extended molfile, the following properties are supported:
+<ul>
+<li>Atom block:
+    <ul>
+    <li>x, y, z coordinates</li>
+    <li>atom type:
+	<ul>
+	<li><sub>1</sub>H,
+	    <sub>2</sub>He, <sub>3</sub>Li, ...,
+	    <sub>103</sub>Lr,</li>
+	<li>&quot;any&quot; atoms A, Q, *,</li>
+	<li>lonely pair LP</li>
+	</ul>
+	</li>
+    <li>atom-atom mapping (for reactions)</li>
+    <li>inversion/retention flag (INVRET)</li>
+    <li><code>CHG</code> - charge</li>
+    <li><code>RAD</code> - radical</li>
+    <li><code>CFG</code> - parity</li>
+    <li><code>VAL</code> - valence</li>
+    <li><code>MASS</code> - isotope mass number</li>
+    <li><code>HCOUNT</code> - number of implicit hydrogens</li>
+    <li><code>STBOX</code> - stereo care box</li>
+    <li><code>INVRET</code> - inversion/retention flag</li>
+    <li><code>ATTCHPT</code> - R-group attachment point</li>
+    <li><code>RGROUPS</code> - R-groups that comprise this R# atom<br>
+    <li><code>SUBST</code> - Substitution count query property (s)<br>
+    <li><code>UNSAT</code> - Unsaturated atom query property (u)<br>
+    <li><code>RBCNT</code> - Ring bond count query property<br>
+	<strong>Restriction:</strong> only one R-group can comprise an atom in
+	Marvin</li>
+    </ul>
+    </li>
+<li>Bond block:
+    <ul>
+    <li>bond type: 1, 2, 3, aromatic, &quot;any&quot;,
+	&quot;single or double&quot;, &quot;single or aromatic&quot;,
+	&quot;double or aromatic&quot;</li>
+    <li><code>CFG</code> - bond stereo configuration: up or down</li>
+    <li><code>TOPO</code> - bond topology: ring or chain</li>
+    <li><code>STBOX</code> - stereo care box</li>
+    </ul>
+    </li>
+<li><code>LINKNODE</code> - Link nodes.</li>
+<li>Sgroup block:
+    <ul>
+    <li><code>ATOMS</code> - atoms that define the Sgroup</li>
+    <li><code>PATOMS</code> - multiple group parent atom list (paradigmatic
+                              repeating unit atoms)</li>
+    <li><code>XBONDS</code> - crossing bonds</li>
+    <li><code>MULT</code> - multiple group multiplier</li>
+    <li><code>CONNECT</code> - connectivity
+	(head-to-head, head-to-tail or either/unknown)</li>
+    <li><code>LABEL</code> - display label</li>
+    <li><code>PARENT</code> - parent Sgroup</li>
+    <li><code>ESTATE</code> - expanded state</li>
+    <li><code>FIELDNAME</code> - data Sgroup field name</li>
+    <li><code>FIELDINFO</code> - data Sgroup field information (type and units)</li>
+    <li><code>FIELDDISP</code> - data Sgroup field display information</li>
+    <li><code>QUERYTYPE</code> - data Sgroup program query code</li>
+    <li><code>QUERYOP</code> - data Sgroup query operator</li>
+    <li><code>FIELDDATA</code> - data Sgroup field value</li>
+    </ul>
+    </li>
+<li>Collection block:<br>
+    <a HREF="stereo-doc.html#enhanced">Enhanced stereo</a> features,
+    see also the <a HREF="#option_ec">V3ec</a> and
+    <a HREF="#option_ea">V3ea</a> export options.
+    <ul>
+    <li><code>MDLV30/STEABS</code> - ABSOLUTE stereochemical group</li>
+    <li><code>MDLV30/STEREL</code> - OR stereochemical group</li>
+    <li><code>MDLV30/STERAC</code> - AND stereochemical group</li>
+    </ul>
+    Atom highlighting.
+    <ul>
+    <li><code>MDLV30/HILITE</code> - Highlighted atoms and bonds, currently
+	as represented as atom/bond set 1.
+	(This feature is experimental and import only!)</li>
+    </ul>
+    </li>
+<li>Rgroup blocks with <code>RLOGIC</code> entries</li>
+</ul>
+<p>
+<a NAME="rxnV2"></a><b>Reaction files (V2.0).</b> A reaction file consists of
+a REACTANT block, a PRODUCT block, and (optionally) an AGENT block.
+Reaction files containing reaction agents are non-standard.
+<p>
+A <b>reaction agent</b> is a molecule structure that does not take part in the 
+chemical reaction, but is added to the reaction equation for informative purpose only. 
+Agents are normally displayed graphically above the reaction arrow, added to the
+reaction file after the reactants and the products. The number of agents
+is displayed in the file header (after the number of reactants and the
+number of products) if it is non-zero. Reaction files containing agents are
+non-standard.
+<p>
+<a NAME="rxnV3"></a><b>Extended reaction files (V3.0).</b> This format is used
+automatically if a reaction includes Rgroups and/or the number of atoms or bonds 
+exceeds 999. An extended reaction file consists of a REACTANT block, a PRODUCT block, 
+(optionally) an AGENT block, and (optionally) RGROUP blocks.
+<p>
+In <b>SDfiles</b> read by marvin, the <em>name</em> field is special, it
+overrides the molecule name specified in the molfile part.
+<p>
+A special feature of Marvin <b>RGfiles</b> is that they can contain a reaction
+as the root structure. This feature is non-standard, such mixed RG/Rxnfiles can
+only be imported by Marvin.
+
+<p>
+<h2><a NAME="csmol"></a>Molfile compression</h2>
+
+<p>
+MarvinSketch and MarvinView can handle <em>compressed molfiles</em> that are
+typically five times smaller than their original, uncompressed version.  This
+reduces the download time of HTML pages containing molecule applets.
+<p>
+Compressed molfiles can be created by choosing
+<strong>Edit</strong>/<strong>Source</strong>, then
+<strong>Format</strong>/<strong>Compressed&nbsp;Molfile</strong> in
+MarvinSketch or MarvinView.
+If you cannot find the Edit menu, then click on the upper left arrow in
+MarvinSketch, right click or double click the compound in MarvinView.<br>
+<p>
+
+Codenames: <strong>csmol</strong>, <strong>csrgf</strong>,
+<strong>cssdf</strong>, <strong>csrxn</strong>, <strong>csrdf</strong>,
+file extensions: <strong>.csmol</strong>, <strong>.cssdf</strong>, <strong>.csrxn</strong>, <strong>.csrdf</strong>
+<p>
+
+<p>
+<a NAME="implicith"></a><h2>Implicit hydrogens on aromatic nitrogen</h2>
+
+<p>
+    The mol family of formats cannot store the implicit hydrogens of atoms,
+    so it is calculated from the bond orders. This is always correct when the
+    molecule is in Kekule format, but causes problems when nitrogen-containing
+    aromatic rings are saved with aromatic bond types.
+
+    <p>
+    To counteract the information loss, implicit hydrogen count is stored in
+    these formats as attached data on the nitrogen. The associated data sgroup
+    has field name of MRV_IMPLICIT_H and value IMPL_H&lt;n&gt; where n is the
+    number of implicit hydrogens. These special data attachments are then
+    converted back to implicit hydrogens upon import. When the file is read in
+    ISIS/Draw, the lost hydrogen will not reappear, but the attached data will
+    be visible as a warning.
+
+
+<a NAME="ioptions"></a><h2>Import options</h2>
+
+<blockquote>
+<table CELLSPACING=0 CELLPADDING=0>
+<tr VALIGN="TOP"><td><a NAME="ioption_Xsg"></a><strong>Xsg</strong></td>
+    <td>Expand all S-groups.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="ioption_Usg"></a><strong>Usg</strong></td>
+    <td>Ungroup all S-groups.</td></tr>
+<tr VALIGN="TOP">
+    <td><a name="ioption_b"></a><strong>b</strong>XXX&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>Set C-C bond length. The molecule file is supposed to store
+    coordinates in 1.54&Aring;/XXX units. Marvin uses &Aring; units
+    internally, thus coordinates are rescaled by factor 1.54/XXX at import if
+    XXX is nonzero. If XXX = 0, then coordinates are not rescaled.
+    Examples: &quot;caffeine.mol(b0)&quot; or &quot;caffeine.mol(b1.54)&quot;
+    (bond lengths are in angstroms), &quot;caffeine.mol(b0.825)&quot;
+    (bond lengths are in ISISDraw's units).<br>
+    Default: C-C bond length is calculated by averaging in 2D V2 molfiles,
+    &Aring; units are used in any other case.</td></tr>
+</table>
+</blockquote>
+
+<a NAME="options"></a><h2>Export options</h2>
+
+<blockquote>
+<table CELLSPACING=0 CELLPADDING=0>
+<tr VALIGN="TOP"><td>...</td>
+    <td><a HREF="basic-export-opts.html">Basic options for aromatization
+	and H atom adding/removal.</a></td></tr>
+<tr VALIGN="TOP"><td NOWRAP><strong>V2</strong> or
+		    <strong>V3</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>Force writing V2 or V3 (extended) molfiles. The default format is V2
+	for simple molecules, V3 if the number of atoms or bonds exceeds
+	999 and in case of reactions with Rgroups.
+	Example: &quot;mol:V3&quot;</td></tr>
+<tr VALIGN="TOP"><td><strong>P</strong></td>
+    <td>Write floating point numbers with maximum precision. Only meaningful
+	for V3 molfiles. Example: &quot;mol:V3P&quot;</td></tr>
+<tr VALIGN="TOP"><td><a name="option_b"></a><strong>b</strong>XXX</td>
+    <td>Set C-C bond length.
+    If XXX is nonzero, then the exported atom coordinates are scaled in such a
+    way that the average C-C bond length will be the specified number.
+    If XXX = 0, then coordinates are not rescaled.<br>
+    Examples: &quot;mol:b0&quot; or &quot;mol:b1.54&quot; (bond lengths
+    are in angstroms), &quot;mol:b1.54a&quot; (set bond length, aromatize).<br>
+    Default: 0.825 in V2 format for 2D molecules, 1.54 (&Aring; units)
+    in any other case.
+    </td></tr>
+<tr VALIGN="TOP"><td><a NAME="option_ec"></a><strong>ec</strong></td> 
+    <td>Convert to enhanced stereo representation, considering the
+    chiral flag. Only meaningful with option V3. (Chiral centers are
+	    grouped into ABS or an AND stereo 
+    group, depending on the chiral flag. When the input molecule
+    contained any enhanced stereo labels, the unlabeled stereo centers
+    always will form a new AND group.) 
+    Example: &quot;mol:V3ec&quot;</td></tr>
+<tr VALIGN="TOP"><td><a NAME="option_ea"></a><strong>ea</strong></td> 
+    <td>Convert to enhanced stereo representation, assuming absolute
+    stereochemistry. Only meaningful with option V3. (Chiral centers
+	    are grouped into the ABS group. In case the input molecule
+	    already contains enhanced stereo labels, the behaviour is
+	    similar to the one described at option <strong>ec</strong>
+	    above.)
+    Example: &quot;mol:V3ec&quot;</td></tr>
+
+</table>
+</blockquote>
+
+<a name="reference"></a><h2>Reference</h2>
+<ul>
+<li><a HREF="http://www.mdl.com/downloads/public/ctfile/ctfile.pdf" TARGET="_top">http://www.mdl.com/downloads/public/ctfile/ctfile.pdf</a></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+$DATA_SOURCE$jdbc/chemicalinventory$
+$DRIVER_CLASS_NAME$com.mysql.jdbc.Driver$
+$DB_PORT$3306$
+$DB$chemicals$
+$DB_USER$chemicals$
+$DB_STRUCTURE$chemicals$
+$DB_STRUCTURE_PROP$jchemproperties$
+$DB_STRUCTURE_TABLE$structures$
+$DB_STRUCTURE_USER$chemicals$
+$DB_STRUCTURE_USER_PASSWORD$chemicals$
+$CI_MAIL_BOX$jekr@dfuni.org$
+$CI_MAIL_WEBMASTER$javadann@yahoo.dk$
+$CI_MAIL_SUPPORT$javadann@yahoo.dk$
+$CI_SMTP_SERVER$smtp.dfh.dk$

@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<meta NAME="author" CONTENT="Judit Papp">
+<link REL="stylesheet"i TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+
+<TITLE>MarvinSpace demo</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+function setVisible( i )
+{
+   if(i==1) {
+     document.MSpaceApplet.showLigand( 1, document.Show.ligand1.checked==1 );  	  
+   }
+   else if(i==2){
+     document.MSpaceApplet.showLigand( 2, document.Show.ligand2.checked==1 );
+   }
+   else {
+     document.MSpaceApplet.showSurface( document.Show.surface.checked==1 );
+   }
+}
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+
+<H1>MarvinSpace 1.2</H1>
+
+<table>
+<tr><td>
+<applet codebase="../.."
+code="chemaxon/marvin/space/gui/MSpaceApplet" name="MSpaceApplet" width=600 height=600
+archive="mspace.jar,jogl.jar">
+<param name="progressbar" value="true">
+<param name="selectionpanel" value="false">
+<param name="molecule" value="http://www.chemaxon.com/shared/MarvinSpace/pdb/1AID.pdb">
+</applet>
+</td>
+<!--
+<td>
+Load molecule <br>
+<form name="Load">
+<input type="file" name="datafile" size=40 onClick="setFileName()"><br>
+</td>
+-->
+<td>
+<form name="Show">
+<input type="checkbox" name="surface" onClick="setVisible(3)">Show Connolly surface<br>
+<input type="checkbox" name="ligand1" checked="true" onClick="setVisible(1)">Show ligand 1<br>
+<input type="checkbox" name="ligand2" checked="true" onClick="setVisible(2)">Show ligand 2<br>
+</form>
+</td>
+</tr>
+</table>
+</BODY>
+</HTML>
+
+

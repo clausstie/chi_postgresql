@@ -1,0 +1,217 @@
+<html>
+<head>
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Crashes, freezes and other bugs FAQ</title>
+</head>
+<body>
+<h1 align=center>Crashes, freezes and other bugs</h1>
+<h2 align=center>Troubleshooting</h2>
+
+<h3>Freezing bugs</h3>
+<ol>
+<li><em>Problem:</em> I tried to choose a template set (such as &quot;Rings&quot;)
+    in the MarvinSketch applet on my webpage, but the applet does not respond.
+    <p>
+    <em>Solution:</em> The most likely cause is that the applet is improperly
+    installed or there is a wrong ARCHIVE or CODEBASE setting in the applet tag,
+    so it cannot find the chemaxon/marvin/templates directory.
+    If Marvin is installed into &quot;somedirectory&quot;, then<br>
+    <table cellspacing="0" cellpadding="2" border="0">
+    <tr>
+    <td>use this:</td>
+    <td><font COLOR="green"><code>ARCHIVE=&quot;marvin.jar&quot;
+	CODEBASE=&quot;somedirectory&quot;</code></font></td>
+    </tr>
+    <tr>
+    <td>NOT this (WRONG!):</td>
+    <td><font COLOR="red"><code>ARCHIVE=&quot;somedirectory/marvin.jar&quot;</code>
+	</font></td>
+    </tr>
+    </table>
+    <p>
+    </li>
+<li><em>P:</em> I tried to do ... but the applet on my page does not
+    respond, and I found a message in the Java Console:
+    &quot;Cannot preload module: ...&quot;
+    <p>
+    <em>S:</em> The most likely cause is that the applet is improperly
+    installed or there is a wrong ARCHIVE or CODEBASE setting in the applet tag,
+    so it cannot find the class files in the chemaxon/marvin/modules/ directory.
+    If Marvin is installed into &quot;somedirectory&quot;, then<br>
+    <table cellspacing="0" cellpadding="2" border="0">
+    <tr>
+    <td>use this:</td>
+    <td><font COLOR="green"><code>ARCHIVE=&quot;marvin.jar&quot;
+	CODEBASE=&quot;somedirectory&quot;</code></font></td>
+    </tr>
+    <tr>
+    <td>NOT this (WRONG!):</td>
+    <td><font COLOR="red"><code>ARCHIVE=&quot;somedirectory/marvin.jar&quot;</code>
+	</font></td>
+    </tr>
+    </table>
+    <p>
+    </li>
+<li><em>P:</em> When trying to print a molecule in the applet, it asks
+    &quot;<strong>An applet would like to print</strong>&quot; (Yes/No)
+    several times, then the applet freezes.
+    <p>
+    <em>S:</em> You might use a buggy Java plugin version such as 1.4.0.
+    You should upgrade (or downgrade) Java.<br>
+    Detailed explanation: In Java 1.4.0, one <code>Toolkit.getPrintJob()</code> call
+    results in two or more confirm dialogs asking the same question, then one
+    <code>PrintJob.getGraphics()</code> call results in even more questions and freezing
+    when called from an unsigned applet.
+    
+    <p>
+    </li>
+<li><em>P:</em> Microsoft Internet Explorer freezes before  the applet is finished loading. 
+	The following message in shown the status bar:<br>
+    &quot;Opening Java class: http://my.site/mydir/chemaxon/marvin/modules/XXX.class&quot;
+    <p>
+    <em>S:</em> This is a bug in Microsoft's old Java 1.1 virtual machine, that
+    appears under certain circumstances. As a workaround, you should
+    <a HREF="../dev/viewman.html#parameters.preload">preload</a> the XXX
+    module. If it still freezes but at class YYY, then you should preload
+    YYY too, etc.
+    See the MarvinView <a HREF="../dev/example-view3.2.html">example 3.2</a>.
+    <p>
+    </li>
+<li><em>P:</em> Netscape 6 (Sun JRE 1.3) and Mozilla freeze in Linux when an
+    applet method like MSketch.getMol() is called from JavaScript.
+    <p>
+    <em>S:</em> This is a browser/JVM bug that occurs if an applet method is
+    called from JavaScript that requests downloading a class file from the
+    web (with http protocol). The workaround is to
+    <a HREF="../dev/sketchman.html#parameters.preload">preload</a> the extra
+    classes that will be used by the  method (see
+    <a href="../dev/example-sketch3.4.html">MarvinSketch example 3.4</a>).
+    Another solution is to upgrade Java on the user's machine. The
+    problem does not exist in JRE 1.4. 
+    <p>
+    </li>
+    <li><em>P:</em> MarvinSketch and MarvinView applications sometimes crash under Windows with Java 1.4.1_01.
+    <p>
+    <em>S:</em> JRE 1.4.1_01 is a buggy Java version. Many Java applications beside Marvin freeze with this version or other serious problems can occur. See on
+    <a href="http://developer.java.sun.com/developer/bugParade/bugs/4749817.html" target="_blank">bugparade</a>.
+    </li>
+    <li><em>P:</em> MarvinSketch and MarvinView applications can freeze with Java 1.4.1
+    <p>
+    <em>S:</em> In wireframe display mode with visible "atom symbols" and 
+    "all hydrogens" settings sometimes the JRE cannot draw short lines and this 
+    may causes freezing. See on 
+    <a href="http://developer.java.sun.com/developer/bugParade/bugs/4755500.html" target="_blank">Sun's Bug Parade</a>
+    </li>
+</ol>
+
+<h3><a NAME="funcNotWork">Function does not work</a></h3>
+<ul>
+<li><em>Question:</em> When I select the menu XXX or press button YYY in the
+    applet, I get an error message.<br>
+    When I click the &quot;Stack Trace&quot; button, it shows a
+    ClassNotFoundException, ClassFormatError, IncompatibleClassChangeError
+    or something similar.
+    <br>
+    Is it my fault (1), a Marvin installation problem (2) or a browser bug
+    (3)?</li>
+<li><em>Answer:</em> These are all possibilities.<br>
+    <ol>
+    <li>If jchem.jar, MarvinBeans.jar or some other JAR file containing
+	Marvin classes is in your <code>CLASSPATH</code>, then it can
+	interfere with the applet.<br>
+	Please remove them from the <code>CLASSPATH</code>.
+	Additional libraries such as Marvin should only be specified in a
+	<em>local</em> <code>CLASSPATH</code> inside a script or a Makefile,
+	but not in the <em>global</em> one that is also seen by the web browser.
+	</li>
+    <li>Marvin might be installed improperly, mixing the new files with an
+	older installation.<br>
+	If this is the case, then remove all files and reinstall it again.</li>
+    <li>There might also be a cache problem with your web browser.<br>
+	In Netscape, you can reload all classes with Shift+Reload. If you
+	still have the bug, then try to clear the cache with Edit -&gt;
+	Preferences &gt; Advanced -&gt; Cache and restart the browser.</li>
+    </ol>
+    </li>
+</ul>
+
+<h3>Browser crashes</h3>
+<ul>
+<li><em>Q:</em> My Netscape 4.x browser crashed when I closed
+    a window containing frames, tables and MarvinView applets.
+    Is it a Marvin bug?<p>
+    <em>A:</em> No! It probably has nothing to do with
+    Marvin. Pages containing frames, tables and applets may crash Netscape
+    under certain circumstances. Such crashes are independent of the applet
+    code. See our bug <a HREF="ns4ftacrash.html" TARGET="_blank">demo page</a>
+    that contains ten <a HREF="Empty.java">empty</a> applets.
+    <p>
+    </li>
+<li><em>P:</em> When selecting Print from the browser's File Menu, 
+    the applet area is printed in black or it doesn't appear on the paper.
+    <p>
+    <em>S:</em> This is a browser/JVM bug, can be found on SUN's 
+    <a href="http://developer.java.sun.com/developer/bugParade/" target=blank_>
+    Bug Parade</a> site with  4519411 bug Id.<br>
+    A fix is integrated into the 1.3.1_03, 1.4.0_01 and above update releases.
+    <p>
+    </li>
+<li><a name="crash.mayscript"><em>P:</em></a> Netscape 6 and Netscape 7.0 (Sun JRE 1.3.1) crash 
+    in Linux when a signed MarvinView applet tries to evaluate a JavaScript expression.
+    <p>
+    <em>S:</em> This is a browser/JVM bug that occurs if
+    <code>netscape.javascript.JSObject.getWindow(applet)</code> is called from Java code.
+    This bug occurs in the following buggy Java versions: 1.3.1_b24, 1.3.1_02-b02.
+    They are found in Netscape 6.x and in Netscape 7.0 as built-in JVM.
+    The only solution is to upgrade Java on the user's machine and 
+    <a href="../dev/appletfaq.html#netscape_set_java_env">set the new Java Environment to the browser</a>.
+    The problem does not exist in JRE 1.3.1_01 and JRE 1.4.x.
+    <p>
+    </li>
+    <li><em>P:</em> Under Linux, reloading an applet a lot of times can cause
+    an out of memory error in the browser.
+    <p>
+    <em>S:</em> It is a Java bug in the Linux version of JRE 1.4.2. 
+    If there is any reference to the applet in JavaScript, this JRE can not
+    destroy the applet. E.g.:
+    <pre>if(document.msketch != null) {
+        // do someting
+}</pre>
+    You can find more info about this bug in 
+    <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4988299"
+    >Sun's Bug Parade</a>.
+    To avoid this memory leak, update your JRE to 1.5.
+    </li>    
+</ul>
+
+<h3>Other bugs</h3>
+<ul>
+<li><em>Q:</em> How can I report a Marvin bug?
+    <p>
+    <em>A:</em> Send an email to 
+        <script language="JavaScript"><!--
+	document.write('<a HREF="mailto:'+
+        'bugs'+'@'+'chemaxon.com">'+'bugs'+'@'+'chemaxon.com</a>');
+        //--></script> describing
+	the circumstances:
+	<ol>
+	<li>What happened, and what did you exactly do before it happened.</li>
+	<li>The <strong>Stack Trace</strong>.<br>
+	    
+	    If an error window is popped up, please press &quot;Stack Trace&quot;
+	    and send its <strong>full</strong> contents to us. If you have no
+	    error window, then please send the <strong>full</strong> contents of
+	    the Java Console (in Netscape: Communicator/Tools/Java Console).
+	    
+	    </li>
+	<li>The http address if you found the bug on an internet web page,
+	    otherwise please send us the full page.</li>
+	<li>Which applet? (MarvinView or MarvinSketch)</li>
+	<li>Marvin version (see Help/About).</li>
+	<li>Marvin/AWT or Marvin/Swing? (see Help/About)</li>
+	</ol>
+    </li>
+</ul>
+
+</body>
+</html>

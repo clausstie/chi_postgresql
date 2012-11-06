@@ -1,0 +1,148 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Marvin Beans Platforms</title>
+</head>
+<body>
+
+<h1 ALIGN=CENTER>Cut/Copy/Paste and Drag &amp; Drop Functionality</h1>
+
+The cut, copy, and paste operations work in the bean and application versions
+of Marvin, and also in the applets. However, because of security reasons,
+the awt applets perform these operations using a local clipboard 
+inside the JVM process. The non-applet versions of Marvin and the signed 
+swing Marvin applets are allowed to use the system clipboard.
+
+<p>
+Drag &amp; drop operations are possible in the Swing version of the Marvin
+applets, the Marvin Beans, and the MarvinSketch applications.
+<p>
+<a name="awtapp"></a>
+<h3>Marvin/AWT applets running in a web browser</h3>
+<ul>
+<li>Cut &amp; Paste using local clipboard.</li>
+<li>No Drag &amp; Drop</li>
+</ul>
+<p>
+<a name="signedapp"></a>
+<h3>Signed Marvin/Swing applets</h3>
+<ul>
+    <li>Cut &amp; Paste using the system's clipboard.<br>
+<!--APPLETONLY_BEGIN-->
+	See also:<ul>
+		     <li><a href="../dev/applet-platforms.html">Applet platforms</a>
+		     <li><a href="../dev/signing.html">Signed applets</a>
+	</ul></li>
+<!--APPLETONLY_END-->
+	<li>Drag &amp; Drop works only when the sketcher is in its own window.
+	<br>
+	<small><em>Note:</em> When the applet is in the browser window, drop
+	events are received by the browser instead of the applet.</small>
+	</li>
+</ul>
+
+<p>
+
+<h3><a name="copyassmi"></a>Copy, Copy as Smiles</h3>
+Marvin has two options to place objects on the clipboard: <code>Copy</code> 
+and <code>Copy as Smiles</code>. 
+<ul>
+<li>Using <code>Copy</code>, a structure is copied to the clipboard as an 
+    image (<code>image/x-java-image</code>) and a molfile
+    (<code>chemical/x-mdl-molfile</code>). 
+<li>Using <code>Copy as Smiles</code>, the Smiles string of the structure is 
+    copied to the clipboard in <code>String</code> and <code>PlainText</code> 
+    formats.<br>
+    <small><em>Note:</em>Any <a href="../dev/formats.html">file format of 
+    Marvin</a> can be copied to the clipboard as a <code>string</code> or as  
+    <code>plain text</code>. From the 
+    <code>Edit</code> menu choose <code>Source</code> then 
+    <code>Edit/Copy</code> to place the desired format  on 
+    the clipboard as plain text.
+</ul>
+
+<h3>Marvin and other programs</h3>
+<ul>
+<li>Molecule drawing programs like ISISDraw, ChemDraw, etc.<br>
+    Cut &amp; Paste is possible in Java 1.4 and later, but there are
+    complications with older Java versions:
+    <table CELLSPACING=0 CELLPADDING=5 BORDER=0 id="grid">
+    <tr>
+	<th>&nbsp;</th>
+	<th>Windows<sup>*</sup></th>
+	<th>Macintosh</th>
+	<th>SGI</th>
+    </tr>
+    <tr>
+	<td>ISISDraw<sup>**</sup></td>
+	<td>Copy &amp; Paste</td>
+	<td>Copy &amp; Paste</td>
+	<td>untested</td>
+    </tr>
+    <tr>
+	<td>ChemDraw</td>
+	<td>Copy &amp; Paste</td>
+	<td>Copy &amp; Paste</td>
+	<td>untested</td>
+    </tr>
+    <tr>
+	<td>ChemDraw Plugin</td>
+	<td>Copy &amp; Paste</td>
+	<td>Paste <sup>***</sup></td>
+	<td>untested</td>
+    </tr>
+    </table>
+    <table CELLSPACING=0 CELLPADDING=5 BORDER=0>
+    <tr>
+	<td><small><u>Copy</u>:</td>
+	<td><small>copy a structure from the application and paste into 
+		   Marvin</td>
+    </tr><tr>
+	<td><u><small>Paste</u>:</td>
+	<td><small>copy a structure from Marvin, and paste into the 
+		   application</td>
+    </tr><tr>
+	<td><small><sup>*</sup>:</td>
+	<td>On windows in Java 1.2-1.3.1, the
+	&lt;Java home directory&gt;/jre/lib/flavormap.properties file
+	must be edited: <tt>MDLCT=chemical/x-mdl-molfile</tt>
+    </tr><tr>
+	<td><small><sup>**</sup>:</td>
+	<td><small>In case of ISISDraw the following option must be checked:<br>
+		   Option --> Settings --> General --> Copy Mol/Rxnfile to the 
+		   Clipboard</td>
+    </tr><tr>
+	<td><small><sup>***</sup>:</td>
+	<td><small><em>Copy as SMILES</em> works</td>
+    </tr>
+    </table>
+    </li>
+<li>Word processors paste the molecule as SMILES text when 
+    <code>Copy as Smiles</code> is used and paste as an image when <code>Copy</code> 
+    is used. (Java 1.4 or later).</li>
+<li>Marvin can paste SMILES strings, MDL molfiles, etc. from a text editor
+    as molecules.</li>
+<li>Text editors can paste molecules from Marvin as SMILES strings using
+    <code>Copy as Smiles</code>.</li>
+<li>X Window System: most text editors (xedit, emacs, gvim, etc.) do not
+    transfer data to the X clipboard, so Marvin is unable to communicate with
+    them.<br>
+    Copy &amp; Paste works with the following editors and other programs:<br>
+
+    <table CELLSPACING=0 CELLPADDING=5 BORDER=0>
+    <tr>
+    <td>GNOME programs:</td>
+    <td>gedit, gnotepad+ (gnp), gxedit,	etc.</td>
+    </tr>
+    <tr>
+    <td>Motif programs:</td>
+    <td>asWedit, nedit, Netscape, etc.</td>
+    </tr>
+    </table>
+    <em>Note:</em> With the xclipboard program, you can test
+    whether your favorite editor uses the X clipboard or not.</li>
+</ul>
+
+</body>
+</html>

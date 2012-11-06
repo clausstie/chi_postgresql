@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 3.3 - Triggering molfile download from JavaScript</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinSketch Example 3.3</h1>
+
+Press the <strong>Load</strong> button to load &quot;caffeine.mol&quot; into the sketcher.
+
+<p>
+
+<center>
+<form onSubmit="return false">
+<input TYPE=BUTTON VALUE="Load" onClick="loadMol()">
+</form>
+
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+function loadMol() {
+	if(document.MSketch != null) {
+		document.MSketch.setMol("../../mols-2d/caffeine.mol");
+	} else {
+		alert("Cannot load molecule:\n"+
+		      "no JavaScript to Java communication in your browser.\n");
+	}
+}
+msketch_name = "MSketch";
+msketch_begin("../..", 460, 380);
+msketch_param("scale", "60");
+msketch_param("viewonly", "true");
+msketch_end();
+//-->
+</script>
+</center>
+
+<blockquote>
+<pre>
+<strong>&lt;form onSubmit</strong>=&quot;return false&quot;<strong>&gt;</strong>
+<strong>&lt;input TYPE</strong>=BUTTON <strong>VALUE</strong>=&quot;Load&quot; <strong>onClick</strong>=&quot;loadMol()&quot;<strong>&gt;</strong>
+<strong>&lt;/form&gt;</strong>
+
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+function <strong>loadMol()</strong> {
+	if(document.MSketch != null) {
+		document.MSketch.<a HREF="../api/MSketch.html#setMol(java.lang.String)">setMol</a>(&quot;../../mols-2d/caffeine.mol&quot;);
+	} else {
+		alert(&quot;Cannot load molecule:\n&quot;+
+		      &quot;no JavaScript to Java communication in your browser.\n&quot;);
+	}
+}
+<strong>msketch_name</strong> = &quot;MSketch&quot;;
+<strong>msketch_begin(</strong>&quot;../..&quot;<strong>,</strong> 460<strong>,</strong> 380<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.scale">scale</a>&quot;<strong>,</strong> &quot;60&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.viewonly">viewonly</a>&quot;<strong>,</strong> &quot;true&quot;<strong>);</strong>
+<strong>msketch_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+<p>
+
+Note that the function that loads the molecule must not be named
+<strong>load()</strong>, because this name conflicts with a built-in JavaScript function
+in Netscape 6 (and later versions). That is why we named it <strong>loadMol()</strong>
+here.
+
+<center><div class="lenia">&nbsp;</div></center>
+
+<p>In some cases you don't have the molfile in an URL, and it would be easier
+to pack it into the HTML as in the previous example.
+<a HREF="example-sketch3.4.html">You can also do that in JavaScript.</a>
+
+</body>
+</html>

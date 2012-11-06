@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ParameterPanel>
+    <Precision Key="precision" Label="Precision"/>
+    <MultipleSelection Key="type" Label="Type">
+	<Choice Value="increments" Text="Increments"/>
+	<Choice Value="refractivity" Text="Refractivity" Selected="true"/>
+    </MultipleSelection>
+    <Boolean Key="inch" Label="Increments of H-s" Value="true">
+	<Dependencies>
+	    <Item Key="type" Range="increments"/>
+	</Dependencies>
+    </Boolean>
+    <LICENSE Label="License key"/>
+</ParameterPanel>

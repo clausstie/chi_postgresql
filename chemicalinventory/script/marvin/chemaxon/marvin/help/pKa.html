@@ -1,0 +1,298 @@
+<html>
+<head>
+<link REL="stylesheet"  TYPE="text/css" HREF="../../../marvinmanuals.css" TITLE="pKa">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title></title>
+<meta name="keywords" content="pKa acid dissociation constant">
+<meta name="author" content="Szegezdi Jozsef">
+</head>
+<body>
+<H1>
+<CENTER>
+p<i>K</i><SUB>a</SUB> Plugin
+</CENTER>
+</H1>
+
+<OL>
+
+<LI><A HREF="#Intro">Introduction</A></LI>
+<LI><A HREF="#DefofKa">Definition of Acid Dissociation Constant <i>K</i><SUB>a</SUB></A></LI>
+<LI><A HREF="#DefofpKa">Definition of  p<i>K</i><SUB>a</SUB></A></LI>
+<LI><A HREF="#MultiProtic">Multiprotic Molecules</A></LI>
+<LI><A HREF="#AH3">Ionization Steps of the AH<SUB>3</SUB> Molecule</A></LI>
+<LI><A HREF="#Examples">Examples</A></LI>
+  	  <UL>
+	          <LI><A HREF="#Example1">Example 1</A></LI>
+	          <UL>
+	                 <LI><A HREF="#pamSteps">Micro Ionization Steps of P-amino Benzoic Acid</A></LI>
+	                 <LI><A HREF="#pampKa">Calculated and Observed p<i>K</i><SUB>a</SUB> of P-amino Benzoic Acid</A></LI>
+	         </UL>
+	  <LI><A HREF="#amide">Example 2</A></LI>
+	  <LI><A HREF="#Example3">Example 3</A></LI>
+	  </UL>
+<Li><A HREF="#limitations">Limitations of the Macro p<i>K</i><SUB>a</SUB> Prediction</A></LI>
+<LI><A HREF="#references">References</A></LI>
+
+</OL>
+<A NAME="Intro" ></A>
+<H2>1. Introduction</H2>
+<BR>
+
+Chemical properties of molecules depend largely on whether they are ionized or not.
+ Most  organic molecules are capable of gaining and/or losing a proton in aqueous solutions. 
+Proton transfer most frequently occurs between water and any ionizable atom of the organic molecule.
+The molecule's response to protonation or deprotonation depends significantly on the site that was disturbed by proton transfer. 
+Partial charge distribution in the molecule also varies with protonation of the acid/base active sites. 
+Since partial charge distribution is very sensitive to the protonation-deprotonation process 
+(both near and far from the disturbed site), it can be used to determine the p<i>K</i><SUB>a</SUB> of a molecule.
+Our p<i>K</i><SUB>a</SUB> prediction program is based on the calculation of partial charge of atoms in the molecule. 
+
+<BR>
+
+<H2>
+<A NAME="DefofKa"></A>
+2. Definition of Acid Dissociation Constant <i>K</i><SUB>a</SUB>
+</H2>
+
+Acidic and basic molecules are ionized in
+aqueous solution.   Acidic or basic character is assigned to the molecule according to Brönsted's rule.  The ratio of the ionized and neutral forms depends on the
+pH, the temperature and the ion activity of the bulk phase.
+The ionization constant K<sub>a</sub> is obtained from the activity ratio of conjugated base and conjugated acid multiplied with proton activity. 
+<P>
+
+<BR>
+<IMG SRC="pKa_files/Ka_def.gif" HSPACE=18 VSPACE=10 >
+<BR>
+
+<H2>
+<A NAME="DefofpKa"></A>
+3. Definition of  p<i>K</i><SUB>a</SUB>
+</H2>
+
+p<i>K</i><SUB>a</SUB> is obtained from the ionization constant of a molecule using the following definition.
+<BR><BR>
+<IMG SRC="pKa_files/pKa_def.gif" HSPACE=18 VSPACE=10 >
+<BR><BR>
+When the pH of the solution is equal with p<i>K</i><SUB>a</SUB>,  the concentrations of dissociated and undissociated species are equal.
+
+<BR>
+<H2>
+<A NAME="MultiProtic"></A>
+4. Multiprotic Molecules
+</H2>
+
+When a molecule contains more than one ionizable atom, it is called a multiprotic compound.
+For these types of molecules we need to distinguish between micro and macro acidic dissociation constants.
+The micro acidic dissociation constant is obtained from the equilibrium concentration of the conjugated acid-base pairs.
+The macro acidic dissociation constant is obtained from the global mass and charge conservation  law.
+When a molecule has N ionizable sites, the total number of micro species in the solution is 2<SUP>N</SUP>.
+<P>
+To further understand the difference between micro and macro constants
+ we consider ionization equilibrium of a triprotic acid AH<SUB>3</SUB>. 
+Referring to the different deprotonation sites of the AH<SUB>3</SUB> molecule we introduce the upper indexes of the protons.
+<BR>
+<IMG SRC="pKa_files/AH3.gif"  BORDER=0  HSPACE=18 VSPACE=10 >
+<BR>
+The ionization process of the AH<SUP>1</SUP>H<SUP>2</SUP>H<SUP>3</SUP> molecule in aqueous solution is described with 12 
+equilibrium reactions. Micro species and their charge are summarized in <A HREF="#TABLE1">Table 1.</A>
+
+</P>
+<H2>
+<A NAME="AH3"></A>
+5. Ionization Steps of the AH<SUB>3</SUB> Molecule
+</H2>
+
+<IMG SRC="pKa_files/AH3_ions.gif"  BORDER=0  HSPACE=18 VSPACE=10 >
+<BR>
+
+<A NAME="TABLE1"></A>
+Table 1. Protonation State of Microspecies
+<BR>
+
+<TABLE BORDER=1 WIDTH=50% HEIGHT=25% >
+
+<TR><TD ><CENTER>Microspecies</CENTER></TD>
+<TD><CENTER>charge</CENTER></TD>
+
+<TR><TD><CENTER>
+AH<SUP>1</SUP>H<SUP>2</SUP>H<SUP>3</SUP></CENTER></TD>
+<TD><CENTER>0</CENTER></TD>
+
+<TR><TD><CENTER>
+  AH<SUP>1</SUP>H<SUP>2</SUP>
+, AH<SUP>1</SUP>H<SUP>3</SUP>
+, AH<SUP>2</SUP>H<SUP>3</SUP></CENTER></TD>
+<TD><CENTER>-1</CENTER></TD>
+
+
+<TR><TD><CENTER>
+  AH<SUP>1</SUP>
+, AH<SUP>2</SUP>
+, AH<SUP>3</SUP>
+</CENTER></TD>
+<TD><CENTER>-2</CENTER></TD>
+
+<TR><TD><CENTER>A</CENTER></TD>
+<TD><CENTER>-3</CENTER></TD>
+
+</TABLE>
+<BR>
+The AH<SUB>3</SUB> molecule has three macro acidic constants since it is triprotic acid. 
+Macro acidic constants <i>K</i><SUB>1</SUB>, <i>K</i><SUB>2</SUB>, and <i>K</i><SUB>3</SUB> 
+are obtained from the concentration of the microspecies.
+<BR><BR>
+<IMG SRC="pKa_files/Macro_K.gif"  BORDER=0  HSPACE=18 VSPACE=10 >
+<BR><BR>
+And the three macro p<i>K</i><SUB>a</SUB>  values of the AH<SUB>3</SUB> molecule that would be obtained with routine laboratory measurements are as follows:
+<BR><BR>
+p<i>K</i><SUB>a,1</SUB>=-log<SUB>10</SUB>(<i>K</i><SUB>1</SUB>)
+<BR>
+p<i>K</i><SUB>a,2</SUB>=-log<SUB>10</SUB>(<i>K</i><SUB>2</SUB>)
+<BR>
+p<i>K</i><SUB>a,3</SUB>=-log<SUB>10</SUB>(<i>K</i><SUB>3</SUB>)
+<BR>
+
+<H2>
+<A NAME="Examples"></A>
+6. Examples
+</H2>
+
+<A NAME="Example1"></A>
+<B>Example 1.</B>
+<BR><BR>
+The ionization steps of p-amino benzoic acid are outlined below. Calculated micro 
+ionization constants <i>k</i><SUB>1</SUB> ,<i>k</i><SUB>2</SUB>,<i>k</i><SUB>3</SUB> 
+and <i>k</i><SUB>4</SUB> are indicated on the arrows. 
+<BR>
+<A NAME="pamSteps"></A>
+<IMG SRC="pKa_files/pAm_k.png">
+<BR>
+<A NAME="pampKa"></A>
+Below are the calculated and the experimental p<i>K</i><SUB>a</SUB> of  p-amino benzoic acid
+<BR>
+<IMG SRC="pKa_files/pKa12.png">
+<BR><BR>
+<A NAME="amide"></A>
+<B>Example 2.</B>
+<BR><BR>
+ Imides and amides can have either acidic or  basic character.
+The extent of amide/imide ionization at a given pH is determined by two acid dissociation constants. 
+<BR><BR>
+p<i>K</i><SUB>a,1</SUB>assigned to the deprotonation step
+<BR>
+RNH <IMG SRC="pKa_files/darrow.gif"    ALIGN=CENTER > RN<SUP>-</SUP> + H<SUP>+</SUP>
+<BR><BR>
+and 
+p<i>K</i><SUB>a,2</SUB>assigned to the protonation step
+<BR>
+RNH<SUB>2</SUB><SUP>+</SUP> <IMG SRC="pKa_files/darrow.gif"    ALIGN=CENTER >RNH + H<SUP>+</SUP> 
+<BR><BR>
+Ratio of anionic and cationic species depends on p<i>K</i><SUB>a,1</SUB>, p<i>K</i><SUB>a,2</SUB> and pH.
+<BR><BR>
+<IMG SRC="pKa_files/amide_ratio.gif"  BORDER=0   HSPACE=18 VSPACE=10   >
+<BR><BR>
+When 2pH - (p<i>K</i><SUB>a,1</SUB> + p<i>K</i><SUB>a,2</SUB>) &gt; 0 than deprotonation of amide/imide is favored and it it said to have an acidic character.
+<BR>
+When 2pH - (p<i>K</i><SUB>a,1</SUB> + p<i>K</i><SUB>a,2</SUB>) &lt; 0 than protonation  of amide/imide is favored and it is considered to have a basic character.
+<BR><BR>
+
+Chemists often want to know the ionization state of organic compounds at pH  = 7.4.  
+In general,  the macro p<i>K</i><SUB>a</SUB> of amide/imide compounds is calculated and their acidic 
+or basic character determined with the above formulas at pH=7.4.
+<BR><BR>
+Calculated and observed p<i>K</i><SUB>a</SUB> of phtalimide and 2-pyridone given in 
+<A HREF="#Table2">Table 2.</A>
+<IMG SRC="pKa_files/phtal.jpg"  BORDER=0   HSPACE=18 VSPACE=10   >
+<BR>
+<A NAME="Table2"></A>
+Table 2. Calculated and Observed Acidity Constants
+<TABLE BORDER=1 WIDTH=50%  HEIGHT=15%>
+
+<TR><TD ><CENTER>Compound</CENTER></TD>
+<TD><CENTER>Calculated p<i>K</i><SUB>a</SUB></CENTER></TD>
+<TD><CENTER>Observed p<i>K</i><SUB>a</SUB></CENTER></TD>
+
+<TR><TD><CENTER>phtalimide</CENTER></TD>
+<TD><CENTER><FONT  COLOR="RED">8.22</FONT></CENTER></TD>
+<TD><CENTER><FONT  COLOR="RED">8.30</FONT></CENTER></TD>
+
+<TR><TD><CENTER>2-pyridone</CENTER></TD>
+<TD><CENTER><FONT  COLOR="RED">11.40</FONT></CENTER></TD>
+<TD><CENTER><FONT  COLOR="RED">11.70</FONT></CENTER></TD>
+
+</TABLE>
+
+<BR><BR>
+<A NAME="Example3"></A>
+<B>Example 3</B>
+<P>The value of ionization constants of conjugated acid-base pairs 
+usually falls into the range of 10<SUP>-10</SUP> - 10<SUP>+20</SUP>, so
+ these limits are generally used
+ to 
+predict p<i>K</i><SUB>a</SUB>.
+
+When an ionizable site in the molecule has very weak basic or acidic character, this can be accomodated by increasing the calculation range.
+<BR><BR>
+The next molecule contains one very weak basic atom.
+First, macro p<i>K</i><SUB>a</SUB> is calculated  with  default limits predefined between 
+10<SUP>-10</SUP> and 10<SUP>+20</SUP>.
+Following that,  macro p<i>K</i><SUB>a</SUB> is calculated with altered limits defined between 
+10<SUP>-50</SUP> and 10<SUP>+20</SUP>.
+<BR>
+Changing of default settings of macro p<i>K</i><SUB>a</SUB> calculation can be done in the 
+Tools <IMG SRC="pKa_files/arrow.gif"    ALIGN=CENTER > Options <IMG SRC="pKa_files/arrow.gif"    ALIGN=CENTER > p<i>K</i><SUB>a</SUB> menu of MarvinSketch.   
+<BR>
+Calculated and observed acidity constants are summarized in <A HREF="#Table3">Table 3.</A> Observed p<i>K</i><SUB>a</SUB>'s taken from <A HREF="#ref3">Ref.3.</A> 
+<BR><BR>
+<IMG SRC="pKa_files/limits.jpg"  BORDER=0  HSPACE=18 VSPACE=10>
+<BR><BR><BR>
+<A NAME="Table3"></A>
+Table 3. Calculated and Observed Acidity Constants
+<TABLE BORDER=1 WIDTH=55%  HEIGHT=20%>
+
+<TR><TD ><CENTER>p<i>K</i><SUB>a</SUB></CENTER></TD>
+<TD><CENTER>First calc.</CENTER></TD>
+<TD><CENTER>Second calc.</CENTER></TD>
+<TD><CENTER>Observed</CENTER></TD>
+
+<TR><TD ><CENTER><FONT  COLOR="RED">p<i>K</i><SUB>a,1</SUB></FONT></CENTER></TD>
+<TD><CENTER><FONT COLOR="RED">4.24</FONT></CENTER></TD>
+<TD><CENTER><FONT  COLOR="RED">4.24</FONT></CENTER></TD>
+<TD><CENTER><FONT  COLOR="RED">4.51</FONT></CENTER></TD>
+
+<TR><TD ><CENTER><FONT  COLOR="BLUE">p<i>K</i><SUB>a,2</SUB></FONT></CENTER></TD>
+<TD><CENTER><FONT COLOR="BLUE">5.75</FONT></CENTER></TD>
+<TD><CENTER><FONT  COLOR="BLUE">5.75</FONT></CENTER></TD>
+<TD><CENTER><FONT COLOR="BLUE">6.01</FONT></CENTER></TD>
+
+<TR><TD ><CENTER><FONT COLOR="BLUE">p<i>K</i><SUB>a,3</SUB></FONT></CENTER></TD>
+<TD><CENTER><FONT  COLOR="BLUE">-</FONT></CENTER></TD>
+<TD><CENTER><FONT  COLOR="BLUE">-35.81</FONT></CENTER></TD>
+<TD><CENTER><FONT  COLOR="BLUE">-</FONT></CENTER></TD>
+
+
+</TABLE>
+<BR><BR>
+
+<H2>
+<A NAME="limitations"></A>
+7. Limitations of the Macro p<i>K</i><SUB>a</SUB> Prediction
+</H2>
+
+A maximum of 14 ionizable atoms can be considered in the calculations.  Some ionizable atoms are automatically 
+excluded from the calculations when the molecule has more than 14 ionizable atoms. 
+
+<H2>
+<A NAME="references"></A>
+8. References
+</H2>
+<OL>
+<LI>Dixon, S. L.; Jurs, P. C., <i>J. Comp. Chem.</i>, <b>1993</b>, <i>14</i>, 12, 1460-1467</LI>
+<LI>Csizmadia, F.; Tsantili-Kakoulidou, A.; Panderi, I.; Darvas, F., <i>J. Pharm. Sci.</i>, <b>1997</b>, <i>86</i>, 7, 865-871</LI>
+<LI><A NAME="ref3">Clark, F. H.; Cahoon, N. M., <i>J. Pharm. Sci.</i>, <b>1987</b>, <i>76</i>, 8, 611-620</A></LI>
+
+</OL>
+
+
+</body>
+</html>

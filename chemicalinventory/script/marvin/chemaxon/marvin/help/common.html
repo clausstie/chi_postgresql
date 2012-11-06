@@ -1,0 +1,182 @@
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>Marvin Common Help</TITLE>
+	 <link rel=stylesheet type="text/css" href="../../../marvinmanuals.css">
+</HEAD>
+<BODY><H1>Common Marvin Features</H1>
+<P><A HREF="help-index.html">Table of Contents</A> 
+</P>
+This section covers the features that are common to both MarvinSketch and MarvinView
+<P>
+
+<H2><A NAME="installation"></A>Installation/System Requirements</H2>
+<P>Marvin is written in Java, which is
+supported on various platforms, so it will run on almost every
+operating system. Marvin products come in various packages for users
+with different needs:</P>
+<DL>
+	<DT>Marvin Applets: 
+	</DT><DD STYLE="margin-bottom: 0.5cm">
+	Marvin Applets are targeted at the Web Developer who builds chemical
+	Internet/Intranet sites. The package contains 
+	</DD><DL>
+		<DT>
+		MarvinSketch/AWT: 
+		</DT><DD>
+		Applet for editing and visualizing molecules on a web page 
+		</DD><DT>
+		MarvinView/AWT: 
+		</DT><DD>
+		Applet for viewing molecules on a web page 
+		</DD><DT>
+		MarvinSketch/Swing: 
+		</DT><DD>
+		Swing version of MarvinSketch includes additional features and a
+		more modern look &amp; feel 
+		</DD><DT>
+		MarvinView/Swing: 
+		</DT><DD STYLE="margin-bottom: 0.5cm">
+		Swing version of MarvinView includes additional features and a more
+		modern look &amp; feel 
+		</DD></DL>
+
+	<p>Swing applets are signed that include the same feature set as the
+	MarvinSketch and MarvinView applications.</p>
+
+	Marvin applications: 
+	</DT><DD STYLE="margin-bottom: 0.5cm">
+	Standalone Java applications (MarvinSketch and MarvinView) 
+	</DD></DL>
+<P>
+System requirements for Marvin products are listed below: 
+</P>
+<CENTER>
+	<TABLE WIDTH="80%" BORDER=0 CELLPADDING=4>
+		<TR valign="top">
+			<TD>
+				<P>Marvin&nbsp;Applets&nbsp; 
+				</P>
+			</TD>
+			<TD>
+				<P><A HREF="../../../doc/user/browsers.html">Java enabled browser</A>.
+				Further requirement for Swing applets is <a HREF="http://java.sun.com/j2se/downloads.html">Java Runtime 
+				Environment</a> (JRE) 1.3 or later.
+				</P>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<P>Marvin&nbsp;Applications&nbsp; 
+				</P>
+			</TD>
+			<TD>
+				<P><a HREF="http://java.sun.com/j2se/downloads.html">Java 
+				Runtime Environment</a> (JRE) 1.3 or later.</P>
+			</TD>
+		</TR>
+	</TABLE>
+</CENTER>
+<P>For more information about how to install and run, visit to <A HREF="../../../download.html">this
+page</A>.</P>
+
+<a name="gui"></a><H2>Common GUI Features</H2>
+The Graphical User Interface (GUI) for MarvinSketch and MarvinView are very similar.  Each contains a Canvas, Menubar, and Pop-up Menus.
+Each program's Menubar contains slightly different choices, though the <B>Edit</B> and <B>View</B> menus share many options and the <B>Tools</B> and <B>Help</B> menus are nearly identical. 
+The differences between the Canvas and the Pop-up Menus for each program are due to MarvinView being mainly for Viewing and MarvinSketch for Editing.  To learn more about these differences, see <a href="sketch-gui.html">MarvinSketch GUI Reference</a> and <a href="view-gui.html">MarvinView GUI Reference</a>.
+
+<a name="display-structure"></a><H2>Structure Display Options</H2>
+Both MarvinView and MarvinSketch contain a wide range of functions related to the display of the molecules. These settings can be found in the View menu and the Preferences dialog. Additionally, you can move, rotate, and zoom in/out on the structure. 
+<BR>
+Display options that are common to both programs are listed below.  See <a href="sketch-basic.html#display-structure">MarvinSketch Structure Display Options</a> and <a href="view-basic.html#manipulate">MarvinView: Manipulating the Molecule</a> for information on moving, rotating, and scaling.
+<P>
+<A NAME="format"></A><H3>Molecule Format</H3>
+<P>You can set the display format for the molecule and screen
+resolution using the <B class="buttonName">View
+&gt; Display</B> submenu. Available molecule formats are
+<B class="buttonName">Wireframe, Wireframe
+with Knobs, Sticks, Ball and Stick,</B> and <B class="buttonName">Spacefill</B>.
+You can set the resolution to low or high via the <B class="buttonName">Quality</B>
+submenu. 
+</P>
+<A NAME="molcolor"></A><H3>Colors</H3>
+<P>The <B class="buttonName">View &gt;Colors</B>
+submenu allows you to specify the <A HREF="../../../doc/dev/sketchman.html#parameters.colorScheme">color
+scheme</A> of the molecules. The available options are: 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">Monochrome 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm">CPK 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm">Shapely - based on RasMol's
+	shapely color scheme for nucleic and amino acids 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm">Group - based on PDB residue
+	numbers 
+	</P>
+	<LI><P>Atom Set 
+	</P>
+</UL>
+
+<A NAME="implicit-explicit-H"></A><H3>Implicit/Explicit Hydrogens</H3>
+<P>Marvin has a number of options for the display of implicit and
+explicit hydrogens. Because Marvin is chemically intelligent, it will
+automatically add hydrogens as necessary within the structure.
+Generally, these will be implicit and displayed based on the options
+set in the <B class="buttonName">View</B>
+menu. 
+</P>
+<P>To view all hydrogens explicitly, displayed as atoms with bonds to
+neighbors, chose <B class="buttonName">Edit
+&gt; H-Atoms &gt; Add</B>. The <B class="buttonName">Edit
+&gt; H-Atoms &gt; Remove</B> will return to the previous display mode. 
+</P>
+<P>To view implicit hydrogens by symbol, use the <B class="buttonName">View
+&gt; Hydrogens &gt; Implicit </B>menu group. This option
+is disabled in Spacefill and Ball &amp; Stick display modes. 
+</P>
+
+<A NAME="error-hilight"></A><H3>Error Highlighting</H3>
+<P>Marvin can not automatically correct all valence errors or any reaction errors. Instead,
+these errors are highlighted and you may make the
+appropriate corrections yourself. 
+This option can be enabled and disabled through the the <B class="buttonName">Edit
+&gt; Preferences </B> box. 
+</P>
+
+<A NAME="preferences"></A><H2 ALIGN=LEFT>Saving Display Options</H2>
+
+Many of the display settings in Marvin are saved and reloaded the next time you start the program.  Background color, molecule color scheme, and hydrogen visibility can be set from the <B class="buttonName">View menu</B> and  will saved automatically when you exit Marvin.  Other options, including look & feel, error highlighting, and object visibility can be set using the <B class="buttonName">Preferences</B> dialog from the <B class="buttonName">Edit menu</B>.
+
+<A NAME="dnd"></A><H2>Cut/Copy/Paste and Drag &amp; Drop Functionality</H2>
+<P>Marvin supports transfer of data between Marvin and other programs via Cut/Copy/Paste and Drag &amp; Drop.  Molfiles can be transferred to and from other chemical drawing applications (such as ChemDraw and ISISDraw), between multiple Marvin windows, and to/from the desktop and file manager.  Additionally, Marvin can copy the text of a molecule file to/from a number of text editors and word processors.
+<BR>See 
+ <A HREF="../../../doc/user/datatransfer.html"> 
+
+Cut/Copy/Paste and Drag &amp; Drop Functionality</A> for more information. 
+</P>
+
+<H2>Calculator Plugins</H2>
+Both MarvinSketch and MarvinView allow access to plug-ins via the <B>Tools</B> menu.  See the <a href="calculator-plugins.html">Calculator Plugins</a> section for more information.
+<P>
+
+<H2>File Formats</H2>
+MarvinSketch and MarvinView can work with molecules in a number of <a href="../../../doc/dev/formats.html">file formats</a>.
+<P>
+
+<A NAME="stereochemistry"></A><H2>Stereochemistry</H2>
+Both MarvinSketch and MarvinView can handle stereochemical representation of molecules. See the  <a href="../../../doc/user/stereo-doc.html">stereochemical specification</a> section for details.
+<P>
+
+<P ALIGN=CENTER><A HREF="#">Return to Top</A></P>
+<p ALIGN=CENTER>
+Copyright &copy; 1998-2006
+<a HREF="http://www.chemaxon.com">ChemAxon Ltd.</a>
+</p>
+<p ALIGN=CENTER>
+<a HREF="http://www.chemaxon.com/marvin">http://www.chemaxon.com/marvin</a>
+</p>
+
+</BODY>
+</HEAD>

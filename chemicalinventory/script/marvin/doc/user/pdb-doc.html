@@ -1,0 +1,167 @@
+<html>
+<head>
+<meta NAME="description" CONTENT="PDB in Marvin">
+<meta NAME="keywords" CONTENT="PDB, Java, Marvin">
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<meta NAME="author" CONTENT="Miklos Vargyas">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>PDB in Marvin</title>
+</head>
+<body>
+
+<h1>Protein Data Bank format</h1>
+
+<p>
+Code name: <strong>pdb</strong>
+</p>
+<h2>Contents</h2>
+<ul>
+<li><a href="#notes">Release notes</a></li>
+<li><a href="#pdb">PDB format</a></li>
+<li><a href="#import">Import options</a></li>
+<li><a href="#export">Export options</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul>
+
+<a name="notes"></a><h2>Release notes</h2>
+<p><i>PDB import was substantially changed in release 4.0.2. The new
+imlementation, though not entirely compatible with the older approach, suits
+the needs of medicinal and bio-chemists better (in particular when used in <a
+href="mspace.html">MarvinSpace</a>). Beside, the new implementation consumes
+less memory and provides faster molecule import.</i></p>
+
+<p>The export of PDB files has not been affected by the PDB import related
+changes. </P>
+
+<a name="pdb"></a><h2>PDB format</h2>
+<p>Marvin processes the PDB record types as follows:
+<code>HEADER</code>, <code>COMPND</code>, <code>DBREF</code>,
+<code>SEQRES</code>, <code>MODRES</code>, <code>HET</code>,
+<code>HETNAM</code>, <code>FORMUL</code>, <code>HELIX</code>,
+<code>SHEET</code>, <code>TURN</code>, <code>MODEL</code>,
+<code>ATOM</code>, <code>TER</code>, <code>HETATM</code>,
+<code>ENDMDL</code>, <code>CONECT</code>, <code>END</code>.
+</P>
+
+<p>Multiple models are not yet supported, at represented only the
+first model is stored. The secondary structure is not perceived automatically,
+rather explicit definitions given by the adequate PDB records are recognized.</P>
+
+<p>
+Marvin exports simple PDB files containing the following
+records:
+<ul>
+<li>Title section:
+    <ul>
+    <li><code>HEADER</code> contains the following fields:
+	classification=&quot;<code>PROTEIN</code>&quot;
+	(or imported value), date,
+	idCode=&quot;<code>NONE</code>&quot; (or imported value).</li>
+    <li><code>TITLE</code>, <code>SOURCE</code>, <code>KEYWDS</code>,
+	<code>EXPDTA</code>: The imported value is exported.
+	Default: &quot;<code>NULL</code>&quot;.</li>
+    <li><code>COMPND</code>: The imported value is exported. Default:
+	&quot;<code>MOLECULE: </code>name&quot;,
+	where &quot;name&quot; is the molecule name.</li>
+    <li><code>AUTHOR</code>: The imported value is exported. Default:
+	&quot;<code>Marvin</code>&quot;.</li>
+    <li><code>REVDAT</code>: The following line plus the imported value.<br>
+	<code>REVDAT&nbsp;&nbsp;&nbsp;N&nbsp;&nbsp;&nbsp;DD-MMM-YY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</code><br>
+	(N is the modification number,
+	DD-MMM-YY is the date of the modification.)
+	</li>
+    </ul>
+    </li>
+<li>Coordinate section:
+    <ul>
+    <li><code>ATOM</code> and <code>HETATM</code>:
+	The atom name includes the remoteness indicator and the branch
+	designator character in case of amino acids. For non-standard residues,
+	the atom name and the element symbol field contain the same value.
+	The occupancy and the temperature factor are zero.
+	The residue field contains one of the
+	<a HREF="residues.html">standard residue</a> symbols.</li>
+    </ul>
+    </li>
+<li>Connectivity section:
+    <ul>
+    <li><code>CONECT</code>: Only the first five fields are used.
+	If the number of bonds is greater than four, a second CONECT line
+	with the same atom serial number (first field) will be used.</li>
+    <li><code>TER</code>: Indicates the end of a chain. Imported but not
+	exported in the current version.
+	</li>
+    </ul>
+    </li>
+<li>Bookkeeping section:
+    <ul>
+    <li><code>MASTER</code></li>
+    </ul>
+    </li>
+</ul>
+
+<p>Bare in mind that the export to PDB format is not encouraged since
+full complience to PDB standards is not mainted. </p>
+
+<a name="import"></a><h2>Import options</h2>
+<p>Bond types of hetero groups (excluding water molecules and ions) are
+guessed optionally. However, bonds are formed even when no appropriate
+<code>CONECT</code> record is available. Bond types
+are set to <code>ANY</code> by default unless the optional bond type
+guessing is carried out. <br>
+Both bond and bond type guessing is based on interatomic distances and
+simple valance rules. Bond lengths are matched against the widely used
+<a href="stdbondlengths.html">standard bond lengths</a> of small organic molecules.
+If such statistical data is missing for a given atom type pair the
+bond type is ANY.<br>
+Note, that bond type guessing has been changed since version 4.0.2 and is no
+longer compatible with the original approach still in use for
+<a HREF="xyz-doc.html#import">XYZ import</a>.
+This duality is maintained with respect to
+the differences in typical application areas of PDB files and XYZ files.
+<br>
+The current implementation supports the <a href="xyz-doc.html#option_b"><strong>
+{b}</strong> option</a>. When specified,
+bond types are guessed as described above. </p>
+
+<a name="export"></a><h2>Export options</h2>
+
+<p>
+Export options can be specified in the format string. The format descriptor
+and the options are separated by a colon.
+
+<blockquote>
+<table CELLSPACING=0 CELLPADDING=5 border="0">
+<tr VALIGN="TOP">
+    <td>...</td>
+    <td><a HREF="basic-export-opts.html">Basic options for H atom
+	adding/removal.</a></td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_c"></a><strong>-c</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+	</td>
+    <td>Do not write connections in output. Example: &quot;pdb:-c&quot;</td></tr>
+</table>
+</blockquote>
+
+Restrictions of the PDB format:
+<ul>
+<li>Bond orders are not stored.
+    Marvin guesses unknown bonds from valence rules and intramolecular geometry.</li>
+<li>Query properties cannot be stored in PDB files.</li>
+</ul>
+Limitations:
+<ul>
+<li>The exporter writes the atoms in the molecule object's internal atom order
+    which may be different from the order of residues in a chain. Thus export
+    is still not reliable for macromolecules with residues.</li>
+</ul>
+<p>
+
+<a name="reference"></a><h2>Reference:</h2>
+<ul>
+<li><a HREF="http://www.rcsb.org/pdb/file_formats/pdb/pdbguide2.2/guide2.2_frame.html">Protein Data Bank Contents Guide:
+Atomic Coordinate Entry Format Description</a></li>
+</ul>
+
+</body>
+</html>

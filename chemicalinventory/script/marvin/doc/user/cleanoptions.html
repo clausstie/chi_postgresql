@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta name="author" content="Tamas Vertse">
+  <link rel="stylesheet" type="text/css" href="../../marvinmanuals.css"
+ title="Style">
+  <title>Cleaning options in Marvin</title>
+</head>
+<body
+ style="color: rgb(51, 51, 102); background-color: rgb(255, 255, 255);">
+<h1>Cleaning options in Marvin</h1>
+
+<p>Both 2D and 3D options can be divided into two groups: <i>Base</i>
+and <i>Extra</i>.
+<i>Base</i> contains the typically used options which are also
+accessible via "Edit/Clean" menu in Marvin. You can use them in each
+case.
+<i>Extra</i> includes further options which are accepted only by the
+MolConvert application and the clean method of MoleculeGraph in the
+Marvin Beans API.</p>
+<h2><a name="2d">2D options</a></h2>
+<ul>
+  <li><a name="base.2d"><b>Base:</b></a>
+    <p> <i>O0</i> No optimization <br>
+    <i>O1</i> Optimize if needed (default) <br>
+    <i>O2</i> Always optimize </p>
+    <p><small>Note: <i>null</i> always specifies the default value.</small></p>
+  </li>
+  <li><a name="extra.2d"><b>Extra:</b></a>
+    <p> <i>e</i> Verbose either flag removal<br>
+    </p>
+    <ul>
+If it is not possible to decide whether<br>
+the double bond is CIS or TRANS, the double<br>
+bond either flag is removed
+    </ul>
+    <p> <i>d</i> show debugging info</p>
+    <p> <i>tX</i> set optimization time limit to X ms<br>
+    </p>
+    <ul>
+maximum time spent in the optimization<br>
+default value: 5000ms<br>
+if X&lt;1, no time limit used
+    </ul>
+    <p> <i>iX</i> set iteration limit to X step<br>
+    </p>
+    <ul>
+maximum iteration step in the optimization algorithm<br>
+default value: 100
+    </ul>
+    <p> <i>rX</i> set ring step limit to X step<br>
+    </p>
+    <ul>
+maximum number of steps when drawing a ring <br>
+avoiding bond cross<br>
+default value: no limit
+    </ul>
+    <p> <i>cX</i> set branch step limit to X <br>
+    </p>
+    <ul>
+step limit for the recursively drawing<br>
+a branch of a molecule avoiding bond cross<br>
+default value: no limit
+    </ul>
+  </li>
+</ul>
+<h2><a name="3d">3D options</a></h2>
+<ul>
+  <li><a name="base.3d"><b>Base:</b></a>
+    <p> <i>S{fine}</i> Find low energy conformer. Leave failed
+fragments intact. </p>
+    <p> <i>S{fast}</i> Fast clean, if failed, perform fine clean,
+accept any generated structure (default)</p>
+    <p><small>Notes: <i>null</i> always specifies the default value. <i>O0</i>
+and <i>OD</i> are deprecated. They use the default value.</small></p>
+  </li>
+  <li><a name="extra.3d"><b>Extra:</b></a>
+    <p> <i>?</i> Print the complete list of options to <code>System.err</code>.
+The same list can be printed by invoking the <a
+ href="molconvert.html">MolConverter</a>
+with <span style="font-style: italic;">the -H3D </span>option. <br>
+    </p>
+    <p> <i>S{nofaulty}</i> Same as <span style="font-style: italic;">S{fast}</span>,
+but leave failed fragments intact. </p>
+    <p> <i>S{conformers}</i> Generate conformers, store the calculated
+conformer coordinates and energies in PropertyObjects. </p>
+    <p> <i>E</i> Store calculated Dreiding energy in SDF property
+string. The Dreiding energy for each fragment will be calculated in the
+last step.&nbsp; Their sum will be stored in the sdf property called
+"Energy".<br>
+    </p>
+  </li>
+</ul>
+</body>
+</html>

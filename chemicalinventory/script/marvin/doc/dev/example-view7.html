@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Andras Volford">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 7 - Display stereo configurations</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinView Example 7</h1>
+
+This example demonstrates how to display stereo configuration of molecules.
+<p>
+
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+mview_begin("../..", 600, 200);
+mview_param("tabScale", "25");
+mview_param("background", "#ffffff");
+mview_param("molbg", "#ffffff");
+mview_param("rows", "1");
+mview_param("cols", "3");
+mview_param("cell0", "|../../mols-2d/l-tryptophan.csmol");
+mview_param("cell1", "|../../mols-2d/morphine.csmol");
+mview_param("cell2", "|../../mols-2d/dimethyl-octadien.csmol");
+mview_end();
+//-->
+</script>
+<p>
+</center>
+
+<p>
+In the first case, the R/S chirality labels are hidden on the molecules. (This is the default option in Marvin.)
+<blockquote>
+<pre>
+<strong>mview_name</strong> = &quot;MView&quot;;
+<strong>mview_begin(</strong>&quot;../..&quot;<strong>,</strong> 600<strong>,</strong> 200<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.tabScale">tabScale</a>&quot;<strong>,</strong> &quot;25&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.background">background</a>&quot;<strong>,</strong> &quot;#ffffff&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.molbg">molbg</a>&quot;<strong>,</strong> &quot;#ffffff&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.rows">rows</a>&quot;<strong>,</strong> &quot;1&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cols">cols</a>&quot;<strong>,</strong> &quot;3&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell0</a>&quot;<strong>,</strong> &quot;|../../mols-2d/l-tryptophan.csmol&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell1</a>&quot;<strong>,</strong> &quot;|../../mols-2d/morphine.csmol&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell2</a>&quot;<strong>,</strong> &quot;|../../mols-2d/dimethyl-octadien.csmol&quot;<strong>);</strong>
+<strong>mview_end();</strong>
+</pre>
+</blockquote>
+
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+mview_begin("../..", 600, 200);
+mview_param("tabScale", "25");
+mview_param("chiralitySupport","selected");
+mview_param("background", "#ffffff");
+mview_param("molbg", "#ffffff");
+mview_param("rows", "1");
+mview_param("cols", "3");
+mview_param("cell0", "|../../mols-2d/l-tryptophan.csmol");
+mview_param("cell1", "|../../mols-2d/morphine.csmol");
+mview_param("cell2", "|../../mols-2d/dimethyl-octadien.csmol");
+mview_end();
+//-->
+</script>
+<p>
+</center>
+
+
+<p>Set the value of <a HREF="viewman.html#parameters.chiralitySupport">chiralitySupport</a>
+parameter to <code>selected</code> to display chirality on those molecules only where the chiral
+flag is set. (In this example, the chiral flag is specified for only the first two molecules.)
+
+<blockquote>
+<pre>
+<strong>mview_name</strong> = &quot;MView&quot;;
+<strong>mview_begin(</strong>&quot;../..&quot;<strong>,</strong> 600<strong>,</strong> 200<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.tabScale">tabScale</a>&quot;<strong>,</strong> &quot;25&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.chiralitySupport">chiralitySupport</a>&quot;<strong>,</strong> &quot;selected&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.background">background</a>&quot;<strong>,</strong> &quot;#ffffff&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.molbg">molbg</a>&quot;<strong>,</strong> &quot;#ffffff&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.rows">rows</a>&quot;<strong>,</strong> &quot;1&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cols">cols</a>&quot;<strong>,</strong> &quot;3&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell0</a>&quot;<strong>,</strong> &quot;|../../mols-2d/l-tryptophan.csmol&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell1</a>&quot;<strong>,</strong> &quot;|../../mols-2d/morphine.csmol&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell2</a>&quot;<strong>,</strong> &quot;|../../mols-2d/dimethyl-octadien.csmol&quot;<strong>);</strong>
+<strong>mview_end();</strong>
+</pre>
+</blockquote>
+
+<p>
+Set the value of the 
+<a HREF="viewman.html#parameters.chiralitySupport">chiralitySupport</a>
+parameter to <code>all</code> and the 
+<a HREF="viewman.html#parameters.ezVisible">ezVisible</a> parameter 
+to <code>true</code> to display the
+chirality and the E/Z isomer information of all molecules.  
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+mview_begin("../..", 600, 200);
+mview_param("tabScale", "25");
+mview_param("ezVisible", "true");
+mview_param("chiralitySupport", "all");
+mview_param("background", "#ffffff");
+mview_param("molbg", "#ffffff");
+mview_param("rows", "1");
+mview_param("cols", "3");
+mview_param("cell0", "|../../mols-2d/l-tryptophan.csmol");
+mview_param("cell1", "|../../mols-2d/morphine.csmol");
+mview_param("cell2", "|../../mols-2d/dimethyl-octadien.csmol");
+mview_end();
+//-->
+</script>
+</center>
+
+<blockquote>
+<pre>
+<strong>mview_name</strong> = &quot;MView&quot;;
+<strong>mview_begin(</strong>&quot;../..&quot;<strong>,</strong> 600<strong>,</strong> 200<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.tabScale">tabScale</a>&quot;<strong>,</strong> &quot;25&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.ezVisible">ezVisible</a>&quot;<strong>,</strong> &quot;true&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.chiralitySupport">chiralitySupport</a>&quot;<strong>,</strong> &quot;all&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.background">background</a>&quot;<strong>,</strong> &quot;#ffffff&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.molbg">molbg</a>&quot;<strong>,</strong> &quot;#ffffff&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.rows">rows</a>&quot;<strong>,</strong> &quot;1&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cols">cols</a>&quot;<strong>,</strong> &quot;3&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell0</a>&quot;<strong>,</strong> &quot;|../../mols-2d/l-tryptophan.csmol&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell1</a>&quot;<strong>,</strong> &quot;|../../mols-2d/morphine.csmol&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#advanced.cell">cell2</a>&quot;<strong>,</strong> &quot;|../../mols-2d/dimethyl-octadien.csmol&quot;<strong>);</strong>
+<strong>mview_end();</strong>
+</pre>
+</blockquote>
+
+</body>
+</html>

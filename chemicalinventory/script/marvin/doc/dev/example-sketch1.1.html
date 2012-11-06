@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 1.1 - The &lt;applet&gt; tag</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinSketch Example 1.1</h1>
+
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+// marvin_jvm = "builtin"; // "builtin" or "plugin"
+// marvin_gui = "awt"; // "awt" or "swing"
+msketch_begin("../..", 460, 380);
+msketch_end();
+//-->
+</script>
+</center>
+
+<p>
+The traditional way to put the MarvinSketch/AWT applet to a web page is by writing
+the following text in the HTML:
+<blockquote>
+<pre>
+<strong>&lt;applet CODEBASE</strong>="../.." <strong>ARCHIVE</strong>=&quot;marvin.jar&quot; <strong>CODE</strong>=&quot;MSketch&quot; <strong>WIDTH</strong>=460 <strong>HEIGHT</strong>=380<strong>&gt;</strong>
+<strong>&lt;strong&gt;</strong>(YOU CANNOT SEE A JAVA APPLET HERE)<strong>&lt;/strong&gt;</strong>
+<strong>&lt;/applet&gt;</strong>
+</pre>
+</blockquote>
+The <code><strong>CODEBASE</strong></code> option specifies the directory of
+the Marvin binaries relative to the HTML file. This HTML file is in a
+subdirectory of the Marvin binaries directory, that's why we use
+"<code>../..</code>" here.
+The <code><strong>ARCHIVE</strong></code> option is needed to speed up the
+downloads.  The program code is packaged into a compressed JAR file,
+<code>marvin.jar</code>.
+The text &quot;<strong>(YOU CANNOT SEE A JAVA APPLET HERE)</strong>&quot; is
+displayed if someone tries to see the web page with a browser that is not Java
+compatible.
+
+<p>MarvinSketch/Swing has the same applet tag with minor differences:
+<code><strong>ARCHIVE</strong>=&quot;jmarvin.jar&quot;</code> and
+<code><strong>CODE</strong>=&quot;JMSketch.class&quot;</code>.
+
+<p>If you want your page to work with Sun's Java Plugin, then the situation
+becomes more complicated, because instead of the standard
+<code><strong>&lt;applet&gt;</strong></code> tag, you have to use platform dependent
+solutions, <code><strong>&lt;embed&gt;</strong></code> for Netscape or
+<code><strong>&lt;object&gt;</strong></code> for Microsoft.
+There are 6 possibilities overall:
+<ol>
+<li><code><strong>&lt;applet ARCHIVE=</strong>&quot;marvin.jar&quot;<strong>&gt;</strong></code> and AWT</li>
+<li><code><strong>&lt;applet ARCHIVE=</strong>&quot;jmarvin.jar&quot;<strong>&gt;</strong></code> and Swing</li>
+<li><code><strong>&lt;embed&gt;</strong></code> and AWT</li>
+<li><code><strong>&lt;embed&gt;</strong></code> and Swing</li>
+<li><code><strong>&lt;object&gt;</strong></code> and AWT</li>
+<li><code><strong>&lt;object&gt;</strong></code> and Swing</li>
+</ol>
+Fortunately, this does not mean that you need to write the same HTML in
+6 different versions. All the possibilities can be combined in one page
+using the utility functions in <a HREF="marvin.js.txt">marvin.js</a>.
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<em>// marvin_jvm = &quot;builtin&quot;; // &quot;builtin&quot; or &quot;plugin&quot;</em>
+<em>// marvin_gui = &quot;awt&quot;; // &quot;awt&quot; or &quot;swing&quot;</em>
+<strong>msketch_begin(</strong>&quot;../..&quot;<strong>,</strong> 460<strong>,</strong> 380<strong>);</strong> <em>// arguments: CODEBASE, WIDTH, HEIGHT</em>
+<strong>msketch_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+The JVM (built-in or Java Plug-in) and the GUI (AWT or Swing) each have a default
+value based on your browser and Java version. If you want to use a
+different configuration, you have to specify the <code><strong>marvin_jvm</strong></code> and/or
+<code><strong>marvin_gui</strong></code>. These settings can also be overridden by writing
+CGI-like parameters in the URL of the page:
+<blockquote>
+<pre>
+<strong>&lt;a HREF</strong>=&quot;sketcherpage.html?<strong>jvm</strong>=plugin&amp;<strong>gui</strong>=swing&quot;&gt;click here!<strong>&lt;/a&gt;</strong>
+</pre>
+</blockquote>
+The <strong>jvm</strong> parameter is
+&quot;<code>builtin</code>&quot; or &quot;<code>plugin</code>&quot;,
+the <strong>gui</strong> parameter is
+&quot;<code>awt</code>&quot; or &quot;<code>swing</code>&quot;.
+You can try it by appending &quot;<code>?jvm=plugin&amp;gui=swing</code>&quot;
+or &quot;<code>?jvm=builtin&amp;gui=awt</code>&quot; to the URL of this page and
+then loading it again.<br>
+<p>Note that in some browsers (such as MSIE) this method does not work if the
+page is on a local drive, because <code>document.location.search</code> is an
+empty string. But if you put the HTML file and the applet on a web server,
+then it should work.
+
+<p><em>Warning:</em>
+Scripting (JavaScript to Java communicaton) does <em>not</em> work in
+Netscape 4.x with the Java Plugin. In MarvinSketch, scripting is needed
+to query the molecule drawn by the user. So in practice, you should use the
+built-in JVM instead of the Java Plugin.
+
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+<p>The 
+<a HREF="example-sketch1.2.html">next example</a> introduces the use of applet parameters.
+
+</body>
+</html>

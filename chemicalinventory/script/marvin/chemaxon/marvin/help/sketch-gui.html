@@ -1,0 +1,919 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>MarvinSketch Help</TITLE>
+	 <link rel=stylesheet type="text/css" href="../../../marvinmanuals.css">
+
+</HEAD>
+<BODY>
+<H1>Introduction to MarvinSketch</H1>
+<P><A HREF="sketch-index.html">Table of Contents</A> 
+</P>
+
+<A NAME="introduction"></a><H2>Introduction</H2>
+<P>MarvinSketch is a Java based chemical drawing tool. MarvinSketch
+allows you to create and edit molecules in various file formats
+including MDL mol, Compressed mol, unique SMILES, SMARTS, Sybyl mol,
+PDB, CML, XYZ, POV-Ray. <BR>MarvinSketch includes many advanced
+features, such as recent structures (i.e. structure history), visual
+fragment placement, ambiguity reduction, and multi-level undo/redo.
+<BR>The Marvin Applets are unique in the sense that they support all
+Java platforms, ranging from the ancient Java 1.0 to Swing. They work
+in older web browsers, but if they find themselves in a modern
+browser, they automatically utilize newer Java features. 
+</P>
+<A NAME="marvinsketch-gui"></A><H2>MarvinSketch GUI Reference</H2>
+<P>Below is an image of the MarvinSketch GUI, followed by
+descriptions of each of the components</P>
+<P><IMG SRC="sketch-gui_files/sketch1b.gif" NAME="Graphic1" 
+    ALT="MarvinSketch Main Window" ALIGN=MIDDLE WIDTH=679 HEIGHT=495 BORDER=0>
+</P>
+<H2><A NAME="canvas"></A>Canvas</H2>
+<P>The canvas is the drawing area for graphically creating and
+editing structures. You can easily draw atoms, bonds, rings, arrows,
+and much more on the canvas using your mouse.</P>
+<H2><A NAME="toolbar"></A>Toolbar</H2>
+<P>The toolbar contains a collection of buttons and icons to quickly
+aid you in drawing molecular structures. The toolbar contains two
+types of buttons: click and toggle. Click buttons act as normal
+buttons - performing an action when you click them. Toggle buttons
+have multiple states that are alternated between with each mouse
+click. The toolbar contains several toggle buttons, most relating to
+drawable elements such as bonds, templates (predefined structures),
+and arrows. When one of these buttons is selected, it sets the
+drawing item associated with the mouse within the canvas. <BR>The
+image below shows the different parts of the toolbar</P>
+<P STYLE="margin-bottom: 0cm"><IMG SRC="sketch-gui_files/toolbar-titled.gif" 
+    NAME="Graphic2" ALT="parts of the toolbar" ALIGN=MIDDLE WIDTH=752 
+    HEIGHT=220 BORDER=0>
+</P>
+<CENTER>
+<TABLE WIDTH=450 BORDER=5 CELLPADDING=5 cellspacing="0" id="grid">
+<TR>
+    <Th COLSPAN=2>
+        <P ALIGN=CENTER>Toolbar Elements</P>
+    </Th>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+	<P>Little Periodic Table</P>
+    </TD>
+    <TD>
+	<P>The most important (frequently used) atoms have buttons on the 
+        toolbar. This part of the toolbar is referred to as the 
+        <B class="buttonName">Little periodic table</B>. It also includes 
+        charge buttons (&quot;-&quot; and &quot;+&quot;).<BR>
+        See <A HREF="sketch-basic.html#howto-draw">How To Draw Structures</A> 
+	</P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD>
+        <P><A NAME="periodic_table.button"></A>Periodic Table (More) button</P>
+    </TD>
+    <TD>
+	<P>MarvinSketch contains a full periodic table to allow you to add any 
+        chemical element to your molecule. Clicking the <B class="buttonName"
+        >More</B> button will open the Periodic table pop-up menu.</P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD>
+        <P>Bond Button</P>
+    </TD>
+    <TD>
+	<P>The <B class="buttonName">Bond</B> button allows you to select the 
+        bond type you wish to draw.  Press and hold the bond button for a 
+        pop-up list of bond choices.<BR>
+        See <A HREF="sketch-basic.html#howto-draw">How To Draw Structures</A> 
+        </P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD>
+	<P>Templates</P>
+    </TD>
+    <TD>
+	<P>MarvinSketch provides several predefined chemical structures,
+	called templates (e.g., cyclopenthane,	cyclohexan, benzene). <BR>
+        See <A HREF="sketch-basic.html#templates">How To Draw Templates</A>.
+        </P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD>
+	<P><a name="react.button">Reaction Button</a></P>
+    </TD>
+    <TD>
+	<P>Clicking on the <B class="buttonName">Reaction</B>
+	button allows you to draw a Reaction arrow within the molecule.<BR>
+        See <A HREF="sketch-basic.html#howto-draw.reactions"
+        >How To Draw Reactions</A>. 
+	</P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD>
+	<P><a name="edit.buttons">Edit Buttons</a></P>
+    </TD>
+    <TD>
+	<P>MarvinSketch provides the following familiar editing functionality 
+        in the Toolbar: <B class="buttonName">Select, Cut, Copy, Paste, Erase, 
+        Undo,</B> and <B class="buttonName">Redo</B>.
+	To use the cut or copy functionality, you must first select part of 
+        the molecule. To paste cut/copied structures, click on 
+        <B class="buttonName">Paste</B>, then click the canvas where you would 
+        like to place the structure.<BR>
+        For more information on these functions, see following sections: 
+        <A HREF="sketch-basic.html#howto.select.structure"
+        >How To select a structure</A> and 
+        <A HREF="sketch-basic.html#howto.delete.structure"
+        >How To delete a structure</A>. 
+	</P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD>
+	<P>Zoom Buttons</P>
+    </TD>
+    <TD>
+	<P>The <B class="buttonName">Zoom</B> buttons allow you to
+	zoom in and out, and to fit the molecule to the current size of the 
+        window.</P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD>
+	<P>Help Button</P>
+    </TD>
+    <TD>
+	<P>Opens the Help document.</P>
+    </TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<H3>AWT-Only Buttons</H3>
+<P>The AWT applet functions a little differently than the Swing
+applet and application. Its toolbar contains three AWT-specific
+buttons to manipulate the toolbar and access the Menu. <BR>
+<IMG SRC="sketch-gui_files/awt-only-buttons.png" NAME="Graphic3" 
+    ALT="AWT Only Toolbar Buttons" ALIGN=BOTTOM WIDTH=230 HEIGHT=121 
+    BORDER=0>
+</P>
+<UL>
+    <li>The <B class="buttonName">Window Mode</B> button allows you to launch 
+    the Sketcher in a new window, allowing access to the Menu Bar. If the 
+    Sketcher is already in a separate window, this button returns it to the 
+    original location.</li>
+    <li>The <B class="buttonName">Rearrange Toolbar</B> button moves the 
+    Toolbar to the left of the canvas and orients it vertically.</li>
+    <li>The <B class="buttonName">Hide Toolbar</B> button toggles the 
+    visibility of the Toolbar.</li>
+</UL>
+
+<H2><A NAME="menubar"></A>Menu Bar</H2>
+<P STYLE="margin-bottom: 0cm">In addition to the features available
+through the toolbar, MarvinSketch has several features that can be
+accessed via the Menu bar.<BR>N.B. In the AWT version of Marvin, the
+Menu bar is not initially visible. To access the Menu bar, click the
+ <a class="buttonName">Window Mode</a> 
+button (labeled with an arrow pointing upward and located to the left of the
+toolbar), 
+<IMG SRC="sketch-gui_files/winmode-button.png" NAME="Graphic4" ALIGN=BOTTOM 
+    WIDTH=21 HEIGHT=36 BORDER=0>
+which will launch the Sketcher in a new window with a visible Menu bar.</P>
+
+<CENTER>
+<TABLE WIDTH=450 BORDER=5 CELLPADDING=5 cellspacing="0" id="grid">
+<TR>
+    <Th COLSPAN=2>
+	<P ALIGN=CENTER>Menus and Major Submenus</P>
+    </Th>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+	<P>File Menu</P>
+    </TD>
+    <TD>
+	<P>The File menu contains the available file operations, such as
+	<B class="buttonName">New, Open, Save, Print, and Close</B>. The 
+        (unsigned) Swing and AWT applets contain only a subset of these 
+        functions.<BR>
+        See <A HREF="sketch-basic.html">Basic MarvinSketch Functions</A> for 
+        more information on this functionality. 
+	</P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+        <P>Edit Menu</P>
+    </TD>
+    <TD>
+	<P>The Edit menu contains general editing functionality (i.e.
+	<B class="buttonName">Copy</B> and <B class="buttonName">Paste</B>)
+	as well as Marvin-specific editing options. <BR>
+        See the following sections for more information:<BR>
+        <A HREF="common.html#implicit-explicit-H"
+            >Implicit/Explicit Hydrogens</A>
+        <BR><A HREF="sketch-basic.html#howto-alter"
+            >How To Work With Structures</A></P>
+    </TD>
+</TR>
+<tr valign="top">
+    <td width=20%>
+        <p>Atom Maps Submenu</p>
+    </td>
+    <td>
+        <p>To automatically assign or remove map numbers to atoms.</p>
+    </td>
+</tr>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+	<P>Groups Submenu</P>
+    </TD>
+    <TD>
+        <P>The <B class="buttonName">Groups</B>	submenu contains the tools for 
+        creating and working with abbreviated groups (S-groups).<BR>
+        See <A HREF="sketch-chem.html#sgroups">Working With S-groups</A></P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+	<P>Edit Source</P>
+    </TD>
+    <TD>
+	<P>Choosing <B class="buttonName">Source</B> from the 
+        <B class="buttonName">Edit</B> menu opens the Edit Source  window. The 
+        Edit Source window opens the file for the current molecule as text. 
+        You can view and edit the molecule file in any of the supported formats 
+        (SMILES, molfile, XYZ, etc).<BR>
+        See <A HREF="sketch-basic.html#howto-alter">How To Work With Structures</A>. 
+        </P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+        Preferences
+    </TD>
+    <TD>
+        <P>The <B="buttonName">Preferences</B> dialog allows you to change many 
+        of the MarvinSketch display settings, including look &amp; feel, error 
+        highlighting, and object visibility.  Your chosen settings will be 
+        saved and used when you open MarvinSketch in the future.<BR>
+        See <a href="common.html#preferences">Saving Display Options</a>.
+    </TD>
+</TR>
+	
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+	<P>View Menu</P>
+    </TD>
+    <TD>
+        <P>The <B class="buttonName">View</B> menu allows you to alter the 
+	way the molecule is displayed without altering the molecule
+	itself. You can change the molecule display type, background color, 
+        color scheme, error highlighting, etc.<BR>
+        See <A HREF="sketch-basic.html#display-structure"
+        >Structure Display Options</A></P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+        <P>Transform Submenu</P>
+    </TD>
+    <TD>
+        <P>You can zoom and rotate edited components with help of the 
+        <B class="buttonName">Transform</B> submenu. In the normal mode
+        (<i>None/Normal Sketching</i>), you can draw to the canvas.
+        If you select the <i>Zoom/Rotate</i> option and drag the mouse
+        on the canvas, you can zoom the content of the canvas and/or
+        rotate it in 2D. By choosing the <i>Rotate in 3D</i> option,
+        you can spin the structure around its central point in 3 dimension
+        with the help of the mouse.
+        Unlike the molecule cleaning, these transformations do not modify 
+        the atom coordinates, they change only the view point.</P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+	<P>Hydrogens Submenu</P>
+    </TD>
+    <TD>
+	<P>The <B class="buttonName">Hydrogens</B> submenu controls the 
+        display of implicit and	explicit hydrogen atoms in the molecule.<BR>
+        See <A HREF="common.html#implicit-explicit-H"
+        >Implicit/Explicit Hydrogens</A></P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+        <P><a hame="insert.menu">Insert Menu</a></P>
+    </TD>
+    <TD>
+        <P>The <B class="buttonName">Insert</B> menu allows you to draw 
+        templates, graphic objects, text boxes and electron flow arrow on 
+        the canvas.<BR>
+        See <a href="sketch-basic.html#howto.draw.graphic"
+        >How To Draw Graphic Objects and Text Boxes</a></P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+	<P><a name="templates.menu">Templates Submenu</a></P>
+    </TD>
+    <TD>
+	<P>The <B class="buttonName">Templates</B>menu contains a list of 
+        available template groups. By default, the <B class="buttonName"
+        >Generic</B> template list is displayed in the Templates panel of 
+        the toolbar. The Ring templates group contains a collection of 
+        different types of rings. It can also be displayed in the toolbar 
+        by selecting the <B class="buttonName">Rings</B> choice. 
+        The Amino Acids and Polycyclic template list includes too many 
+        templates to fit in the toolbar, so they are displayed in a pop-up 
+        window when you choose them.<BR>
+        See <A HREF="sketch-basic.html#templates">How To Draw Templates</A>.
+        </P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+        <P>Tools</P>
+    </TD>
+    <TD>
+        <P>See <a href="calculator-plugins.html">Calculator Plug-ins</a></P>
+    </TD>
+</TR>
+<TR VALIGN=TOP>
+    <TD WIDTH=20%>
+	<P>Help</P>
+    </TD>
+    <TD>
+        <P>Select the <B class="buttonName">Help</B> menu item to access this 
+        help document. <BR><B class="buttonName">About Marvin</B> displays 
+        information about Marvin.<BR>
+        <B class="buttonName">About JVM</B> displays information about your
+	software environment (JVM version, Operating system, Marvin's
+	version).</P>
+    </TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<H2><A NAME="popup-menu"></A>Pop-up Menus</H2>
+<P>There are four pop-up menus in MarvinSketch. When you right click on
+the canvas, a menu will appear based on the position of the mouse.
+The following table summarizes these menus:</P>
+<CENTER>
+<TABLE BORDER=0 CELLPADDING=5 CELLSPACING=0>
+<TR>
+    <TH>
+	<P>Mouse Location</P>
+    </TH>
+    <TH>
+	<P>Associated Right-Click Menu</P>
+    </TH>
+</TR>
+<TR ALIGN=CENTER>
+    <TD>
+	<P>Atom</P>
+    </TD>
+    <TD>
+        <P>Atom Pop-up Menu</P>
+    </TD>
+</TR>
+<TR ALIGN=CENTER>
+    <TD>
+	<P>R-group</P>
+    </TD>
+    <TD>
+	<P>R-group Pop-up Menu (Modified Atom menu)</P>
+    </TD>
+</TR>
+<TR ALIGN=CENTER>
+    <TD>
+	<P>Bond</P>
+    </TD>
+    <TD>
+	<P>Bond Pop-up Menu</P>
+    </TD>
+</TR>
+<TR ALIGN=CENTER>
+    <TD>
+	<P>Open canvas space</P>
+    </TD>
+    <TD>
+	<P>Edit Pop-up Menu</P>
+    </TD>
+</TR>
+</TABLE>
+</CENTER>
+<H3><A NAME="atom.popup"></A>Atom Pop-up Menu</H3>
+<P>The Atom pop-up menu appears when you right-click on an atom on
+the canvas. It contains options for atom-specific activities.</P>
+<CENTER>
+<TABLE WIDTH=450 BORDER=5 CELLPADDING=5 cellspacing="0" id="grid">
+<TR>
+    <TH WIDTH=15%>
+        <P>Menu Item</P>
+    </TH>
+    <TH WIDTH=85%>
+	<P>Description</P>
+    </TH>
+</TR>
+<tr>
+    <td>
+        <p>Stereo</p>
+    </td>
+    <td>
+        <p>See <a href="../../../doc/user/stereo-doc.html"
+        >enhance stereo specification</a></p>
+    </td>
+</tr>
+<TR>
+    <TD>
+	<P>Charge</P>
+    </TD>
+    <TD>
+	<P>Applies a <a href="sketch-chem.html#charges">charge</a> between 
+        [-9,9] to the atom. This submenu is not dynamically generated, so 
+        Marvin will let you set any of these values on any atom, highlighting 
+        the Valence Errors in red upon completion. In other words, Marvin will 
+        allow you to set a charge of -5 on hydrogen, despite the fact that 
+        this is chemically impossible.</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Radical</P>
+    </TD>
+    <TD>
+	<P>Sets the selected atom as a <a href="sketch-chem.html#radicals"
+        >radical</a>. You can select the type of radical - monovalent, divalent, 
+        divalent singlet, or divalent triplet. The Off option removes the 
+        radical designation.</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Isotope</P>
+    </TD>
+    <TD>
+        <P>The <a href="sketch-chem.html#isotopes" class="buttonName"
+        >Isotope</a> submenu contains a list of the isotopes of the selected 
+        element, dynamically generated based on the selected atom. Select an
+	isotope to set or change the isotope number or choose <B 
+        class="buttonName">Off</B> to remove the the isotope number.</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Map</P>
+    </TD>
+    <TD>
+	<P>The <a href="sketch-chem.html#mapping"><B class="buttonName"
+        >Map</B></a> submenu contains a list of available map identifiers that 
+        can be set on each atom. Map labels are useful because they remain
+	constant, unlike atom indexes, which can change as the molecule
+	is altered. Another common use is to mark atoms in reactions. An
+	advantage of Map labels is that they can be saved into SMILES and
+	MDL format.</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>R-Group</P>
+    </TD>
+    <TD>
+	<P>Gives a submenu of <a href="sketch-chem.html#rgroups">R-group</a> 
+        labels to change the selected atom to an R-group label.</P>
+    </TD>
+</TR>
+<tr>
+    <td>
+        <p>Group</p>
+    </td>
+    <td>
+        <p>If the selected atom is part of a group (R-group definition or
+        abbreviated group), you can specify an attachment point.</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>Link Node</p>
+    </td>
+    <td><p>See <a href="sketch-chem.html#link-nodes">Link node</a>
+    specifies rings or chains by repeating carbon atoms.</p>
+    </td>
+</tr>
+<TR>
+    <TD>
+	<P>Branch</P>
+    </TD>
+    <TD>
+	<P>Adds a new bond with implicit hydrogen to the selected atom.
+	This option is disabled for atoms that can have no more bonds.</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Remove</P>
+    </TD>
+    <TD>
+	<P>Removes the selected atom from the molecule.</P>
+    </TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<H3>R-group Pop-up Menu</H3>
+<P STYLE="margin-bottom: 0cm">The R-group pop-up menu appears when
+you right-click on an atom labeled as an <a href="sketch-chem.html#rgroups"
+>R-group</a>.</P><BR>
+
+<CENTER>
+<TABLE WIDTH=450 BORDER=5 CELLPADDING=5 cellspacing="0" id="grid">
+<TR>
+    <TH WIDTH=15%>
+	<P>Menu Item</P>
+    </TH>
+    <TH WIDTH=85%>
+        <P>Description</P>
+    </TH>
+</TR>
+<TR>
+    <TD>
+	<P>Map</P>
+    </TD>
+    <TD>
+        <P>Map numbers are user defined atom identifiers. They are commonly 
+        used in reaction equations marking atoms taking part in the reaction. 
+        Maps are also useful in complex chemical expressions referring to atoms 
+        of certain functional groups.</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>R-Group</P>
+    </TD>
+    <TD>
+	<P>Gives a submenu of R-group label choices, Build Markush structures 
+        or R-group queries using the R-group labels. R-groups symbolise 
+        alternative substituents.</P>
+    </TD>
+</TR>
+<tr>
+    <td>
+        <p>Group</p>
+    </td>
+    <td>
+        <p>If the selected atom is part of a group (R-group definition or
+        abbreviated group), you can specify an attachment point.</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>Link Node</p>
+    </td>
+    <td>
+        <p>See <a href="sketch-chem.html#link-nodes">Link node</a> specifies
+         rings or chains by repeating carbon atoms.</p>
+    </td>
+</tr>
+<TR>
+    <TD>
+	<P>Remove</P>
+    </TD>
+    <TD>
+	<P>Removes the selected atom from the molecule.</P>
+    </TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<H3><A NAME="bond-popup.menu"></A>Bond Pop-up Menu</H3>
+<P>The bond pop-up menu appears when you right-click on a bond within
+the molecule. It allows you to make a number of changes to the
+selected bond. 
+</P>
+<CENTER>
+<TABLE WIDTH=450 BORDER=5 CELLPADDING=5 cellspacing="0" id="grid">
+<TR>
+    <TH WIDTH=15%>
+	<P>Menu Item</P>
+    </TH>
+    <TH WIDTH=15%>
+	<P>Submenu Items</P>
+    </TH>
+    <TH>
+        <P>Description</P>
+    </TH>
+</TR>
+<TR>
+    <TD ROWSPAN=4 VALIGN=TOP>
+        <P>Bond Type Radio Buttons</P>
+    </TD>
+    <TD>
+        <P>Single</P>
+    </TD>
+    <TD>
+        <P>Changes the selected bond type to Single</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Double</P>
+    </TD>
+    <TD>
+	<P>Changes the selected bond type to Double</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Triple</P>
+    </TD>
+    <TD>
+	<P>Changes the selected bond type to Triple</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Aromatic</P>
+    </TD>
+    <TD>
+	<P>Changes the selected bond type to Aromatic</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>More</P>
+    </TD>
+    <TD>
+	<P>Query bond types</P>
+    </TD>
+    <TD>
+	<P>Changes the selected bond to a bond type (Single Up, Single
+        Down, Single Up or Down, Double Cis or Trans, Double C/T or
+	Unspec, Single or Double, Single or Aromatic, Double or Aromatic,
+	Any) for use in a query.</P>
+    </TD>
+</TR>
+<TR>
+    <TD ROWSPAN=3 VALIGN=TOP>
+	<P>Attributes</P>
+    </TD>
+    <TD>
+	<P>Stereo Search</P>
+    </TD>
+    <TD>
+	<P>Uses stereoconfiguration of specified double bond when this
+	molecule is used as a query.</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>In Ring</P>
+    </TD>
+    <TD>
+        <P>Sets a bond property so that when the molecule is used as a
+	query, the specified bond must be in a ring to score a hit.</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>In Chain</P>
+    </TD>
+    <TD>
+	<P>Sets a bond property so that when the molecule is used as a
+	query, the specified bond must be in a chain to score a hit.</P>
+    </TD>
+</TR>
+<TR>
+    <TD ROWSPAN=2>
+	<P>Align</P>
+    </TD>
+    <TD>
+	<P>Vertical</P>
+    </TD>
+    <TD>
+	<P>Orients the bond vertically</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Horizontal</P>
+    </TD>
+    <TD>
+	<P>Orients the bond horizontally</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Remove</P>
+    </TD>
+    <TD>
+	<P>&nbsp;</P>
+    </TD>
+    <TD>
+    	<P>Removes the selected bond from the molecule</P>
+    </TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<H3><A NAME="edit-popup.menu"></A>Edit Pop-up Menu</H3>
+<P>The Edit pop-up menu appears when you right-click on open canvas
+space (i.e. not on an atom or bond). This menu has two different
+states, corresponding to selection mode being turned on or off. Edit
+pop-up menu items include:</P>
+<CENTER>
+<TABLE WIDTH=450 BORDER=5 CELLPADDING=5 cellspacing="0" id="grid">
+<TR>
+    <TH WIDTH=20%>
+	<P>&nbsp;</P>
+    </TH>
+    <TH COLSPAN=3>
+	<P ALIGN=RIGHT>Enabled when Selection Mode is</P>
+    </TH>
+</TR>
+<TR>
+    <TH>
+	<P>Menu Item</P>
+    </TH>
+    <TH WIDTH=65%>
+	<P>Description</P>
+    </TH>
+    <TH WIDTH=7%>
+        <P>ON</P>
+    </TH>
+    <TH WIDTH=8%>
+        <P>OFF</P>
+    </TH>
+</TR>
+<TR>
+    <TD>
+        <P>Recent</P>
+    </TD>
+    <TD>
+	<P>The <B class="buttonName">Recent</B>	submenu contains a list of 
+        atoms and templates previously placed on the canvas. It does not 
+        include recently used bonds. You can change the drawing object by 
+        selecting one of the items in this list.</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Copy</P>
+    </TD>
+    <TD>
+        <P>Puts a copy of the selected object on the clipboard.</P>
+    </TD>
+    <TD>
+        <P>X</P>
+    </TD>
+    <TD>&nbsp;</TD>
+</TR>
+<TR>
+    <TD>
+	<P>Copy as SMILES</P>
+    </TD>
+    <TD>
+	<P>Puts a copy of the selected object on the clipboard in SMILES
+	format.</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+    <TD>&nbsp;</TD>
+</TR>
+<TR>
+    <TD>
+	<P>Cut</P>
+    </TD>
+    <TD>
+	<P>Puts the selected object on the clipboard and removes it from
+	the canvas.</P>
+    </TD>
+    <TD>
+        <P>X</P>
+    </TD>
+    <TD>&nbsp;</TD>
+</TR>
+<TR>
+    <TD>
+	<P>Paste</P>
+    </TD>
+    <TD>
+	<P>Sets the drawing object to the item on the clipboard.</P>
+    </TD>
+    <TD>
+        <P>X</P>
+    </TD>
+    <TD>
+        <P>X</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Select All</P>
+    </TD>
+    <TD>
+	<P>Quickly selects the entire molecule.</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Create Group</P>
+    </TD>
+    <TD>
+        <P>Creates an abbreviated Group from the selected substructure.
+	See the <a href="sketch-chem.html#sgroups">S-Groups</a> section for
+        more information on creating and using Groups.</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+    <TD>&nbsp;</TD>
+</TR>
+<TR>
+    <TD>
+        <P>Atom Maps</P>
+    </TD>
+    <TD>
+	<P>Contains submenus to automatically assign or remove map numbers to 
+        selected atoms.</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+    <TD>&nbsp;</TD>
+</TR>
+<TR>
+    <TD>
+	<P>Flip</P>
+    </TD>
+    <TD>
+	<P>Flips the structure on the canvas. The submenu allows you to
+	choose horizontally or vertically.</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Attributes</P>
+    </TD>
+    <TD>
+	<P>Edits structure attributes.</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+    <TD>
+	<P>X</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Print</P>
+    </TD>
+    <TD>
+	<P>Sends the molecule to the printer.</P>
+    </TD>
+    <TD>
+        <P>X</P>
+    </TD>
+    <TD>
+        <P>X</P>
+    </TD>
+</TR>
+</TABLE>
+</CENTER>
+<P ALIGN=CENTER><A HREF="#">Return to Top</A></P>
+<p ALIGN=CENTER>
+Copyright &copy; 1998-2006
+<a HREF="http://www.chemaxon.com">ChemAxon Ltd.</a>
+</p>
+<p ALIGN=CENTER>
+<a HREF="http://www.chemaxon.com/marvin">http://www.chemaxon.com/marvin</a>
+</p>
+
+</BODY>
+</HTML>

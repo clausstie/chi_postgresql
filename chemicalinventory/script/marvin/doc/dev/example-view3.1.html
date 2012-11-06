@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 3.1 - Viewing a 3D molecule</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinView Example 3.1</h1>
+
+All 3D molecules in the viewer start to rotate automatically if the
+<a HREF="viewman.html#3d.animate">animate</a> parameter is set to
+<code>all</code>. The user can stop rotation from the menu (right click the
+mouse) by unchecking Animate.
+
+<p>
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+mview_begin("../..", 200, 200);
+mview_param("mol", "../../mols-3d/nci1683.csmol");
+mview_param("molbg", "#000000");
+mview_param("animate", "all");
+mview_param("navmode", "rot3d");
+mview_param("rendering", "ballstick");
+mview_param("animFPS", "20");
+mview_end();
+//-->
+</script>
+</center>
+
+<p>
+Normally, the default mouse drag action is &quot;rotation in 2D&quot; (about Z,
+the axis that is orthogonal to the screen).
+For 3D molecules, &quot;rotation in 3D&quot; (about an axis in the XY plane)
+would be a better choice. If you specify &quot;rot3d&quot; as
+<a HREF="viewman.html#parameters.navmode">navmode</a>,
+then this will be the mouse drag action.
+<br>
+However, the user can change it from the menu.
+
+<p>
+The <a HREF="viewman.html#3d.rendering">rendering</a> style is
+specified as &quot;ball &amp; stick&quot;, instead of the default
+wireframe. This can also be changed at runtime, using the Style submenu.
+
+<p>
+The <a HREF="viewman.html#3d.animFPS">number of frames per second</a>
+is 20 which is twice the default value. This makes the animation more
+continuous.
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>mview_begin(</strong>&quot;../..&quot;<strong>,</strong> 200<strong>,</strong> 200<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.mol">mol</a>&quot;<strong>,</strong> &quot;../../mols-3d/nci1683.csmol&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.molbg">molbg</a>&quot;<strong>,</strong> &quot;#000000&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#3d.animate">animate</a>&quot;<strong>,</strong> &quot;all&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#parameters.navmode">navmode</a>&quot;<strong>,</strong> &quot;rot3d&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#3d.rendering">rendering</a>&quot;<strong>,</strong> &quot;ballstick&quot;<strong>);</strong>
+<strong>mview_param(</strong>&quot;<a HREF="viewman.html#3d.animFPS">animFPS</a>&quot;<strong>,</strong> &quot;20&quot;<strong>);</strong>
+<strong>mview_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+Although this is not a user's guide, it might be worth mentioning that
+the user can translate and scale (zoom) the molecule even without using the menu:
+Ctrl + mouse drag is always translation, and Shift + mouse drag is always
+scaling.
+
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+<p>
+
+Results of <a HREF="example-view3.2.html">molecule dynamic simulations</a>
+can also be viewed as animations.
+
+</body>
+</html>

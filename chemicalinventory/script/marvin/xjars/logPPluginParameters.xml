@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ParameterPanel>
+    <Precision Key="precision" Label="Precision"/>
+    <Number Key="anion" Label="Cl- concentration" Range="[0.0,0.25]" Value="0.1"/>
+    <Number Key="kation" Label="Na+ K+ concentration" Range="[0.0,0.25]" Value="0.1"/>
+    <MultipleSelection Key="type" Label="Type">
+	<Choice Value="increments" Text="Increments"/>
+	<Choice Value="logP" Text="logP" Selected="true"/>
+    </MultipleSelection>
+    <Boolean Key="inch" Label="Increments of H-s" Value="true">
+	<Dependencies>
+	    <Item Key="type" Range="increments"/>
+	</Dependencies>
+    </Boolean>
+    <LICENSE Label="License key"/>
+</ParameterPanel>

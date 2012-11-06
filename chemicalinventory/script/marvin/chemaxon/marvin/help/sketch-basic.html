@@ -1,0 +1,878 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>MarvinSketch Help</TITLE>
+ <link rel=stylesheet type="text/css" href="../../../marvinmanuals.css">
+</HEAD>
+<BODY>
+<H1>How To Use Basic MarvinSketch Functions</H1>
+<P><A HREF="sketch-index.html">Table Of Contents
+</A>
+</P>
+<P>Throughout this section, icons appear next to features whose
+functionality that is not available in every version of MarvinSketch. The green
+ check mark indicates that this feature is avalaible in the:
+<TABLE width=300 border=0 cellpadding=5 cellspacing="0" id="grid">
+<tr>
+    <td> application  </td>
+    <td><IMG src="sketch-basic_files/app-yes.png"></td>
+</tr> 
+<TR>
+    <td>signed (Swing) applet </td>
+    <td><IMG SRC="sketch-basic_files/signed-yes.png"></td>
+</tr>
+<tr>
+    <td>AWT applet </td>
+    <td><IMG SRC="sketch-basic_files/awt-yes.png"></td>
+</tr>
+</TABLE>
+If no icons appear, this feature is available in all versions of MarvinSketch. 
+</P>
+
+<H2><A NAME="create-molecule"></A>Create New Molecule</H2>
+<P>A new, blank molecule is created when you first launch MarvinSketch. You
+can immediately begin working with this molecule. A MarvinSketch window can
+hold only one molecule at a time, so all work you do within the
+canvas is considered part of the same molecule. You can create new,
+blank molecule at any time during your session by choosing 
+<B class="buttonName">File &gt; New </B>from the menu bar. This will open a new
+molecule and discard any unsaved changes to the molecule you were
+previously working with. <BR>The application allows you to work with
+multiple molecules in multiple windows by choosing <B class="buttonName">File
+&gt; New &gt; New Window </B>. 
+</P>
+<TABLE WIDTH=700 CELLPADDING=2 CELLSPACING=0 border="0">
+<TR VALIGN=BOTTOM>
+    <TD WIDTH=500>
+        <H1 ALIGN=LEFT><A NAME="open-molecule"></A>Open an Existing
+	    Molecule File</H1>
+    </TD>
+    <TD WIDTH=50>
+        <IMG SRC="sketch-basic_files/app-yes.png" NAME="Graphic1" 
+            ALIGN=BOTTOM WIDTH=50 HEIGHT=50 BORDER=0>
+    </TD>
+    <TD WIDTH=50>
+	<IMG SRC="sketch-basic_files/signed-yes.png" NAME="Graphic2" 
+            ALIGN=BOTTOM WIDTH=50 HEIGHT=50 BORDER=0>
+    </TD>
+    <TD WIDTH=50>
+	<P>&nbsp;</P>
+    </TD>
+    <TD WIDTH=50>
+	<P>&nbsp;</P>
+    </TD>
+</TR>
+</TABLE>
+<P>&nbsp;</P>
+<P>You can open existing molecule files by choosing <B class="buttonName">File
+&gt; Open</B> on the menu bar. This will load your saved
+molecule file into Marvin and discard any unsaved changes to the molecule
+you were previously working with.</P>
+<P>You can also <A HREF="sketch-gui.html#edit.buttons" 
+    class="buttonName">Paste</A> existing structures from other windows to 
+    the open molecule. This will add the new structure to the currently open 
+    molecule, it does not create a new molecule.</P>
+<TABLE WIDTH=700 CELLPADDING=2 CELLSPACING=0 border="0">
+<TR VALIGN=BOTTOM>
+    <TD WIDTH=500>
+        <A NAME="save-molecule"></A><H1>Save Molecule</H1>
+    </TD>
+    <TD WIDTH=50>
+        <P><IMG SRC="sketch-basic_files/app-yes.png" NAME="Graphic3" 
+        ALIGN=BOTTOM WIDTH=50 HEIGHT=50 BORDER=0></P>
+    </TD>
+    <TD WIDTH=50>
+	<P><IMG SRC="sketch-basic_files/signed-yes.png" NAME="Graphic4" 
+            ALIGN=BOTTOM WIDTH=50 HEIGHT=50 BORDER=0></P>
+    </TD>
+    <TD WIDTH=50>
+	<P>&nbsp;</P>
+    </TD>
+    <TD WIDTH=50>
+	<P>&nbsp;</P>
+    </TD>
+</TR>
+</TABLE>
+<P>&nbsp;</P>
+
+<H3><A NAME="save2molformat"></A>Save Molecule File</H3>
+<P>You can save the molecule to any of the supported 
+<a href="../../../doc/dev/formats.html">file formats.</a>
+This will allow you to open and work with this molecule later. The
+default behavior of the <B class="buttonName">Save</B>
+button is to save the molecule to the same file it was opened from,
+in the same format. If you want to change the file name or format,
+choose <B class="buttonName">Save As</B>.
+If you are working with a new molecule, <B class="buttonName">Save</B>
+will function the same as <B class="buttonName">Save As</B>. 
+</P>
+<H3><A NAME="export-as-image"></A>Save Image</H3>
+<P STYLE="margin-bottom: 0cm">The <B class="buttonName">Save Image</B> choice 
+in the <B class="buttonName">File</B> menu allows you to save an image of the
+molecule in the sketcher. Marvin supports the following image
+formats: JPEG, PNG, PPM, POVRay, and SVG. A saved image cannot be
+opened for later editing in Marvin.</P>
+<TABLE WIDTH=700 CELLPADDING=2 CELLSPACING=0 border="0">
+<TR VALIGN=BOTTOM>
+    <TD WIDTH=500>
+	<H1 ALIGN=LEFT><A NAME="print"></A>Print</H2>
+    </TD>
+    <TD WIDTH=50>
+	<P><IMG SRC="sketch-basic_files/app-yes.png" NAME="Graphic5" 
+            ALIGN=BOTTOM WIDTH=50 HEIGHT=50 BORDER=0></P>
+    </TD>
+    <TD WIDTH=50>
+	<P><IMG SRC="sketch-basic_files/signed-yes.png" NAME="Graphic6" 
+            ALIGN=BOTTOM WIDTH=50 HEIGHT=50 BORDER=0></P>
+    </TD>
+    <TD WIDTH=50>
+	<P>&nbsp;</P>
+    </TD>
+</TR>
+</TABLE>
+<P>&nbsp; You can print an image of the current molecule by choosing 
+<B class="buttonName">File &gt; Print</B>.</P>
+
+<H2><A NAME="howto-draw"></A>How to Draw Structures</H2>
+<P>You can create structures using atoms, bonds, and templates.</P>
+
+<H3><A NAME="howto-draw.atoms"></A>Atoms</H3>
+<OL>
+    <LI><P STYLE="margin-bottom: 0cm">Select an atom from the little
+	periodic table, the Periodic Table pop-up window, or by 
+        <A HREF="#shortcuts">shortcut</A>.</P></LI>
+    <LI><P STYLE="margin-bottom: 0cm">Move the mouse into the molecule
+	canvas. You will see the symbol of the selected item at the tip of
+	your cursor. It can be placed in the molecule by left-clicking on
+	the desired location.</P>
+	<UL>
+            <LI><P STYLE="margin-bottom: 0cm">Marvin is chemically intelligent.
+	    It will account for implicit hydrogens and set the charge according
+        	to valence rules.</P></LI>
+	</UL></LI>
+    <LI><P>You can replace any atom in the molecule by placing a new
+	atom on top of it.</P></LI>
+</OL>
+
+<H3><A NAME="howto-draw.bonds"></A>Bonds</H3>
+<OL>
+    <LI><P STYLE="margin-bottom: 0cm">Select a bond type using the 
+        <B class="buttonName">Bond</B> toolbar button or by 
+        <A HREF="#shortcuts">shortcut</A>.</P></LI>
+    <LI><P STYLE="margin-bottom: 0cm">To link two existing atoms, click
+	on one then drag the cursor to the other.</P>
+        <UL>
+	    <LI><P STYLE="margin-bottom: 0cm">Marvin will allow you to draw a
+		bond between any two atoms in the molecule. Valence errors 
+                will be highlighted (if that option is enabled).</P></LI>
+        </UL></LI>
+    <LI><P STYLE="margin-bottom: 0cm">To draw a bond from a single atom,
+	simply click the atom. A carbon atom will be added at the other end
+	of the bond.</P></LI>
+    <LI><P STYLE="margin-bottom: 0cm">If you add a bond to empty canvas
+	space, a carbon atom will be added to each end of the bond.</P></LI>
+    <LI><P STYLE="margin-bottom: 0cm">You can replace any bond in the
+	molecule by placing a new bond type on top of it.</P></LI>
+    <LI><P>Bond types can also be changed using the 
+        <A HREF="sketch-gui.html#popup-menu">Bond pop-up menu.</A> Single 
+        bonds can be changed to Double or Triple by
+	left-clicking on them.</P></LI>
+</OL>
+<H3><A NAME="templates"></A>Templates</H3>
+<P>MarvinSketch provides several predefined chemical structures,
+called templates (e.g., cyclopenthane, cyclohexan, benzene). Some
+templates are accessible directly from the toolbar. The remainder can
+be accessed via separate<SPAN LANG="en-US"> pop-up </SPAN>windows.
+The full list of MarvinSketch templates is available through the
+<a href="sketch-gui.html#templates.menu" class="buttonName">Templates</a>
+menu. 
+</P>
+<OL>
+    <LI><P STYLE="margin-bottom: 0cm">Select a template using the
+	Templates Menu or Templates toolbar area.</P></LI>
+    <LI><P>Place the template in the molecule by left-clicking on the
+	desired location.</P></LI>
+</OL>
+<H2><A NAME="reactions"></A>Reactions</H2>
+
+<H3><A NAME="howto-draw.reactions"></A>How to Draw Reactions</H3>
+<P>You can place a reaction arrow on the canvas at any time, even on
+a blank canvas. Reaction errors are indicated by a red box around the
+reaction arrow. Only one reaction is allowed per molecule.</P>
+<OL>
+    <LI><P STYLE="margin-bottom: 0cm">Select the 
+        <a href="sketch-gui.html#react.button" class="buttonName">React</a>
+	button.  You will see the reaction arrow on the tip of the cursor when 
+        you move the mouse into the canvas area.</P>
+    <LI><P STYLE="margin-bottom: 0cm">Click the location of the tail of
+	the arrow.</P>
+    <LI><P>Drag the mouse and release at the location of the head.</P>
+</OL>
+<P STYLE="margin-bottom: 0cm">Once you have placed a reaction arrow
+on the canvas, MarvinSketch considers each part of the molecule in
+relation to the reaction. 
+All parts of the molecule that are behind the arrow are considered reactants.
+Everything in front of the arrow is a product.  Anything placed along the 
+arrow is considered an agent.
+
+The validity of the drawn reaction will automatically be checked by Marvin. 
+See  <a href="sketch-chem.html#reactions">Reactions</a> for more information on
+ using and disabling this feature.</P>
+
+<H3><A NAME="howto-map.reactions"></A>How to Map Reactions</H3>
+<P>The arrow tool provides the easiest manual way to map corresponding reactant
+ and product atoms. Select the arrow tool, hold down the left mouse button on a
+ reactant atom, and drag it to the corresponding product atom. The same map 
+number is added to both atoms marking, that they represent the same atom on the
+two sides of the reaction scheme. There are also keyboard shortcuts for 
+mapping. Type m8, for example, and click on an atom. Atom map 8 is assigned to 
+that atom.</P>
+<P> Marvin contains an automapper tool as well (available from the 
+Edit/Atom Mapping/Auto Map menu) assigning map numbers to all selected atoms of
+a reaction automatically.</P>
+<P> Map numbers of the selected atoms can be removed by the 
+Edit/Atom Mapping/Clear Map menu item, or by typing m0 for the selected 
+atoms.</P>
+
+<H2><A NAME="howto-draw.rgroups"></A>How to Draw R-group queries</H2>
+<P>An <A HREF="http://www.chemaxon.com/jchem/doc/user/query.html#markush"
+>R-group query</A> describes a set of derivatives in with one query structure.
+Draw the root structure and place some R atoms either from the "More" dialog,
+from the popup menu or by typing a corresponding label such as "R1" on the 
+keyboard.
+Draw the variable R-group ligands and select those substituting the R1 atom. 
+If you type "R1" now, the selected groups will be marked with "R1". Additional
+R-group conditions (Occurence, RestH, If-then) can be set in the R-logic dialog
+available from the Edit/Attributes menu.</P>
+
+<H2><a name="howto.draw.graphic"></a>How to Draw Graphic Objects
+and Text Boxes</H2>
+<p>To draw a (poly)line, rectangle or text box, use the
+<B class="buttonName">Insert</B> menu. Point the mouse to the
+desired position on the canvas, click and hold the left button, move the mouse 
+and release the button. After placing a text box,
+you can immediatelly use the keyboard to type a text.</p>
+<p>To change the contents of a text box, choose
+<b class="buttonName">Select</b> mode, click on the box, then use the 
+keyboard.</p>
+<p>The shape of an object is changeable or resizeable by dragging one of its points to do it.</p>
+
+<H2><a name="howto.draw.linkAtom"></a>How to Draw a Link atom</H2>
+<p>You can draw link atoms using the popup menu in two ways:
+<ol>
+    <li>Right-click on the atom to bring up the popup menu. Select the required
+    repetition number from the "Link node" submenu. Marvin will find out the
+    outer (non-repeating) bonds for you.</li>
+    <li>Select the atom you would like to be the link node and two neighbouring
+    bonds for outer (non-repeating) bonds. Right-click anywhere on the canvas 
+    to bring up the popup menu. Select the required repetition number from the
+    "Link node" submenu.</li>
+</ol>
+</p>
+<p>Marvin will advise you if it is not possible to create a link node for the
+specified configuration (for example at ring fusions).</p>
+
+<p>Outer (non-repeating) bonds will be denoted by brackets crossing them, and
+the repetition numbers will be put on the atom. All portion of the molecule
+connected to the link atom through non-outer bonds are supposed to repeat
+together with the atom. See examples below.</p>
+
+<table border=0 cellpadding=5 cellspacing="0" id=grid>
+<tr>
+    <td align=center> Molecule with link node </td>
+    <td align=center> Meaning </td>
+</tr>
+<tr>
+    <td align=center><img src="sketch-basic_files/ln01.png"></td>
+    <td align=center><img src="sketch-basic_files/ln01_m.png"></td>
+</tr>
+<tr>
+    <td align=center><img src="sketch-basic_files/ln02.png"></td>
+    <td align=center><img src="sketch-basic_files/ln02_m.png"></td>
+</tr>
+<tr>
+    <td align=center><img src="sketch-basic_files/ln03.png"></td>
+    <td align=center><img src="sketch-basic_files/ln03_m.png"></td>
+</tr>
+</table>
+
+<p>To edit a link node repetition number or change outer bonds, repeat the
+drawing steps above. To make a link atom ordinary atom again, select "Off" from
+the "Link node" submenu.</p>
+
+<H2><A NAME="howto.select.structure"></A>How to Select a Structure</H2>
+<OL>
+    <LI><P STYLE="margin-bottom: 0cm">Set Selection mode on by clicking
+        the <a href="sketch-gui.html#edit.buttons" 
+        class="buttonName">Select</a> button.</P>
+	<OL TYPE=A>
+            <LI><P STYLE="margin-bottom: 0cm">To select a single atom, click 
+                on it.</P></LI>
+            <LI><P STYLE="margin-bottom: 0cm">To select two joined atoms, 
+                click on the bond that links them.</P></LI>
+            <LI><P STYLE="margin-bottom: 0cm">To select a rectangular region,
+		click at one corner of the desired region and drag the mouse 
+                to the opposite corner. While the mouse button is pressed 
+                down, a guide will be displayed to aid you.</P></LI>
+            <LI><P STYLE="margin-bottom: 0cm">To select a non-rectangular
+		region, use the lasso select function.</P>
+		<OL>
+		    <LI><P STYLE="margin-bottom: 0cm">Click anywhere on the 
+                    canvas and release the mouse button.</P>
+                    <LI><P STYLE="margin-bottom: 0cm">Draw the region with 
+                    your mouse (leaving all mouse buttons unpressed). A blue 
+                    guide line will appear where you have drawn. A pink line 
+                    will connect the start and end points.</P>
+                    <LI><P>When you have finished drawing the region, click the
+                     mouse. In the event that you have not closed the region, 
+                     the pink line will be used to close it for you.</P></LI>
+		</OL></LI>
+	</OL>
+    </LI>
+</OL>
+<P>You can unselect all by clicking an empty area of the canvas.</P>
+<H2><A NAME="howto.delete.structure"></A>How to Delete a Structure</H2>
+<P>Using the <a href="sketch-gui.html#edit.buttons" class="buttonName">Erase</a>
+button:</P>
+<OL>
+    <LI><P STYLE="margin-bottom: 0cm">Set Erase mode on by clicking the
+	<B class="buttonName">Erase </B> button.</P>
+	<OL TYPE=A>
+            <LI><P STYLE="margin-bottom: 0cm">To erase a single atom or bond,
+		click on it.</P>
+            <LI><P STYLE="margin-bottom: 0cm">To erase a rectangular region,
+		click at one corner of the desired region and drag the mouse 
+                to the opposite corner. While the mouse button is pressed down,
+                 a guide will be displayed to aid you.</P>
+            <LI><P STYLE="margin-bottom: 0cm">To select a non-rectangular
+		region, use the lasso erase function.</P>
+		<OL>
+                    <LI><P STYLE="margin-bottom: 0cm">Click anywhere on the 
+                    canvas and release the mouse button.</P></LI>
+                    <LI><P STYLE="margin-bottom: 0cm">Draw the region with 
+                    your mouse (leaving all mouse buttons unpressed). A blue 
+                    guide line will appear where you have drawn. A pink line 
+                    will connect the start and end points.</P></LI>
+                    <LI><P>When you have finished drawing the region, click 
+                    the mouse. In the event that you have not closed the 
+                    region, the pink line will be used to close it for you.</P>
+                    </LI>
+		</OL>
+            </LI>
+	</OL>
+    </LI>
+</OL>
+<P>Using Selection mode: 
+</P>
+<OL>
+    <LI><P STYLE="margin-bottom: 0cm">Select a portion of the structure.</P>
+    </LI>
+    <LI><P>Click the <B class="buttonName">Cut</B> button or use the DELETE 
+        button on your keyboard.</P></LI>
+</OL>
+<P>Using pop-up menus:</P>
+<OL>
+    <LI><P STYLE="margin-bottom: 0cm">Right click on an atom or bond.</P></LI>
+    <LI><P>Select <B class="buttonName">Remove</B> from the pop-up menu.</P>
+    </LI>
+</OL>
+
+<H2><A NAME="howto-alter"></A>How to Work with Structures</H2>
+<H3><A NAME="edit.visual"></A>Visually Editing the Structure</H3>
+<P>You can edit a molecule using the methods described in 
+<A HREF="#howto-draw">How To Draw Structures</A> and 
+<A HREF="#howto.delete.structure">How To Delete A Structure</A>. 
+</P>
+<H3><A NAME="edit.source"></A>Editing the Source</H3>
+<P>You can alter a molecule by directly editing its source in the
+Edit Source Window. You can view and edit the source in any of the
+supported file formats. To change format, simply select the desired
+one from the <B class="buttonName">Format</B>
+Menu. To reload the molecule described by the text in this window
+into the MarvinSketch canvas (including any changes you may have
+made), select <B class="buttonName">File &gt;
+Import</B>. This will close the Edit Source Window. 
+</P>
+<H3><A NAME="clean"></A>Cleaning</H3>
+<P>Marvin allows you to clean your molecule in either 2D or 3D. Cleaning
+will calculate new coordinates for the atoms. Generating conformers and 
+choosing the favored one is also supported (in the Swing version).
+You can initiate cleaning via the <B class="buttonName">Edit
+&gt; Clean</B> submenu.</P>
+
+<H3><A NAME="aromatic"></A>Aromatic Rings</H3>
+<P>You can toggle the display of rings as aromatic using the 
+<B class="buttonName">Edit &gt; Bonds </B>submenu. </P>
+
+<H2><A NAME="display-structure"></A>Structure Display Options</H2>
+<P>There is a wide range of functions related to the display of the
+molecules. These settings can be found in the 
+<A HREF="sketch-gui.html#menubar" class="buttonName">View menu</A> and 
+the <A href="sketch-gui.html#menubar" 
+class="buttonName">Preferences dialog</a>. Additionally, you can move, rotate, 
+and zoom in/out on the structure.</P>
+
+<H3><A NAME="move-rotate"></A>Moving and Rotating</H3>
+<P>You can move or rotate a selected structure.</P>
+<OL>
+    <LI><P STYLE="margin-bottom: 0cm">Select the part of the structure
+	you wish to move. </P></LI>
+        <OL TYPE=A>
+	    <LI><P STYLE="margin-bottom: 0cm">Moving the selection:</P></LI>
+            <OL>
+		<LI><P STYLE="margin-bottom: 0cm">Move the mouse pointer toward
+			the center of the selected structure until a blue 
+                        rectangle appears.</P></LI>
+		<LI><P STYLE="margin-bottom: 0cm">Translate the selection by
+			dragging the mouse.</P></LI>
+	    </OL>
+            </LI>
+	    <LI><P STYLE="margin-bottom: 0cm">Rotating the selection:</P></LI>
+	    <OL>
+                <LI><P STYLE="margin-bottom: 0cm">Move the mouse pointer toward
+			the &quot;edge&quot; until a blue gear appears.</P>
+                </LI>
+		<LI><P>Rotate the selection by dragging the mouse.</P></LI>
+            </OL>
+            </LI>
+	</OL>
+    </LI>
+</OL>
+<H3><A NAME="scalling"></A>Scaling</H3>
+<P>You can set the magnification of the molecule on the 
+<A HREF="sketch-gui.html#canvas">Canvas</A> by the 
+<A HREF="sketch-gui.html#toolbar">Zoom buttons</A>.
+When a molecule is loaded into the sketcher it is scaled
+automatically to fit the window.</P>
+<P>
+For more information, see 
+<a href="common.html#display-structure">Structure Display Options</a> common 
+to MarvinSketch and MarvinView.
+<P>
+<!--
+<H3><A NAME="format"></A>Molecule Format</H3>
+<P>You can set the display format for the molecule and screen
+resolution using the <B class="buttonName">View
+&gt; Display</B> submenu. Available molecule formats are
+<B class="buttonName">Wireframe, Wireframe
+with Knobs, Sticks, Ball and Stick,</B> and 
+<B class="buttonName">Spacefill</B>.
+You can set the resolution to low or high via the 
+<B class="buttonName">Quality</B> submenu. 
+</P>
+<H3><A NAME="molcolor"></A>Colors</H3>
+<P>The <B class="buttonName">View &gt;Colors</B>
+submenu allows you to specify the 
+<A HREF="../../../doc/sketchman.html#parameters.colorScheme">color
+scheme</A> of the molecules. The available options are: 
+</P>
+<UL>
+    <LI><P STYLE="margin-bottom: 0cm">Monochrome</P>
+    <LI><P STYLE="margin-bottom: 0cm">CPK</P>
+    <LI><P STYLE="margin-bottom: 0cm">Shapely - based on RasMol's
+	shapely color scheme for nucleic and amino acids</P>
+    <LI><P STYLE="margin-bottom: 0cm">Group - based on PDB residue
+	numbers</P>
+    <LI><P>Atom Set</P>
+</UL>
+-->
+<TABLE WIDTH=700 CELLPADDING=2 CELLSPACING=0 border="0">
+<TR VALIGN=BOTTOM>
+    <TD WIDTH=500 valign="middle">
+	<A href="common.html#preferences"></a><H1 ALIGN=LEFT>Saving Display 
+        Options</H1>
+    </TD>
+    <TD WIDTH=50>
+	<P><IMG SRC="sketch-basic_files/app-yes.png" NAME="Graphic12" 
+                ALIGN=BOTTOM WIDTH=50 HEIGHT=50 BORDER=0></P>
+    </TD>
+    <TD WIDTH=50>
+	<P><IMG SRC="sketch-basic_files/signed-yes.png" NAME="Graphic13" 
+            ALIGN=BOTTOM WIDTH=50 HEIGHT=50 BORDER=0></P>
+    </TD>
+    <TD WIDTH=50>
+	<P>&nbsp;</P>
+    </TD>
+    <TD WIDTH=50>
+	<P>&nbsp;</P>
+    </TD>
+</TR>
+</TABLE>
+<!--
+Many of the display settings in MarvinSketch are saved and reloaded the next time you start the program.  Background color, molecule color scheme, and hydrogen visibility can be set from the <a href="sketch-gui.html#menubar" class="buttonName">View menu</a> and  will saved automatically when you exit MarvinSketch.  Other options, including look & feel, error highlighting, and object visibility can be set using the <B class="buttonName">Preferences</B> dialog from the <a href="sketch-gui.html#menubar" class="buttonName">Edit menu</a>.
+-->
+
+<A NAME="other-windows"></A><H2>Launching Other Windows</H2>
+<H3>2D and 3D Viewer Windows</H3>
+<P>Choosing <B class="buttonName">View &gt;Open 2D Viewer</B> or
+<B class="buttonName">Open 3D Viewer</B>
+launches a MarvinView window containing the current molecule from the Sketcher.
+</P>
+<TABLE WIDTH=700 CELLPADDING=2 CELLSPACING=0 border="0">
+<TR VALIGN=BOTTOM>
+    <TD WIDTH=550 valign="middle">
+	<H1>Sketcher Window</H1>
+    </TD>
+    <!-- TD WIDTH=50>
+        &nbsp;
+    </TD-->
+    <TD WIDTH=50>
+        <IMG SRC="sketch-basic_files/signed-yes.png" NAME="Graphic2" 
+            ALIGN=BOTTOM WIDTH=50 HEIGHT=50 BORDER=0>
+    </TD>
+    <TD WIDTH=50>
+        <IMG SRC="sketch-basic_files/awt-yes.png" NAME="Graphic2" 
+            ALIGN=BOTTOM WIDTH=50 HEIGHT=50 BORDER=0>
+    </TD>
+</TR>
+</TABLE>
+When working with applets within a web page, it may be helpful to view your 
+work in a MarvinSketch window outside of the html.
+<BR>
+To open your work in a separate Sketch window from the Swing and signed 
+applets, choose <B class="buttonName">View &gt; Sketcher Window</B>.
+<BR>
+To open your work in a separate Sketch window from the AWT applet, select 
+the <B class="buttonName">Window Mode</B> (up arrow) button. 
+
+<A NAME="dnd"></A><H2>
+Copying Files Between Programs <BR>(Cut/Copy/Paste and Drag & Drop)
+</H2>
+<P>
+MarvinSketch supports transfer of data between Marvin and other chemical 
+drawing applications, between multiple Marvin windows, and to/from the desktop 
+and file manager.
+<BR>See 
+<!-- <A HREF="../../../doc/user/datatransfer.html"> -->
+<A HREF="common.html#dnd">
+Cut/Copy/Paste and Drag &amp; Drop Functionality</A> for more information. 
+</P>
+
+<H2><A NAME="shortcuts"></A>Shortcuts</H2>
+<P>The table below contains a list of available shortcuts in
+MarvinSketch.</P>
+<TABLE WIDTH=95% BORDER=0 CELLPADDING=2 CELLSPACING=0 id="grid">
+<TR>
+    <TH>
+	<P ALIGN=CENTER>Keyboard shortcut</P>
+    </TH>
+    <TH WIDTH=80%>
+	<P ALIGN=CENTER>Function</P>
+    </TH>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+A</P>
+    </TD>
+    <TD>
+	<P>Select all</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+C</P>
+    </TD>
+    <TD>
+	<P>Copy</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+X</P>
+    </TD>
+    <TD>
+	<P>Cut</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+V</P>
+    </TD>
+    <TD>
+	<P>Paste</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+Y</P>
+    </TD>
+    <TD>
+	<P>Redo</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+Z, ALT+BACKSPACE</P>
+    </TD>
+    <TD>
+	<P>Undo</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+L</P>
+    </TD>
+    <TD>
+	<P>Copy as SMILES</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+O</P>
+    </TD>
+    <TD>
+	<P>File open (if available)</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+S</P>
+    </TD>
+    <TD>
+    	<P>Save to file (if available)</P>
+    </TD>
+</TR>
+<tr>
+    <td><p>CTR+Shift+S</p></td>
+    <td><p>Save as... (if available)</p></td>
+</tr>
+<TR>
+    <TD>
+	<P>CTR+P</P>
+    </TD>
+    <TD>
+	<P>Print (if available)</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+M</P>
+    </TD>
+    <TD>
+	<P>Display Periodic Table (More window)</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+N</P>
+    </TD>
+    <TD>
+	<P>Create a new window</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+W</P>
+    </TD>
+    <TD>
+	<P>Close current window</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>CTR+Q</P>
+    </TD>
+    <TD>
+    	<P>Exit from the application</P>
+    </TD>
+</TR>
+<tr>
+    <td><p>CTR+F</p></td>
+    <td><p>Select conformer</p></td>
+</tr>
+<tr>
+    <td><p>CTR+2</p></td>
+    <td><p>Clean in 2D</td>
+</tr>
+<tr>
+    <td><p>CTR+3</p></td>
+    <td><p>Clean in 3D</td>
+</tr>
+<tr>
+    <td><p>F5</p></td>
+    <td><p>Exit from transformation mode and return to the 
+        <i>Normal Sketching</i> mode.</p></td>
+</tr>
+<tr>
+    <td><p>F6</p></td>
+    <td><p>Switch on the <i>Zoom/Rotate</i> mode.</p></td>
+</tr>
+<tr>
+    <td><p>F7</p></td>
+    <td><p>Enter into the <i>Rotate in 3D</i> mode.</p></td>
+</tr>
+<TR>
+    <TD>
+	<P>-</P>
+    </TD>
+    <TD>
+	<P>Negative charge</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>+</P>
+    </TD>
+    <TD>
+	<P>Positive charge</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>1</P>
+    </TD>
+    <TD>
+        <P>Single bond</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>2</P>
+    </TD>
+    <TD>
+	<P>Double bond</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>3</P>
+    </TD>
+    <TD>
+	<P>Triple bond</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>4</P>
+    </TD>
+    <TD>
+	<P>Aromatic bond</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>12</P>
+    </TD>
+    <TD>
+	<P>Single or double bond</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>14</P>
+    </TD>
+    <TD>
+	<P>Single or aromatic bond</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>24</P>
+    </TD>
+    <TD>
+	<P>Double or aromatic bond</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>0</P>
+    </TD>
+    <TD>
+	<P>Any bond</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>*</P>
+    </TD>
+    <TD>
+	<P>Any atom</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>Q</P>
+    </TD>
+    <TD>
+	<P>Hetero atom</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>C, N, H, ...</P>
+    </TD>
+    <TD>
+	<P>carbon, nitrogen or hydrogen atom. For the other elements, type
+			the mark of the element, e.g.: Cl for Chlorine</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>R1, R2, ...</P>
+    </TD>
+    <TD>
+	<P>R-group label with specified number. To define a set of
+	fragments as R-group, select the fragments before the shortcut. To
+	create an attachment point in the R-group, select an atom in the
+	R-group and type the name of the R-group (e.g.: R5)</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>M1, M2, ...</P>
+    </TD>
+    <TD>
+	<P>Atom map labels</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>M0</P>
+    </TD>
+    <TD>
+	<P>Unmap</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>M= or M+</P>
+    </TD>
+    <TD>
+	<P>Unique atom map labels. Assigns unique atom map numbers
+	to individual atoms picked by the mouse or to selected atoms
+	in selection mode.</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>11, 22, ..., 77</P>
+    </TD>
+    <TD>
+	<P>Select a template. Select first, second, ..., or 7th element
+	from the actual template list from the toolbar (if the referred
+	index is not out of range).</P>
+    </TD>
+</TR>
+<TR>
+    <TD>
+	<P>AcAc, Acm, Ade, ...</P>
+    </TD>
+    <TD>
+	<P>The abbreviated group denoted by the abbreviation. You can ungroup
+        the abbreviated group if you press the SHIFT button when you place it
+        to the canvas.</P>
+    </TD>
+</TR>
+</TABLE>
+<P ALIGN=CENTER><A HREF="#">Return to Top</A></P>
+<p ALIGN=CENTER>
+Copyright &copy; 1998-2006
+<a HREF="http://www.chemaxon.com">ChemAxon Ltd.</a>
+</p>
+<p ALIGN=CENTER>
+<a HREF="http://www.chemaxon.com/marvin">http://www.chemaxon.com/marvin</a>
+</p>
+
+</BODY>
+</HTML>

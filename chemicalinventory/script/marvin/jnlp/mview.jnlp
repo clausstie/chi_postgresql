@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp codebase="http://www.chemaxon.com/marvin/"
+href="http://www.chemaxon.com/marvin/jnlp/mview.jnlp">
+  <information>
+    <title>MarvinView</title>
+    <vendor>ChemAxon</vendor>
+    <homepage href="."/>
+    <description>Application for displaying chemical structures.</description>
+    <offline-allowed/>
+    <icon href="jnlp/mview64.gif"/>
+  </information>
+  <security>
+    <all-permissions/> 
+  </security>
+  <resources>
+    <j2se version="1.1+"/>
+    <jar href="MarvinBeans.jar"/>
+    <jar href="./sjars/batik-core.jar"/>
+    <jar href="./sjars/chart.jar"/>    
+  </resources>
+  <application-desc main-class="chemaxon.marvin.View"/>
+</jnlp>

@@ -1,0 +1,736 @@
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>MarvinSpace Help</TITLE>
+	 <link rel=stylesheet type="text/css" href="../../../marvinmanuals.css">
+</HEAD>
+<BODY><h1>Introduction to MarvinSpace GUI Usage</h1>
+<P><A HREF="space-index.html">Table of Contents</A> 
+</P>
+
+<A NAME="introduction"></a><h2>Introduction</h2>
+
+<p>
+MarvinSpace is a Java-based 3-dimensional molecular structure visualization
+program. Its main purpose is to display macromolecules including
+proteins, nucleic acids, and protein-ligans complexes. MarvinSpace
+is an interactive program, which means that it does not merely display a
+static image but it allows the user to manipulate the structure: look at it from
+different aspects, various distances, look inside etc.<br>
+MarvinSpace can also be used to display and manipulate small molecules,
+particularly if high quality rendering is required.
+</p>
+
+<p>MarvinSpace is built on OpenGL, the industry standard 3D visualization
+language to render high quality molecular scenes. Beside high image quality,
+OpenGL also provides efficiency that allows real-time manipulation of
+molecular structures. OpenGL supports hardware acceleration, that is, it can
+fully exploit the capabilities of the particular graphics card being used. </p>
+
+
+<A NAME="marvinview-gui"></A><h2>MarvinSpace GUI Overview</h2>
+
+<A NAME="canvas"></A><h3>Canvas</h3>
+
+<p>
+The canvas (or scene) is the image area that displays the molecular structures
+in 3D. This is also an area that accepts mouse input events, like mouse motion
+and mouse button clicks. These events are processed by the canvas and it reacts
+to them in a predefined manner (though the default behaviour can be
+<a href="#controlstab">changed easily</a>).
+</p>
+
+<a name="eventsandactions"></a><h4>Events and actions:</h4>
+
+<CENTER>
+    <TABLE WIDTH="90%" BORDER=0 CELLPADDING=5 cellspacing="0" id="grid">
+        <tr><Th width="30%"><B>Event</b></Th>
+            <Th width="10%"><B>Action</b></Th>
+            <th WIDTH="60%">Description</th>
+        </TR>
+        <TR>
+            <TD><B>Mouse movement + Left button</b></td>
+            <TD><B>Rotate</b></td>
+            <td>Rotates the content of the scene (or the current cell in multiple
+                cell view mode)
+                about the two axises in the plane of the screen. If, however, mouse
+                is moved outside the rotation sphere
+<!--
+                is moved outside the <a href="rotationsphere">rotation sphere</a>
+-->
+                the scene is rotated around the third axis that is perpendicular
+                to the screen.</td>
+        </tr>
+        <TR>
+            <TD><B>Mouse movement + Left button + Shift key</b></td>
+            <TD><B>Move</b></td>
+            <td>Moves the scene left-right and up-down.</td>
+        </tr>
+        <TR>
+            <TD><B>Mouse movement + Middle button</b></td>
+            <TD><B>Zoom</b></td>
+            <td>Move the scene closer to or further from the viewer, depending on the direction of mouse motion.</td>
+        </tr>
+        <TR>
+            <TD><B>Mouse wheel</b></td>
+            <TD><B>Clipping</b></td>
+            <td>Gradually removes parts of the structures that are near
+                to the viewer's eyes.</td>
+        </tr>
+        <TR>
+            <TD><B>Left button click</b></td>
+            <TD><B>Center</b></td>
+            <td>Defines origin of the scene. The new origin (look at point)
+                is the point where the mouse pointer was pointing at the
+                click event.</td>
+        </tr>
+    </table>
+</center>
+
+
+<a name="menubar"></a><h3>Menu Bar</h3>
+
+<p>The main menu bar is located at the top of the MarvinSpace window. It consists
+of four submenus: <B>File</B>, <B>Display</B>,
+<B>Cells</B> and <B>Help</B>.</p>
+
+<a name="filemenu"></a><h4>File menu</h4>
+
+<p>The main function provided in the <B>File</B> submenu is
+loading molecular structure files. These can
+either be small molecules or a macromolecules (that is, proteins, protein-ligand
+complexes, RNA, DNA etc). <br>
+The structure opened is displayed in the current <a href="#cellsmenu">cell</a>
+(marked by a thin red frame) and
+is registered in the selection panel on the right
+<!--
+is registered in the <a href="selectionPanel">selection panel</a> on the right
+-->
+hand side of the MarvinSpace window.
+</p>
+
+<p>There are two alternative ways to load new structures in MarvinSpace.
+<B>Open</b> removes all existing objects (after confirmation)
+and loads new structures in either one or mre cells depending on user selection.
+</br>
+In constrast to this, <B>Add</b> keeps all previously loaded
+structures and adds new ones to the current cell.</p>
+
+<!--kep ide!-->
+
+<p><B>Exit</B> leaves the program.</p>
+
+
+<a name="displaymenu"></a><h4>Display menu</h4>
+
+<p>Submenus and options in the display menu allow to change the drawing
+style, the coloring scheme and further properties of components
+displayed. Classes of components can have different settings, for instance the atom
+colors of proteins and that of ligands can be set independently. <br>
+However, there are global parameters too, like the fog effect and anti-aliasing, that affect all
+visible components.
+</P>
+
+<p>Display settings are applied to all visible components of the corresponding
+category, that is, if the draw type of ligands is changed to spacefill, then
+all ligands are drawn this way, that is, with large atom spheres.</p>
+
+<a name="drawtypemenu"></a><h4><B>Draw type</b> submenu</h4>
+
+<p>Component type specific visualization mode can be selected in this submenu.
+Six further submenus are available: Ligand, Protein, Water, Ion, Pharmacophore and
+Surface. Note, that Protein refers to all macromolecules not only proteins but
+nucleic acid polymers too.
+Also note, that not all visualization modes are available for all kinds of components.</P>
+
+
+<CENTER>
+    <TABLE WIDTH="90%" BORDER=0 CELLPADDING=5 cellspacing="0" id="grid">
+        <tr><Th width="30%"><B>Ligand Draw Type</b></Th><th WIDTH="70%">Description</th></TR>
+        <TR>
+            <TD><B>Wire</b></td>
+            <td>Draws bonds only as thin lines. The wire mode is the
+                fastest, use it for very large structures or when graphic
+                hardware exhibits poor performance.<br>
+                Note, that MarvinSpace 1.0-alpha represents triple
+                and normalized (delocalized, aromatic) bonds as single ones.</td>
+        </tr>
+        <tr>
+            <td><B>Ball</b></td>
+            <td>Only atoms are displayed as small spheres.</td>
+        </tr>
+        <tr>
+            <td><B>Stick</b></td>
+            <td>Only bonds are displayed as sticks (ie. cylinders) with smooth
+                caps and joints.</td>
+        </tr>
+        <tr>
+            <td><B>Ball and wire</b></td>
+            <td>The combination of the <B>Ball</b> and the
+                <B>Wire</b> modes.</td>
+        </tr>
+        <tr>
+            <td><B>Ball and stick</b></td>
+            <td>The combination of the <B>Ball</b> and the
+                <B>Stick</b> modes. This gives very nice
+                representation of the molecular structure, though in the case of
+                large structures (that is, over 15000 atoms) the graphic
+                performance drops sharply on non-hardware accelerated
+                graphics cards. Good cards can easily
+<!--
+                <a href="graphiccard">graphics cards</a>. Good cards can easily
+-->
+                cope with very large structures that contain over 50000 atoms.</td>
+        </tr>
+        <tr>
+            <td><B>Spacefill</b></td>
+            <td>This mode represents atoms only, each with a sphere. The size of the sphere
+                is equal to the van der Waals radius of the corresponding atom.
+                Van der Waals radii are built in and
+<!--
+                <a href="vdwradius">Van der Waals radii</a> are built in and
+-->
+                cannot yet be modified by the user.</td>
+        </tr>
+        <tr>
+            <td><B>Hydrogens</b></td>
+            <td>An option, independent from all above draw type (that is, it can
+                be combined with all draw types available. When box is checked,
+                hydrogen atoms as well as bonds connecting heavy atoms and hydrogens
+                are drawn, too.<br>
+                Note, that MarvinSpace 1.0-alpha is not capable of generating
+                hydrogens not described in input files in the case of
+                macromolecules. However, small molecules (excluding ligands
+                in complexes) are automatically "hydrogenized". </td>
+        </tr>
+    </table>
+</center>
+
+<p>Note, that <B>Ligand</b> draw type is applied to all small
+molecules, not only to ligands of protein-ligand complexes.</p>
+
+<p>The next submenu, <B>Protein</b>, offers all modes
+available for ligand drawing plus two further options.</P>
+
+<p><B>
+Secondary structure</b> represents the secondary structure of protein components
+by a schematic diagram. Helixes are drawn as pipes (that is, sequences of
+cylinders), sheets are represented by "planks" (that is, thin boxes), the
+main chain of the protein (including turns) are represented by sticks connecting
+C<sub>&alpha;</sub> atoms.<br>
+Note, that further representations of the secondary structure including ribbon
+and cartoon will also be available in future releases of MarvinSpace.</p>
+
+
+<p><B>Labels on selection</b> is a temporary implementation
+of displaying atom labels. If this box is checked the residue atom
+label of the selected atoms are displayed next to the atom. The residue atom
+label consists of the residue name (3 letter abbreviation in the case of amino
+acids, or 1 letter code in the case of nucleic acids), the residue sequence number,
+the chain identifier and the atom label.<br>
+Note, that further labels will also be available and alternative ways to display
+label will also be implemented in next versions of MarvinSpace.
+</p>
+
+<p>The next submenu, <B>Water</b> allows to specify the
+representation of water molecules defined in PDB files. Three types are
+available. By default the oxygen atom of the water molecule is drawn in wire
+mode: a small cross is placed at the atom center. <B>Ball</b>
+and <B>Spacefill</b> can also be selected, but again, in
+these modes too, only the oxygen atom of the water molecule is displayed.</P>
+
+<p><B>Ion</b> sets the display mode of ions defined in PDB files, the
+same options are available as for water molecules, though the default draw
+type is <B>Spacefill</b>.</p>
+
+<p>The <B>Pharmacophore</b> submenu offers three display modes,
+<B>Solid</b>, <B>Wire</b> and
+<B>Transparent</b>. <!--Read more about pharmcophore
+representantion <a href="pharmacophore">here</a>--></P>.
+
+<p>The last submenu in <B>Draw type</b> is
+<B>Surface</b>. Three draw types are available:
+<B>Dot</b>, <B>Mesh</b> and
+<B>Solid</b>. This latter can be used in combination with
+transparency when the <B>Transparent</b> box is checked.</p>
+
+
+
+<a name="colortypemenu"></a><h4><B>Color type</b> submenu</h4>
+
+<CENTER>
+    <TABLE WIDTH="90%" BORDER=0 CELLPADDING=5 cellspacing="0" id="grid">
+        <tr><Th width="30%"><B>Ligand</b></Th><th WIDTH="70%">Description</th></TR>
+        <TR>
+            <TD><B>Constant</b></td>
+            <td>Depending on draw type atoms and bonds or all are painted the
+                same color which by default is gold.</td>
+        </tr>
+        <TR>
+            <TD><B>CPK</b></td>
+            <td>Atoms are colored according to the <!--<a href="cpkcolors">-->CPK
+                coloring schema<!--</a>--> in which the atom color depends on the
+                atom type. <br>
+                If bonds are also displayed then these
+                are colored as the two atoms that they connect.</td>
+        </tr>
+    </table>
+</center>
+
+<br>
+<CENTER>
+    <TABLE WIDTH="90%" BORDER=0 CELLPADDING=5 cellspacing="0" id="grid">
+        <tr><Th width="30%"><B>Protein</b></Th><th WIDTH="70%">Description</th></TR>
+        <TR>
+            <TD><B>Constant</b></td>
+            <td>Depending on draw type atoms and bonds or all are painted gray.</td>
+        </tr>
+        <TR>
+            <TD><B>CPK</b></td>
+            <td>Atoms are colored according to the <!--<a href="cpkcolors">-->CPK
+                coloring schema<!--</a>--> in which the atom color depends on the
+                atom type. <br>
+                Bonds displayed
+                are colored by the colors of the two atoms that they connect.</td>
+        </tr>
+        <tr>
+            <td><B>Residue</b></td>
+            <td>Atoms and bonds are colored according to the residue (amino acid
+                or nucleic acid) type.</td>
+        </tr>
+        <tr>
+            <td><B>Chain</b></td>
+            <td>Atoms and bonds that are in the same chain (in a protein or in
+                a nucleic acid) are colored the same, while different chains are
+                colored by different colors.</td>
+        </tr>
+    </table>
+</center>
+
+<p>Ions can be colored by constant or by CPK colors. <br>
+In case of surfaces the four types introduced for proteins are available, and a
+fifth option can also be selected: <B>Electrostatic potential</b>
+that calculates electrostatic potential value for surface points and colors the
+surface according to the current value at a given surface point. Negative
+potential is colored by blue while positive potential values are represented by
+red. The intensity of colors varies according to the absolute value of the
+electrostatic potential.
+The coloring can <a href="#dynamicsurfacecolor">dynamically be adjusted</a>
+independtly for negative and for positive values.</p>
+
+
+
+<a name="surfacemenu"></a><h4><B>Surface</b> submenu</h4>
+
+<p>There are four types of molecular surfaces available in MarvinSpace: Connolly,
+van der Waals, solvent accessible and blobby. Blobby moleclue is yet experimental.</p>
+
+
+<a name="qualitymenu"></a><h4><B>Quality</b> submenu</h4>
+
+<p>Three display qualities are provided by MarvinSpace: <B>High</b>,
+<B>Medium</b> and <B>Low</b>.
+Apparently, <B>High</b> gives the nicest and smoothest
+representation, while <B>Low</b> enables the highest
+performance, thus this is the most suitable for slow graphic cards. The rendering
+quality is primarily determined by the number of triangles constituting atom
+sphere and bond cylinders for structure display. In the case of surfaces the
+resolution of a discrete grid in which the surface is approximated correlates with
+ the rendering quality. The corresponding parameters are
+wired in and cannot be changed by the user. Future version of MarvinSpace
+will provide a dialog in the GUI to let the user tweak these parameters according
+to needs and the performance of the graphic card.</p>
+
+<p>Rendering quality autoscaling mechanism is also implemented, though in MarvinSpace 1.0-alpha
+this is still experimental. Autoscaling decreases the current display quality
+with respect to the actual performance of the graphics hardware (expressed as
+frame rate). For instance anti-aliasing is automatically turned off when a molecular
+scene is manipulated (rotated, translated, zoomed), though when no further mouse
+events are encountered anti-alising is automatically turned on again.</p>
+
+
+<a name="fog"></a><h4><B>Depth cue</b> menu item</h4>
+
+<p>Depth cue is often referred to as the fog effect. When this option is selected
+the molecular scene is drawn as if it was placed in a foggy atmosphere which
+results in displaying distant parts of the molecules with faded, blurred colors while
+near parts are brighter with sharper edges. This gives a good impression of depth
+that allows better recognize the 3D structure.</p>
+
+
+<a name="antialias"></a><h4><B>Anti-alias</b> menu item</h4>
+
+<p>Antialising smooths all objects displayed that results in smoother edges,
+less ragged lines, more realistic intersections. However, this function
+is very costly and the quality highly depends on the graphic hardware.<br>
+Note, that anti-aliased scene cannot be manipulated (rotated, zoomed etc)
+therefore a built in mechanism called quality auto scaling, unique to MarvinSpace,
+automatically turns off antialising for moving images and turned it back when
+image is standing still.</p>
+
+
+<a name="options"></a><h4><B>Options</b> menu item</h4>
+
+<p>This menu item pops up a dialog window to set various rendering parameters.
+These are as follows.</p>
+
+<B>Ligand</b> and <B>Protein</b>
+tab:
+
+<CENTER>
+    <TABLE WIDTH="90%" BORDER=0 CELLPADDING=5 cellspacing="0" id="grid">
+        <tr><Th width="30%"><B>Parameter</b></Th><th WIDTH="70%">Description</th></TR>
+        <TR>
+            <TD><B>Ball radius</b></td>
+            <td>Size of atom spheres in <B>Ball</b>
+                draw type, measured in Angstroms.</td>
+        </tr>
+        <TR>
+            <TD><B>Bond radius</b></td>
+            <td>Size of bond cylinders in <B>Ball and Stick</b>
+                draw type, measured in Angstroms.</td>
+        </tr>
+        <TR>
+            <TD><B>Stick radius</b></td>
+            <td>Size of bond cylinders in <B>Stick</b>
+                draw type, measured in Angstroms.</td>
+        </tr>
+        <TR>
+            <TD><B>Line width</b></td>
+            <td>Width of bonds in wire mode.</td>
+        </tr>
+        <TR>
+            <TD><B>Double bond distance</b></td>
+            <td>Gap between two lines/sticks representing a double bond. It is
+                determined as a percentage of Bond radius.</td>
+        </tr>
+        <TR>
+            <TD><B>Double bond width</b></td>
+            <td>Thickness of line/stick representing a double bond. It is
+                expressed relative to the thcikness of a single bond.</td>
+        </tr>
+        <TR>
+            <TD><B>Display bond order</b></td>
+            <td>When checked double bonds are drawn by two line segments,
+                otherwise all bonds are repsented as single bonds. <br>
+                Future releases will introduce drawing mode for triple and aromatic
+                bonds too.
+                </td>
+
+        </tr>
+        <TR>
+            <TD><B>vdW scaled balls</b></td>
+            <td>When checked atom spheres in Ball and Ball-and-Stick modes are scaled according to
+                their van der Waals radii. Otherwise all atoms are represented by
+                uniform sphere radii.
+            </td>
+        </tr>
+        <TR>
+            <TD><B>Smooth colored sticks</b></td>
+            <td>When checked stick bonds connecting different atom types are
+                colored gradually from one color to the other (in CPK atom
+                coloring mode). Otherwise the two halves are draw with two colors.
+            </td>
+        </tr>
+    </table>
+</center>
+
+
+<B>Surface</b> tab:
+
+<p>
+<CENTER>
+    <TABLE WIDTH="90%" BORDER=0 CELLPADDING=5 cellspacing="0" id="grid">
+        <tr><Th width="30%"><B>Parameter</b></Th><th WIDTH="70%">Description</th></TR>
+        <TR>
+            <TD><B>Probe radius</b></td>
+            <td>Radius of probe atom representing solvent when constructing
+                the Connolly and the solvent accessible surfaces. Measured in Angstroms.</td>
+        </tr>
+        <TR>
+            <TD><B>Grid resolution</b></td>
+            <td>Size of grid cells in surface calculations, measured in
+                Angstroms. The smaller the value, the finer the surface and the
+                longer the surface calculation takes. Also, finer resolution
+                grids require significantly more working memory.</td>
+        </tr>
+        <TR>
+            <TD><B>Surface tringle count reduction</b></td>
+            <td>When checked, the number triangles constituting a molecular
+                surface are reduced without effecting the smoothness of the
+                surface. This step is performed after the surface is calculated
+                and it takes some time particularly for larger surfaces. However, it
+                is worth spending some extra time for triangle reduction because
+                the resulting surface can be displayed and manipulated much
+                faster than the original surface.</td>
+        </tr>
+    </table>
+</center>
+</p>
+
+
+<B>Colors</b> tab:
+
+<p>Change default colors here. Note, that in MarvinSpace 1.0-alpha residue colors
+are wired in and cannot be changed by the user. Same applies to chain colors.</P>
+
+<p>
+<a name="controlstab"></a><B>Controls</b> tab:</P>
+
+<p>This allows the user to customize how MarvinSpace reacts to various input
+events (like mouse motion, clicking etc). Note, that not all, but most of the
+important actions can be customized.</P>
+
+<p>
+<CENTER>
+    <TABLE WIDTH="90%" BORDER=0 CELLPADDING=5 cellspacing="0" id="grid">
+        <tr><Th width="30%"><B>Parameter</b></Th><th WIDTH="70%">Description</th></TR>
+        <TR>
+            <TD><B>Default style</b></td>
+            <td>With this user can select MarvinSpace style association
+                of input <a href="#eventsandactions">events with actions</a>.</td>
+        </tr>
+        <TR>
+            <TD><B>PyMol style</b></td>
+            <td>For those users who have been familiar with PyMol to make them easy
+                to change from PyMol to MarvinSpace. Not fully PyMol
+                compliant, but most frequently used actions work the same way.</td>
+        </tr>
+        <TR>
+            <TD><a name="customstyle"></a><B>Custom style</b></td>
+            <td>User can select which mouse event will perform rotation, zooming, translation
+                and will pop up the menu.</td>
+        </tr>
+        <TR>
+            <TD><B>Invert zoom</b></td>
+            <td>Swaps between zooming policies. By default zoom in is associated
+                to moving mouse away from us (thus towards the scene), while
+                zooming out is done in the opposite direction. However, when
+                this option box is checked the zooming directions swap.</td>
+        </tr>
+        <TR>
+            <TD><B>Animated rotation</b></td>
+            <td>When checked, rotation will not stop when mouse movement stops
+                but continues for a while depending on the acceleration/deceleration of
+                the mouse while it was moving. This results in an inertia effect.
+                Useless, but nice!</td>
+        </tr>
+    </table>
+</center>
+</p>
+
+<B>Others</b> tab:
+
+<p>Enter you MarvinSpace license key here. Note, that <code>Enter</code>
+key has to be pressed at the end of input before clicking <B>Ok</b>
+or <B>Apply</b>.</p>   
+
+
+<a name="cellsmenu"></a><h4>Cells menu</h4>
+
+<p>The MarvinSpace canvas can be subdivided into rectangular areas called cells.
+Each cell can contain arbitrary number of structures. Each cell is fully
+functional, that is, the same actions can be performed per cell as for an
+undivided canvas.</p>
+
+<CENTER>
+    <TABLE WIDTH="90%" BORDER=0 CELLPADDING=5 cellspacing="0" id="grid">
+        <tr><Th width="30%"><B>Parameter</b></Th><th WIDTH="70%">Description</th></TR>
+        <TR>
+            <TD><B>Add row</b></td>
+            <td>Inserts a new row of cells above the first row. The new row
+                contains as many cells as many columns are displayed.</td>
+        </tr>
+        <TR>
+            <TD><B>Add column</b></td>
+            <td>Inserts a new column of cells after the last column. The new
+                column contains as many cells as many rows are already
+                displayed.</td>
+        </tr>
+        <TR>
+            <TD><B>Delete row</b></td>
+            <td>Removes the first (top) row (that is, all cells in the first
+                row) and the content of cells.</td>
+        </tr>
+        <TR>
+            <TD><B>Delete column</b></td>
+            <td>Removes the last (right hand site) column along with all of
+                its cells and the content of cells.</td>
+        </tr>
+        <TR>
+            <TD><B>Synchron mode</b></td>
+            <td>When checked, all motion events are delivered to all cells.
+                This means that rotating the content of the cell under the mouse
+                pointer affects all other cells as if the mouse was moved the
+                same way in those cells too.</td>
+        </tr>
+        <TR>
+            <TD><B>Reset view in all cells</b></td>
+            <td>Reverts view angle and zoom position in all cells.</td>
+        </tr>
+    </table>
+</center>
+
+
+<A NAME="popupmenu"></A><h3>Pop-up Menu</h3>
+<P>The pop-up menu appears when you <a href="#customstyle">right-click</a> over
+the canvas. Functions available in this menu will significantly change in
+future releases. In version 1.0-alpha the first item,
+<B>Best fit</b>, works well in all cases. This sets zoom ratio
+and view angle to optimal values to allow to see the entire content of the current cell (where
+right mouse button was pressed) regardless of the size and the number of structures displayed
+in that cell.</P>
+
+
+<a name="toolbar"></a><h3>Toolbar</h3>
+
+<p>The toolbar is located under the Main menu bar and it consists of small
+icon buttons. These allow to access functions not available in menus. (Note,
+that future releases of MarvinSpace will make all functions available from
+dedicated submenus too, and the toolbar will be user configurable.)<br>
+There are various classes of functions available as tools, such as monitors, controls,
+pharmacophores and other display tools.</p>
+
+
+<a name="monitors"></a><h4>Monitors</h4>
+
+<p>These tools enable to measure  geometric properties of molecules in
+an interactive fashion. Distances (bond lengths or any interatomic distances),
+bond angles and dihedral angles can be measured. Results are displayed in
+monitors that are small labels on the canvas linked to the structure. When the
+structure is rotated these monitors move along, and when the structures are
+manipulated by <a href="#controls">controls</a> monitors are refreshed
+automatically to reflect any changes in the geometry of the structures instantly.</p>
+
+<p>Monitors are easy to use: select the tpe of monitor appropriate for the
+property to be measured (ie. distance, bond angle, dihedral angle), then
+select the appropriate number of atoms one by one (single click with left mouse
+button). When the last atom (ie. second, third or fourth depending on the
+type of monitor) is selected the monitor appears on the canvas.</P>
+
+<!--kep ide!!!!-->
+
+<p>Monitors themselves can be selected by single click of left mouse button just like any
+other component visible on the canvas. When selected, they can be deleted (ie.
+removed forever), and they can also be hidden (ie. removed from the canvas
+temporarily). Hidden monitors can be shown again, use the right mouse button
+<a href="#popupmenu">pop-up menu</a>.</p>
+
+
+<a name="controls"></a><h4>Controls</h4>
+
+<p>Controls are tools that can manipulate the internal and absolute coordinates or other
+geometrical properties of the selected objects. Three controls are available:
+translate, rotate and resize. The latter, resize, can only be applied to
+elements of <a href="#pharmacophore">pharmacophore models</a>. <p>
+
+<p>The translate control moves the selected object and changes its coordinates, thus the
+relative position of two (or more) objects (e.g. two ligands in the same
+binding pocket) can be modified. To translate a molecule follow the steps below:</p>
+
+<ol>
+    <li>Select the structure in the selection panel: click onit with the left mouse button</li>
+    <li>click right button to get the pop-up menu</li>
+    <li>choose first item, <B>Select</b>, atom's of the
+        selected structure become highlighted</li>
+    <li>now press the translate control button <!--KEP IDE!!!!--> in the toolbar</li>
+    <li>drag the selected object: hold down the left mouse button plus press
+        the <B>Ctrl</b> (control) key on the keybord and
+        move the mouse</li>
+</ol>
+
+<p>Note, however, that this way the selected object can be translated in the
+plane of the screen only. In order to move it in other directions, that is, along
+the third axis towards viewer's eyes or away from them, the <B>Shift</b>
+key has to be pressed too. <br>
+Note that rotation and translation of the scene is always possible, regardless of
+which monitor or control is being applied.</p>
+
+<p>The next control button is the rotation control. With this the selected
+structure can be rotated without affecting any other object. For instance a ligand in a proteins binding
+pocket can be rotated while the  protein
+remains in its original position. To rotate the selected object follow the steps
+of translation described above, except that in the 4th step press the rotate <!--KEP IDE!!!-->
+control button instead of the translate button. Note, that the
+<B>Ctrl</b> (control) key on the keybord has to be held down to
+rotate the selected object, otherwise the scene is rotated (thus no coordinates,
+relative positions of objects changes).<br>
+If both <B>Ctrl</b> (control) and
+<B>Shift</b> keys are presed, the object rotates about
+the axis perpendicular to the plane of the canvas.
+</P>
+
+<p>The resize control can be applied to increase/decrease the size of spheres
+and arrows used in <a href="#pharmacophore">pharmacophore model building</a>.
+This works similar to translation nd rotation, though in this case the
+object to be selected is either a pharmacophore sphere or an arrow. Again, the
+<B>Ctrl</b> (control) key has to pressed to resize the
+selected object.</p>
+
+<a name="pharmacophore"></a><h4>Pharmacophore model building</h4>
+
+<p>MarvinSpace offers a simple tool to represent pharmacophore models: spheres
+and arrows can be placed at any position. These can be translated, rotated and
+resized using controls.<br>
+To place a pharmacophore sphere to represents a pharmacophoric point
+follow the steps below:</p>
+
+<ol>
+    <li>press the pharmacophore sphere button KEP IDE</li>
+    <li>click on an arbitrary atom: a sphere appears around the
+        selected atom</li>
+</ol>
+
+<p>Arrows can be placed the same way except that the arrow button has to be
+pressed to initiate the process. </p>
+
+
+<a name="displaytools"></a><h4>Display tools</h4>
+
+<p>Display tools enhance the visualization capabilities of MarvinSpace. With these
+the user can have better understanding of the structures studied.<br>
+The <B>Depth cue</b> (or Fog) tool enhances the sensation
+of space (depth) by fading distant objects. The fog can gradually be adjusted
+by the <B>Depth cue</b> slider.</p>
+
+<p>The <B>Clipping</b> slider moves a plane parallel with the
+canvas towards or away from the visible objects. The plane cuts these object,
+parts in front of the plane are not visible. This helps better understand the
+structure being analyzed by allowing deeper insight into buried parts by hiding
+obscuring details.</p>
+
+
+<a name="dynamicsurfacecolor"></a><p>Finally, the tool for dynamic surface coloring
+is more complex. In the present
+release it can be used in combination with surfaces colored by electrostatic
+potential. By moving the sliders the areas of the surface where the negativ/positive
+potential is below/above the threshold values set by the slider are not colored
+(i.e. colored by the default color).
+The leftmost and rightmost edit boxes display the minimum/maximum potential
+values calculated on the surface, while the two inner values correspond to
+the actual positions of the slider in the [minimum, 0] and the [0, maximum] ranges, respectively.<br>
+With this dynamic coloring modellers can better focus on areas where the
+absolute value of the potential is above a certain threshold thus where
+the chance for an electrostatic interaction is more likely.</p>
+
+<!--
+
+
+rotationsphere
+<a href="graphiccard">
+<a href="vdwradius">
+
+-->
+
+
+<P ALIGN=CENTER><A HREF="#">Return to Top</A></P>
+<p ALIGN=CENTER>
+Copyright &copy; 1998-2006
+<a HREF="http://www.chemaxon.com">ChemAxon Ltd.</a>
+</p>
+<p ALIGN=CENTER>
+<a HREF="http://www.chemaxon.com/marvin">http://www.chemaxon.com/marvin</a>
+</p>
+
+</BODY>
+</HTML>

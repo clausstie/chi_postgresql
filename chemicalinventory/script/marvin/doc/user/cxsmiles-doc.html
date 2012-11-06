@@ -1,0 +1,191 @@
+<html>
+<head>
+<meta NAME="description" CONTENT="Extended SMILES and SMARTS in Marvin">
+<meta NAME="keywords" CONTENT="Extended SMILES, SMARTS, Java, Marvin">
+<meta NAME="author" CONTENT="Andras Volford">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Extended SMILES in Marvin</title>
+</head>
+<body>
+
+<h1>Extended SMILES, SMARTS</h1>
+
+<p>
+Code name: <strong>cxsmiles</strong>,<strong>cxsmarts</strong>
+</p>
+<h2>Contents:</h2>
+<ul>
+<li><a href="#cxsmiles">Extended SMILES, SMARTS format</a></li>
+<li><a href="#ioptions">Import options</a></li>
+<li><a href="#options">Export options</a></li>
+</ul>
+<p>
+<a name="cxsmiles"></a><h2>Extended SMILES, SMARTS format</h2>
+ChemAxon Extended SMILES/SMARTS is used for storing special features 
+of the molecules after the SMILES string. 
+Any information can be stored after the SMILES string 
+if it is separated by space or tab characters as the SMILES parsers ignore them 
+or use them as comment. 
+The extended features are stored in the following format:<br>
+<code>SMILES_String |&lt;feature1&gt;,&lt;feature2&gt;,...|</code><br>
+The extended feature description is economic.
+If some feature is missing in the molecule, then the corresponding special 
+characters are not written. 
+(Eg: If the atoms of the molecule has no alias strings at all, 
+no &quot;$&quot; and &quot;;&quot; characters are written.) 
+Moreover, if no feature of the molecule to be written, 
+the extended feature field is omitted.
+
+<p>
+In extended smiles export the following additional features are exported:
+<ul>
+
+<li>Molecule absolute stereoconfiguration
+<p>
+The relative stereoconfiguration is stored as &quot;<b>r</b>&quot;. 
+The absolute stereoconfiguration is the default, which is not marked.
+(Absolute stereoconfiguration known also as "Chiral flag" in MDL molfiles.)
+    </li>
+</p>
+
+
+<li>Enhanced stereochemical representation
+<p>
+The following stereochemical group types are stored:
+    <ul>
+	<li>Absolute stereo group type. <br>
+	    <b>a:</b>&lt;atomindex&gt;,&lt;atomindex&gt;...
+	</li>
+	<li>OR stereo group type.<br>
+	    <b>o</b>&lt;group&gt;<b>:</b>&lt;atomindex&gt;,&lt;
+	    atomindex&gt;...</li>
+	</li>
+	<li>AND stereo group type.<br>
+	    <b>&</b>&lt;group&gt;<b>:</b>&lt;atomindex&gt;,&lt;
+	    atomindex&gt;...</li>
+	</li>
+    </ul>
+    </li>
+</p>
+
+
+<li>Atom labels
+<p>
+Atom labels are written between &quot;<b>$</b>&quot; characters each label is 
+separated by &quot;;&quot; characters.
+    </li>
+</p>
+
+<li>Single &quot;Up or Down&quot; (Wiggly) bonds
+<p>
+Atom indexes relating to wiggly bonds are written after &quot;<b>w:</b>&quot; 
+followed by the wiggly bond index and separated by commas.
+    </li>
+</p>
+
+<li>CIS, TRANS, UNSPEC bond info for double bonds in rings
+<p>
+Bond indexes of the double bonds in SSSR are written. <br>
+The bond stereo information is generated as the following: 
+the double bond has the representation a1-a2=a3-a4, where <br>
+<UL>
+<LI> a1 is the smallest atom index of the generated smiles connected to a2
+<LI> a2 is the double bond smaller atom index in the generated smiles
+<LI> a3 is the double bond larger atom index in the generated smiles
+<LI> a4 is the smallest atom index of the generated smiles connected to a3
+</UL>
+The CIS double bond indexes are written after &quot;<b>c:</b>&quot;, <br>
+the TRANS double bond indexes are written after &quot;<b>t:</b>&quot;, <br>
+the double bond indexes with UNSPEC flag are written after &quot;<b>u:</b>&quot;.
+    </li>
+</p>
+
+    <p>
+    <li>Fragment level grouping of reactant, agent and product fragments
+    Grouped fragment indexes are written after &quot;f:&quot; in the following
+    format:<br>
+    <UL>
+    <LI> Connected groups are separated by &quot;,&quot;.
+    <LI> A connected group is a &quot;.&quot; separated list of fragment indices.
+    </UL><br>
+    Example: &quot;f:0.1,5.6&quot;
+    </li>
+</p>
+
+<li>Local parity information
+<p>
+Atom indexes with local ODD parity are written after &quot;<b>@:</b>&quot;,
+while atom indexes with local EVEN parity are written 
+after &quot;<b>@@:</b>&quot;
+characters separated by commas.
+    </li>
+</p>
+
+<li>Radical numbers
+<p>
+Atom indexes with 
+<ul>
+<li> monovalent radical center are written after &quot;<b>^1:</b>&quot;,
+<li> divalent radical center are written after &quot;<b>^2:</b>&quot;,
+<li> divalent singlet radical center are written after &quot;<b>^3:</b>&quot;,
+<li> divalent triplet radical center are written after &quot;<b>^4:</b>&quot;,
+<li> trivalent radical center are written after &quot;<b>^2:</b>&quot;,
+</ul>
+characters separated by commas.
+    </li>
+</p>
+
+</ul>
+<p>
+
+<a NAME="ioptions"></a><h3>Import options</h3>
+<p>
+    See <a HREF="smiles-doc.html#ioptions">SMILES import options</a>
+
+<p>
+
+<a NAME="options"></a><h3>Export options</h3>
+<p>
+Export options can be specified in the format string. The format descriptor
+and the options are separated by a colon. <br>
+If no ChemAxon Extended SMILES/SMARTS specific export option (detailed below)
+is given, all export options are used. <br>
+Examples: &quot;cxmiles:le&quot; writes only atom labels and 
+wiggly bond indexes,<br>
+&quot;cxmiles:&quot; writes all features (absolute stereoconfiguration, enhanced
+stereo features, atom labels, wiggly bond indexes, ring stereo bond info and
+reaction fragment level grouping).
+
+<blockquote>
+<table CELLSPACING=0 CELLPADDING=0 border="0">
+<tr VALIGN="TOP">
+    <td><a NAME="option_e"></a><strong>e</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>Write relative stereo configuration and enhanced stereo features. 
+    </td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_l"></a><strong>l</strong></td>
+    <td>Write atom aliases.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_w"></a><strong>w</strong></td>
+    <td>Write wiggly bond indexes.  </td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_d"></a><strong>d</strong></td>
+    <td>Write CIS, TRANS bond indexes.  </td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_f"></a><strong>f</strong></td>
+    <td>Reaction fragment level grouping.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_p"></a><strong>p</strong></td>
+    <td>Write local parities.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_R"></a><strong>R</strong></td>
+    <td>Write radical numbers.</td></tr>
+</table>
+</blockquote>
+<p>
+    See also <a HREF="smiles-doc.html#options">SMILES export options</a>
+    and <a HREF="basic-export-opts.html">basic export options</a>.
+
+<p>
+</body>
+</html>

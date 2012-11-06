@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  
+<!-- Description --> 
+  <display-name>ChemicalInventory</display-name>
+  <description>ChemicalInventory</description>
+	
+<!--  The servlet to create pdf reports. -->
+  <servlet>
+    <description>Create the requested pdf report</description>
+    <display-name>Generate PDF file</display-name>
+    <servlet-name>PdfServlet</servlet-name>
+    <servlet-class>chemicalinventory.jReports.PdfServlet</servlet-class>
+  </servlet>
+ 
+  <servlet-mapping>
+    <servlet-name>PdfServlet</servlet-name>
+    <url-pattern>/servlet/PdfServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!--Define the duration of a user session-->
+	<session-config>
+    <session-timeout>15</session-timeout> 
+  </session-config>
+  
+  <!-- welcome files -->
+  <mime-mapping>
+  	<extension>xml</extension>
+  	<mime-type>text/xml</mime-type>
+</mime-mapping>
+
+<!--Welcome file list.-->
+	<welcome-file-list>
+    <welcome-file>Inventory.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- Error pages -->
+  <error-page>
+    <error-code>403</error-code>
+    <location>/errorpages/error_403.jsp</location>
+  </error-page><!--JNDI Resorce definition-->
+
+<!--Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-administration</web-resource-name>
+      <url-pattern>/administration/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>adm</role-name>
+      <role-name>normal</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+
+<!--Location Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-location-administration</web-resource-name>
+      <url-pattern>/administration/location/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>location_admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <!--Compound Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-compound-administration</web-resource-name>
+      <url-pattern>/administration/compound/*</url-pattern>
+      <url-pattern>/administration/resources/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>compound_admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <!--Supplier Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-supplier-administration</web-resource-name>
+      <url-pattern>/administration/supplier/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>supplier_admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!--Container Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-container-administration</web-resource-name>
+      <url-pattern>/administration/container/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>container_admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <!--Group Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-group-administration</web-resource-name>
+      <url-pattern>/administration/group/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>group_admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!--Unit Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-unit-administration</web-resource-name>
+      <url-pattern>/administration/unit/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>unit_admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <!--Analysis Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-analysis-administration</web-resource-name>
+      <url-pattern>/administration/analysis/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>analysis_admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+    <!--User MODIFY Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-user-administration-modify</web-resource-name>
+      <url-pattern>/administration/user/user_admin/user_administration_modify_user.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user_modify</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+    <!--User NEW Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-user-administration-new</web-resource-name>
+      <url-pattern>/administration/user/user_admin/user_administration_new_user.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user_new</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+    <!--User REMOVE Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-user-administration-remove</web-resource-name>
+      <url-pattern>/administration/user/user_admin/user_administration_remove.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user_remove</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <!--User RESET PASSWORD Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-user-administration-reset-password</web-resource-name>
+      <url-pattern>/administration/user/user_admin/user_administration_reset_pwd.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user_resetpwd</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!--User create user type Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-user-administration-create-type</web-resource-name>
+      <url-pattern>/administration/user/user_admin/user_administration_create_type.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user_type_create</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!--User modify type Adminitrator part of CI-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory-user-administration-modify-type</web-resource-name>
+      <url-pattern>/administration/user/user_admin/user_administration_modify_type.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user_type_modify</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!-- common part of the application -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>chemicalinventory</web-resource-name>
+      <url-pattern>/report/*</url-pattern>
+      <url-pattern>/jsp/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>adm</role-name>
+      <role-name>normal</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint> 
+  </security-constraint>
+  
+  <!--Sammple approver functions role = sample_approver-->
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>chemicalinventory</web-resource-name>
+  		<url-pattern>/sampleApproval/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>sample_approver</role-name>
+  	</auth-constraint>
+  </security-constraint>
+  
+  <!--Sample creation functions role = sample_creator-->
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>chemicalinventory</web-resource-name>
+  		<url-pattern>/sample/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>sample_creator</role-name></auth-constraint>
+  </security-constraint>
+  
+  <!--Result entry functions role = result_entry-->
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>chemicalinventory</web-resource-name>
+  		<url-pattern>/result/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>result_entry</role-name>
+  	</auth-constraint>
+  	
+  <!--Display batch elements.-->
+  </security-constraint>
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>chemicalinventory</web-resource-name>
+	  	<url-pattern>/batch_display/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>batch_viewer</role-name>
+  		<role-name>batch_manager</role-name>
+  	</auth-constraint>
+  	
+  <!--Batch manaager, privileges to create, modify, lock etc. on a batch.-->
+  </security-constraint>
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>chemicalinventory</web-resource-name>
+  		<url-pattern>/batch/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>batch_manager</role-name>
+  	</auth-constraint>
+  </security-constraint>
+  
+   <!-- report admin -->
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>chemicalinventory</web-resource-name>
+  		<url-pattern>/print/print_administration/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>report_adm</role-name>
+  	</auth-constraint>
+  </security-constraint>
+
+ <!-- report display -->
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>chemicalinventory</web-resource-name>
+  		<url-pattern>/print/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>report_display</role-name>
+  	</auth-constraint>
+  </security-constraint>
+
+  <!-- login configuration -->
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+      <form-login-page>/Login.jsp</form-login-page>
+      <form-error-page>/Login.jsp?login_error=yes</form-error-page>
+    </form-login-config>
+  </login-config>
+  
+  <!-- Security roles referenced by this web application -->
+  <security-role>
+    <role-name>normal</role-name>
+  </security-role>
+  <security-role>
+    <role-name>adm</role-name>
+  </security-role>
+    <security-role>
+    <role-name>location_admin</role-name>
+  </security-role>
+  <security-role>
+    <role-name>compound_admin</role-name>
+  </security-role>
+  <security-role>
+    <role-name>supplier_admin</role-name>
+  </security-role>
+  <security-role>
+    <role-name>container_admin</role-name>
+  </security-role>
+  <security-role>
+    <role-name>group_admin</role-name>
+  </security-role>
+    <security-role>
+    <role-name>unit_admin</role-name>
+  </security-role>
+  
+  <security-role>
+    <role-name>user_modify</role-name>
+  </security-role>
+  <security-role>
+    <role-name>user_new</role-name>
+  </security-role>
+  <security-role>
+    <role-name>user_resetpwd</role-name>
+  </security-role>
+  <security-role>
+ 	 <role-name>user_remove</role-name>
+  </security-role>
+  <security-role>
+    <role-name>user_type_create</role-name>
+  </security-role>
+  <security-role>
+    <role-name>user_type_modify</role-name>
+  </security-role>
+  
+    <security-role>
+    <role-name>analysis_admin</role-name>
+  </security-role>
+  <security-role>
+  	<role-name>sample_approver</role-name>
+  </security-role>
+  <security-role>
+  	<role-name>sample_creator</role-name>
+  </security-role>
+  <security-role>
+  	<role-name>batch_viewer</role-name>
+  </security-role>
+  <security-role>
+  	<role-name>batch_manager</role-name>
+  </security-role>
+  <security-role>
+  	<role-name>result_entry</role-name>
+  </security-role>
+    <security-role>
+    <role-name>report_display</role-name>
+  </security-role>
+    <security-role>
+    <role-name>report_adm</role-name>
+  </security-role>
+</web-app>

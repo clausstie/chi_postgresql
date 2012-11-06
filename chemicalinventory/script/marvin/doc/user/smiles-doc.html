@@ -1,0 +1,370 @@
+<html>
+<head>
+<meta NAME="description" CONTENT="SMILES and SMARTS in Marvin">
+<meta NAME="keywords" CONTENT="SMILES, SMARTS, Java, Marvin">
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>SMILES in Marvin</title>
+</head>
+<body>
+
+<h1>SMILES&trade;, SMARTS&trade;</h1>
+
+<p>
+Code name: <strong>smiles</strong>, <strong>smarts</strong>=smiles:s
+
+
+<h2>Contents:</h2>
+<ul>
+<li><a href="#SMILES">Smiles</a></li>
+<li><a href="#SMARTS">Smarts</a></li>
+<li><a href="#ioptions">Import options</a></li>
+<li><a href="#options">Export options</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<br>
+
+<a NAME="SMILES"></a><h3>SMILES</h3>
+<p>
+Marvin imports and exports SMILES strings with the following specification
+rules:
+<ul>
+<li> Atoms: 
+    <ul>
+    <li>Atoms are represented by their atomic symbols.</li>
+    <li>Isotopic specifications are indicated by preceeding the atomic symbol.
+	</li>
+    <li> Any atom but not hydrogen is represented with '*'.</li>
+    </ul>
+<li> Bonds: 
+    <ul>
+    <li>Single, double, triple, and aromatic bonds are represented 
+    by the symbols -, =, #, and :, respectively.</li>
+    <li>Single and aromatic bonds may be omitted.</li>
+    <li>Branches are specified by enclosing them in parentheses. 
+    The implicit connection to a parenthesized expression (a branch) 
+    is to the left.</li>
+    <li>Cyclic structures are represented by breaking one single 
+    (or aromatic) bond in each ring and the missing bond is denoted 
+    by connection placeholder numbers</li>
+    </ul>
+<li> Disconnected structures:
+    <ul>
+    <li>Disconnected compounds are written as individual structures separated 
+    by a period.</li>
+    </ul>
+<li> Isomeric specification
+    <ul>
+    <li>Configuration around double bonds is specified by "directional bonds": 
+    / and \. </li>
+    <li>Configuration around tetrahedral centers may be indicated by a 
+    simplified chiral specification (<a href="#parity">parity</a>) @ or @@. 
+    </li>
+    </ul>
+    </li>
+
+<li>Unique SMILES.</br>
+    
+    The "unique" name can be sometimes misleading when dealing with
+    compounds with stereo centres. 
+
+    The <a href=http://www.daylight.com/dayhtml/doc/theory/theory.smiles.html>SMILES specification</a> (3.1.
+    SMILES Specification Rules) defines generic, unique, isomeric and absolute SMILES as:
+
+    <ol>
+	<li><b>generic SMILES</b>: representing a molecule (there can be many different
+	representations)</li>
+
+	<li><b>unique SMILES</b>: generated from generic SMILES by a certain algorithm <a href=#references>[3]</a>
+
+	<li><b>isomeric SMILES</b>: string with information about isotopism, configuration
+	around double bonds and chirality</li>
+
+	<li><b>absolute SMILES</b>: unique SMILES with isomeric information - in Marvin during graph canonicalization 
+	the isomeric information is also considered as an atom invariant</li>
+    </ol>
+    The name <b>canonical SMILES</b> is used for absolute or unique SMILES
+    depending wether the string contains isomeric information or not (both
+    strings are "canonicalized" where the atom/bond order is unambigous).
+    Marvin generates always canonical SMILES with isomerism info if it is
+    possible to find out from the input file. The molecule graph is always
+    canonicalized using the algorithm in article <a href=#references>[3]</a>
+    but it is not guaranteed to give absolute SMILES for all isomeric
+    structures. With <a href=#option_u>option u</a> currently we are using an
+    approximation to make the SMILES string as absolute (unique for isomeric
+    structures) as possible.  For correct exact (perfect) structure searching
+    <a
+    href=http://www.chemaxon.com/jchem/doc/api/chemaxon/sss/search/MolSearch.html>MolSearch</a>
+    and <a
+    href=http://www.chemaxon.com/jchem/doc/api/chemaxon/jchem/db/JChemSearch.html>JChemSearch</a>
+    classes of <a href=http://www.chemaxon.com/jchem/doc/guide/search/index.html>JChem
+    Base</a>  or the <a
+    href=http://www.chemaxon.com/jchem/doc/guide/cartridge/cartapi.html#jc_equals>jc_equals</a>
+    SQL operator of the <a
+    href=http://www.chemaxon.com/jchem/doc/guide/cartridge/index.html>JChem
+    Cartridge</a> are suggested.  
+    
+    </br>	
+    The initial ranks of atoms for the canonicalization are calculated
+    using the following atom invariants:
+    <ol>
+    <li>number of connections</li>
+    <li>sum of non-H bond orders
+	(single=1, double=2, triple=3, aromatic=1.5, any=0)
+	</li>
+    <li>atomic number (list=110, any atom=112)</li>
+    <li>sign of charge:
+	0 for nonnegative, 1 for negative charge</li>
+    <li>formal charge</li>
+    <li>number of attached hydrogens</li>
+    <li>isotope mass number</li>
+    </ol>
+    See ref. [3] for details.</p>
+    With <a href=#option_u>option <strong>u</strong></a> it is possible to
+    include chirality into graph invariants. This option must be       
+    used with care since for molecules with numerous chirality centres 
+    the canonicalization can be very CPU demanding <a HREF=#chiralgrinv>[4]</a>.
+
+    </li>
+</ul>
+<p>
+<li>Stereochemistry
+    <ul>
+    <li><a NAME="parity"></a>
+    <b>Parity</b> is a general type of chirality specification 
+    based on the local chirality. <br>
+    The most common tetrahedral class is implemented. 
+    An atom can have parity (odd, even) 
+    if the following conditions are met:
+	<ul>
+	    <li> number of ligands + implicit H &gt; 3 </li> 
+	    <li> implicit + explicit H &lt; 2  </li> 
+	    <li> number of ligands is &lt; 5  </li> 
+	    <li> if the atom is not in ring then the graph 
+		invariants of the ligands must differ </li>
+	</ul>
+	Parity value <em>0</em> is used for atoms which cannot have parity.
+	</li>
+    <li><b>Cis-trans isomerism</b><br>
+	The default stereoisomers in rings are <em>cis</em>, 
+	which are not written explicitly. 
+<!--	The non-specified double bonds in rings are imported back 
+	as <em>cis</em> isomers.  -->
+	</li>
+    </ul>
+    </li>
+<p>
+<li>Reactions
+    <ul>
+    <li>syntax:
+	<em>reactant(s)</em>&gt;<em>agent(s)</em>&gt;<em>product(s)</em>, where<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>reactants</em> = <em>reactant1</em>&nbsp;.&nbsp;<em>reactant2</em>.<em>....</em><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>agents</em> = <em>agent1</em>.<em>agent2</em>&nbsp;.&nbsp;<em>....</em><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>products</em> = <em>product1</em>.<em>product2</em>&nbsp;.&nbsp;<em>...</em><br>
+    <p>
+    <b>Agents</b> are molecular structures that do not take part in the chemical reaction, 
+    but are added to the reaction equation for informative purpose only. 
+    <p>
+    All of the above sections are optional. For example:
+    <ul>
+    <li>a reaction with no agents: <em>reactant(s)</em>&gt;&gt;<em>product(s)</em></li>
+    <li>a reaction with no agents and no products (mainly used in reaction search): 
+        <em>reactant(s)</em>&gt;&gt;</li>
+    <li>a reaction with no agents and no reactants (mainly used in reaction search):
+       &gt;&gt;<em>product(s)</em></li>
+    </ul>
+    </li>
+    <p>
+    <li>atom maps</li>
+    </ul>
+    </li>
+
+<p>
+<li>Not supported SMILES features:
+<ul>
+<li>Branch specified if there is no atom to the left.</li>
+<li>General chiral specification: Allene like, Square-planar, 
+Trigonal-bipyramidal, Octahedral. </li>
+</ul>
+</li>
+<br>
+
+<a NAME="SMARTS"></a><h3>SMARTS</h3>
+<p>
+Marvin imports and exports SMARTS strings with the following features:
+<ul>
+<li>SMARTS features interpreted during import/export as full-functional 
+(editable) query features:
+    <ul>
+    <li>atom lists like [C,N,P] and 'NOT' lists like [!#6!#7!#15]</li>
+    <li>any bond: ~</li>
+    <li>ring bond: C@C </li>
+    <li><a name="smarts.H">hydrogen count:</a> H0, H1, H2, H3, H4</li>
+    <li><a name="smarts.v">valence:</a> v0, v1, ..., v8</li>
+    <li><a name="smarts.X">connectivity:</a> X0, X1, X2, X3, X4</li>
+    <li><a name="smarts.R">in ring:</a> R<br>
+	ring count: R0, R1, ..., R6</li>
+    <li><a name="smarts.r">size of smallest ring:</a> r3, r4, r5, r..</li>
+    <li><a name="smarts.a_A">aromatic and aliphatic</a> atoms: a, A</li>
+    <li>aliphatic, aromatic, aliphatic_or_aromatic atom query properties </li>
+    <li>single_or_double, single_or_aromatic, double_or_aromatic bonds 
+    (used in Marvin)</li>
+    <li>directional or unspecified bonds: C\C=C/?C</li>
+    <li>chiral or unspecified atoms: C[C@?H](Cl)Br</li>
+    <li>component level grouping: (C).(O) (C.O)</li>
+    </ul>
+    </li>
+<li>A subset of SMARTS features are imported as SMARTS atoms/bonds. 
+These atoms/bonds have limited editing support in the Marvin GUI, 
+but can be exported and evaluated 
+(e.g. JChem structure searching handles them correctly):
+    <ul>
+    <li><a name="smarts.h">implicit hydrogen count:</a> h2, h3, h..</li>
+    <li><a name="smarts.D">degree:</a> D2, D3, D.. </li>
+    <li>more difficult logical expressions in atom or bond expressions: &amp;,;!<br>
+(Simpler cases, like atom lists, not lists, "and"-expressions are handled by the above features.)</li>
+    <li>recursive SMARTS: [$(CCC)] </li>
+    </ul>
+    </li>
+</ul>
+<p>
+<a NAME="querySMARTS"></a>In case of SMARTS:
+    <ul>
+    <li>Impicit H atoms are not written inside brackets. Eg: [C:1]</li>
+    <li>Query H atoms are written inside brackets without using the low precedence "and" operator ';'. Eg: [CH3]</li>
+    </ul>
+
+<p>
+<a NAME="defaultBondTypes"></a>Implicit bond types:
+The default bond types for import and export strongly depend on the atoms connected by the bond.
+    <ul>
+    <li>Aromatic bonds are not written explicitly if neither atoms are
+	aliphatic and they are in a ring.<br>
+	Eg: c1ccccc1 But: c:c, c:[c;a], [#6]:c </li>
+    <li>Single bonds are not written explicitly if at least one atom 
+	is not aromatic. <br>
+	Eg: CC, C[c;a], Cc, C[C;A], [#6]C But: [#6]-[c;a], c1ccc(cc1)-c2ccccc2
+	</li>
+    <li>Single_or_aromatic bonds are not written explicitly if both atoms of 
+	the bond are aromatic and any of them is not in the same ring.<br>
+	Eg: [#6]cc, [#6][c;a], [#6][#6] </li>
+    </ul>
+<br>
+
+<a NAME="ioptions"></a><h3>Import options</h3>
+
+<blockquote>
+<table CELLSPACING=0 CELLPADDING=5 border="0">
+<tr VALIGN="TOP">
+    <td><a NAME="ioption_f"></a><strong>f</strong><br>
+	<small>{f<i>FIELD1</i>,f<i>FIELD2</i>,<i>...</i>}</small>&nbsp;&nbsp;
+	</td>
+    <td>Import data fields from a multi-column file.
+	The first column contains the SMILES/SMARTS strings, 
+	the second contains the
+	data field called <i>FIELD1</i>, the third contains 
+	<i>FIELD2</i>, etc.<br>
+	Example: 
+	<pre>molconvert sdf "foo.smi{fname,fID}" </pre>
+	reads the smiles string, the name and the ID from the foo.smi 
+	file and converts it to sdf format.
+	</td>
+    </tr>
+<tr VALIGN="TOP">
+    <td><a NAME="ioption_d"></a><strong>d</strong><br>
+	</td>
+    <td> Import with Daylight compatiblity for query H.<br>
+         In daylight smarts, H is only considered as H atom when 
+	 the atom expression has the syntax 
+	 [&lt;mass&gt;H&lt;charge&gt;&lt;map&gt;]
+	 (mass, charge and map are optional). 
+	 Otherwise it is considered as query H count.<br>
+	 Examples: [!H!#6] without d option is imported as 
+	 an atom which is not H and not C. 
+	 However with d option it is imported as an atom which 
+	 has not one H attached, and which is not C.<br>
+	 Use "H1" or "#1" or "#1A" instead of "H" to avoid 
+	 ambiguous meaning of H. "H1" always means query H count.
+	 "#1" always means H atom, "#1A" means aliphatic H atom.
+	</td>
+    </tr>
+</table>
+</blockquote>
+
+<p>
+<a NAME="options"></a><h3>Export options</h3>
+
+<p>
+Export options can be specified in the format string. The format descriptor
+and the options are separated by a colon.
+
+<blockquote>
+<table CELLSPACING=0 CELLPADDING=5 border="0">
+<tr VALIGN="TOP">
+    <td NOWRAP>...</td>
+    <td><a HREF="basic-export-opts.html">Basic options for aromatization and
+	H atom adding/removal.</a></td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_0"></td><strong>0</strong></a>
+    <td>Do not include parity and double bond
+	stereo (cis/trans) information.<br>
+	Examples: &quot;smiles:0&quot; (not stereo),
+		 &quot;smiles:a0&quot; (aromatic, not stereo)</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_q"></a><strong>q</strong></td>
+    <td>Check atom equivalences using graph invariants at double bonds.<br>
+	The graph invariant is used for symmetry description 
+	at each atom in the molecule. If one end of the double bond 
+	is symmetric (the ligands' graph invariants equal), 
+	then the / and \ signs are not used in the 
+	description of the double bond, if this option is set.<br>
+	Example: molconvert smiles:q -s &quot;C/C=C(/C)C&quot; results CC=C(C)C </td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_s"></a><strong>s</strong></td>
+    <td>Write query smarts. (See <a HREF="#querySMARTS">query Smarts</a> for details.) </td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_u"></a><strong>u</strong></td>
+    <td>Write uniqe smiles (considering chirality info also <a HREF=#chiralgrinv>[4]</a>). 
+	Note: Use this option if you want unique smiles export.<br>
+    </td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_h"></a><strong>h</strong></td>
+    <td>Convert explicit H atoms to query hydrogen count.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_T"></a><strong>T</strong>f1:f2:...</td>
+    <td>Export <i>f1</i>, <i>f2</i> ... SDF fields.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="option_n"></a><strong>n</strong></td>
+    <td>Export molecule name (the first line of an MDL molfile).</td></tr>
+</table>
+</blockquote>
+
+<p>
+<h2>See also</h2>
+<ul>
+<li><a HREF="cxsmiles-doc.html">ChemAxon Extended SMILES and SMARTS</a></li>
+</ul>
+
+<p>
+<a NAME="references"></a><h2>References</h2>
+<table CELLSPACING=0 CELLPADDING=5 border="0">
+<tr VALIGN=TOP>
+<td>[1]</td>
+<td><a HREF="http://www.daylight.com/dayhtml/smiles/" TARGET="_top">http://www.daylight.com/dayhtml/smiles/</a></td>
+</tr><tr VALIGN=TOP>
+<td>[2]</td>
+<td><a HREF="http://www.daylight.com/dayhtml/doc/theory/theory.smarts.html" TARGET="_top">http://www.daylight.com/dayhtml/doc/theory/theory.smarts.html</a></td>
+</tr><tr VALIGN=TOP>
+<td>[3]</td>
+<td><em>SMILES 2.
+    Algorithm for Generation of Unique SMILES Notation</em>;
+    D. Weininger, A. Weininger, J. L. Weininger;
+    J. Chem. Inf. Comput. Sci. <strong>1989</strong>, 29, 97-101</td>
+</tr>
+<tr VALIGN=TOP>
+<td><a NAME=chiralgrinv></a>[4]</td>
+<td><a HREF="http://www.mdpi.org/molecules/papers/61100915/61100915.htm"><em>A New Effective Algorithm for the Unambiguous Identification of the Stereochemical Characteristics of Compounds During Their Registration in Databases</a></em>; T. Cieplak and J.L. Wisniewski; Molecules <strong>2001</strong>, 6, 915-926
+</tr>
+</table>
+</body>
+</html>

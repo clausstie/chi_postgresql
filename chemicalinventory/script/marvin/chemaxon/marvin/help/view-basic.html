@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>MarvinView Help: Features</TITLE>
+<link REL="stylesheet"  TYPE="text/css" HREF="../../../marvinmanuals.css">
+</HEAD>
+<BODY><H1 CLASS="title">How To Use MarvinView Features</H1>
+<a href="view-index.html">Table Of Contents</a>
+
+<a name="loading"></a><h2>Loading Molecules into MarvinView</h2>
+Marvin can open molecule files saved in any of the  <a href="../../../doc/dev/formats.html">supported formats </a>for viewing.  You can also take advantage of the <a href="common.html#dnd">Cut/Copy/Paste and Drag &amp; Drop Functionality</a>  of Marvin to move a molecule from another chemical drawing application into MarvinView.
+
+<a name="save"></a><h2>Saving Molecules</h2>
+MarvinView allows you to save an image of the molecule in the Viewer. You can select from JPEG, PNG, PPM, POVRay, and SVG file types. 
+<BR>Because MarvinView is designed for viewing and not editing, you cannot save into molecule format files from MarvinView.  If you would like to edit and save the molecule, you should launch a <a href="#edit.sketch">MarvinSketch</a> window.
+<a name="print"></a><h2>Printing Molecules</h2>
+You can print the molecule using the <B>Print</B> item in either the <a href="view-gui.html#menubar">File Menu</a> or the <a href="view-gui.html#popup-menu">Pop-up Menu</a>.
+
+<a name="edit"></a><h2>Editing Molecules</h2>
+MarvinView is intended to be used mainly to display molecules.  However, there is a limited set of functionality available to edit the molecule while you view it.  To make major changes to the molecule, it can be opened in either a MarvinSketch window or a Source window.  In either case, the alterations made can be imported back to the Viewer.
+
+<a name="edit.view"></a><h3>Editing Options in MarvinView</h3>
+Marvin allows you to Clean your molecule in either 2D or 3D. This
+will recalculate the coordinates of the atoms and bonds to the most
+appropriate location, based on the type of cleaning you select. You
+can set cleaning options via the <B>Edit
+&gt; Clean</B> submenu or from the <a href="view-gui.html#popup-menu">Pop-up Menu</a>.
+<BR>
+You can toggle the display of rings as aromatic using the <B>Edit
+&gt; Bonds </B>submenu. 
+<BR>
+Using the <B>Misc</B> submenu from the <B>Edit
+Menu </B> or from the <a href="view-gui.html#popup-menu">Pop-up Menu</a>, you can toggle the display of options such as Atomic Symbols, Map Numbers, and E/Z steroconfiguration labels.
+
+<a name="edit.sketch"></a><h3>Editing in MarvinSketch</h3>
+MarvinView allows you to launch a MarvinSketch window for editing the current molecule.  By selecting, <B>Edit > Structure</B>, the molecule will be opened in MarvinSketch.  
+While you are editing the molecule in the sketcher, you will be unable to use the viewer.  
+When you close the sketcher, you will be able to use the viewer again and all changes you have made in the sketcher will appear in the viewer.
+
+<a name="edit.source"></a><h3>Editing Source</h3>
+Choosing <B>Source</B>  from the <B>Edit</B> menu (in the Menubar or Pop-up Menu) opens the Edit Source window. The The Edit Source window opens the file for the current molecule as text. You can view and edit the molecule file in any of the supported formats (SMILES, molfile, XYZ, etc). 
+<BR>
+You can alter a molecule by directly editing its source in the
+Edit Source Window. You can view and edit the source in any of the
+supported file formats. To change format, simply select the desired
+one from the <B>Format</B>
+Menu. To reload the molecule described by the text in this window
+into the MarvinSketch canvas (including any changes you may have
+made), select <B>File &gt;
+Import</B>. This will close the Edit Source Window.
+
+<a href="common.html#display-structure"></a><h2>Structure Display Options</h2>
+<!--
+<h3>Display Format</h3>
+You can set the display format for the molecule using the <B>Display</B> submenu in either the <a href="view-gui.html#menubar">Edit Menu</a> or the <a href="view-gui.html#popup-menu">Pop-Up Menu</a>. Available formats are
+<B>Wireframe, Wireframe
+with Knobs, Sticks, Ball and Stick,</B> and <B>Spacefill</B>.
+<h3>Colors</h3>
+The <B>View &gt;Colors</B>
+submenu allows you to specify the <A HREF="../sketchman.html#parameters.colorScheme">color
+scheme</A> of the molecules. The available options are: 
+
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">Monochrome 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm">CPK 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm">Shapely - based on RasMol's
+	shapely color scheme for nucleic and amino acids 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm">Group - based on PDB residue
+	numbers 
+	</P>
+	<LI><P>Atom Set 
+	</P>
+</UL>
+<h3><a name="implicit-explicit-H"></a>Implicit/Explicit Hydrogens</h3>
+<P>Marvin has a number of options for the display of implicit and
+explicit hydrogens. Because Marvin is chemically intelligent, it will
+automatically add hydrogens as necessary within the structure.
+Generally, these will be implicit and displayed based on the options
+set in the <B>View</B>
+menu. 
+</P>
+<P>To view all hydrogens explicitly, displayed as atoms with bonds to
+neighbors, use the <B>Edit
+&gt; H-Atoms &gt; Add</B> menu item. The <B>Remove</B>
+item from the same menu will return to the previous display mode. 
+</P>
+<P>To view implicit hydrogens by symbol, use the <B>View
+&gt; Hydrogens &gt; Implicit </B>menu group. This option
+is disabled in Spacefill and Ball &amp; Stick display modes. 
+</P>
+-->
+<H2><A href="common.html#preferences"></a>Saving Display Options</H2>
+<!--
+<P>Options set using the <B>View
+</B>Menu are considered session-only settings. This means
+that the next time you run Marvin, it will revert to the default
+settings. To override the default settings, use the <B>Edit
+&gt; Preferences</B> dialog. Any options set here will be
+saved and recalled during future sessions. 
+</P>
+-->
+<h2><a name="manipulate"></a>Manipulating the Molecule</h2>
+You can translate, rotate, or resize the molecule on the canvas with a simple mouse drag.
+The <a href="view-gui.html#menubar">View Menu</a> and <a href="view-gui.html#popup-menu">Pop-up Menu</a> both contain a <B>Move</B> submenu that allows you set the type of motion to apply to the molecule.
+<BR>
+By Selecting <B>Translate or Drag</B>, dragging the mouse across the canvas will result in a similar translation of the molecule.
+<BR>
+Selecting <B>Zoom</B> allows you to resize the molecule.  Dragging the mouse upward will zoom out, dragging downward will zoom in.
+<BR>
+Selecting <B>Rotate</B> allows you to rotate the molecule in 2D.  The center of the molecule becomes the center of rotation and the molecule will rotate around this point in the direction of the mouse drag.
+<BR>
+Selecting <B>Rotate in 3D</B> allows you to rotate the molecule in 3D around a point at the 3D center of the molecule.
+<P>
+The <a href="view-gui.html#menubar">View Menu</a> and <a href="view-gui.html#popup-menu">Pop-up Menu</a> also contain the choice <B>Animation</B>, which allows you to start and stop an automatic 3D rotation of the molecule.
+<P> 
+
+<P ALIGN=CENTER><A HREF="#">Return to Top</A></P>
+<p ALIGN=CENTER>
+Copyright &copy; 1998-2006
+<a HREF="http://www.chemaxon.com">ChemAxon Ltd.</a>
+</p>
+<p ALIGN=CENTER>
+<a HREF="http://www.chemaxon.com/marvin">http://www.chemaxon.com/marvin</a>
+</p>
+
+</BODY>
+</HTML>

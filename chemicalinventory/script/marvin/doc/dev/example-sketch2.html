@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 2 - Query atoms, extra bond types, disallowing elements,
+extra templates</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinSketch Example 2</h1>
+
+You can easily control which atom and bond types can be used in the applet.
+
+<p>
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+msketch_begin("../..", 460, 360);
+msketch_param("elements", "C-F,P-Cl");
+msketch_param("queryAtoms", "any,hetero,list,notlist");
+msketch_param("atomStrings", "alias");
+msketch_param("extraBonds", "arom,wedge,either,any,1or2,aromany,topology");
+msketch_param("xtmpls", "chemaxon/marvin/templates/wedgebonds.t");
+msketch_end();
+//-->
+</script>
+</center>
+
+<p>
+In this example,  we have made only certain atom and bond types available to the user.
+Using the <a HREF="sketchman.html#parameters.elements"><code>elements</code></a>
+parameter, we have disabled the use of all atoms 
+ except C, N, O, F, P, S, and Cl.
+We allow all the query atom and extra bond types that can be used in MDL
+molfiles, but disable the SMARTS-only ones.
+The SMARTS properties X, v, R, r, a, A are disabled because they are not listed
+<a HREF="sketchman.html#parameters.queryAtoms"><code>queryAtoms</code></a>.
+
+The textfield in the More window can only be used to enter molfile atom
+aliases because
+<a HREF="sketchman.html#parameters.atomStrings"><code>atomStrings</code></a> parameter contains only the value "alias"
+ The use of SMARTS strings can be enabled by adding the 
+&quot;smarts&quot value to this parameter.
+
+With the
+<a HREF="sketchman.html#parameters.extraBonds"><code>extraBonds</code></a>
+parameter, we enable only the following extra bond types:
+aromatic bond, up/down stereo wedge bonds, up/down and cis/trans
+&quot;either&quot; bonds,
+&quot;any&quot; bond,
+&quot;single or double&quot;, &quot;single or aromatic&quot; and
+&quot;double or aromatic&quot; bonds.<br>
+Press <strong>More</strong> to see these changes.
+<p>
+Furthermore, by setting the
+<a HREF="sketchman.html#parameters.xtmpls"><code>xtmpls</code></a> parameter,
+we placed extra templates (two wedge bonds) left to the &quot;normal&quot;
+templates.
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>msketch_begin(</strong>&quot;../..&quot;<strong>,</strong> 460<strong>,</strong> 360<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.elements">elements</a>&quot;<strong>,</strong> &quot;C-F,P-Cl&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.queryAtoms">queryAtoms</a>&quot;<strong>,</strong> &quot;any,hetero,list,notlist&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.atomStrings">atomStrings</a>&quot;<strong>,</strong> &quot;alias&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.extraBonds">extraBonds</a>&quot;<strong>,</strong> &quot;arom,wedge,either,any,1or2,aromany,topology&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.xtmpls">xtmpls</a>&quot;<strong>,</strong> &quot;chemaxon/marvin/templates/wedgebonds.t&quot;<strong>);</strong>
+<strong>msketch_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+<p>
+And now let us see
+<a HREF="example-sketch3.1.html">how to use the sketcher like a viewer</a>.
+
+</body>
+</html>

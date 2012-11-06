@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 1.3 - Alternative look</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinSketch Example 1.3</h1>
+
+The sketcher can have an &quot;alternative look&quot; with a vertical toolbar.
+<p>
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+msketch_begin("../..", 460, 420);
+msketch_param("verticalbar", true);
+msketch_end();
+//-->
+</script>
+</center>
+<p>
+In the AWT applet, the edit buttons are moved to the left side of the applet,
+but the template buttons remain on the top.
+In Swing, all the buttons are moved to the left.
+<p>
+In AWT, the user can restore the default look by releasing the button with the
+arrow pointing down.
+In Swing, the toolbar can be dragged and moved to any of the four edges of the
+applet.
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>msketch_begin(</strong>&quot;../..&quot;<strong>,</strong> 460<strong>,</strong> 420<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.verticalbar">verticalbar</a>&quot;<strong>,</strong> &quot;true&quot;<strong>);</strong>
+<strong>msketch_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+<p>
+In the <a HREF="example-sketch1.4.html">next example</a>, you can use 
+My Templates.
+
+</body>
+</html>

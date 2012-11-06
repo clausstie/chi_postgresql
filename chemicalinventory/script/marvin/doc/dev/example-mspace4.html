@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<meta NAME="author" CONTENT="Judit Papp">
+<link REL="stylesheet"i TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+
+<TITLE>MarvinSpace demo</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+function setSynchronized()
+{
+   document.MSpaceApplet.setProperty( "SynchronMode", document.Synchronized.chbox.checked==1 );
+}
+function resetView()
+{
+    if(document.Synchronized.chbox.checked==1) {
+        document.MSpaceApplet.setProperty( "Reset", "All" );
+}
+    else {
+        document.MSpaceApplet.setProperty( "Reset", "Active" );
+    }
+}
+</SCRIPT>
+
+</HEAD>
+
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<H1>MarvinSpace 1.2</H1>
+
+<table>
+<tr>
+<td>
+<applet codebase="../.."
+code="chemaxon/marvin/space/gui/MSpaceApplet" name="MSpaceApplet" width=600 height=600
+archive="mspace.jar,jogl.jar">
+<param name="progressbar" value="true"/>
+<param name="selectionpanel" value="false">
+<param name="rowCount" value="2"/>
+<param name="columnCount" value="2"/>
+<param name="cell0" value="http://www.chemaxon.com/shared/MarvinSpace/pdb/1AID.pdb">
+<param name="cell1" value="http://www.chemaxon.com/shared/MarvinSpace/pdb/1AID.pdb">
+<param name="cell2" value="http://www.chemaxon.com/shared/MarvinSpace/pdb/1AID.pdb">
+<param name="cell3" value="http://www.chemaxon.com/shared/MarvinSpace/pdb/1AID.pdb">
+
+</applet>
+</td>
+<!--
+<td>
+Load molecule <br>
+<form name="Load">
+<input type="file" name="datafile" size=40 onClick="setFileName()"><br>
+</td>
+-->
+<td>
+<form name="Synchronized">
+<input type="checkbox" name="chbox" onClick="setSynchronized()">Synchronized manipulation<br>
+<input type="button" name="button" value="Reset view" onClick="resetView()"><br>
+</form>
+</td>
+</tr>
+</table>
+</BODY>
+</HTML>
+
+

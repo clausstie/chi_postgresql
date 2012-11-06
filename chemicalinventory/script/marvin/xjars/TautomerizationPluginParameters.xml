@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ParameterPanel>
+    <SingleSelection Key="rows" Label="Table rows">
+	<Choice Value="1" Text="1"/>
+	<Choice Value="2" Text="2" Selected="true"/>
+	<Choice Value="3" Text="3"/>
+    </SingleSelection>
+    <SingleSelection Key="cols" Label="Table columns">
+	<Choice Value="2" Text="2" Selected="true"/>
+	<Choice Value="3" Text="3"/>
+    </SingleSelection>
+    <Boolean Key="symfilter" Label="Symmetry filtering" Value="false"/>
+    <Boolean Key="considerpH" Label="Consider pH effect" Value="false"/>
+    <Number Key="pH" Label="at pH" Range="[0.0,14.0]" Value="7.4">
+	<Dependencies>
+	    <Item Key="considerpH" Range="true"/>
+	</Dependencies>
+    </Number>
+    <Boolean Key="dominants" Label="Take dominant tautomers" Value="false"/>
+    <Boolean Key="single" Label="Single fragment mode" Value="false"/>
+    <LICENSE Label="License key"/>
+</ParameterPanel>

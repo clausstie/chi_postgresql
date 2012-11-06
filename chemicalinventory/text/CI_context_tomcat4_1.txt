@@ -1,0 +1,106 @@
+<!-- **************** CHEMICALINVENTORY FOR TOMCAT 4.1(.31) START***************** -->
+<Context path="/chemicalinventory" docBase="chemicalinventory"
+        debug="5" reloadable="true" crossContext="true">
+
+  <Logger className="org.apache.catalina.logger.FileLogger"
+             prefix="CI_DBTest_log." suffix=".txt"
+             timestamp="true"/>
+
+  <Resource name="jdbc/chemicalinventory"
+               auth="Container"
+               type="javax.sql.DataSource"/>
+
+  <ResourceParams name="jdbc/chemicalinventory">
+    <parameter>
+      <name>factory</name>
+      <value>org.apache.commons.dbcp.BasicDataSourceFactory</value>
+    </parameter>
+
+    <!-- Maximum number of dB connections in pool. Make sure you
+         configure your mysqld max_connections large enough to handle
+         all of your db connections. Set to 0 for no limit.
+     -->
+    <parameter>
+      <name>maxActive</name>
+      <value>100</value>
+    </parameter>
+
+    <!-- Maximum number of idle dB connections to retain in pool.
+         Set to 0 for no limit.
+         -->
+    <parameter>
+      <name>maxIdle</name>
+      <value>30</value>
+    </parameter>
+
+    <!-- Maximum time to wait for a dB connection to become available
+         in ms, in this example 10 seconds. An Exception is thrown if
+         this timeout is exceeded.  Set to -1 to wait indefinitely.
+     -->
+    <parameter>
+      <name>maxWait</name>
+      <value>10000</value>
+    </parameter>
+
+    <!-- Remove abondoned connections if any found.  -->
+   <parameter>
+      <name>removeAbandoned</name>
+      <value>true</value>
+   </parameter>
+
+   <parameter>
+     <name>removeAbandonedTimeout</name>
+     <value>60</value>
+   </parameter>
+
+   <parameter>
+     <name>logAbandoned</name>
+     <value>true</value>
+   </parameter>
+
+    <!-- MySQL dB username and password for dB connections  -->
+    <parameter>
+     <name>username</name>
+     <value>chemicals</value>
+    </parameter>
+    <parameter>
+     <name>password</name>
+     <value>chemicals</value>
+    </parameter>
+
+    <!-- Class JDBC driver -->
+    <parameter>
+       <name>driverClassName</name>
+       <value>com.mysql.jdbc.Driver</value>
+    </parameter>
+
+    <!-- The JDBC connection url for connecting to your MySQL dB.
+         The autoReconnect=true argument to the url makes sure that the
+         mm.mysql JDBC Driver will automatically reconnect if mysqld closed the
+         connection.  mysqld by default closes idle connections after 8 hours.
+     -->
+    <parameter>
+      <name>url</name>
+      <value>jdbc:mysql://localhost:3306/chemicals?autoReconnect=true</value>
+    </parameter>
+  </ResourceParams>
+	
+</Context>
+
+    <!-- The Realm for CI login management. This is for Tomcat 4.1.xx
+    	 a JDBC realm.
+     -->
+
+<Realm  className="org.apache.catalina.realm.JDBCRealm" debug="99"
+        driverName="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/chemicals?autoReconnect=true"
+        connectionName="chemicals" 
+        connectionPassword="chemicals"
+        userTable="user" 
+        userNameCol="user_name" 
+        userCredCol="password"
+        userRoleTable="roles" 
+        roleNameCol="role" 
+        digest="MD5" />
+
+<!-- **************** CHEMICALINVENTORY FOR TOMCAT 4.1(.31) END***************** -->  

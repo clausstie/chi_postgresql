@@ -1,0 +1,325 @@
+H1
+{
+}
+
+H2
+{
+}
+
+P.special
+{
+  color: #C0C0C0;
+  font-family: Arial;
+  font-size: 10px;
+}
+
+P.special_2
+{
+  color: #C0C0C0;
+  font-family: Arial;
+  font-size: 10px;
+  text-align: right;
+}
+
+p.bold
+{
+	font-weight: bold;
+}
+
+TR.special
+{
+  background-color: #E8E6EC;
+}
+
+TR.margin
+{
+	margin-bottom: 4px;
+}
+
+
+TR.blue
+{
+    background-color: #CDDDFF;
+    font-family: "Times New Roman", serif;
+}
+TR.smoke
+{
+    background-color: #F5F5F5;
+    font-family: "Times New Roman", serif;
+}
+TR.normal
+{
+    font-family: "Times New Roman", serif;
+}
+
+TD.not_blue
+{
+    background-color: #FFFFFF;
+    font-family: "Times New Roman", serif;
+}
+
+TD.blue
+{
+    background-color: #CDDDFF;
+    font-family: "Times New Roman", serif;
+}
+
+TD.gray
+{
+    background-color: #C0C0C0;
+    font-family: "Times New Roman", serif;
+    font-size: 0.8em;
+}
+
+TD.special
+{
+  font-weight: bold;
+}
+
+TD.special2
+{
+  font-weight: bold;
+  text-align: center;
+}
+
+TH
+{
+background-color: #F5F5F5;
+}
+
+TH.blue
+{
+  background-color: #CDDDFF;
+  margin: 1pt;
+}
+
+TH.black
+{
+  background-color: #000000;
+  margin: 1pt;
+  color: white;
+}
+
+table.textsize
+{
+  font-size: 0.9em;
+}
+
+TABLE.special
+{
+  background-color: #F5F5F5;
+  font-size: 0.9em;
+}
+
+TABLE.box
+{
+  border: 1pt solid silver;
+  padding-top: 1pt; padding-bottom:1pt; padding-left: 1pt; padding-right: 1pt;
+  margin: 1pt;
+}
+
+TABLE.padding1
+{
+  border: 0pt;
+  padding-top: 1pt; padding-bottom:1pt; padding-left: 1pt; padding-right: 1pt;
+  margin: 14pt;
+}
+
+.marg1
+{
+	border: 0pt;
+	margin: 1pt;
+}
+
+TABLE.action
+{
+	border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: silver;
+}
+
+TABLE.action_noheader
+{
+	border-width: 0px 0px 0px 0px;
+    border-color: silver;
+}
+
+IMG.navigation
+{
+  align: top;
+  width: 50;
+  heigh: 23;
+}
+
+TD.loc_class
+{
+      border-width: 0px 1px 0px 0px;
+      border-style: solid;
+      border-color: blue;
+}
+
+
+TD.LR_divider
+{
+  border-width: 0px 1px 0px 1px;
+  border-style: solid;
+  border-color: #9F9F9F;
+  padding: 5px;
+}
+
+TD.R_divider
+{
+  border-width: 0px 1px 0px 0px;
+  border-style: solid;
+  border-color: #9F9F9F;
+}
+
+TD.top_divider
+{
+  border-width: 1px 0px 0px 0px;
+  border-style: solid;
+  border-color: #9F9F9F;
+  height: 4px;
+}
+
+TD.left_pad
+{
+    padding: 5px;
+}
+
+TD.spacer
+{
+  height: 3px;
+}
+
+TD.bot_divider
+{
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: #9F9F9F;
+}
+
+TD.action
+{
+	background-color: #F5F5F5; 
+	font-size: 11; 
+	font-family: sans-serif; 
+	color: #0000FF;
+}
+
+P.info
+{
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: Arial;
+  font-size: 11px;
+}
+
+input.submit
+{
+ background-color: #F5F5F5; 
+ width: 105px;
+ height: 20px;
+ font-size: 10;
+}	
+
+input.submit_nowidth
+{
+ background-color: #F5F5F5;
+ height: 20px;
+ font-size: 10;
+}	
+
+input.submit_nowidth_slim
+{
+ background-color: #F5F5F5; 
+ height: 16;
+ border-color: #F5F5F5;
+ border-width: 0px, 0px, 0px, 0px;
+ width: 50px;
+ font-size: 9;
+ font-weight: bold;
+ text-align: top;
+}	
+
+input.submit_width175
+{
+ background-color: #F5F5F5; 
+ width: 175px;
+ height: 20px;
+ font-size: 10;
+}	
+
+input.submit_width125
+{
+ background-color: #F5F5F5; 
+ width: 125px;
+ height: 20px;
+ font-size: 10;
+}	
+
+input.submit_width130
+{
+ background-color: #F5F5F5; 
+ width: 130px;
+ height: 20px;
+ font-size: 10;
+}	
+
+input.submit_width80
+{
+ background-color: #F5F5F5; 
+ width: 80px;
+ height: 20px;
+ font-size: 10;
+}	
+
+input.submit_width85
+{
+ background-color: #F5F5F5; 
+ width: 85px;
+ height: 20px;
+ font-size: 10;
+}
+
+input.submit_width90
+{
+ background-color: #F5F5F5; 
+ width: 90px;
+ height: 20px;
+ font-size: 10;
+}	
+
+input.submit_width95
+{
+ background-color: #F5F5F5; 
+ width: 95px;
+ height: 20px;
+ font-size: 10;
+}	
+
+input.submit_nowidth
+{
+ background-color: #F5F5F5; 
+}	
+
+input.slimtext
+{
+	height: 16;
+	width: 145;
+	font-size: 9;
+	background-color: #F5F5F5; 
+}
+input.readonly
+{
+	background-color: silver; 
+}
+
+div.hr {
+  height: 45px;
+  background: #fff url(images/Divider1a.png) no-repeat scroll center;
+}
+div.hr hr {
+  display: none;
+}
+

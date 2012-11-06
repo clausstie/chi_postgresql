@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta NAME="description" CONTENT="MarvinSketch: templates">
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Templates</title>
+</head>
+<body>
+
+<h1><a NAME="default"></a>Default templates</h1>
+
+If nothing is specified as a
+<a HREF="sketchman.html#parameters.tmpls">tmpls</a> parameter (or bean
+property), then the following templates are used:
+
+<blockquote>
+<pre>
+tmpls0=:Generic:chemaxon/marvin/templates/generic.t
+tmpls1=:Rings:chemaxon/marvin/templates/rings.t
+tmpls2=:Amino acids:chemaxon/marvin/templates/aminoacids.t
+tmpls3=:Polycyclics:chemaxon/marvin/templates/polycyclics.t
+</pre>
+</blockquote>
+In the Swing version, there are further built-in templates:
+<blockquote>
+<pre>
+tmpls4=:Aromatics:chemaxon/marvin/templates/aromatics.t
+tmpls5=:Bridged Polycycles:chemaxon/marvin/templates/bridged_polycycles.t
+tmpls6=:Bicycles:chemaxon/marvin/templates/bicycles.t
+tmpls7=:Crown Ethers:chemaxon/marvin/templates/crown_ethers.t
+tmpls8=:Cycloalkanes:chemaxon/marvin/templates/cycloalkanes.t
+tmpls9=:Fullerenes:chemaxon/marvin/templates/fullerenes.t
+</pre>
+</blockquote>
+If there is at least one specified template, and the last template is
+the <em>n</em>th, then the total number of templates is <em>n</em> + 1,
+even if <em>n</em> &lt; 3.
+<p>
+<strong>Notes:</strong>
+The 0th default template set (&quot;Generic&quot;) is included in the Marvin Applet's
+JAR file (marvin.jar or jmarvin.jar), other template sets are downloaded from
+the web server only when the user selects them for the first time. All the
+default template sets are in the Marvin Beans JAR file (MarvinBeans.jar).
+
+</body>
+</html>

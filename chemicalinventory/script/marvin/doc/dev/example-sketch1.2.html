@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 1.2 - Setting colors</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinSketch Example 1.2</h1>
+
+You can use applet parameters to specify the applet and molecule background colors.  Below is an example where both are set to white.
+
+<p>
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+msketch_begin("../..", 460, 380);
+msketch_param("background", "#ffffff");
+msketch_param("molbg", "#ffffff");
+msketch_end();
+//-->
+</script>
+</center>
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>msketch_begin(</strong>&quot;../..&quot;<strong>,</strong> 460<strong>,</strong> 380<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.background">background</a>&quot;<strong>,</strong> &quot;#ffffff&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.molbg">molbg</a>&quot;<strong>,</strong> &quot;#ffffff&quot;<strong>);</strong>
+<strong>msketch_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+Atoms and bonds drawn on the canvas are shown in the CPK color scheme by default, but by
+using the <a HREF="sketchman.html#parameters.colorScheme">colorScheme</a>
+parameter, you can disable coloration.
+
+<p>
+<center>
+<script LANGUAGE="JavaScript1.1">
+<!--
+msketch_begin("../..", 460, 380);
+msketch_param("background", "#666699");
+msketch_param("molbg", "#000000");
+msketch_param("colorScheme", "mono");
+msketch_end();
+//-->
+</script>
+</center>
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>msketch_begin(</strong>&quot;../..&quot;<strong>,</strong> 460<strong>,</strong> 380<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.background">background</a>&quot;<strong>,</strong> &quot;#666699&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.molbg">molbg</a>&quot;<strong>,</strong> &quot;#000000&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.colorScheme">colorScheme</a>&quot;<strong>,</strong> &quot;mono&quot;<strong>);</strong>
+<strong>msketch_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+Note that we only set the molecule background.
+The white foreground was set automatically by the program.
+
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+<p>
+You can change the look of the applet not just by changing colors but also
+by <a HREF="example-sketch1.3.html">rearranging buttons</a>.
+
+</body>
+</html>

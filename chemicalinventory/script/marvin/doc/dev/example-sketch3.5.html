@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 3.5 - Pure visualization mode; detaching the sketcher; usage of isMyTemplatesEnabled parameter</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinSketch Example 3.5</h1>
+
+Seems like a viewer?
+Click on it!
+
+<p>
+
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+msketch_begin("../..", 200, 200);
+msketch_param("mol", "../../mols-2d/esterification.rxn");
+msketch_param("autoScale", "true");
+msketch_param("detach", "hide");
+msketch_param("menubar", "false");
+msketch_param("reactionErrorVisible", "false");
+msketch_param("isMyTemplatesEnabled", "true");
+msketch_end();
+//-->
+</script>
+</center>
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>msketch_begin(</strong>&quot;../..&quot;<strong>,</strong> 200<strong>,</strong> 200<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.mol">mol</a>&quot;<strong>,</strong> &quot;../../mols-2d/esterification.rxn&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.autoscale">autoScale</a>&quot;<strong>,</strong> &quot;true&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.detach">detach</a>&quot;<strong>,</strong> &quot;hide&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.menubar">menubar</a>&quot;<strong>,</strong> &quot;false&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.reactionErrorVisible">reactionErrorVisible</a>&quot;<strong>,</strong> &quot;false&quot;<strong>);</strong>
+<strong>msketch_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+
+<p>It is also possible to display the sketcher window
+<a HREF="example-sketch3.6.html">immediately</a>.
+
+</body>
+</html>

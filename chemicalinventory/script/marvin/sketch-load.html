@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Open molfile</title>
+<link REL ="stylesheet" TYPE="text/css" HREF="../marvinmanuals.css" TITLE="Style">
+</head>
+<body>
+<form NAME="fileform" ENCTYPE="multipart/form-data" ACTION="sketch-load.cgi"
+      METHOD="post" VALUE="">
+<table BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<tr>
+<td><font FACE="Helvetica, Arial">Molfile:</font></td>
+<td><font FACE="Helvetica, Arial">
+    <input TYPE="FILE" SIZE="30" NAME="molfile">
+    </font>
+    </td>
+<td WIDTH=10></td>
+<td><font FACE="Helvetica, Arial">
+    <input TYPE="SUBMIT" VALUE="Load via web server">
+    </font>
+    </td>
+<!--
+<td><font FACE="Helvetica, Arial">
+    <input TYPE="BUTTON" VALUE="Try to load directly"
+	onClick="parent.msketch.document.MSketch.setMol(molfile.value);return
+false">
+    </font>
+    </td>
+-->
+</tr>
+</table>
+</form>
+</body>
+</html>

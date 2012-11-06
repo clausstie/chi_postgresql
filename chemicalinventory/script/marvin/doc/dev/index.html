@@ -1,0 +1,265 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia, Gabor Bartha, Tamas Vertse">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Marvin and MarvinSpace Developer's Guide</title>
+<script LANGUAGE="JavaScript">
+<!--
+function changegui() {
+	var sel = document.guiform.guisel;
+	var v = sel.options[sel.selectedIndex].value;
+	for(i=0; i<document.links.length; ++i) {
+		if(document.links[i].pathname.lastIndexOf("example-") >= 0) {
+			var href = document.links[i].href;
+			var k = href.indexOf('?');
+			if(k > 0) {
+				href = href.substring(0, k);
+			}
+			document.links[i].href = href + v;
+		}
+	}
+}
+
+function updateLinks() {
+    prefix = "http://www.chemaxon.com/marvin/";
+    
+    var list = new Array("doc/dev/changes.html");
+    for(i=0; prefix != "" && i < document.links.length; ++i) {
+        for(j=0;j<list.length; ++j) {
+            if(document.links[i].pathname.lastIndexOf(list[j]) >=0) {
+                document.links[i].href= prefix+list[j];
+            }
+        }
+    }
+}
+-->
+</script>
+
+</head>
+<body onload="changegui();updateLinks()">
+
+<h1 align=center>Marvin and MarvinSpace Developer's Guide</h1>
+<h3 align=center>Version 4.0.5</h3>
+
+<table CELLSPACING=0 CELLPADDING=5 BORDER=0 id="colored" align="center">
+<tr><td VALIGN="TOP">
+<table CELLSPACING=0 CELLPADDING=5 BORDER=0>
+<tr><td VALIGN="TOP">
+<h3><a HREF="sketchman.html">MarvinSketch</a></h3>
+    <ol>
+    <li><a HREF="sketchman.html#parameters">Parameters</a>
+<!--APPLETONLY_BEGIN-->
+	<ol>
+	<li><a HREF="sketchman.html#appletonly">Applet only
+	    parameters</a></li>
+	</ol>
+<!--APPLETONLY_END-->
+	</li>
+        
+    </ol>
+<h3><a HREF="viewman.html">MarvinView</a></h3>
+    <ol>
+    <li><a HREF="viewman.html#parameters">Parameters</a>
+	<ol>
+<!--APPLETONLY_BEGIN-->        
+	<li><a HREF="viewman.html#appletonly">Applet only parameters</a></li>
+<!--APPLETONLY_END-->
+	<li><a HREF="viewman.html#3d">3D and animation</a></li>
+	<li><a HREF="viewman.html#advanced">Molecule tables</a>
+	    <ol>
+	    <li><a HREF="viewman.html#advanced.layout">layout<em>n</em></a>
+		</li>
+	    <li><a HREF="viewman.html#advanced.param">param<em>n</em></a>
+		</li>
+	    <li><a HREF="viewman.html#advanced.cell">cell<em>n</em></a>
+		</li>
+	    </ol>
+	    </li>
+	</ol>
+	</li>
+
+<!--APPLETONLY_BEGIN-->
+    <li><a HREF="viewman.html#troubleshooting">Troubleshooting -
+	MView and JMView tables</a></li>
+<!--APPLETONLY_END-->
+    </ol>
+
+<h3>MarvinSpace</h3>
+    <ol>
+        <li><a HREF="http://www.chemaxon.com/shared/MarvinSpace/#trouble">Troubleshooting</a></li>
+        <li><a HREF="http://www.chemaxon.com/shared/MarvinSpace/gallery.html">Image gallery<a/></li>
+    </ol>
+</td></tr></table>
+</td>
+<td VALIGN="TOP">
+<table CELLSPACING=0 CELLPADDING=5 BORDER=0>
+<tr><td VALIGN=TOP>
+<h3>Marvin General documentation</h3>
+    <ul>
+    <li><a HREF="../api/index.html">API documentation (Javadocs)</a></li>
+
+    <li><a HREF="formats.html">File formats in Marvin</a></li>
+    <li><a HREF="plugins.html">Plugin development</a></li>
+    </ul>
+    </li>
+<!--APPLETONLY_BEGIN-->
+<h3>Marvin Sketch/View Applets</h3>
+    <ul>
+    <li><a HREF="modules.html">Modules</a></li>
+    <li><a HREF="signing.html">Signed Applets</a></li>
+    <li><a HREF="../user/browsers.html">Web browsers</a>
+	<ul>
+	<li><a HREF="applet-platforms.html">Marvin applet platforms
+	    (details)</a></li>
+	<li><a HREF="../user/for-mac-users.html">Notes for Mac users</a></li>
+	<li><a HREF="../bugs/faq.html">Crashes, freezes and other bugs FAQ</a>
+	    </li>
+	</ul>
+	</li>
+    <li><a HREF="appletfaq.html">FAQ</a></li>
+    </ul>
+<!--APPLETONLY_END-->
+
+<h3>Platform dependence</h3>
+    <ul>
+    <li><a HREF="../user/datatransfer.html">Cut/Copy/Paste and Drag &amp; Drop</a></li>
+    </ul>
+</td></tr></table>
+</td></tr></table>
+
+<!--APPLETONLY_BEGIN-->
+<p>
+<center>
+<table CELLSPACING=0 CELLPADDING=5 BORDER=0 id="colored">
+<tr><td VALIGN="TOP" ALIGN="CENTER">
+<font>
+<a NAME="examples">
+<form NAME="guiform">
+<select NAME="guisel" onChange="changegui()">
+<script LANGUAGE="JavaScript1.1">
+<!--
+var jvmguis = new Array(
+	"", "Default JVM and GUI</option>",
+	"?jvm=builtin&gui=awt", "Builtin JVM and AWT</option>",
+	"?jvm=builtin&gui=swing", "Builtin JVM and Swing</option>",
+	"?jvm=plugin&gui=awt", "Java Plugin and AWT</option>",
+	"?jvm=plugin&gui=swing", "Java Plugin and Swing</option>");
+for(var i = 0; i < jvmguis.length; i += 2) {
+	document.write('<option');
+	if(location.search == jvmguis[i]) {
+		document.write(' SELECTED');
+	}
+	document.writeln(' VALUE="'+jvmguis[i]+'">'+jvmguis[i+1]+'</option>');
+}
+// -->
+</script>
+</select>
+</form>
+</a>
+</font>
+
+<p>
+<table CELLSPACING=0 CELLPADDING=5 BORDER=0>
+<tr>
+<td VALIGN="TOP" ALIGN="LEFT">
+<h2>MarvinSketch Applet Examples</h2>
+<font>
+<ol>
+<li>Simple sketcher
+    <ol>
+    <li><a HREF="example-sketch1.1.html">The &lt;applet&gt; tag;
+	preparing for different browsers; the ARCHIVE option</a>
+	</li>
+    <li><a HREF="example-sketch1.2.html">Colors</a></li>
+    <li><a HREF="example-sketch1.3.html">Alternative look</a></li>
+    <li><a HREF="example-sketch1.4.html">My Templates</a></li>
+    </ol>
+    </li>
+<li><a HREF="example-sketch2.html">Query atoms, extra bond types,
+    disallowing elements, extra templates</a></li>
+<li>Visualization, loading molecules
+    <ol>
+    <li><a HREF="example-sketch3.1.html">Loading a molecule and
+	starting in visualization mode; the magnification</a></li>
+    <li><a HREF="example-sketch3.2.html">Inline, compressed molfiles</a></li>
+    <li><a HREF="example-sketch3.3.html">Triggering
+	molfile download from JavaScript, naming the applet</a></li>
+    <li><a HREF="example-sketch3.4.html">Import/export of built-in and
+	user defined molecule formats in JavaScript; preloading modules
+	</a></li>
+    <li><a HREF="example-sketch3.5.html">Pure visualization mode; detaching the sketcher from the web page</a></li>
+    <li><a HREF="example-sketch3.6.html">Opening a sketcher window from visualization mode</a></li>
+    </ol>
+    </li>
+<li><a name="noliveconnect">Workaround for browsers without Java - JavaScript communication</a>
+    <ol>
+    <li><a href="example-noliveconnect1.html">Retrieve a structure</a></li>
+    <li><a href="example-noliveconnect2.html">Import/export a structure</a></li>
+    </ol>
+</li>
+</ol>
+</font>
+<h2>MarvinSpace Applet Examples</h2>
+<font>
+<ol>
+    <li><a href="example-mspace1.html">Draw types in MarvinSpace illustrated with NAPAP</a></li>
+    <li><a href="example-mspace2.html">Draw types and Color types in MarvinSpace illustrated with HLA</a></li>
+    <li><a href="example-mspace3.html">Turn on/off bound ligands illustrated with HIV Protease</a></li>
+    <li><a href="example-mspace4.html">Multiple view and control of a protein with 4 cells</a></li>
+</ol>
+</font>
+</td>
+<td VALIGN="TOP" ALIGN="LEFT">
+<h2><a NAME="examples.MView"></a>MarvinView Applet Examples</h2>
+<font>
+<ol>
+<li>Viewing a molecule
+    <ol>
+    <li><a HREF="example-view1.1.html">The &lt;applet&gt; tag</a></li>
+    <li><a HREF="example-view1.2.html">Compression, color, magnification, atom size, hydrogen labels</a></li>
+    </ol>
+    </li>
+<li>Molecule tables
+    <ol>
+    <li><a HREF="example-view2.1.html">Making a molecule table</a></li>
+    <li><a HREF="example-view2.2.html">Labels, buttons, images, scrolling,
+	header row</a></li>
+    <li><a HREF="example-view2.3.html">Fine-tuning the layout</a></li>
+    <li><a HREF="example-view2.4.html">Checkboxes, JavaScripting, CGI scripting</a></li>
+    <li><a HREF="example-view2.5.html">Background colors, 3D, rotation</a></li>
+    <li><a HREF="example-view2.6.html">Displaying an SD file</a></li>
+    </ol>
+    </li>
+<li>3D viewer
+    <ol>
+    <li><a HREF="example-view3.1.html">Viewing a 3D molecule</a></li>
+    <li><a HREF="example-view3.2.html">XYZ animations</a></li>
+    </ol>
+    </li>
+<li><a HREF="example-view4.html">Editable table, selection, templates</a>
+    </li>
+<li><a HREF="example-view5.html">Changing contents, selecting atoms</a></li>
+<li><a HREF="example-view6.html">Coloring atom and bond sets</a></li>
+<li><a HREF="example-view7.html">Visualizing configurations</a></li>
+</ol>
+</font>
+</td>
+</tr>
+</table>
+</td></tr></table>
+</center>
+
+
+<p ALIGN="RIGHT">
+<a href="../user/index.html">User's Guide</a>
+</p>
+<!--APPLETONLY_END-->
+<center>
+<center><div class="lenia">&nbsp;</div></center>
+</center>
+<p ALIGN=CENTER><small>Copyright &copy; 1998-2006
+<a HREF="http://www.chemaxon.com" TARGET="_top">ChemAxon Ltd.</a>
+&nbsp;&nbsp;&nbsp;All rights reserved.</small></p>
+
+</body>
+</html>

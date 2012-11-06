@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 3.6 - Opening a sketcher window from visualization mode</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinSketch Example 3.6</h1>
+
+Click on the applet to hide the sketcher window.
+
+<p>
+
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+msketch_begin("../..", 200, 200);
+msketch_param("mol", "../../mols-2d/caffeine.mol");
+msketch_param("autoScale", "true");
+msketch_param("detach", "show");
+msketch_param("menubar", "false");
+msketch_end();
+//-->
+</script>
+</center>
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>msketch_begin(</strong>&quot;../..&quot;<strong>,</strong> 200<strong>,</strong> 200<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.mol">mol</a>&quot;<strong>,</strong> &quot;../../mols-2d/caffeine.mol&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.autoscale">autoscale</a>&quot;<strong>,</strong> &quot;true&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.detach">detach</a>&quot;<strong>,</strong> &quot;show&quot;<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.menubar">menubar</a>&quot;<strong>,</strong> &quot;false&quot;<strong>);</strong>
+<strong>msketch_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+</body>
+</html>

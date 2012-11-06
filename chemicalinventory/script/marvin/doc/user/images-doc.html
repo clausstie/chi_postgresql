@@ -1,0 +1,123 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Image export in Marvin</title>
+</head>
+<body>
+
+<h1>Image export in Marvin</h1>
+<h2>Contents</h2>
+<ul>
+<li><a href="#image">Image formats</a></li>
+<li><a href="#options">Export options</a></li>
+</ul>
+<p>
+<a name="image"></a><h2>Image formats</h2>
+Marvin is able to export bitmap image files like
+<a HREF="jpeg-doc.html">JPEG</a>, <a HREF="msbmp-doc.html">MS BMP</a>,
+<a HREF="png-doc.html">PNG</a>, <a HREF="ppm-doc.html">PPM</a> and
+<a HREF="svg-doc.html">SVG</a> vector graphics files.
+Restrictions:
+<ol>
+<li>These are binary file formats, so the
+    applet.getMol(...) function does not work.
+<li>The molecule.toFormat(...) function do not work, use
+    molecule.<a HREF="../api/chemaxon/struc/Molecule.html#toBinFormat(java.lang.String)">toBinFormat(...)</a>
+    instead.</li>
+<li>Command line creation of image files using
+    <a HREF="molconvert.html">MolConverter</a> works only in
+    Java 1.2 or later JVMs</li>
+</ol>
+<a NAME="options"></a><h2>Export options</h2>
+Image export options are separated by colons
+in format descriptor strings.<br>
+The following common options are recognized by all image export modules:
+<blockquote>
+<table CELLSPACING="0" CELLPADDING="5" border="0">
+<tr VALIGN=TOP><td>...</td>
+    <td><a HREF="basic-export-opts.html">Basic aromatization and H atom
+	adding/removal options.</a></td></tr>
+<tr VALIGN=TOP><td><a NAME="H_off"><code>H_off</code></a></td>
+    <td>Do not show implicit Hydrogen labels.</td></tr>
+<tr VALIGN=TOP><td><code>H_hetero</code></td>
+    <td>Implicit Hydrogen labels on heteroatoms only.</td></tr>
+<tr VALIGN=TOP><td><code>H_heteroterm</code></td>
+    <td>Implicit Hydrogen labels on hetero- and terminal atoms (default).
+	</td></tr>
+<tr VALIGN=TOP><td><code>H_all</code></td>
+    <td>Implicit Hydrogen labels on all atoms.</td></tr>
+<tr VALIGN=TOP><td><a NAME="chiral"><code>chiral_off</code></a></td>
+    <td>Switch off chirality support, do not show R/S labels (default).</td></tr>
+<tr VALIGN=TOP><td><code>chiral_selected</code></td>
+    <td>Show R/S if the chiral flag is set for the molecule.</td></tr>
+<tr VALIGN=TOP><td><code>chiral_all</code></td>
+    <td>Show R/S for any molecule.</td></tr>
+<tr VALIGN=TOP><td><code>w...</code><br><code>h...</code></td>
+    <td>Image width and height in pixels. If only one from w and h is
+	specified, then the other will have the same value.
+	If none of them is specified, then their values are calculated from
+	<a HREF="#scale">scale</a>. If scale is not specified, then the
+	default size is 200x200.</td></tr>
+<tr VALIGN=TOP><td><a NAME="scale"><code>scale...</code></a></td>
+    <td>Magnification. 1.54&Aring; (C-C bond length) is <em>scale</em> pixels.
+	</td></tr>
+<tr VALIGN=TOP><td><a NAME="atsiz"><code>atsiz...</code></a></td>
+    <td>Atom label font size in C-C bond length units.
+	Default: 0.4<br>
+	<center>
+	<em>atsiz</em>*1.54 &Aring; = <em>atsiz</em>*<em>scale</em> points
+	</center>
+	</td></tr>
+<tr VALIGN=TOP><td><a NAME="bondw"><code>bondw...</code></a></td>
+    <td>Width of double bond in C-C bond length units.
+	Default: 0.18<br>
+	<center>
+	<em>bondw</em>*1.54 &Aring; = <em>bondw</em>*<em>scale</em> pixels
+	</center>
+	</td></tr>
+<tr VALIGN=TOP><td><code>#rrggbb</code></td>
+    <td>Background color. Default: &quot;#ffffff&quot;</td></tr>
+<tr VALIGN=TOP><td><code>#aarrggbb</code></td>
+    <td>Background color with alpha value. Default: &quot;#ffffffff&quot;</td></tr>
+<tr VALIGN=TOP><td><code>mono</code></td>
+    <td>Black &amp; white.</td></tr>
+<tr VALIGN=TOP><td><code>cpk</code></td>
+    <td>Use CPK colors (default).</td></tr>
+<tr VALIGN=TOP><td><code>shapely</code></td>
+    <td>Use the <a HREF="shapely-scheme.html">shapely</a> color scheme.</td></tr>
+<tr VALIGN=TOP><td><code>group</code></td>
+    <td>Coloring based on residue sequence numbers.</td></tr>
+<tr VALIGN=TOP><td><code>setcolors</code></td>
+    <td>Atom/bond set colors.</td></tr>
+<tr VALIGN=TOP><td><code>wireframe</code></td>
+    <td>Wireframe rendering style (default for 2D).</td></tr>
+<tr VALIGN=TOP><td><code>wireknobs</code></td>
+    <td>Wireframe with knobs.</td></tr>
+<tr VALIGN=TOP><td><code>ballstick</code></td>
+    <td>&quot;Ball &amp; stick&quot; rendering style (default for 3D).</td></tr>
+<tr VALIGN=TOP><td><code>spacefill</code></td>
+    <td>Spacefill rendering style.</td></tr>
+<tr VALIGN=TOP><td><code>noantialias</code></td>
+    <td>Switch off antialiasing.</td></tr>
+</table>
+</blockquote>
+2D defaults: <code>H_heteroterm,w200,h200,#ffffffff,cpk,wireframe</code>
+<p>
+3D defaults: <code>H_heteroterm,w200,h200,#ff000000,cpk,ballstick</code>
+<p>
+Examples:
+<blockquote>
+<table CELLSPACING="0" CELLPADDING="5" border="0">
+<tr><td><code>jpeg</code></td>
+    <td>Default settings: 200x200 pixels, white background
+	(or black in 3D).</td></tr>
+<tr><td><code>jpeg:w100,#ffff00</code></td>
+    <td>100x100 JPEG with yellow background.</td></tr>
+<tr><td><code>jpeg:w100,h150</code></td>
+    <td>100x150 JPEG with default background.</td></tr>
+</table>
+</blockquote>
+
+</body>
+</html>

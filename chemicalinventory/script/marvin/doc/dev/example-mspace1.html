@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<meta NAME="author" CONTENT="Judit Papp">
+<link REL="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+
+<TITLE>MarvinSpace demo</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+function selectedDrawType()
+{
+  if(document.DrawType.group1[0].checked == true)
+  {
+    document.MSpaceApplet.setProperty( "Ligand.DrawType", document.DrawType.group1[0].value );
+  }
+  if(document.DrawType.group1[1].checked == true)
+  {
+    document.MSpaceApplet.setProperty( "Ligand.DrawType", document.DrawType.group1[1].value );
+  }
+  if(document.DrawType.group1[2].checked == true)
+  {
+    document.MSpaceApplet.setProperty( "Ligand.DrawType", document.DrawType.group1[2].value );
+  }
+  if(document.DrawType.group1[3].checked == true)
+  {
+    document.MSpaceApplet.setProperty( "Ligand.DrawType", document.DrawType.group1[3].value );
+  }
+  if(document.DrawType.group1[4].checked == true)
+  {
+    document.MSpaceApplet.setProperty( "Ligand.DrawType", document.DrawType.group1[4].value );
+  }	  
+}
+function drawRotationSphere() 
+{
+  document.MSpaceApplet.setProperty( "DrawSphere", document.DrawSphere.cb.checked==1 );
+}
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+
+<H1>MarvinSpace 1.2</H1>
+
+<table cellspacing="0" cellpadding="5" border="0">
+<tr>
+<td>
+<applet codebase="../.."
+code="chemaxon/marvin/space/gui/MSpaceApplet" name="MSpaceApplet" width=600 height=600
+archive="mspace.jar,jogl.jar">
+<param name="progressbar" value="true">
+<param name="selectionpanel" value="false">
+<param name="molecule" value="http://www.chemaxon.com/shared/MarvinSpace/pdb/1ETS_lig.mol">
+</applet>
+</td>
+
+<td>
+Draw types<br>
+<form name="DrawType">
+<input type="radio" name="group1" value="Wire" onClick="selectedDrawType()"> Wire<br>
+<input type="radio" name="group1" value="Ball" onClick="selectedDrawType()"> Ball<br>
+<input type="radio" name="group1" value="Stick" onClick="selectedDrawType()"> Stick<br>
+<input type="radio" name="group1" value="BallAndStick" checked onClick="selectedDrawType()"> Ball and Stick<br>
+<input type="radio" name="group1" value="Spacefill" onClick="selectedDrawType()"> Spacefill<br>
+</form>
+<br>
+
+<form name="DrawSphere">
+<input type="checkbox" name="cb" onClick="drawRotationSphere()"> Draw rotation sphere <br>
+</form>
+</td>
+</tr>
+</table>
+</BODY>
+</HTML>
+
+

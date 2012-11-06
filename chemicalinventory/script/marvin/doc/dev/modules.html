@@ -1,0 +1,343 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Marvin modules</title>
+</head>
+<body>
+
+<h1>Marvin modules</h1>
+
+Modules are class files that are not packaged in the applet's JAR file
+(<code>marvin.jar</code> or <code>jmarvin.jar</code>) 
+but downloaded at runtime, only as needed. <!--(See further optional classes: 
+<a HREF="plugins.html">Marvin plugins</a>.)-->
+
+<p>
+Common modules in <code>chemaxon/marvin/modules</code> and 
+<code>chemaxon/marvin/common/modules</code>:
+
+<p>
+<table CELLSPACING=0 CELLPADDING=4 BORDER=0 id="colored-grid">
+<tr ALIGN="LEFT" VALIGN="TOP"><th>Module name</th>
+    <th>Description</th></tr>
+<tr VALIGN="TOP"><td><a NAME="AbbrevGroupExport">AbbrevGroupExport</a></td>
+    <td>Abbreviated group export. Uses <a HREF="#SmilesExport">SmilesExport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="AbbrevGroupImport">AbbrevGroupImport</a></td>
+    <td>Abbreviated group import. Uses <a HREF="#SmilesImport">SmilesImport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="Aromata">Aromata</a></td>
+    <td>Aromatization. Can be used by any export module (except XYZ, PDB, GZIP)
+	if option &quot;a&quot; is specified.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="AtomTypeAssign">AtomTypeAssign</a></td>
+    <td>Used by <a HREF="#SybylExport">SybylExport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="AutoMapper">AutoMapper</a></td>
+    <td>Maps reactant side atoms to product side atoms of a reaction.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="BondsFromCoords">BondsFromCoords</a></td>
+    <td>Used by <a HREF="#XyzImport">XyzImport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="Clean2D">Clean2D</a></td>
+    <td>2D cleaning.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="Clean3D">Clean3D</a></td>
+    <td>3D cleaning. (Uses <a HREF="#Optimization">Optimization</a>,
+    <a HREF="#Opt3D">Opt3D</a>,
+    <a HREF="#DistanceMatrixCalculator">DistanceMatrixCalculator</a>.)</td></tr>
+<tr VALIGN="TOP"><td><a NAME="CmlExport">CmlExport</a></td>
+    <td><a HREF="../user/cml-doc.html">CML</a> export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="CmlImport">CmlImport</a></td>
+    <td><a HREF="../user/cml-doc.html">CML</a> import.
+	(Uses <a HREF="#XmlImport">XmlImport</a>)</td></tr>
+<tr VALIGN="TOP"><td><a NAME="CreateImage">CreateImage</a></td>
+    <td>Off screen image creation support. Currently not used by the applets,
+	only by MolConverter, through
+	<a HREF="#ImageExport">ImageExport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="Dearomata">Dearomata</a></td>
+    <td>Dearomatization. Can be used by any export module (except XYZ, PDB, GZIP)
+	if option &quot;A&quot; is specified.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="DiGraphElement">DiGraphElement</a></td>
+    <td>Used by <a HREF="#Parity">Parity</a>.</td></tr>
+<tr VALIGN="Top"><td><a NAME="DistanceMatrixCalculator">DistanceMatrixCalculator</a></td>
+    <td>Used by <a HREF="#Clean3D">Clean3D</a>.</td></tr>
+<tr VALIGN="Top"><td><a NAME="FindAllRing">FindAllRing</a></td>
+    <td>Search rings in the graph. Used by <a HREF="#Aromata">Aromata</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="CxsmilesExport">CxsmilesExport</a></td>
+    <td><a HREF="../user/cxsmiles-doc.html">ChemAxon Extended SMILES/SMARTS</a>
+	export. Uses <a HREF="#SmilesExport">SmilesExport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="CxsmilesImport">CxsmilesImport</a></td>
+    <td><a HREF="../user/cxsmiles-doc.html">ChemAxon Extended SMILES/SMARTS</a>
+	import. Uses <a HREF="#SmilesImport">SmilesImport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="GraphInvariants">GraphInvariants</a></td>
+    <td>Graph invariant calculation for
+	<a HREF="#SmilesExport">SmilesExport</a> and
+	<a HREF="#Parity">Parity</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="GzipImport">GzipImport</a></td>
+    <td>GZIP import.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="GzipExport">GzipExport</a></td>
+    <td>GZIP export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="Hydrogenize">Hydrogenize</a></td>
+    <td>Creates explicit H atoms from implicit ones.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="ImageExport">ImageExport</a></td>
+    <td>Creates an Image object from a molecule. Base class of
+	<a HREF="../user/images-doc.html">image export modules</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="InChiExport">InchiExport</a></td>
+    <td><a HREF="../user/inchi-doc.html">IUPAC InChI export</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="InChiImport">InchiImport</a></td>
+    <td><a HREF="../user/inchi-doc.html">IUPAC InChI import</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="JpegEncoder">JpegEncoder</a></td>
+    <td>JPEG encoder, <a HREF="../user/JpegEncoder.license.txt">&copy;
+	James R. Weeks and BioElectroMech</a>,
+	<a HREF="../user/JpegEncoder.IJGreadme.txt">Independent JPEG Group</a>.
+	Used by <a HREF="#JpegExport">JpegExport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="JpegExport">JpegExport</a></td>
+    <td><a HREF="../user/jpeg-doc.html">JPEG</a> image export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="MolExport">MolExport</a></td>
+    <td><a HREF="../user/mol-csmol-doc.html">MDL molfile</a> and
+	<a HREF="../user/mol-csmol-doc.html">compressed</a> molfile
+	export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="MolImport">MolImport</a></td>
+    <td><a HREF="../user/mol-csmol-doc.html">MDL molfile</a> and
+	<a HREF="../user/mol-csmol-doc.html">compressed</a> molfile
+	import.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="MolImportX">MolImportX</a></td>
+    <td>Loaded by <a HREF="#MolImport">MolImport</a> if reaction,
+	RGfile or extended (V3) molfile is imported.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="MolSelection2">MolSelection2</a></td>
+    <td>Drags a molecule in a desktop shortcut.
+	Used by <a HREF="#common.MolSelection">MolSelection</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="MrvExport">MrvExport</a></td>
+    <td><a HREF="../user/mrv-doc.html">Marvin Document</a> export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="MrvImport">MrvImport</a></td>
+    <td><a HREF="../user/mrv-doc.html">Marvin Document</a> import.
+	(Uses <a HREF="#CmlImport">CmlImport</a>).</td></tr>
+<tr VALIGN="TOP"><td><a NAME="MsbmpExport">MsbmpExport</a></td>
+    <td><a HREF="../user/msbmp-doc.html">MS BMP</a> image export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="Opt3D">Opt3D</a></td>
+    <td>Used by <a href="#Clean3D">Clean3D</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="Optimization">Optimization</a></td>
+    <td>Used by <a HREF="#Clean3D">Clean3D</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="Parity">Parity</a></td>
+    <td>Stereo parity calculation for
+	<a HREF="#SmilesExport">SmilesExport</a>
+	and <a HREF="#MolExport">MolExport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="PdbExport">PdbExport</a></td>
+    <td><a HREF="../user/pdb-doc.html">PDB</a> export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="PdbImport">PdbImport</a></td>
+    <td><a HREF="../user/pdb-doc.html">PDB</a> import.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="../user/PngEncoder">PngEncoder</a></td>
+    <td>PNG encoder by J. David Eisenberg.
+	Used by <a HREF="#PngExport">PngExport</a>.<p>
+	<small>You can freely modify and recompile the
+	<a HREF="../user/PngEncoder.java">source</a> of this module, then
+	replace the binary class file in Marvin with your own version,
+	according to the requirements of the
+	<a HREF="../user/PngEncoder.LGPL.txt">GNU Lesser General Public License</a>.
+	</small></p>
+	</td></tr>
+<tr VALIGN="TOP"><td><a NAME="PngExport">PngExport</a></td>
+    <td><a HREF="../user/png-doc.html">PNG</a> image export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="PovExport">PovExport</a></td>
+    <td><a HREF="../user/pov-doc.html">POVRay</a> export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="../user/PpmEncoder">PpmEncoder</a></td>
+    <td>PPM encoder, <a HREF="../user/PpmEncoder.license.txt">&copy; Jef Poskanzer</a>.
+	Used by <a HREF="#PpmExport">PpmExport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="PpmExport">PpmExport</a></td>
+    <td><a HREF="../user/ppm-doc.html">PPM</a> image export.</td></tr>
+<!-- <tr VALIGN="TOP"><td><a NAME="SmartsAtomImport">SmartsAtomImport</a></td>
+    <td>Imports extended (SMARTS) properties for
+	an atom from a molfile.</td></tr> -->
+<tr VALIGN="TOP"><td><a NAME="ResidueInfo">ResidueInfo</a></td>
+    <td>PDB residue information is stored here. Used by
+	<a HREF="#PdbImport">PdbImport</a>, <a HREF="#PdbExport">PdbExport</a>,
+	<a HREF="#CmlImport">CmlImport</a> and
+	<a HREF="#CmlExport">CmlExport</a>.
+	</td></tr>
+<tr VALIGN="TOP"><td><a NAME="SmilesExport">SmilesExport</a></td>
+    <td><a HREF="../user/smiles-doc.html">SMILES/SMARTS</a> export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="SmilesImport">SmilesImport</a></td>
+    <td><a HREF="../user/smiles-doc.html">SMILES/SMARTS</a> import.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="SmilesImportX">SmilesImportX</a></td>
+    <td>Loaded by <a HREF="#SmilesImport">SmilesImport</a> if reaction,
+	extra fields or enhanced stereo information is imported.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="Spacefill">Spacefill</a></td>
+    <td>Spacefill rendering.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="SSSR">SSSR</a></td>
+    <td>Search SSSR rings in the graph.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="SuperatomSgroupCoords">SuperatomSgroupCoords</a></td>
+    <td>Recalculates atom coordinates for residue contraction or expansion.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="SvgExport">SvgExport</a></td>
+    <td><a HREF="../user/svg-doc.html">Scalable Vector Graphics</a>
+	export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="SybylExport">SybylExport</a></td>
+    <td><a HREF="../user/sybyl-doc.html">Sybyl molfile</a> export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="SybylImport">SybylImport</a></td>
+    <td><a HREF="../user/sybyl-doc.html">Sybyl molfile</a> import.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="Threedim">Threedim</a></td>
+    <td>3D utility functions.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="XmlImport">XmlImport</a></td>
+    <td>Base class of XML import modules. Used by
+	<a HREF="#CmlImport">CmlImport</a> and
+	<a HREF="#MrvImport">MrvImport</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="XyzExport">XyzExport</a>
+    <td><a HREF="../user/sybyl-doc.html">XYZ</a> export.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="XyzImport">XyzImport</a>
+    <td><a HREF="../user/sybyl-doc.html">XYZ</a> import.</td></tr>
+</table>
+
+<p>
+Common GUI modules in <code>chemaxon/marvin/common/awt/modules</code> and
+<code>chemaxon/marvin/common/swing/modules</code>:
+
+<p>
+<table CELLSPACING=0 CELLPADDING=4 BORDER=0 id="colored-grid">
+<tr ALIGN="LEFT" VALIGN="TOP"><th>Module name</th>
+    <th>Description</th></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.About">common.awt.About</a></td>
+    <td>The &quot;About Marvin&quot; window.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.AboutJVM">common.swing.AboutJVM</a><br>common.awt.AboutJVM</td>
+    <td>The &quot;About Java VM&quot; window.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.EditMolfileFrame">common.swing.EditMolfileFrame</a><br>common.awt.EditMolfileFrame</td>
+    <td>Molfile source viewer/editor window.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.ExceptionFrame">common.swing.ExceptionFrame</a><br>common.awt.ExceptionFrame</td>
+    <td>Error message dialog box.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.Export2dImage">common.swing.Export2dImage</a></td>
+    <td>Export the molecule in a 2D bitmap or vector graphics format.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.ExportImage">common.swing.ExportImage</a></td>
+    <td>Save Image dialog box. Used by 
+    <a HREF="#common.Export2dImage">Export2dImage</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="common.Help">common.swing.Help</a></td>
+    <td>Help window.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="common.ImageExportOptsDialog">common.swing.ImageExportOptsDialog</a></td>
+    <td>Image export options dialog box (base class).</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.ImageFileFilter">common.swing.ImageFileFilter</a></td>
+    <td>Used by <a HREF="#common.ExportImage">ExportImage</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="common.JpegExportOptsDialog">common.swing.JpegExportOptsDialog</a></td>
+    <td><a HREF="#JpegExport">JPEG export</a> options dialog box.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="common.LoadSave">common.swing.LoadSave</a></td>
+    <td>File open/save dialog box.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.MolFileFilter">common.swing.MolFileFilter</a></td>
+    <td>Used by <a HREF="#common.LoadSave">LoadSave</a>.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.MolSelection">common.swing.MolSelection</a></td>
+    <td>Molecule selection object for
+	copy &amp; paste to/from system clipboard,
+	and drag &amp; drop.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.MolSelectionSmi">common.swing.MolSelectionSmi</a></td>
+    <td>Used by <a HREF="#common.EditMolfileFrame">common.swing.EditMolfileFrame</a>.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.MultiMoleculeSave">common.swing.MultiMoleculeSave</a></td>
+    <td>&nbsp;</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.PngExportOptsDialog">common.swing.PngExportOptsDialog</a></td>
+    <td><a HREF="#PngExport">PNG export</a> options dialog box.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.Print">common.swing.Print</a></td>
+    <td>Printing.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.RegenBonds">common.swing.RegenBonds</a></td>
+    <td>Dialog box with bond generation options.
+	Selecting Edit/Bonds/Regenerate in the menu brings up this dialog.
+	</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.RenderingOptions">common.swing.RenderingOptions</a></td>
+    <td>3D display options dialog box.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="common.SvgExportOptsDialog">common.swing.SvgExportOptsDialog</a></td>
+    <td><a HREF="#SvgExport">SVG export</a> options dialog box.</td></tr>
+</table>
+
+<p>
+Sketcher modules in <code>chemaxon/marvin/sketch/modules</code>,
+<code>chemaxon/marvin/sketch/awt/modules</code> and
+<code>chemaxon/marvin/sketch/swing/modules</code>:
+
+<p>
+<table CELLSPACING=0 CELLPADDING=4 BORDER=0 id="colored-grid">
+<tr ALIGN="LEFT" VALIGN="TOP"><th>Module name</th>
+    <th>Description</th></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="sketch.StringTree">sketch.StringTree</a></td>
+    <td>String tree. Used for the automatic generation of the Groups menu by
+	<a HREF="#sketch.PeriodicFrame">PeriodicFrame</a>.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="sketch.PeriodicFrame">sketch.swing.PeriodicFrame</a><br>sketch.awt.PeriodicFrame</td>
+    <td>Window of periodic table of
+	elements and extra atom/bond types.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="sketch.RlogicDialog">sketch.swing.RlogicDialog</a><br>sketch.awt.RlogicDialog</td>
+    <td>R-logic dialog box.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="sketch.SgroupCreationDialog">sketch.swing.SgroupCreationDialog</a>
+    <br>sketch.awt.SgroupCreationDialog</td>
+    <td>S-group creation dialog box.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="sketch.AttachDataDialog">sketch.swing.AttachDataDialog</a></td>
+    <td>Attach Data dialog box.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="sketch.SketchDnD">sketch.swing.SketchDnD</a></td>
+    <td>Drag &amp; drop support for the sketcher.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="sketch.TemplateButtonDnD">sketch.swing.TemplateButtonDnD</a></td>
+    <td>Drag &amp; drop support for the templates.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="sketch.TemplateFrame">sketch.swing.TemplateFrame</a><br>sketch.awt.TemplateFrame</td>
+    <td>Window of template molecules.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="sketch.TemplatePropertiesDialog">sketch.swing.TemplatePropertiesDialog</a></td>
+    <td>Dialog box for setting options of custom templates</td></tr>
+</table>
+
+<p>
+Viewer modules in <code>chemaxon/marvin/view/modules</code>,
+<code>chemaxon/marvin/view/awt/modules</code> and
+<code>chemaxon/marvin/view/swing/modules</code>:
+
+<p>
+<table CELLSPACING=0 CELLPADDING=4 BORDER=0 id="colored-grid">
+<tr ALIGN="LEFT" VALIGN="TOP"><th>Module name</th>
+    <th>Description</th></tr>
+<tr VALIGN="TOP"><td><a NAME="view.JavaScripter">view.JavaScripter</a></td>
+    <td>Executes a JavaScript expression with the browser's interpreter.</td>
+    </tr>
+<tr VALIGN="TOP"><td><a NAME="view.NetscapeJavaScripter">view.NetscapeJavaScripter</a></td>
+    <td>Used by <a HREF="#view.JavaScripter">JavaScripter</a>.</td></tr>
+<tr VALIGN="TOP"><td><a NAME="view.RasMolScripter">view.RasMolScripter</a></td>
+    <td>Interprets RASMol-like
+	<a HREF="rasmol-doc.html">scripts</a>.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="view.CleanTable">view.swing.CleanTable</a></td>
+    <td>Molecule table cleaning thread.
+	Shows a progress monitor when running.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="view.ImageViewCanvas">view.swing.ImageViewCanvas</a><br>view.awt.ImageViewCanvas</td>
+    <td><strong>I</strong>mage viewer component in
+	<a HREF="#view.ImageViewFrame">ImageViewFrame</a>.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="view.ImageViewFrame">view.swing.ImageViewFrame</a><br>view.awt.ImageViewFrame</td>
+    <td><strong>I</strong>mage viewer window.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="view.MViewAnimator">view.swing.MViewAnimator</a><br>view.awt.MViewAnimator</td>
+    <td>Animation player. Runs the thread that
+	plays XYZ movie(s) or spins the molecule(s).</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="view.MViewFrame">view.swing.MViewFrame</a><br>view.awt.MViewFrame</td>
+    <td>Viewer window.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="view.MViewSketch">view.swing.MViewSketch</a><br>view.awt.MViewSketch</td>
+    <td>Runs the sketcher from the viewer.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="view.PrintView">view.swing.PrintView</a></td>
+    <td>Printing.</td></tr>
+<tr VALIGN="TOP">
+    <td><a NAME="view.ViewDnD">view.swing.ViewDnD</a></td>
+    <td>Drag &amp; drop support for the viewer.</td></tr>
+</table>
+
+</body>
+</html>

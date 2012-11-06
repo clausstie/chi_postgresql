@@ -1,0 +1,162 @@
+<html>
+<head>
+<meta NAME="description" 
+CONTENT="Aromaticity Detection in Marvin">
+<meta NAME="keywords" CONTENT="aromatic, Java, Marvin">
+<meta NAME="author" CONTENT="Andras Volford">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Aromaticity Detection in Marvin</title>
+</head>
+<body>
+
+<h1>Aromaticity Detection</h1>
+
+<h2>Which molecules are aromatic</h2>
+<p>
+An aromatic molecule is one in which electrons
+form a continuous pi cloud above and below the 
+circular arrangements of atoms.
+In one representation these atoms are connected by
+alternating single and double bonds.
+Another representation is that of the circular pi bond, in which the 
+electron density is evenly distributed through a pi bond 
+above and below the ring.
+The circulating pi electrons in a aromatic molecule generate significant 
+local magnetic fields that can be detected by NMR techniques.
+Aromatic molecules typically display enhanced chemical stability, compared to similar non-aromatic molecules.
+</p>
+<p>
+This commonly seen model of aromatic rings was developed by 
+Friedrich August Kekulé von Stradonitz and was first explained 
+in quantum mechanical terms by Linus Pauling in the 1930s.
+In 1931, Erich Hückel devised the "4n+2" pi electron rule, 
+valid for planar molecules with a single ring. 
+Molecules having 4n+2 pi electrons (n &gt;= 0) are expected to be aromatic.
+</p>
+
+<h2> Methods </h2>
+<p>
+Two types of transformation to aromatic representation 
+are implemented in Marvin, both are based on the Hückel's 4n+2 rule.
+</p>
+<P>
+All transformation methods work only in structures which are in 
+non-aromatic representation. 
+If the molecules are in partially aromatic form 
+(containing any aromatic bond) the transformation method may fail.
+</P>
+
+<BLOCKQUOTE>
+<h3><a NAME="level1">Aromaticity detection (level 1)</a> </h3>
+<P>
+Process: locate the ring atoms in the molecule connected with 
+single and double bonds respectively, sum the number of electrons and
+if the Hückel's rule is valid, then the ring is aromatic.
+</P>
+<P>
+There are some exceptions: 
+</P>
+<UL>
+<LI>Where the double and single bonds are not sequential but 
+the ring is aromatic. In this case the atom between single bonds 
+has an orbit which takes part in the aromatic system. 
+(Relevant atoms: N, O, P, S, As and Se when they can donate a free 
+electron-pair to the aromatic system and B when it can donate a
+molecule orbit without additional electron.) 
+<LI>Rings with less than 5 members are not aromatic.
+</UL>
+
+
+<h3><a NAME="daylight_arom">Daylight compatible 
+		aromaticity detection (level 2)</a> </h3>
+<p>
+The method is the same as before, just the exceptions are different.<br>
+Locate the ring atoms in the molecule connected with 
+single and double bonds respectively, sum the number of electrons and
+if the Hückel's rule is valid, then the ring is aromatic.
+</P>
+<P>
+There are some exceptions: 
+</P>
+<UL>
+<LI>Oxygen and sulfur can share a pair of pi-electrons. 
+<LI>Nitrogen can also share a pair of pi-electrons, if it has three ligands, 
+otherwise the sp2 nitrogen shares just one electron (as in pyridine). 
+<LI>An exocyclic double bond to an electronegative atom takes out 
+one shared pi-electron from the cycle, as in 2-pyridone or coumarin.
+<LI>Phosphorus cannot be aromatic at all.
+</UL>
+
+</BLOCKQUOTE>
+
+<h2>Differences between the two methods</h2>
+<P>
+Some molecule's aromaticity is questionable. 
+The two method approach the question differently.
+The Daylight's (level 2) method tries to incorporate mesomeric, 
+tautomeric rearrangement, as in 2-pyridone, while the level 1 method does not. 
+In the level 1 method the external double bond breaks the formation of
+aromatic ring.
+</P>
+<P>
+The following molecules will give different results depending upon the method applied.
+</P>
+<TABLE border="0" cellspacing="0" cellpadding="5">
+<TR>
+<TH>IUPAC name</TH>
+<TH>Molecule in aliphatic form</TH>
+<TH>Aromatization (level 1)</TH>
+<TH>Aromatization (level 2)</TH>
+</TR>
+<TR>
+<TD>pyridin-2(1H)-one</TD>
+<TD><IMG SRC="1.png" ALT="pyridone"></TD>
+<TD><IMG SRC="1.png" ALT="pyridone with ChemAxon aromatization"></TD>
+<TD><IMG SRC="1_d.png" ALT="pyridone with Daylight aromatization"></TD>
+</TR>
+<TR>
+<TD>2-thioxo-2,3-dihydropyrimidin-4(1H)-one</TD>
+<TD><IMG SRC="2.png" ALT="smi 2"></TD>
+<TD><IMG SRC="2.png" ALT=" with ChemAxon aromatization"></TD>
+<TD><IMG SRC="2_d.png" ALT=" with Daylight aromatization"></TD>
+</TR>
+<TR>
+<TD>2,4-dihydro-3H-1,2,4-triazol-3-thione</TD>
+<TD><IMG SRC="3.png" ALT="smi 3"></TD>
+<TD><IMG SRC="3.png" ALT=" with ChemAxon aromatization"></TD>
+<TD><IMG SRC="3_d.png" ALT=" with Daylight aromatization"></TD>
+</TR>
+<TR>
+<TD>9H-xanthen-9-one</TD>
+<TD><IMG SRC="4.png" ALT="smi 4"></TD>
+<TD><IMG SRC="4_c.png" ALT=" with ChemAxon aromatization"></TD>
+<TD><IMG SRC="4_d.png" ALT=" with Daylight aromatization"></TD>
+</TR>
+<TR>
+<TD>5-thioxo-1,2,4-triazolidin-3-one</TD>
+<TD><IMG SRC="5.png" ALT="smi 5"></TD>
+<TD><IMG SRC="5.png" ALT=" with ChemAxon aromatization"></TD>
+<TD><IMG SRC="5_d.png" ALT=" with Daylight aromatization"></TD>
+</TR>
+<TR>
+<TD>imidazo[1,5-a]pyridine-3(2H)-thione</TD>
+<TD><IMG SRC="6.png" ALT="smi 6"></TD>
+<TD><IMG SRC="6.png" ALT=" with ChemAxon aromatization"></TD>
+<TD><IMG SRC="6_d.png" ALT=" with Daylight aromatization"></TD>
+</TR>
+</TR>
+</TABLE>
+
+<h2>References</h2>
+<table border="0" cellspacing="0" cellpadding="5">
+<tr VALIGN=TOP>
+<td>[1]</td>
+<td><a HREF="http://www.daylight.com/dayhtml/smiles/smiles-convent.html" TARGET="_top">www.daylight.com/dayhtml/smiles/smiles-convent.html</a></td>
+</tr>
+<tr VALIGN=TOP>
+<td>[2]</td>
+<td><a HREF="http://www.chemaxon.com/forum/ftopic319.html" TARGET="_top">Open discussion forum about aromatic forms</a></td>
+</tr>
+</table>
+</body>
+</html>

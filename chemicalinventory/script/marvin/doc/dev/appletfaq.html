@@ -1,0 +1,277 @@
+<html>
+<head>
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Marvin Applets FAQ</title>
+</head>
+<body>
+<h1 align=center>Marvin Applets Frequently Asked Questions</h1>
+
+Class and JAR files
+<ul>
+<li><a HREF="#question1">Which files are required to run Marvin applets?</a></li>
+<li><a HREF="#question2">How can I create a jar file that contains all 
+    necessary classes for Marvin applets?</a></li>
+<!-- <li><a HREF="#question3">I got a java.util.zip.ZipException exception when I run a downloaded jar file.</a></li> -->
+<li><a HREF="#question5">How can I delete plugin packages from the Marvin applets package?</a></li>
+<li><a HREF="#unsign_jar">How can I create an unsigned jar file from a signed jar file?</a></li>
+</ul>
+MSketch and MView
+<ul>
+<li><a href="#mviewapplet.napplets_vs_table.memory">If I put MView
+    applets in an HTML table then I can display only about
+    200 molecules because the browser slows down and runs out of memory.
+    Do you provide a simple and "thin" applet, which just displays molecules
+    without any rotation and linkage to the sketcher?</a></li>
+<li><a href="#consecutive_spaces">I have not managed to load a molecule string from applet parameter in Mozilla.</a></li>
+</ul>
+Other
+<ul>
+<li><a HREF="#netscape_set_java_env">How can I set the Java environment of Netscape in Linux?</a></li>
+<li><a HREF="#question7">IE can not load Marvin applets over SSL communication.
+I have got this warning message: &quot;This page contains both secure and
+non-secure items.&quot;</a></li>
+</ul>
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+<p>
+To see further questions, visit the following pages:
+<ul>
+<li><a href="../user/for-mac-users.html">Notes for Mac users</a>
+<li><a href="../bugs/faq.html">Crashes, freezes and other bugs FAQ</a>
+</ul>
+</p>
+<center><div class="lenia">&nbsp;</div></center>
+
+<ul>
+<li>
+    <h3><a NAME="question1"></a>Which files are required to run Marvin applets?</h3>
+   <p>Several packages can be downloaded from the 
+	<a href="http://www.chemaxon.com/marvin/download.html">Marvin site</a>:<ul>
+    <li><i>marvin-bin-4.0.5.tar.gz</i> or <i>marvin-bin-4.0.5.zip</i>
+        <p>Download and unpack: <pre>
+zip: unzip marvin-bin-4.0.5.zip
+tar.gz: gunzip &lt; marvin-bin-4.0.5.tar.gz |tar xf -</pre>
+    	This distribution contains all files necessary for using MarvinSketch and 
+	MarvinView applets, without HTML pages and examples.</p></li>
+    <li><i>marvin-all-4.0.5.tar.gz</i> and <i>marvin-all-4.0.5.zip</i>
+	<p>Download and unpack:<pre>
+zip: unzip marvin-all-4.0.5.zip
+tar.gz: gunzip &lt; marvin-all-4.0.5.tar.gz | tar xf -</pre>
+	This distribution contains all files necessary  for using MarvinSketch 
+    	and MarvinView applets, as well as the documentation and examples. 
+    	</li>
+    </ul> 
+</li>
+<li>
+    <h3><a NAME="question2"></a>How can I create a jar file that contains all 
+	necessary classes for Marvin applets?</h3>
+    <p>
+    <ul>
+    <li><strong>Create marvin.jar</strong></li>
+    <ol>
+    <li>Download and unpack marvin-bin-4.0.5.tar.gz</i> or <i>marvin-bin-4.0.5.zip</i>.
+    <li>Create a new directory: <code>marvintmp</code>
+    <li>Copy the <code>chemaxon</code> directory and <code>marvin.jar</code> 
+	into <code>marvintmp</code> .
+    <li><pre>cd marvintmp</pre>
+    <li>Unzip <code>marvin.jar</code> .
+    <li>Create a new jar file: 
+	<blockquote><pre>zip marvin.jar chemaxon/ *.class</pre></blockquote>
+    </ol>
+    The new <code>marvin.jar</code> file will contain the required modules for 
+    the AWT version of Marvin applets.<p>
+    </li>
+    <li><strong>Create jmarvin.jar</strong>
+	<p>The following jar files should not be modified because they are signed jars.
+	If you do so, the modified jar is no longer signed.</p>
+	<ol>
+	<li>Download and unpack marvin-bin-4.0.5.tar.gz</i> or 
+	    <i>marvin-bin-4.0.5.zip</i>.
+	<li>Create a new directory: <code>marvintmp</code>
+	<li>Unzip jmarvin.jar and every jar file from sjars directory and its 
+	    subdirectories to the new directory:
+	    <pre>
+	    unzip -o jmarvin.jar -d marvintmp
+	    unzip -o sjars/abbrevgroupexport.jar -d marvintmp
+	    unzip -o sjars/batik-core.jar -d marvintmp
+	    unzip -o sjars/clean2d.jar -d marvintmp
+	    ...
+	    </pre></li>
+	<li>Change location to the new directory and create a new jar file:
+	    <pre>
+	    cd marvintmp
+	    zip jmarvin.jar *
+	    </pre>
+	</li>
+	</ol>
+	<small>Note: If you do not need SVG export, <code>sjars/batik-core.jar</code>
+	can be skipped.</small>
+    </li>
+    </ul>
+    </p> 
+</li>
+<!-- <li>
+    <h3><a NAME="question3"></a>I got a java.util.zip.ZipException exception when I run a downloaded jar file.</h3>
+<p>
+</p>Some mozilla-based browsers (e.g. Netscape 4.7) treat <code>.jar</code> 
+    files as text files, therefore these files can 
+    be corrupted during the downloading process.<br>
+    Please download <code>.jar</code> files by right clicking on the file's 
+    link and select "save as" (or "save link target as") from the pop up menu.
+</li> -->
+<li>
+    <h3><a NAME="question5"></a>How can I delete plugin packages from the Marvin applets package?</h3>
+<p>
+</p>Remove <code>chemaxon/marvin/plugin</code> and <code>sjars/plugin</code> directories 
+    from the <code>marvin</code> directory.
+    <pre>
+    cd marvin
+    rm -r chemaxon/marvin/plugin
+    rm -r sjars/plugin
+    </pre>
+</li>
+<li>
+    <h3><a NAME="unsign_jar"></a>How can I create an unsigned jar file from a signed jar file?</h3>
+<p>
+</p>Unzip the signed jar file into an empty directory. Delete signing 
+information from the <code>META-INF</code> directory. Finally, create 
+a new jar file with the content of the directory.<br>
+    For example creating the unsigned version of the the signed 
+    <code>jmarvin.jar</code> file under Linux:
+    <pre>
+	unzip -d targetdir jmarvin.jar 
+	cd targetdir
+	rm -f META-INF/CHEMCERT.*
+	zip jmarvin.jar *
+    </pre>
+    Under Linux and Unix, you can run <code>unsigner.sh</code> to unsign signed
+    jar files in Marvin:
+    <pre>
+	cd marvin
+	./unsigner -a
+    </pre>
+</li>
+<li><h3><a NAME="mviewapplet.napplets_vs_table.memory"></a>
+    When I put MView applets into an HTML table,  I can only display about
+    200 molecules because the browser slows down and runs out of memory.
+    Do you provide a simple and "thin" applet, which just displays molecules
+    without any rotation and linkage to the sketcher?</h3>
+    <p>
+    The rotation and the linkage to the sketcher have negligible
+    contribution to the memory footprint. The largest contributions are from</p>
+    <ol>
+    <li>double buffering of Swing components</li>
+    <li>size of Molecule objects</li>
+    <li>large color arrays that store the shades for 3D rendering modes</li>
+    </ol>
+    <p>
+    Even if we provided a "thin" applet without 3D support, it would 
+    only enable you to use about twice as many molecules. Then you would run
+    out of memory again because of the double buffering.</p>
+    <p>
+    You should use an <i>n</i>-molecule scrollable MView table instead of
+    <i>n</i> applets. Then the common data will be stored in only one place
+    (instead of <i>n</i>) and the number of Swing components will be
+    equal to the number of visible molecules which is usually much smaller than
+    <i>n</i>.
+    </p>
+    </li>
+<li><h3><a NAME="consecutive_spaces"></a>I have not managed to load a molecule
+string from applet parameter in Mozilla.</h3>
+<p>Your molecule string may contain consecutive space characters in applet
+parameters which are converted to only one space. This bug applies to Mozilla
+0.9.7-1.0 and probably some earlier versions too.
+</li>
+<li>
+    <h3><a NAME="netscape_set_java_env"></a>How can I set the Java environment of Netscape in Linux?</h3>
+<p>
+</p>
+	<h5>Netscape 7.1 / Mozilla 1.4 (and above versions)</h5>
+	<p>These browsers do not include any Java. They require Java Runtime Environment (JRE) 1.4.2 or later.
+		<ol>
+			<li><a name="step1"></a>If you have not got any Java Runtime Environment on your machine or
+			the installed JRE is not the required version,then
+			download a <a href="http://java.sun.com/j2se/downloads.html">JRE</a> from the 
+			Sun's Java site and install it.</li>
+			<li>Search the home directory of the browser Most of Linux distributions include Mozilla.
+	 		Generally, it is located in the <code>/usr/lib/mozilla-X.Y.Z</code> directory 
+			(where <code>X.Y.Z</code> is the version number of the browser. 
+			E.g.:&nbsp;<code>/usr/lib/mozilla-1.2.1</code>).</li>
+			<li>Go to the <code>plugin</code> subdirectory of the browser. 
+			<pre>cd &lt;MOZILLA_HOME&gt;/plugin</pre>
+			Where <code>&lt;MOZILLA_HOME&gt;</code> is the home directory of the browser.
+			</li>
+			<li>Check your permissions for this directory. Generally, only the administrator 
+			(<code>root</code> account) has got a write permission for this directory. If you have got 
+			permission problems please consult with your system administrator.</li>
+			<li>To add Java to the plug-ins list of the browser, you should create a symbolic link to the JRE 
+			included Java plug-in.
+			<pre>ln -s &lt;JRE_HOME&gt;/plugin/i386/ns610-gcc32/libjavaplugin_oji.so libjavaplugin_oji.so</pre>
+			Where <code>&lt;JRE_HOME&gt;</code> is the home directory of the JRE. 
+			E.g.:&nbsp;<code>/usr/java/j2sdk1.4.2/jre</code>
+			</li>
+			<li><a name="step6"></a>Restart the browser (be sure you have closed each running 
+			Netscape or Mozilla applications). 
+			Then select <em>Help</em> / <em>About Plug-ins</em> menu item from the menubar to check 
+			the available plug-ins in the plug-ins list. If you do not find the required Java plug-in there, exit 
+			from the application and restart it again.</li>
+		</ol>
+	</p>
+	<h5> Netscape 6 - 7.02 / Mozilla (1.3.1 and below versions)</h5>
+	<p>Netscape 6 and Netscape 7.0 contain a built-in Java to run applets. 
+	If your browser does not include any Java or you would like set a new default, do the 
+    following. (These browsers accept both 1.3.x and java 1.4.x.)</p>
+    <ol>
+	<li>Perform steps <a href="#step1">1</a> to 4 in the previous section.
+    <li>Create a symbolic link:
+    <pre>
+    ln -s &lt;JRE_HOME&gt;/plugin/i386/ns600/libjavaplugin_oji.so libjavaplugin_oji.so</pre>
+	Where <code>&lt;JRE_HOME&gt;</code> is the home 
+	directory of the required Java Runtime Environment.
+	</li>
+	<li>See the <a href="#step6">6th</a> step in the previous section.</li>
+	</ol>
+	<p>In a few cases, the browser can not recognize Java plug-in although you have created the 
+	<code>libjavaplugin_oji.so</code> symbolic link in the <code>plugin</code> directory. 
+	In that case, add a new symbolic link (<code>libjavaplugin_oji140.so</code>) to the 
+	<code>plugin</code> directory.
+	Then restart the browser.
+	<pre>ln -s &lt;JRE_HOME&gt;/plugin/i386/ns600/libjavaplugin_oji.so libjavaplugin_oji140.so</pre>
+ 	</p>
+</li>
+<li>
+<h3><a NAME="question7"></a>IE can not load Marvin applets over SSL communication. 
+I have got this warning message: &quot;This page contains both secure
+and non-secure items.&quot;</h3>
+<p></p>
+The <code>CODEBASE</code> attribute of the <code>OBJECT</code> tag refers to a 
+non-secure page that the browser does not accept.
+The browser downloads the plugin from this URL, if the Java Plugin is not 
+installed on your machine.<br>
+You should change this URL to a secure one.
+<ol>
+	<li>To provide a secure page for downloading a Java Plugin, copy
+a JRE <em>cab</em> file to your site.
+<pre>
+http://java.sun.com/products/plugin/autodl/jinstall-1_4_2-windows-i586.cab#Version=1,3,0,0
+</pre>
+</li>
+<li>Modify the reference to this <em>cab</em> file in marvin.js. (Search the following code 
+in the <code>applet_begin</code> function).
+<pre>
+s += ' CODEBASE=" http://java.sun.com/products/plugin/autodl/jinstall-1_4_2-windows-i586.cab#Version=1,3,0,0"\n';
+</pre>
+You should replace the text with
+<pre>
+s += ' CODEBASE=" https://&lt;PLUGINLOCATION&gt;/jinstall-1_4_2-windows-i586.cab#Version=1,3,0,0"\n';
+</pre>
+where <code>&lt;PLUGINLOCATION&gt;</code> is the new location of the 
+<em>cab</em> file (e.g.: <code>www.my_secure_site.com/java_plugin</code>).
+<small>Note: The new URL must start with "https" protocol instead of "http".</small>
+</li>
+</ol>
+</li>
+</ul>
+
+</body>
+</html>

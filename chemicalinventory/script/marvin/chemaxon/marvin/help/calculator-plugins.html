@@ -1,0 +1,425 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+	<meta HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<title>Calculator Plugins</title>
+ <link rel=stylesheet type="text/css" href="../../../marvinmanuals.css">
+<body>
+<h1>Calculator Plugins</h1>
+
+<p><h2>Contents</h2>
+<ul>
+<li><a href="#elemanal">Elemental Analysis Plugin</a>
+<li><a href="#pka">p<i>K</i><sub>a</sub> Plugin</a>
+<li><a href="#logp">log<i>P</i> Plugin</a>
+<li><a href="#logd">log<i>D</i> Plugin</a>
+<li><a href="#TPSA">Polar Surface Area Plugin</a>
+<li><a href="#charge">Charge Plugin</a>
+<li><a href="#huckel">Huckel Analysis Plugin</a>
+<li><a href="#HBDA">Hydrogen Bond Donor-Acceptor Plugin</a>
+<li><a href="#ms">Major Microspecies Plugin</a>
+<li><a href="#polarizability">Polarizability Plugin</a>
+<li><a href="#refractivity">Refractivity Plugin</a>
+<li><a href="#topolanal">Topology Analysis Plugin</a>
+<li><a href="#isopoint">Isoelectric Point Plugin</a>
+<li><a href="#resonance">Resonance Plugin</a>
+<li><a href="#tautomerisation">Tautomerisation Plugin</a>
+<!--
+<li><a href="#name">Name Generator Plugin</a>
+-->
+<li><a href="Validations.html">Test Results</a>
+<li><a href="#references">References</a>
+</ul>
+
+<p> Marvin contains a framework for integrating chemical computations into the
+drawing/viewing application environment. These tools - called plugins - are
+loaded dynamically upon request. ChemAxon provides various tools for
+calculating charge, p<i>K</i><sub>a</sub>, logP, etc. The available calculator
+plugins are located in the <b class="buttonName">Tools</b> menu. The
+corresponding calculation parameters can be set in the parameter panel accessible 
+from the <b CLASS="buttonName">Options</b> submenu. 
+Batch processing is available using 
+<a href="http://www.chemaxon.com/marvin/doc/user/calc.html">Calculator</a>.
+</p>
+<p> Some plugins (<a href="#charge">Charge</a>, 
+<a href="#polarizability">Polarizability</a>, <a href="#TPSA">Polar Surface Area</a>
+and <a href="#HBDA">Hydrogen Bond Donor-Acceptor</a>) optionally perform their 
+computation on the <a href="#ms">major microspecies</a> of the input molecule
+taken at a specified pH. This option together with the corresponding pH can also be set 
+in the parameter panel.
+</p>
+<h2><a NAME="elemanal"></a>Elemental Analysis Plugin</h2>
+<p>Basic molecular values related to the elemental composition of the molecule are
+displayed by the Elemental Analysis plugin.
+</p>
+<ul>
+	<li><p STYLE="margin-bottom: 0cm">Mass: molecular mass
+	</p>
+	<li><p STYLE="margin-bottom: 0cm">Exact mass: molecular mass calculated 
+	from the most frequent natural isotopes of the elements
+	</p>
+	<li><p STYLE="margin-bottom: 0cm">Formula: chemical formula of the molecule
+	</p>
+	<li><p STYLE="margin-bottom: 0cm">Isotope formula: chemical formula of the molecule listing 
+	isotopes separately
+	</p>
+	<li><p STYLE="margin-bottom: 0cm">Dot-disconnected formula: chemical formula of the molecule 
+	separating fragment formulas by dots.
+	</p>
+	<li><p STYLE="margin-bottom: 0cm">Composition: elemental composition (w/w %)
+	</p>
+	<li><p STYLE="margin-bottom: 0cm">Isotope composition: elemental composition listing
+	isotopes separately (w/w %)
+	</p>
+	<li><p STYLE="margin-bottom: 0cm">Atom count: number of atoms in the molecule.
+	</p>
+</ul>
+<p>
+<table>
+    <tr><td><img src="calculator-plugins_files/elemanal.png"/></td></tr>
+</table>
+</p>
+<p>
+By default, molecules are handled separately if more than one molecules are drawn in the 
+sketcher. However, sometimes a single molecule consists of more fragments
+(e.g. salt molecules), in which case the fragments should be treated as one molecule.
+This behavior can be reached by switching off the "Single fragment mode" option in the
+corresponding <b CLASS="buttonName">Options</b> panel. 
+</p>
+
+<h2><a name="pka"></a>p<i>K</i><sub>a</sub> Plugin</h2>
+<p>Most molecules contain some specific functional groups likely to loose or
+gain proton under specific circumstances. Each ionization equilibrium between
+the protonated or deprotonated forms of the molecule can be described with a
+constant value called p<i>K</i><sub>a</sub>. The p<i>K</i><sub>a</sub> plugin
+calculates the p<i>K</i><sub>a</sub> values of all proton gaining or loosing
+atoms on the basis of the partial charge distribution.
+<BR>
+<a href="pKa.html">Learn more</a> about how the plugin calculates p<i>K</i><sub>a</sub>.
+</p>
+<p>
+<table>
+    <tr><td><img src="calculator-plugins_files/pka.png"/></td></tr>
+</table>
+</p>
+<p>
+The chart shows the microspecies distribution curves by pH. The microspecies images are
+shown in the legend. When clicking on an image, the corresponding microspecies molecule 
+is displayed in the upper-left viewer. The viewer can be detached from the chart 
+panel by double clicking in it, or else by selecting <b>Open Viewer</b> from the 
+<b>View</b> menu. The original molecule with the p<i>K</i><sub>a</sub>
+values is shown when clicking on the chart outside of the legend image areas,
+or else when selecting <b>pKa Values</b> from the <b>View</b> menu. 
+</p>
+
+<h2><a name="logp"></a>log<i>P</i> Plugin</h2>
+<p>The log<i>P</i> plugin calculates the octanol/water partition coefficient, 
+which is used in QSAR analysis and rational drug design as a measure of 
+molecular hydrophobicity. The calculation method is based on the publication 
+of Viswanadhan at al.<a HREF="#ref1"><sup>1</sup></a> The log<i>P</i> value of 
+a molecule is composed of the increment values of its atoms. Though, 
+log<i>P</i> is generally calculated for the neutral molecule forms only, this 
+plugin is able to handle ionic species as well, owing to the improved 
+algorithm. 
+<BR>
+<a href="logPlogD.html">Learn more</a> about how the plugin calculates log<i>P</i>.
+</p>
+<p>
+<table>
+    <tr><td><img src="calculator-plugins_files/logp.png"/></td></tr>
+</table>
+</p>
+<p>
+The panel on the right shows the log<i>P</i> increments for each atom.
+The numbers in brackets refer to the log<i>P</i> increment sums of implicit H atoms.
+This panel is displayed if <b>Increments</b> is selected from the
+<b>Type</b> listbox on the <b>log<i>P</i> Options</b> pane 
+(this pane can be accessed by selecting <b>log<i>P</i></b> from the <b>Options</b> 
+submenu in the <b>Options</b> menu). 
+</p>
+
+<h2><a name="logd"></a>log<i>D</i> Plugin</h2>
+<p>Compounds having ionizable groups exist in solution as a mixture of
+different ionic forms. The ionization of those groups, thus the ratio of the 
+ionic forms depends on the pH. Since log<i>P</i> describes the hydrophobicity 
+of one form only, the apparent log<i>P</i> value can be different. The 
+octanol-water distribution coefficient<a HREF="#ref2"><sup>2</sup></a>, 
+log<i>D</i> represents the compounds at any pH value.
+<BR>
+<a href="logPlogD.html">Learn more</a> about how the plugin calculates log<i>D</i>.
+</p>
+<p>
+<table>
+    <tr><td><img src="calculator-plugins_files/logd.png"/></td></tr>
+</table>
+</p>
+<p>
+The chart shows the log<i>D</i>(pH) curves for each molecule drawn in the sketcher. 
+The molecule images are shown in the legend. When clicking on an image, the corresponding 
+molecule is displayed in the upper-left viewer. The viewer can be detached from the chart panel 
+by double clicking in it, or else by selecting <b>Open Viewer</b> from the <b>View</b> menu. 
+The reference log<i>D</i> values originally shown can be restored by either clicking on the 
+chart outside of the legend image areas, or else by selecting <b>logD at reference pH-s</b> 
+from the <b>View</b> menu. 
+</p>
+
+<h2><a name="TPSA"></a>Polar Surface Area Plugin</h2>
+<p>Polar surface area (PSA) is formed by polar atoms of a molecule. It is a
+descriptor that shows good correlation with passive molecular transport
+through membranes, and so allows estimation of transport properties of
+drugs. Estimation of topoligical polar surface area (TPSA) is based on the
+method given in <a HREF="#ref4"><sup>4</sup></a>. The method
+provides results which are practically identical with the 3D PSA, while
+calculation time of TPSA is approximately 100-times faster. This method is
+more suitable for fast bioavailability screening of large virtual libraries.
+</p>
+<p>
+<table>
+    <tr><td><img src="calculator-plugins_files/tpsa.png"/></td></tr>
+</table>
+</p>
+
+<h2><a name="charge"></a>Charge Plugin</h2>
+<p>The partial charge distribution determines many physico-chemical properties
+of a molecule, such as ionization constants, reactivity and pharmacophore 
+pattern. Use Charge plugin to compute the partial charge value of each atom.
+Total charge is calculated from sigma and pi charge components, any of these
+three charge values can be displayed.
+<BR>
+<a href="Charge.html">Learn more</a> about how the plugin calculates the partial charge.
+</p>
+<p>
+<table cellpadding="4">
+    <tr>
+    <td><img src="calculator-plugins_files/charge1.png"/></td>
+    <td><img src="calculator-plugins_files/charge2.png"/></td>
+    </tr>
+</table>
+</p>
+<p>
+The numbers in brackets refer to the charge sums of implicit H atoms.
+</p>
+
+<h2><a NAME="huckel"></a>Huckel Analysis Plugin</h2>
+
+<p>Localization energies L(+) and L(-) for electrophilic and nucleophilic attack 
+at an aromatic center are calculated by the Hückel method.  The smaller L(+) or  L(-) means 
+more reactive atomic location. Order of atoms in E(+) or in Nu(-) attack are adjusted according  
+to their localization energies. The total pi energy, the pi electron density and the total electron 
+density are also calculated by the Hückel method.</p> 
+<p>Theoretical background is given in Neil S. Isaacs<a HREF="#ref5"><sup>5</sup></a>.</p>
+
+<p>
+<table>
+    
+    <tr><td><img src="calculator-plugins_files/enOrder.png"/></td>
+	<td><img src="calculator-plugins_files/pienergy.png"/></td>
+	<td><img src="calculator-plugins_files/totCharge.png"/></td></tr>
+
+</table>
+</p>
+
+<h2><a name="HBDA"></a>Hydrogen Bond Donor-Acceptor Plugin</h2>
+<p>Hydrogen Bond Donor-Acceptor calculates atomic hydrogen bond donor and acceptor
+inclination. Atomic data and overall hydrogen bond donor and acceptor multiplicity
+are displayed for the input molecule (or its <a href="#ms">physiological microspecies</a>
+at a given pH). The weighted average hydrogen bond donor and acceptor multiplicities taken 
+over the microspecies with proportions of their occurrences are computed for different 
+pH-s and displayed in a chart.
+</p>
+<p>
+<table>
+    <tr><td><img src="calculator-plugins_files/hbda.png"/></td></tr>
+</table>
+</p>
+
+<h2><a NAME="ms"></a>Major Microspecies Plugin</h2>
+<p>Determines the major protonation form at a specified pH.</p>
+<p>
+<table>
+    <tr><td><img src="calculator-plugins_files/ms.png"/></td></tr>
+</table>
+</p>
+<p>The pH can be set in the <b CLASS="buttonName">Options</b> panel, the default pH is
+<code>7.4</code>.</p>
+
+<h2><a name="polarizability"></a>Polarizability Plugin</h2>
+<p>The electric field generated by partial charges of a molecule spread through
+intermolecular cavities and the solvent that the molecule is solved within.
+The induced partial charge (induced dipole) has a tendency to diminish the
+external electric field. This phenomenon is called as polarizability. The
+more stable each ionized site is the more its vicinity is polarizable. This
+is why atomic polarizability is an important factor in the determination of
+p<i>K</i><sub>a</sub> and why it is considered in our p<i>K</i><sub>a</sub> calculation plugin.
+Atomic polarizability is altered by partial charges of atoms. 
+Our calculation is
+based on <a HREF="#ref3"><sup>3</sup></a>, and takes into account the
+effect of partial charge upon atomic polarizability
+</p>
+<p>
+<table>
+    <tr><td><img src="calculator-plugins_files/polarizability.png"/></td></tr>
+</table>
+</p>
+
+<h2><a name="refractivity"></a>Refractivity Plugin</h2>
+
+<p>Our calculation is based on the atomic method proposed by
+Viswanadhan at al.<a HREF="#ref1"><sup>1</sup></a>.
+Molar refractivity is strongly related to the volume of the molecules 
+and to London dispersive forces that has important effect in drug-receptor interaction.</p>
+
+<p>
+<table cellpadding="4">
+    <tr><td><img src="calculator-plugins_files/refractivity.png"/></td></tr>
+</table>
+</p>
+<p>
+The numbers in brackets refer to the refractivity sums of implicit H atoms.
+</p>
+
+<h2><a NAME="topolanal"></a>Topology Analysis Plugin</h2>
+<p>The topology analysis plugin provides characteristic values related to the topological structure of a molecule.
+</p>
+
+<p><i>Simple</i>
+<ul>
+	<li><b>Atom count</b>: number of atoms in the molecule including hydrogens.</li>
+	<li><b>Bond count</b>: number of bonds in the molecule including hydrogens.</li>
+	<li><b>Cyclomatic number</b>: the smallest number of bonds which must be removed such that no circuit remains. Also known as circuit rank.</li>
+</ul>
+</p>
+
+<p><i>Ring</i>
+<ul>
+	<li><b>Ring count</b>: number of rings in the molecule. This calculation is based on SSSR (Smallest Set of Smallest Rings).</li>
+	<li><b>Ring atom count</b>: number of ring atoms.</li>
+	<li><b>Ring bond count</b>: number of ring bonds.</li>
+	<li><b>Chain atom count</b>: number of chain atoms (non-ring atoms excluding hydrogens).</li>
+	<li><b>Chain bond count</b>: number of chain bonds (non-ring bonds excluding bonds of hydrogen atoms).</li>
+	<li><b>Aliphatic ring count</b>: number of those rings in the molecule, which have non-aromatic bonds (SSSR based).</li>
+	<li><b>Aromatic ring count</b>: number of aromatic rings in the molecule. This number is calculated  from the smallest set of smallest aromatic rings (SSSAR), which might contain rings which are not part of the standard SSSR ring set. As a consequence, the sum of the aliphatic ring count and the aromatic ring count can sometimes be greater the the ring count value. The difference is the sign of a macroaromatic ring system.</li>
+	<li><b>Aliphatic atom count</b>: number of atoms in the molecule having no aromatic bond (excluding hydrogens).</li>
+	<li><b>Aliphatic bond count</b>: number of non-aromatic bonds in the molecule (excluding bonds of hydrogen atoms).</li>
+	<li><b>Aromatic atom count</b>: number of atoms in the molecule having aromatic bonds.</li>
+	<li><b>Aromatic bond count</b>: number of aromatic bonds in the molecule.</li>
+	<li><b>Carbo ring count</b>: number of those rings in the molecule, which contain carbon atoms only.</li>
+	<li><b>Hetero ring count</b>: number of those rings in the molecule, which contain hetero atoms.</li>
+	<li><b>Heteroaromatic ring count</b>: number of aromatic heterocycles in the molecule.</li>
+	<li><b>Carbooaromatic ring count</b>: number of heterocycles in the molecule containing carbon atoms only (SSSAR based).</li>
+	<li><b>Fused ring count</b>: number of fused rings in the molecule (having common bonds).</li>
+	<li><b>Fused aliphatic ring count</b>: number of aliphatic rings having common bonds with other rings.</li>
+	<li><b>Fused aromatic ring count</b>: number of aromatic rings having common bonds with other rings.</li>
+	<li><b>Largest ring size</b>: size of the largest ring in the molecule.</li>
+	<li><b>Smallest ring size</b>: size of the smallest ring in the molecule.</li>
+</ul>
+</p>
+
+<p><i>Path based</i>
+<ul>
+	<li><b>Platt index</b>: sum of the edge degrees of a molecular graph.</li>
+	<li><b>Randic index</b>: harmonic sum of the geometric means of the node degrees for each edge.</li>
+</ul>
+</p>
+
+<p><i>Distance based</i>
+<ul>
+	<li><b>Balaban index</b>: the Balaban distance connectivity of the molecule, which is the average distance sum connectivity.</li>
+	<li><b>Distance degree</b>: the sum of the corresponding row values in the distance matrix for each atom.</li>
+	<li><b>Eccentricity</b>: the greatest value in the corresponding row of the distance matrix for each atom.</li>
+	<li><b>Harary index</b>: half-sum of the off-diagonal elements of the reciprocal molecular distance matrix of the molecule.</li>
+	<li><b>Hyper Wiener index</b>: a variant of the Wiener index.</li>
+	<li><b>Szeged index</b>: The Szeged index extends the Wiener index for cyclic graphs by counting the number of atoms on both sides of each bond (those atoms only which are nearer to the given side of the bond than to the other), and sum these counts.</li>
+	<li><b>Wiener index</b>: the average topological atom distance (half of the sumof all atom distances) in the molecule.</li>
+	<li><b>Wiener polarity</b>: the number of 3 bond length distances in the molecule.</li>
+</ul>
+</p>
+
+<p><i>Other</i>
+<ul>
+	<li><b>Asymmetric atom count</b>: the number of asymmetric atoms (having four different ligands).</li>
+	<li><b>Rotatable bond count</b>: number of rotatable bonds in the molecule. Unsaturated bonds, and single bonds connected to hydrogens or terminal atoms, single bonds of amides, sulphonamides and those connecting two hindered aromatic rings (having at least three ortho substituents) are considered non-rotatable.</li>
+	<li><b>Steric effect index</b>: topological steric effect index (TSEI) of an atom calculated from the covalent radii values and topological distances. The stericEffectIndex is related to the steric hindrance of the given atom.</li>
+</ul>
+</p>
+
+<p>
+<table>
+    <tr><td><img src="calculator-plugins_files/topolanal.png"/></td></tr>
+</table>
+</p>
+<h2><a NAME="isopoint"></a>Isoelectric Point Plugin</h2>
+<p>Gross charge of an ionizable molecule is zero at certain pH. 
+This pH is called as isoelectric point. Isoelectric point plugin calculates gross charge distribution 
+of a molecule as function of pH.
+</p>
+<p>
+<table cellpadding="4">
+    <tr><td><img src="calculator-plugins_files/isopoint.png"/></td></tr>
+</table>
+</p>
+<h2><a NAME="resonance"></a>Resonance Plugin</h2>
+<p>All resonance structures of a molecule are generated. 
+The major contributors of the resonance structures can be generated separately.
+For example the next three structures are the major resonance contributors of diazomethane.
+</p>
+<p>
+<table cellpadding="4">
+    <tr><td><img src="calculator-plugins_files/diazomethane.png"/></td></tr>
+</table>
+</p>
+<h2><a NAME="tautomerisation"></a>Tautomerisation Plugin</h2>
+<p>
+All tautomer structures of a molecule are generated. 
+For example the next six structures are tautomers of pyrimidine-2,4-diol.
+</p>
+<p>
+<table cellpadding="4">
+    <tr><td><img src="calculator-plugins_files/tautomers.png"/></td></tr>
+</table>
+</p>
+
+
+<!--
+<h2><a NAME="name">Name Generator Plugin</a></h2>
+<p>
+    Experimental module to generate molecule name based on 
+    <a href="http://www.chem.qmw.ac.uk/iupac/">IUPAC naming rules</a>. This 
+    version follows the 
+    <a href="http://www.acdlabs.com/iupac/nomenclature/index.html">
+    "Red Book (1993)"</a> recommendation. The 
+    <a href="http://www.iupac.org/reports/provisional/abstract04/favre_310305.html">
+    latest draft</a> (2004) is available in PDF format. 
+</p>
+-->
+
+<h2><a name="references">References</a></h2>
+<ol>
+<li><a name="ref1">Viswanadhan, V. N.; Ghose, A. K.; Revankar, G. R.; 
+Robins, R. K., <i>J. Chem. Inf. Comput. Sci.</i>, <b>1989</b>, <i>29</i>, 
+163-172
+</a></li>
+<li><a name="ref2">Csizmadia, F; Tsantili-Kakoulidou, A.; Pander, I.; Darvas, 
+F., <i>J. Pharm. Sci.</i>, <b>1997</b>, <i>86</i>, 865-871
+</a></li>
+<li><a name="ref3">Miller, K. J.; Savchik, J. A., <i>J. Am. Chem. Soc.</i>, <b>1979</b>, <i>101</i>, 7206-7213
+</a></li>
+<li><a name="ref4">Ertl, P.; Rohde, B.; Selzer, P., <i>J. Med. Chem.</i>, <b>2000</b>, <i>43</i>, 3714-3717
+</a></li>
+<li><a name="ref5">Neil S. Isaacs, <i>Physical Organic Chemistry</i>, John Wiley & Sons, Inc., New
+York, <b>1987</b>.
+</a></li>
+</ol>
+
+<p ALIGN=CENTER><a HREF="#">Return to Top</a></p>
+<p ALIGN=CENTER><a HREF="../../../doc/user/index.html">Back to Marvin User's Guide</a></p>
+<p ALIGN=CENTER>
+Copyright © 1998-2006
+<a HREF="http://www.chemaxon.com">ChemAxon Ltd.</a>
+</p>
+<p ALIGN=CENTER>
+<a HREF="http://www.chemaxon.com/marvin">http://www.chemaxon.com/marvin</a>
+</p>
+
+</body>
+</html>

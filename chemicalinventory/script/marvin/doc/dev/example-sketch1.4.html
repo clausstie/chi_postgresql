@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta NAME="author" CONTENT="Peter Csizmadia">
+<link REL ="stylesheet" TYPE="text/css" HREF="../../marvinmanuals.css" TITLE="Style">
+<title>Example 1.4 - My Templates</title>
+</head>
+<body onLoad="links_set_search(location.search)">
+
+<h1>MarvinSketch Example 1.4</h1>
+
+You can use My Templates in the sketcher applet, just open <i>Insert -> 
+My Templates</i> menu.
+<p>
+<center>
+<script LANGUAGE="JavaScript1.1" SRC="../../marvin.js"></script>
+<script LANGUAGE="JavaScript1.1">
+<!--
+msketch_begin("../..", 460, 420);
+msketch_param("isMyTemplatesEnabled", true);
+msketch_end();
+//-->
+</script>
+</center>
+<p>
+My Templates are enabled in Swing if the <i>isMyTemplatesEnabled</i> applet 
+parameter is set to <i>true</i>.
+<p>
+
+<blockquote>
+<pre>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot; <strong>SRC</strong>=&quot;../../<a HREF="marvin.js.txt">marvin.js</a>&quot;<strong>&gt;</strong><strong>&lt;/script&gt;</strong>
+<strong>&lt;script LANGUAGE</strong>=&quot;JavaScript1.1&quot;<strong>&gt;</strong>
+<strong>&lt;!--</strong>
+<strong>msketch_begin(</strong>&quot;../..&quot;<strong>,</strong> 460<strong>,</strong> 420<strong>);</strong>
+<strong>msketch_param(</strong>&quot;<a HREF="sketchman.html#parameters.isMyTemplatesEnabled">isMyTemplatesEnabled</a>&quot;<strong>,</strong> &quot;true&quot;<strong>);</strong>
+<strong>msketch_end();</strong>
+<strong>//--&gt;</strong>
+<strong>&lt;/script&gt;</strong>
+</pre>
+</blockquote>
+
+<p>
+<center><div class="lenia">&nbsp;</div></center>
+<p>
+The <a HREF="example-sketch2.html">next example</a> shows how to
+how to set which atoms and bonds users are allowed to draw.
+
+</body>
+</html>
