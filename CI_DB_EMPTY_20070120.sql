@@ -47,7 +47,7 @@ CREATE TABLE analysis_fields (
   result_for_spec char(1)  NOT NULL default 'T',
   created_by varchar(100)  NOT NULL default '',
   created_date date NOT NULL default '0001-01-01',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY analysis_id (analysis_id)
 ) ;
 
@@ -60,11 +60,11 @@ CREATE TABLE analysis_fields (
 DROP TABLE IF EXISTS analysis_history;
 CREATE TABLE analysis_history (
   analysis_id int NOT NULL default '0',
-  remark mediumtext  NOT NULL,
+  remark text  NOT NULL,
   analysis_version int default '0',
   analysis_fields text ,
   changed_date date NOT NULL default '0001-01-01',
-  changed_by varchar(100)  NOT NULL default '',
+  changed_by varchar(100)  NOT NULL default ''
 -- need to check how timestamp is done in postgresql
 --  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ;
@@ -117,10 +117,10 @@ CREATE TABLE batch (
   created_by varchar(100)  NOT NULL default '',
   production_location varchar(255)  default '',
   notebook_reference varchar(255)  default '',
-  description longtext ,
+  description text ,
   locked char(1)  NOT NULL default 'F',
   purity varchar(100)  default '',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY compound_id (compound_id)
 ) ;
 
@@ -168,7 +168,7 @@ CREATE TABLE compound (
   register_date date NOT NULL default '0001-01-01',
   modified_by varchar(100)  NOT NULL default '',
 --  modified_date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY structure_index (cd_id)
 ) ;
 
@@ -197,7 +197,7 @@ CREATE TABLE container (
   remark text ,
   procurement_date date default NULL,
   expiry_date date default NULL,
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY com_index (compound_id)
 ) ;
 
@@ -218,7 +218,7 @@ CREATE TABLE history (
   unit varchar(100)  default '',
   new_value varchar(100)  default '',
   old_value varchar(100)  default '',
-  structure mediumblob,
+  structure bytea,
 --  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY  (id)
 ) ;
@@ -446,7 +446,7 @@ CREATE TABLE result (
   unit varchar(100)  NOT NULL default '',
   replicate_count int default '0',
   replicate_number int default '0',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY sample_id (sample_id),
 --  KEY analysis_id (analysis_id),
 --  KEY analysis_field_id (analysis_field_id)
@@ -464,7 +464,7 @@ CREATE TABLE result_history (
   changed_date date NOT NULL default '0001-01-01',
   changed_by varchar(100)  NOT NULL default '',
   value varchar(100)  NOT NULL default '--',
-  unit varchar(100)  NOT NULL default '',
+  unit varchar(100)  NOT NULL default ''
 --  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
  -- KEY result_index (result_id)
 ) ;
@@ -535,7 +535,7 @@ CREATE TABLE sample (
   analysis_map_id int NOT NULL default '0',
   locked_date date default NULL,
   container_id int NOT NULL default '0',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY compound_id (compound_id),
 --  KEY container_id (container_id)
 ) ;
@@ -550,7 +550,7 @@ CREATE TABLE sample_analysis_link (
   sample_id int NOT NULL default '0',
   analysis_id int NOT NULL default '0',
   analysis_version int NOT NULL default '0',
-  PRIMARY KEY  (analysis_id,sample_id),
+  PRIMARY KEY  (analysis_id,sample_id)
 --  KEY analysis_id (analysis_id),
 --  KEY sample_id (sample_id)
 ) ;
@@ -563,14 +563,14 @@ CREATE TABLE sample_analysis_link (
 DROP TABLE IF EXISTS sample_history;
 CREATE TABLE sample_history (
   sample_id int NOT NULL default '0',
-  remark mediumtext  NOT NULL,
+  remark text  NOT NULL,
   changed_date date NOT NULL default '0001-01-01',
   changed_by varchar(100)  NOT NULL default '',
   batch int NOT NULL default '0',
   compound_id int NOT NULL default '0',
   change_remark text ,
 --  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  container_id int NOT NULL default '0',
+  container_id int NOT NULL default '0'
 --  KEY id_index (sample_id)
 ) ;
 
@@ -684,7 +684,7 @@ DROP TABLE IF EXISTS unit;
 CREATE TABLE unit (
   id serial NOT NULL,
   value varchar(25)  NOT NULL default '',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  UNIQUE KEY uniq_text_unit (value),
 --  UNIQUE KEY value (value)
 ) ;
@@ -783,7 +783,7 @@ DROP TABLE IF EXISTS user_groups;
 CREATE TABLE user_groups (
   id serial NOT NULL,
   name varchar(255)  NOT NULL default '--',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  UNIQUE KEY unique_name (name)
 ) ;
 
@@ -818,9 +818,9 @@ INSERT INTO user_types (user_type_id,name,isAdministrator) VALUES
 DROP TABLE IF EXISTS user_types_privileges_link;
 CREATE TABLE user_types_privileges_link (
   user_type_id int NOT NULL default '0',
-  privileges_id int NOT NULL default '0',
-  KEY privileges_id (privileges_id),
-  KEY user_types_id (user_type_id)
+  privileges_id int NOT NULL default '0'
+--  KEY privileges_id (privileges_id),
+--  KEY user_types_id (user_type_id)
 ) ;
 
 --
