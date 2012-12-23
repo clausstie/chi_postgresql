@@ -21,8 +21,10 @@ CREATE TABLE analysis (
   created_by varchar(100) NOT NULL default '',
   active char(1) NOT NULL default 'T',
   removed char(1) NOT NULL default 'F',
-  version int NOT NULL default '1', 
+  version int NOT NULL default '1',
+  remark text NOT NULL, 
   PRIMARY KEY  (id)
+-- KEY doesn't seem to work in postgresql
 --  KEY analysis_id ("analysis_id")
 );
 
@@ -34,8 +36,8 @@ CREATE TABLE analysis (
 DROP TABLE IF EXISTS analysis_fields;
 CREATE TABLE analysis_fields (
   id serial NOT NULL,
-  analysis_id int(10) unsigned NOT NULL default '0',
-  analysis_version int(11) NOT NULL default '1',
+  analysis_id int NOT NULL default '0',
+  analysis_version int NOT NULL default '1',
   text_id varchar(100)  NOT NULL default '',
   result_min varchar(100)  default '',
   result_max varchar(100)  default '0',
@@ -46,8 +48,8 @@ CREATE TABLE analysis_fields (
   created_by varchar(100)  NOT NULL default '',
   created_date date NOT NULL default '0001-01-01',
   PRIMARY KEY  (id),
-  KEY analysis_id (analysis_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  KEY analysis_id (analysis_id)
+) ;
 
 
 
@@ -57,14 +59,15 @@ CREATE TABLE analysis_fields (
 
 DROP TABLE IF EXISTS analysis_history;
 CREATE TABLE analysis_history (
-  analysis_id int(10) unsigned NOT NULL default '0',
+  analysis_id int NOT NULL default '0',
   remark mediumtext  NOT NULL,
-  analysis_version int(11) default '0',
-  analysis_fields longtext ,
+  analysis_version int default '0',
+  analysis_fields text ,
   changed_date date NOT NULL default '0001-01-01',
   changed_by varchar(100)  NOT NULL default '',
-  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- need to check how timestamp is done in postgresql
+--  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+) ;
 
 
 
@@ -76,16 +79,16 @@ DROP TABLE IF EXISTS analysis_map;
 CREATE TABLE analysis_map (
   id serial NOT NULL,
   map_name varchar(100)  NOT NULL default '',
-  compound_id int(10) unsigned NOT NULL default '0',
+  compound_id int NOT NULL default '0',
   created_date date NOT NULL default '0001-01-01',
   created_by varchar(100)  NOT NULL default '',
   changed_by varchar(100)  NOT NULL default '',
   changed_date date NOT NULL default '0001-01-01',
   remark text  NOT NULL,
   active char(1)  NOT NULL default 'F',
-  version int(10) unsigned NOT NULL default '0',
+  version int NOT NULL default '0',
   PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 
 
@@ -98,7 +101,7 @@ CREATE TABLE analysis_map_link (
   map_id varchar(100)  NOT NULL default '',
   analysis_id varchar(100)  NOT NULL default '',
   PRIMARY KEY  (map_id,analysis_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 
 --
@@ -108,7 +111,7 @@ CREATE TABLE analysis_map_link (
 DROP TABLE IF EXISTS batch;
 CREATE TABLE batch (
   id serial NOT NULL,
-  compound_id int(10) unsigned default '0',
+  compound_id int default '0',
   text_id varchar(255)  default '',
   created_date date NOT NULL default '0001-01-01',
   created_by varchar(100)  NOT NULL default '',
@@ -118,8 +121,8 @@ CREATE TABLE batch (
   locked char(1)  NOT NULL default 'F',
   purity varchar(100)  default '',
   PRIMARY KEY  (id),
-  KEY compound_id (compound_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  KEY compound_id (compound_id)
+) ;
 
 
 
@@ -133,7 +136,7 @@ CREATE TABLE ci_configuration (
   reg_key varchar(55) NOT NULL default '',
   reg_value varchar(255) NOT NULL default '',
   PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Dumping data for table ci_configuration
@@ -155,7 +158,7 @@ INSERT INTO ci_configuration (id,reg_key,reg_value) VALUES
 DROP TABLE IF EXISTS compound;
 CREATE TABLE compound (
   id serial NOT NULL,
-  cd_id int(10) unsigned NOT NULL default '0',
+  cd_id int NOT NULL default '0',
   chemical_name varchar(255)  NOT NULL default '',
   cas_number varchar(100)  default '',
   beilstein_code varchar(100)  default '',
@@ -164,10 +167,10 @@ CREATE TABLE compound (
   register_by varchar(100)  NOT NULL default '',
   register_date date NOT NULL default '0001-01-01',
   modified_by varchar(100)  NOT NULL default '',
-  modified_date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+--  modified_date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY  (id),
-  KEY structure_index (cd_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  KEY structure_index (cd_id)
+) ;
 
 
 --
@@ -177,9 +180,9 @@ CREATE TABLE compound (
 DROP TABLE IF EXISTS container;
 CREATE TABLE container (
   id serial NOT NULL,
-  compound_id int(10) unsigned NOT NULL default '0',
-  supplier_id int(10) unsigned NOT NULL default '0',
-  location_id int(10) unsigned NOT NULL default '0',
+  compound_id int NOT NULL default '0',
+  supplier_id int NOT NULL default '0',
+  location_id int NOT NULL default '0',
   initial_quantity decimal(10,5) unsigned NOT NULL default '0.00000',
   current_quantity decimal(10,5) unsigned NOT NULL default '0.00000',
   empty char(1)  NOT NULL default 'F',
@@ -188,15 +191,15 @@ CREATE TABLE container (
   register_date date NOT NULL default '0001-01-01',
   owner varchar(100)  default '--',
   modified_by varchar(100)  default '',
-  modified_date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  user_id int(10) unsigned default '0',
+--  modified_date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  user_id int default '0',
   tara_weight decimal(10,2) NOT NULL default '0.00',
   remark text ,
   procurement_date date default NULL,
   expiry_date date default NULL,
   PRIMARY KEY  (id),
-  KEY com_index (compound_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  KEY com_index (compound_id)
+) ;
 
 --
 -- Definition of table history
@@ -204,9 +207,9 @@ CREATE TABLE container (
 
 DROP TABLE IF EXISTS history;
 CREATE TABLE history (
-  id bigint(20) unsigned NOT NULL auto_increment,
+  id serial NOT NULL,
   table varchar(100)  NOT NULL default '',
-  table_id int(10) unsigned NOT NULL default '0',
+  table_id int NOT NULL default '0',
   text_id varchar(255)  default '',
   change_details longtext ,
   text longtext  NOT NULL,
@@ -216,22 +219,24 @@ CREATE TABLE history (
   new_value varchar(100)  default '',
   old_value varchar(100)  default '',
   structure mediumblob,
-  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+--  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 
 --
 -- Definition of table jchemproperties
 --
 
+--chemaxon does support postgresql so should use their tool to create this table
 DROP TABLE IF EXISTS jchemproperties;
 CREATE TABLE jchemproperties (
   prop_name varchar(200) NOT NULL default '',
   prop_value varchar(200) default NULL,
-  prop_value_ext mediumblob,
+-- mediumblob in mysql should be bytea in postgresql
+  prop_value_ext bytea,
   PRIMARY KEY  (prop_name)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ;
 
 --
 -- Dumping data for table jchemproperties
@@ -274,12 +279,12 @@ INSERT INTO jchemproperties (prop_name,prop_value,prop_value_ext) VALUES
 
 DROP TABLE IF EXISTS location;
 CREATE TABLE location (
-  level int(10) unsigned default '0',
+  level int default '0',
   id serial NOT NULL,
-  location_id int(10) unsigned default '0',
+  location_id int default '0',
   location_name varchar(100)  NOT NULL default '',
   PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 
 --
@@ -291,10 +296,10 @@ CREATE TABLE privileges (
   name varchar(100)  NOT NULL default '',
   id serial NOT NULL,
   description varchar(255)  default NULL,
-  order_by int(10) unsigned NOT NULL default '0',
-  display tinyint(1) NOT NULL default '1',
+  order_by int NOT NULL default '0',
+  display smallint NOT NULL default '1',
   PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Dumping data for table privileges
@@ -334,10 +339,10 @@ INSERT INTO privileges (name,id,description,order_by,display) VALUES
 
 DROP TABLE IF EXISTS report_parameters;
 CREATE TABLE report_parameters (
-  report_id int(10) unsigned NOT NULL default '0',
+  report_id int NOT NULL default '0',
   parameter_name varchar(255)  NOT NULL default '',
   PRIMARY KEY  (report_id,parameter_name)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Dumping data for table report_parameters
@@ -358,7 +363,7 @@ CREATE TABLE reports (
   display_name varchar(255)  NOT NULL default '',
   description varchar(255)  default '--',
   PRIMARY KEY  (report_id,report_name)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Dumping data for table reports
@@ -384,7 +389,7 @@ CREATE TABLE resources (
   icon_disabled varchar(100)  default '',
   visibility varchar(255)  default '',
   internal varchar(100)  NOT NULL default '',
-  position int(2) NOT NULL default '0',
+  position int NOT NULL default '0',
   include_1 varchar(255)  default '',
   id_1 varchar(100)  default '',
   include_2 varchar(255)  default '',
@@ -398,7 +403,10 @@ CREATE TABLE resources (
   include_4 varchar(100)  default '',
   id_4 varchar(100)  default '',
   PRIMARY KEY  (text_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 MAX_ROWS=4;
+)  
+-- max_rows is apparently not supported in postgresql 9.1
+-- MAX_ROWS=4
+;
 
 --
 -- Dumping data for table resources
@@ -422,9 +430,9 @@ INSERT INTO resources (text_id,use_text,mouse_text,alternative_text,icon,icon_di
 DROP TABLE IF EXISTS result;
 CREATE TABLE result (
   id serial NOT NULL,
-  sample_id int(10) unsigned NOT NULL default '0',
-  analysis_id int(10) unsigned NOT NULL default '0',
-  analysis_field_id int(11) NOT NULL default '0',
+  sample_id int NOT NULL default '0',
+  analysis_id int NOT NULL default '0',
+  analysis_field_id int NOT NULL default '0',
   entered_date date NOT NULL default '0001-01-01',
   entered_by varchar(100)  NOT NULL default '',
   calculated_value varchar(100)  default '',
@@ -436,13 +444,13 @@ CREATE TABLE result (
   locked_by varchar(100)  default '',
   locked_date date default '0001-01-01',
   unit varchar(100)  NOT NULL default '',
-  replicate_count int(10) unsigned default '0',
-  replicate_number int(10) unsigned default '0',
+  replicate_count int default '0',
+  replicate_number int default '0',
   PRIMARY KEY  (id),
-  KEY sample_id (sample_id),
-  KEY analysis_id (analysis_id),
-  KEY analysis_field_id (analysis_field_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  KEY sample_id (sample_id),
+--  KEY analysis_id (analysis_id),
+--  KEY analysis_field_id (analysis_field_id)
+) ;
 
 
 --
@@ -451,15 +459,15 @@ CREATE TABLE result (
 
 DROP TABLE IF EXISTS result_history;
 CREATE TABLE result_history (
-  result_id int(10) unsigned NOT NULL default '0',
+  result_id int NOT NULL default '0',
   remark mediumtext  NOT NULL,
   changed_date date NOT NULL default '0001-01-01',
   changed_by varchar(100)  NOT NULL default '',
   value varchar(100)  NOT NULL default '--',
   unit varchar(100)  NOT NULL default '',
-  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  KEY result_index (result_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+ -- KEY result_index (result_id)
+) ;
 
 
 
@@ -473,10 +481,10 @@ CREATE TABLE roles (
   role varchar(100)  NOT NULL default '',
   type char(1)  default NULL,
   id serial NOT NULL,
-  privileges_id int(10) unsigned NOT NULL default '0',
-  user_type_id int(10) unsigned NOT NULL default '0',
+  privileges_id int NOT NULL default '0',
+  user_type_id int NOT NULL default '0',
   PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Dumping data for table roles
@@ -516,21 +524,21 @@ INSERT INTO roles (user_name,role,type,id,privileges_id,user_type_id) VALUES
 DROP TABLE IF EXISTS sample;
 CREATE TABLE sample (
   id serial NOT NULL,
-  compound_id int(10) unsigned NOT NULL default '0',
+  compound_id int NOT NULL default '0',
   remark text ,
   comment text ,
-  batch int(10) unsigned default '0',
+  batch int default '0',
   created_date date NOT NULL default '0001-01-01',
   created_by varchar(100)  NOT NULL default '',
   locked char(1)  NOT NULL default 'F',
   locked_by varchar(100)  default '--',
-  analysis_map_id int(10) unsigned NOT NULL default '0',
+  analysis_map_id int NOT NULL default '0',
   locked_date date default NULL,
-  container_id int(10) unsigned NOT NULL default '0',
+  container_id int NOT NULL default '0',
   PRIMARY KEY  (id),
-  KEY compound_id (compound_id),
-  KEY container_id (container_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  KEY compound_id (compound_id),
+--  KEY container_id (container_id)
+) ;
 
 
 --
@@ -539,13 +547,13 @@ CREATE TABLE sample (
 
 DROP TABLE IF EXISTS sample_analysis_link;
 CREATE TABLE sample_analysis_link (
-  sample_id int(10) unsigned NOT NULL default '0',
-  analysis_id int(10) unsigned NOT NULL default '0',
-  analysis_version int(10) unsigned NOT NULL default '0',
+  sample_id int NOT NULL default '0',
+  analysis_id int NOT NULL default '0',
+  analysis_version int NOT NULL default '0',
   PRIMARY KEY  (analysis_id,sample_id),
-  KEY analysis_id (analysis_id),
-  KEY sample_id (sample_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  KEY analysis_id (analysis_id),
+--  KEY sample_id (sample_id)
+) ;
 
 
 --
@@ -554,54 +562,57 @@ CREATE TABLE sample_analysis_link (
 
 DROP TABLE IF EXISTS sample_history;
 CREATE TABLE sample_history (
-  sample_id int(10) unsigned NOT NULL default '0',
+  sample_id int NOT NULL default '0',
   remark mediumtext  NOT NULL,
   changed_date date NOT NULL default '0001-01-01',
   changed_by varchar(100)  NOT NULL default '',
-  batch int(10) unsigned NOT NULL default '0',
-  compound_id int(10) unsigned NOT NULL default '0',
+  batch int NOT NULL default '0',
+  compound_id int NOT NULL default '0',
   change_remark text ,
-  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  container_id int(10) unsigned NOT NULL default '0',
-  KEY id_index (sample_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  container_id int NOT NULL default '0',
+--  KEY id_index (sample_id)
+) ;
 
 
 --
 -- Definition of table structures
 --
 
+-- this table should also be created by the chemaxon tool to make sure its 
+-- correct for postgresql
+
 DROP TABLE IF EXISTS structures;
 CREATE TABLE structures (
-  cd_id int(11) NOT NULL auto_increment,
-  cd_structure mediumblob NOT NULL,
+  cd_id serial NOT NULL,
+  cd_structure bytea NOT NULL,
   cd_smiles varchar(254)  default NULL,
   cd_formula varchar(100)  default NULL,
-  cd_molweight double default NULL,
-  cd_fp1 int(11) NOT NULL default '0',
-  cd_fp2 int(11) NOT NULL default '0',
-  cd_fp3 int(11) NOT NULL default '0',
-  cd_fp4 int(11) NOT NULL default '0',
-  cd_fp5 int(11) NOT NULL default '0',
-  cd_fp6 int(11) NOT NULL default '0',
-  cd_fp7 int(11) NOT NULL default '0',
-  cd_fp8 int(11) NOT NULL default '0',
-  cd_fp9 int(11) NOT NULL default '0',
-  cd_fp10 int(11) NOT NULL default '0',
-  cd_fp11 int(11) NOT NULL default '0',
-  cd_fp12 int(11) NOT NULL default '0',
-  cd_fp13 int(11) NOT NULL default '0',
-  cd_fp14 int(11) NOT NULL default '0',
-  cd_fp15 int(11) NOT NULL default '0',
-  cd_fp16 int(11) NOT NULL default '0',
+  cd_molweight double precision default NULL,
+  cd_fp1 int NOT NULL default '0',
+  cd_fp2 int NOT NULL default '0',
+  cd_fp3 int NOT NULL default '0',
+  cd_fp4 int NOT NULL default '0',
+  cd_fp5 int NOT NULL default '0',
+  cd_fp6 int NOT NULL default '0',
+  cd_fp7 int NOT NULL default '0',
+  cd_fp8 int NOT NULL default '0',
+  cd_fp9 int NOT NULL default '0',
+  cd_fp10 int NOT NULL default '0',
+  cd_fp11 int NOT NULL default '0',
+  cd_fp12 int NOT NULL default '0',
+  cd_fp13 int NOT NULL default '0',
+  cd_fp14 int NOT NULL default '0',
+  cd_fp15 int NOT NULL default '0',
+  cd_fp16 int NOT NULL default '0',
   cas_name varchar(50)  default NULL,
   name varchar(100)  default NULL,
-  cd_hash int(11) NOT NULL default '0',
+  cd_hash int NOT NULL default '0',
   cd_flags varchar(20)  default NULL,
-  cd_timestamp datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (cd_id),
-  KEY structures_hx (cd_hash)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  cd_timestamp datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (cd_id)
+--  KEY structures_hx (cd_hash)
+) ;
 
 
 
@@ -611,10 +622,10 @@ CREATE TABLE structures (
 
 DROP TABLE IF EXISTS structures_ul;
 CREATE TABLE structures_ul (
-  update_id int(11) NOT NULL auto_increment,
+  update_id serial NOT NULL,
   update_info varchar(20)  NOT NULL,
   PRIMARY KEY  (update_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Dumping data for table structures_ul
@@ -643,7 +654,7 @@ CREATE TABLE supplier (
   id serial NOT NULL,
   supplier_name varchar(100)  NOT NULL default '',
   PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 
 --
@@ -652,10 +663,10 @@ CREATE TABLE supplier (
 
 DROP TABLE IF EXISTS typ_ul;
 CREATE TABLE typ_ul (
-  update_id int(11) NOT NULL auto_increment,
+  update_id serial NOT NULL,
   update_info varchar(20)  NOT NULL,
   PRIMARY KEY  (update_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Dumping data for table typ_ul
@@ -674,9 +685,9 @@ CREATE TABLE unit (
   id serial NOT NULL,
   value varchar(25)  NOT NULL default '',
   PRIMARY KEY  (id),
-  UNIQUE KEY uniq_text_unit (value),
-  UNIQUE KEY value (value)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  UNIQUE KEY uniq_text_unit (value),
+--  UNIQUE KEY value (value)
+) ;
 
 --
 -- Dumping data for table unit
@@ -714,9 +725,9 @@ CREATE TABLE user (
   organisation varchar(255)  default '--',
   department varchar(255)  default '--',
   email varchar(255)  NOT NULL default '',
-  user_type_id int(10) unsigned NOT NULL default '0',
+  user_type_id int NOT NULL default '0',
   PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Dumping data for table user
@@ -734,10 +745,10 @@ INSERT INTO user (id,user_name,first_name,last_name,password,room_number,removed
 
 DROP TABLE IF EXISTS user_group_container_link;
 CREATE TABLE user_group_container_link (
-  container_id int(10) unsigned NOT NULL default '0',
-  group_id int(10) unsigned NOT NULL default '0',
+  container_id int NOT NULL default '0',
+  group_id int NOT NULL default '0',
   PRIMARY KEY  (group_id,container_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 
 --
@@ -746,10 +757,10 @@ CREATE TABLE user_group_container_link (
 
 DROP TABLE IF EXISTS user_group_location_link;
 CREATE TABLE user_group_location_link (
-  location_id int(10) unsigned NOT NULL default '0',
-  group_id int(10) unsigned NOT NULL default '0',
+  location_id int NOT NULL default '0',
+  group_id int NOT NULL default '0',
   PRIMARY KEY  (location_id,group_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 
 --
@@ -758,10 +769,10 @@ CREATE TABLE user_group_location_link (
 
 DROP TABLE IF EXISTS user_group_user_link;
 CREATE TABLE user_group_user_link (
-  user_id int(10) unsigned NOT NULL default '0',
-  group_id int(10) unsigned NOT NULL default '0',
+  user_id int NOT NULL default '0',
+  group_id int NOT NULL default '0',
   PRIMARY KEY  (user_id,group_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 
 --
@@ -773,8 +784,8 @@ CREATE TABLE user_groups (
   id serial NOT NULL,
   name varchar(255)  NOT NULL default '--',
   PRIMARY KEY  (id),
-  UNIQUE KEY unique_name (name)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--  UNIQUE KEY unique_name (name)
+) ;
 
 --
 -- Definition of table user_types
@@ -786,7 +797,7 @@ CREATE TABLE user_types (
   name varchar(100) NOT NULL default '',
   isAdministrator tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (user_type_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Dumping data for table user_types
@@ -806,11 +817,11 @@ INSERT INTO user_types (user_type_id,name,isAdministrator) VALUES
 
 DROP TABLE IF EXISTS user_types_privileges_link;
 CREATE TABLE user_types_privileges_link (
-  user_type_id int(10) unsigned NOT NULL default '0',
-  privileges_id int(10) unsigned NOT NULL default '0',
+  user_type_id int NOT NULL default '0',
+  privileges_id int NOT NULL default '0',
   KEY privileges_id (privileges_id),
   KEY user_types_id (user_type_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Dumping data for table user_types_privileges_link
