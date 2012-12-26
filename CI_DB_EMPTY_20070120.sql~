@@ -47,7 +47,7 @@ CREATE TABLE analysis_fields (
   result_for_spec char(1)  NOT NULL default 'T',
   created_by varchar(100)  NOT NULL default '',
   created_date date NOT NULL default '0001-01-01',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY analysis_id (analysis_id)
 ) ;
 
@@ -60,11 +60,11 @@ CREATE TABLE analysis_fields (
 DROP TABLE IF EXISTS analysis_history;
 CREATE TABLE analysis_history (
   analysis_id int NOT NULL default '0',
-  remark mediumtext  NOT NULL,
+  remark text  NOT NULL,
   analysis_version int default '0',
   analysis_fields text ,
   changed_date date NOT NULL default '0001-01-01',
-  changed_by varchar(100)  NOT NULL default '',
+  changed_by varchar(100)  NOT NULL default ''
 -- need to check how timestamp is done in postgresql
 --  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ;
@@ -117,10 +117,10 @@ CREATE TABLE batch (
   created_by varchar(100)  NOT NULL default '',
   production_location varchar(255)  default '',
   notebook_reference varchar(255)  default '',
-  description longtext ,
+  description text ,
   locked char(1)  NOT NULL default 'F',
   purity varchar(100)  default '',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY compound_id (compound_id)
 ) ;
 
@@ -162,13 +162,13 @@ CREATE TABLE compound (
   chemical_name varchar(255)  NOT NULL default '',
   cas_number varchar(100)  default '',
   beilstein_code varchar(100)  default '',
-  density decimal(10,4) unsigned default '0.0000',
+  density decimal(10,4) default '0.0000',
   remark text ,
   register_by varchar(100)  NOT NULL default '',
   register_date date NOT NULL default '0001-01-01',
   modified_by varchar(100)  NOT NULL default '',
 --  modified_date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY structure_index (cd_id)
 ) ;
 
@@ -183,8 +183,8 @@ CREATE TABLE container (
   compound_id int NOT NULL default '0',
   supplier_id int NOT NULL default '0',
   location_id int NOT NULL default '0',
-  initial_quantity decimal(10,5) unsigned NOT NULL default '0.00000',
-  current_quantity decimal(10,5) unsigned NOT NULL default '0.00000',
+  initial_quantity decimal(10,5) NOT NULL default '0.00000',
+  current_quantity decimal(10,5) NOT NULL default '0.00000',
   empty char(1)  NOT NULL default 'F',
   unit varchar(10)  NOT NULL default '',
   register_by varchar(100)  NOT NULL default '',
@@ -197,7 +197,7 @@ CREATE TABLE container (
   remark text ,
   procurement_date date default NULL,
   expiry_date date default NULL,
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY com_index (compound_id)
 ) ;
 
@@ -208,17 +208,17 @@ CREATE TABLE container (
 DROP TABLE IF EXISTS history;
 CREATE TABLE history (
   id serial NOT NULL,
-  table varchar(100)  NOT NULL default '',
+  tablename varchar(100)  NOT NULL default '',
   table_id int NOT NULL default '0',
   text_id varchar(255)  default '',
-  change_details longtext ,
-  text longtext  NOT NULL,
+  change_details text ,
+  text text  NOT NULL,
   changed_by varchar(100)  NOT NULL default '0',
   changed_date date NOT NULL default '0001-01-01',
   unit varchar(100)  default '',
   new_value varchar(100)  default '',
   old_value varchar(100)  default '',
-  structure mediumblob,
+  structure bytea,
 --  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY  (id)
 ) ;
@@ -229,11 +229,11 @@ CREATE TABLE history (
 --
 
 --chemaxon does support postgresql so should use their tool to create this table
+-- mediumblob in mysql should be bytea in postgresql
 DROP TABLE IF EXISTS jchemproperties;
 CREATE TABLE jchemproperties (
   prop_name varchar(200) NOT NULL default '',
   prop_value varchar(200) default NULL,
--- mediumblob in mysql should be bytea in postgresql
   prop_value_ext bytea,
   PRIMARY KEY  (prop_name)
 ) ;
@@ -438,7 +438,7 @@ CREATE TABLE result (
   calculated_value varchar(100)  default '',
   reported_value varchar(255)  NOT NULL default '',
   text_value varchar(255)  NOT NULL default '',
-  numeric_value double unsigned NOT NULL default '0',
+  numeric_value double precision NOT NULL default '0',
   status char(1)  NOT NULL default 'F',
   locked char(1)  NOT NULL default 'F',
   locked_by varchar(100)  default '',
@@ -446,7 +446,7 @@ CREATE TABLE result (
   unit varchar(100)  NOT NULL default '',
   replicate_count int default '0',
   replicate_number int default '0',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY sample_id (sample_id),
 --  KEY analysis_id (analysis_id),
 --  KEY analysis_field_id (analysis_field_id)
@@ -460,11 +460,11 @@ CREATE TABLE result (
 DROP TABLE IF EXISTS result_history;
 CREATE TABLE result_history (
   result_id int NOT NULL default '0',
-  remark mediumtext  NOT NULL,
+  remark text  NOT NULL,
   changed_date date NOT NULL default '0001-01-01',
   changed_by varchar(100)  NOT NULL default '',
   value varchar(100)  NOT NULL default '--',
-  unit varchar(100)  NOT NULL default '',
+  unit varchar(100)  NOT NULL default ''
 --  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
  -- KEY result_index (result_id)
 ) ;
@@ -535,7 +535,7 @@ CREATE TABLE sample (
   analysis_map_id int NOT NULL default '0',
   locked_date date default NULL,
   container_id int NOT NULL default '0',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  KEY compound_id (compound_id),
 --  KEY container_id (container_id)
 ) ;
@@ -550,7 +550,7 @@ CREATE TABLE sample_analysis_link (
   sample_id int NOT NULL default '0',
   analysis_id int NOT NULL default '0',
   analysis_version int NOT NULL default '0',
-  PRIMARY KEY  (analysis_id,sample_id),
+  PRIMARY KEY  (analysis_id,sample_id)
 --  KEY analysis_id (analysis_id),
 --  KEY sample_id (sample_id)
 ) ;
@@ -563,14 +563,14 @@ CREATE TABLE sample_analysis_link (
 DROP TABLE IF EXISTS sample_history;
 CREATE TABLE sample_history (
   sample_id int NOT NULL default '0',
-  remark mediumtext  NOT NULL,
+  remark text  NOT NULL,
   changed_date date NOT NULL default '0001-01-01',
   changed_by varchar(100)  NOT NULL default '',
   batch int NOT NULL default '0',
   compound_id int NOT NULL default '0',
   change_remark text ,
 --  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  container_id int NOT NULL default '0',
+  container_id int NOT NULL default '0'
 --  KEY id_index (sample_id)
 ) ;
 
@@ -684,7 +684,7 @@ DROP TABLE IF EXISTS unit;
 CREATE TABLE unit (
   id serial NOT NULL,
   value varchar(25)  NOT NULL default '',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  UNIQUE KEY uniq_text_unit (value),
 --  UNIQUE KEY value (value)
 ) ;
@@ -709,11 +709,12 @@ INSERT INTO unit (id,value) VALUES
 
 
 --
--- Definition of table user
+-- Definition of table users
 --
 
-DROP TABLE IF EXISTS user;
-CREATE TABLE user (
+-- user is a reserved term in postgresql so have changed to users - will have to change in the code
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
   id serial NOT NULL,
   user_name varchar(15)  NOT NULL default '--',
   first_name varchar(25)  NOT NULL default '--',
@@ -783,7 +784,7 @@ DROP TABLE IF EXISTS user_groups;
 CREATE TABLE user_groups (
   id serial NOT NULL,
   name varchar(255)  NOT NULL default '--',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 --  UNIQUE KEY unique_name (name)
 ) ;
 
@@ -818,9 +819,9 @@ INSERT INTO user_types (user_type_id,name,isAdministrator) VALUES
 DROP TABLE IF EXISTS user_types_privileges_link;
 CREATE TABLE user_types_privileges_link (
   user_type_id int NOT NULL default '0',
-  privileges_id int NOT NULL default '0',
-  KEY privileges_id (privileges_id),
-  KEY user_types_id (user_type_id)
+  privileges_id int NOT NULL default '0'
+--  KEY privileges_id (privileges_id),
+--  KEY user_types_id (user_type_id)
 ) ;
 
 --

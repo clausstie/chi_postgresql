@@ -162,7 +162,7 @@ CREATE TABLE compound (
   chemical_name varchar(255)  NOT NULL default '',
   cas_number varchar(100)  default '',
   beilstein_code varchar(100)  default '',
-  density decimal(10,4) unsigned default '0.0000',
+  density decimal(10,4) default '0.0000',
   remark text ,
   register_by varchar(100)  NOT NULL default '',
   register_date date NOT NULL default '0001-01-01',
@@ -183,8 +183,8 @@ CREATE TABLE container (
   compound_id int NOT NULL default '0',
   supplier_id int NOT NULL default '0',
   location_id int NOT NULL default '0',
-  initial_quantity decimal(10,5) unsigned NOT NULL default '0.00000',
-  current_quantity decimal(10,5) unsigned NOT NULL default '0.00000',
+  initial_quantity decimal(10,5) NOT NULL default '0.00000',
+  current_quantity decimal(10,5) NOT NULL default '0.00000',
   empty char(1)  NOT NULL default 'F',
   unit varchar(10)  NOT NULL default '',
   register_by varchar(100)  NOT NULL default '',
@@ -208,11 +208,11 @@ CREATE TABLE container (
 DROP TABLE IF EXISTS history;
 CREATE TABLE history (
   id serial NOT NULL,
-  table varchar(100)  NOT NULL default '',
+  tablename varchar(100)  NOT NULL default '',
   table_id int NOT NULL default '0',
   text_id varchar(255)  default '',
-  change_details longtext ,
-  text longtext  NOT NULL,
+  change_details text ,
+  text text  NOT NULL,
   changed_by varchar(100)  NOT NULL default '0',
   changed_date date NOT NULL default '0001-01-01',
   unit varchar(100)  default '',
@@ -229,11 +229,11 @@ CREATE TABLE history (
 --
 
 --chemaxon does support postgresql so should use their tool to create this table
+-- mediumblob in mysql should be bytea in postgresql
 DROP TABLE IF EXISTS jchemproperties;
 CREATE TABLE jchemproperties (
   prop_name varchar(200) NOT NULL default '',
   prop_value varchar(200) default NULL,
--- mediumblob in mysql should be bytea in postgresql
   prop_value_ext bytea,
   PRIMARY KEY  (prop_name)
 ) ;
@@ -438,7 +438,7 @@ CREATE TABLE result (
   calculated_value varchar(100)  default '',
   reported_value varchar(255)  NOT NULL default '',
   text_value varchar(255)  NOT NULL default '',
-  numeric_value double unsigned NOT NULL default '0',
+  numeric_value double precision NOT NULL default '0',
   status char(1)  NOT NULL default 'F',
   locked char(1)  NOT NULL default 'F',
   locked_by varchar(100)  default '',
@@ -460,7 +460,7 @@ CREATE TABLE result (
 DROP TABLE IF EXISTS result_history;
 CREATE TABLE result_history (
   result_id int NOT NULL default '0',
-  remark mediumtext  NOT NULL,
+  remark text  NOT NULL,
   changed_date date NOT NULL default '0001-01-01',
   changed_by varchar(100)  NOT NULL default '',
   value varchar(100)  NOT NULL default '--',
@@ -709,11 +709,12 @@ INSERT INTO unit (id,value) VALUES
 
 
 --
--- Definition of table user
+-- Definition of table users
 --
 
-DROP TABLE IF EXISTS user;
-CREATE TABLE user (
+-- user is a reserved term in postgresql so have changed to users - will have to change in the code
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
   id serial NOT NULL,
   user_name varchar(15)  NOT NULL default '--',
   first_name varchar(25)  NOT NULL default '--',
@@ -795,7 +796,7 @@ DROP TABLE IF EXISTS user_types;
 CREATE TABLE user_types (
   user_type_id serial NOT NULL,
   name varchar(100) NOT NULL default '',
-  isAdministrator tinyint(1) NOT NULL default '0',
+  isAdministrator smallint NOT NULL default '0',
   PRIMARY KEY  (user_type_id)
 ) ;
 
