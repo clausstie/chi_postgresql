@@ -1,19 +1,9 @@
---example of postgres syntax
---CREATE TABLE weather (
---    city            varchar(80),
---    temp_lo         int,           -- low temperature
---    temp_hi         int,           -- high temperature
---   prcp            real,          -- precipitation
---    date            date
---);
-
-
 --
 -- Definition of table analysis
 --
 
 DROP TABLE IF EXISTS analysis;
-CREATE TABLE analysis (
+TABLE CREATE analysis (
   id serial NOT NULL,
   analysis_id int NOT NULL default '0',
   analysis_name varchar(100)  NOT NULL default '',
@@ -305,6 +295,8 @@ CREATE TABLE privileges (
 -- Dumping data for table privileges
 --
 
+--this insert works
+
 /*!40000 ALTER TABLE privileges DISABLE KEYS */;
 INSERT INTO privileges (name,id,description,order_by,display) VALUES 
  ('adm',1,'Administrator',1,0),
@@ -412,6 +404,8 @@ CREATE TABLE resources (
 -- Dumping data for table resources
 --
 
+--this insert seems to work. no error on execution. need to check the data and use of this info
+
 /*!40000 ALTER TABLE resources DISABLE KEYS */;
 INSERT INTO resources (text_id,use_text,mouse_text,alternative_text,icon,icon_disabled,visibility,internal,position,include_1,id_1,include_2,id_2,include_3,id_3,cas_required,url,resource,sticky_text,include_4,id_4) VALUES 
  ('KEMI_BRUG','Y','Search for data in the Kemi Brug system. Nu med ændring her...','The Kemi Brug search is not available for compounds without a CAS number, rember this please...','kemi_brug.gif','','normal','external',1,'!3!','kquery','!3!','kquery2','','','Y','http://www.kemibrug.dk/searchpage/search.tkl?entrytype=multibox&searchfield=TERMSCASNO&kquery1=&kquery3=&startmdate=&endmdate=','','Y',NULL,NULL),
@@ -489,6 +483,8 @@ CREATE TABLE roles (
 --
 -- Dumping data for table roles
 --
+
+-- this insert works
 
 /*!40000 ALTER TABLE roles DISABLE KEYS */;
 INSERT INTO roles (user_name,role,type,id,privileges_id,user_type_id) VALUES 
@@ -631,6 +627,8 @@ CREATE TABLE structures_ul (
 -- Dumping data for table structures_ul
 --
 
+-- this insert works. not sure what this is used for
+
 /*!40000 ALTER TABLE structures_ul DISABLE KEYS */;
 INSERT INTO structures_ul (update_id,update_info) VALUES 
  (1,'Updates'),
@@ -693,6 +691,8 @@ CREATE TABLE unit (
 -- Dumping data for table unit
 --
 
+--this insert works
+
 /*!40000 ALTER TABLE unit DISABLE KEYS */;
 INSERT INTO unit (id,value) VALUES 
  (5,'%'),
@@ -734,10 +734,12 @@ CREATE TABLE users (
 -- Dumping data for table user
 --
 
-/*!40000 ALTER TABLE user DISABLE KEYS */;
-INSERT INTO user (id,user_name,first_name,last_name,password,room_number,removed,telephone,organisation,department,email,user_type_id) VALUES 
+--this insert is updated to reflect that the table is now called users and not user
+
+/*!40000 ALTER TABLE users DISABLE KEYS */;
+INSERT INTO users (id,user_name,first_name,last_name,password,room_number,removed,telephone,organisation,department,email,user_type_id) VALUES 
  (96,'ADMINISTRATOR','ADMINISTRATOR','ADMINISTRATOR','eb0a191797624dd3a48fa681d3061212','','F','1','--','--','info@chemicalinventory.org',1);
-/*!40000 ALTER TABLE user ENABLE KEYS */;
+/*!40000 ALTER TABLE users ENABLE KEYS */;
 
 
 --
@@ -804,6 +806,8 @@ CREATE TABLE user_types (
 -- Dumping data for table user_types
 --
 
+--this insert works
+
 /*!40000 ALTER TABLE user_types DISABLE KEYS */;
 INSERT INTO user_types (user_type_id,name,isAdministrator) VALUES 
  (1,'ADMINISTRATOR',1),
@@ -827,6 +831,8 @@ CREATE TABLE user_types_privileges_link (
 --
 -- Dumping data for table user_types_privileges_link
 --
+
+--this insert works
 
 /*!40000 ALTER TABLE user_types_privileges_link DISABLE KEYS */;
 INSERT INTO user_types_privileges_link (user_type_id,privileges_id) VALUES 

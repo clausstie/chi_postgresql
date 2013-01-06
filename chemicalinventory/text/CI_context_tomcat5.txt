@@ -15,14 +15,14 @@
 	logAbandoned="true"
 	username="chemicals" 
 	password="chemicals" 
-	driverClassName="com.mysql.jdbc.Driver" 
-	url="jdbc:mysql://localhost:3306/chemicals?autoReconnect=true"/> 
+	driverClassName="org.postgresql.Driver" 
+	url="jdbc:postgresql://localhost:5432/chemicals?autoReconnect=true"/> 
 
   <Realm
         className="org.apache.catalina.realm.DataSourceRealm" 
 	debug="99"
    	dataSourceName="jdbc/chemicalinventory"
-	userTable="user" 
+	userTable="users" 
 	userNameCol="user_name" 
 	userCredCol="password"
    	userRoleTable="roles" 

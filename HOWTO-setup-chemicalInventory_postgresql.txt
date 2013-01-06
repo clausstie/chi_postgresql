@@ -19,7 +19,7 @@ in order to make the system work:
 1) Postgresql to hold the data (Many other databases can most likely be used but in that case 
 you need to edit the way we communicate with the database - another JDBC driver)
 
-2) A mysql-connector-java driver to be able to communicate with the database from the javabeans.
+2) A postgresql jdbc driver to be able to communicate with the database from the javabeans.
 
 3) Tomcat as servlet container (Again you might make it work with other tools but we have only
 used Tomcat).
@@ -45,9 +45,9 @@ that your OS will work as well.
 What to do
 -----------
 
-1) MySql 
+1) PostgreSQL 
 
-Install and setup your MySql database and make sure it is working.
+Install and setup your postgresql database and make sure it is working.
 Create a user who will own the chemicalInventory tables. 
 
 The default is: 
@@ -78,24 +78,23 @@ A default user "Administrator" with password "master" is created.
 Install and setup Tomcat and make sure it is running (that you see the default Welcome page in
 a webbrowser).
 
-Copy the chemicalInventory.war file you downloaded into the Tomcat webapps directory make sure 
-the name of the war file is chemicalinventory.war.
+On my Ubuntu 10.04 LTS this is what the welcome page tells me:
 
-Should look something like this:
+"... pleased to learn that this system instance of Tomcat is installed with CATALINA_HOME in /usr/share/tomcat6 and CATALINA_BASE in /var/lib/tomcat6..."
 
-/where_ever_your_tomcat_is_located/webapps/chemicalinventory.war
+So..
 
-Restart the Tomcat server and point your webbrowser to
-http://serverip:port/chemicalinventory
+CATALINA_HOME = /usr/share/tomcat6
+CATALINA_BASE = /var/lib/tomcat6
 
-This will unpack the chemicalinventory.war file and give you a chemicalinventory directory:
+
+Copy the chemicalinventory folder to /var/lib/tomcat6/webapps/
 
 /where_ever_your_tomcat_is_located/webapps/chemicalinventory
 
-Copy the content in /chemicalinventory/text/CI_context_tomcat5.txt (For tomcat 5.5) or
-/chemicalinventory/text/CI_context_tomcat5.txt (For tomcat 5.0 and 4.1) to the server.xml file placed in
-/where_ever_your_tomcat_is_located/conf/server.xml. Alter the values if your
-system is different from the default values. This should be placed just before the last </HOST> tag.
+Copy the content in /chemicalinventory/text/CI_context_tomcat5.txt to the server.xml (not recommended anymore!) file placed in /CATALINA_BASE/conf/server.xml.
+
+Alter the values if your system is different from the default values. This should be placed just before the last </HOST> tag.
 
 Modify the chemicalinventory configuration file located under 
 /where_ever_your_tomcat_is_located/webapps/chemicalinventory/WEB-INF/configuration/CIconfiguration.txt
@@ -103,12 +102,13 @@ with values relevant for your setup.
 
 ---------------------------------
 
-3) mysql-connector-java
+3) postgresql jdbc driver
 
-After Tomcat has unpacked the war file a recomended version of the mysql connecter can be found:
-Tomcat/webapps/chemicalinventory/text/mysql-connector-java-3.1.12-bin.jar.
+A version of the relevant jdbc driver can be found here:
 
-Copy mysql-connector to /wherever_your_tomcat_is_located/common/lib
+Tomcat/webapps/chemicalinventory/text/postgresql-9.2-1002.jdbc4.jar.
+
+Copy to /CATALINA_HOME/lib
 
 --------------------------------
 
