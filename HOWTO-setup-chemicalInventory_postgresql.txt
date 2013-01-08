@@ -17,7 +17,7 @@ The following software is needed (assuming you have hardware with an OS and some
 in order to make the system work:
 
 1) Postgresql to hold the data (Many other databases can most likely be used but in that case 
-you need to edit the way we communicate with the database - another JDBC driver)
+you need to edit the sql scripts to create the tables and the way you communicate with the database - another JDBC driver - to fit your type of database)
 
 2) A postgresql jdbc driver to be able to communicate with the database from the javabeans.
 
@@ -25,12 +25,14 @@ you need to edit the way we communicate with the database - another JDBC driver)
 used Tomcat).
 
 4) JAVA. You need a J2SDK in order to load the servlet container and to compile the .java
-files if/when you edit them
+files if/when you edit them.
 
 5) The JChem JAVA library and the Marvin applets from ChemAxon (www.chemaxon.com). The library
 handles the registration of and searching in the structures and the applets gives us the
 structure drawing tools. You can get a free academia license to all these tools if you ....yes
 if you are academia!
+
+The postgresql based version is developed using: Ubuntu 10.04, Tomcat 6.0.35, posgresql 9.1, java version 1.6.0_24 (OpenJDK)
 
 
 Platform support
@@ -68,7 +70,7 @@ WE RECOMMEND THAT YOU CHANGE THE DEFAULT VALUES, BUT REMEMBER TO ALSO DO IT IN T
 Run the sql script shipped with chemicalInventory in order to setup the required tables.
 The script will also setup the structure tables required by the JChem library.
 
-A default user "Administrator" with password "master" is created.
+A default user "ADMINISTRATOR" with password "master" is created.
 
 ------------------------
 
@@ -78,7 +80,7 @@ A default user "Administrator" with password "master" is created.
 Install and setup Tomcat and make sure it is running (that you see the default Welcome page in
 a webbrowser).
 
-On my Ubuntu 10.04 LTS this is what the welcome page tells me:
+On Ubuntu 10.04 LTS this is what the welcome page tells me:
 
 "... pleased to learn that this system instance of Tomcat is installed with CATALINA_HOME in /usr/share/tomcat6 and CATALINA_BASE in /var/lib/tomcat6..."
 
@@ -114,8 +116,8 @@ Copy to /CATALINA_HOME/lib
 
 4) JChem library and the Marvin applets
 
-The chemicalinventory is bundled with JChem version 3.1.6 and the marvin applets. The default licence
-is 1 (=one) structure search pr. minute. Contact www.chemaxon.com for further licence privileges.
+The chemicalinventory is bundled with JChem version 4.0.5 and the marvin applets. The default licence is 1 (=one) structure search pr. minute. Contact www.chemaxon.com for further licence privileges.
+
 
 --------------------------------
 
@@ -128,32 +130,4 @@ http://serverip:port/chemicalinventory
 
 and you should see the beatifull front end of the application.
 
-----------------------------------
 
-6) Tomcat 5.0.X and 4.1.x 
-----------------------------------
-
-If you want to use the application together with privious versions of tomcat, it has 
-been tested on tomcat 5.X and tomcat 4.1.31.
-
-If you want to use tomcat 5.0.X or 4.1.X the following changes must be made:
-
-1. replace the tomcat/webapps/WEB-INF/web.xml with the file placed in tomcat/webapps/chemicalinventory/text/web_tomcat4_1.xml
-and rename it to web.xml.
-
-2. the server.xml for tomcat must use the ci_context_tomcat4_1.txt. Place the content of this file
-just before the last </HOST> tag in this file.
-
-
-What if it doesn't work
------------------------
-
-If it doesn't work - then go back and check you have performed the steps described here. If it
-still doesn't work you can mail us on Sourceforge, or user info@chemicalinventory.or and we will try to help you
-
-Should you later change the code and improve the software we much appreciate if you will let us
-know
-
-Have fun
-
-www.chemicalinventory.org

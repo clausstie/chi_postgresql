@@ -297,12 +297,15 @@
   	</auth-constraint>
   </security-constraint>
 
+	
+
+ <!--this form-error-page fails: "/Login.jsp?login_error=yes" so changed to what is was originally and it works -->
   <!-- login configuration -->
   <login-config>
     <auth-method>FORM</auth-method>
     <form-login-config>
       <form-login-page>/Login.jsp</form-login-page>
-      <form-error-page>/Login.jsp?login_error=yes</form-error-page>
+      <form-error-page>/errorpages/Error.html</form-error-page>
     </form-login-config>
   </login-config>
   
