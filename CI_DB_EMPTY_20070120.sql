@@ -54,9 +54,10 @@ CREATE TABLE analysis_history (
   analysis_version int default '0',
   analysis_fields text ,
   changed_date date NOT NULL default '0001-01-01',
-  changed_by varchar(100)  NOT NULL default ''
+  changed_by varchar(100)  NOT NULL default '',
 -- need to check how timestamp is done in postgresql
---  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+-- current_timestamp seems to work. still missing ON UPDATE CURRENT_TIMESTAMP
+  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP 
 ) ;
 
 
@@ -157,7 +158,8 @@ CREATE TABLE compound (
   register_by varchar(100)  NOT NULL default '',
   register_date date NOT NULL default '0001-01-01',
   modified_by varchar(100)  NOT NULL default '',
---  modified_date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+-- current_timestamp seems to work. still missing ON UPDATE CURRENT_TIMESTAMP
+  modified_date timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (id)
 --  KEY structure_index (cd_id)
 ) ;
@@ -181,7 +183,8 @@ CREATE TABLE container (
   register_date date NOT NULL default '0001-01-01',
   owner varchar(100)  default '--',
   modified_by varchar(100)  default '',
---  modified_date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+-- current_timestamp seems to work. still missing ON UPDATE CURRENT_TIMESTAMP
+  modified_date timestamp NOT NULL default CURRENT_TIMESTAMP,
   user_id int default '0',
   tara_weight decimal(10,2) NOT NULL default '0.00',
   remark text ,
@@ -209,7 +212,8 @@ CREATE TABLE history (
   new_value varchar(100)  default '',
   old_value varchar(100)  default '',
   structure bytea,
---  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+-- current_timestamp seems to work. still missing ON UPDATE CURRENT_TIMESTAMP
+  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (id)
 ) ;
 
@@ -458,8 +462,9 @@ CREATE TABLE result_history (
   changed_date date NOT NULL default '0001-01-01',
   changed_by varchar(100)  NOT NULL default '',
   value varchar(100)  NOT NULL default '--',
-  unit varchar(100)  NOT NULL default ''
---  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  unit varchar(100)  NOT NULL default '',
+-- current_timestamp seems to work. still missing ON UPDATE CURRENT_TIMESTAMP
+  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP
  -- KEY result_index (result_id)
 ) ;
 
@@ -565,7 +570,8 @@ CREATE TABLE sample_history (
   batch int NOT NULL default '0',
   compound_id int NOT NULL default '0',
   change_remark text ,
---  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+-- current_timestamp seems to work. still missing ON UPDATE CURRENT_TIMESTAMP
+  timestamp timestamp NOT NULL default CURRENT_TIMESTAMP ,
   container_id int NOT NULL default '0'
 --  KEY id_index (sample_id)
 ) ;
@@ -605,7 +611,8 @@ CREATE TABLE structures (
   name varchar(100)  default NULL,
   cd_hash int NOT NULL default '0',
   cd_flags varchar(20)  default NULL,
---  cd_timestamp datetime NOT NULL default '0000-00-00 00:00:00',
+ -- cd_timestamp timestamp NOT NULL default '0000-00-00 00:00:00',
+  cd_timestamp timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (cd_id)
 --  KEY structures_hx (cd_hash)
 ) ;
