@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>chemicalinventory</groupId>
+  <artifactId>chemicalinventory</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>Chemicalinventory Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <spring.version>3.0.5.RELEASE</spring.version>
+    <junit.version>4.11</junit.version>
+    <jdk.version>1.7</jdk.version>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>chemaxon.jchem</groupId>
+      <artifactId>jchem</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/lib/jchem.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.4.7</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-servlet-api</artifactId>
+      <version>7.0.40</version>
+    </dependency>
+    
+    <dependency>
+	  <groupId>net.sf.jasperreports</groupId>
+	  <artifactId>jasperreports</artifactId>
+	  <version>5.1.0</version>
+    </dependency>
+            
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>chemicalinventory</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <source>${jdk.version}</source>
+          <target>${jdk.version}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
+</project>
