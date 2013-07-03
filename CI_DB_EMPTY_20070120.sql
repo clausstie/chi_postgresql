@@ -326,7 +326,7 @@ INSERT INTO privileges (name,id,description,order_by,display) VALUES
 INSERT INTO privileges (name,id,description,order_by,display) VALUES 
  ('user_type_modify',21,'Modify user types.',6,1),
  ('sample_approver',22,'Access to approve samples.',10,1);
-/*!40000 ALTER TABLE privileges ENABLE KEYS */;
+/*!40000 ALTER TABLE privileges ENABLE KEYS */
 
 
 --
@@ -368,7 +368,7 @@ CREATE TABLE reports (
 /*!40000 ALTER TABLE reports DISABLE KEYS */;
 INSERT INTO reports (report_id,report_name,display_name,description) VALUES 
  (20,'userListJReport','List Of CI Users','This report creates a list of all the users,registered in the CI system.');
-/*!40000 ALTER TABLE reports ENABLE KEYS */;
+/*!40000 ALTER TABLE reports ENABLE KEYS */
 
 
 --
@@ -418,7 +418,7 @@ INSERT INTO resources (text_id,use_text,mouse_text,alternative_text,icon,icon_di
  ('NEW_CONTAINER','Y','Register a new container of this compound.','You do not have access to registering new containers.','new_container.gif','nmr_search_disabled.gif','adm','internal',3,'','','compound_id','','','','','','newContainer_reg','N',NULL,NULL);
 INSERT INTO resources (text_id,use_text,mouse_text,alternative_text,icon,icon_disabled,visibility,internal,position,include_1,id_1,include_2,id_2,include_3,id_3,cas_required,url,resource,sticky_text,include_4,id_4) VALUES 
  ('NMR_SEARCH','Y','Search for NMR data for the compound with CAS number: !3!.','The NMR search is not available for compounds without a CAS number','nmr_search.gif','','normal','external',4,'!3!','regno','','','','','Y','http://www.aist.go.jp/RIODB/SDBS/cgi-bin/direct_frame_top.cgi?lang=eng','','Y',NULL,NULL);
-/*!40000 ALTER TABLE resources ENABLE KEYS */;
+/*!40000 ALTER TABLE resources ENABLE KEYS */
 
 
 --
@@ -515,7 +515,7 @@ INSERT INTO roles (user_name,role,type,id,privileges_id,user_type_id) VALUES
  ('ADMINISTRATOR','user_type_modify',NULL,223,21,1);
 INSERT INTO roles (user_name,role,type,id,privileges_id,user_type_id) VALUES 
  ('ADMINISTRATOR','user_type_create',NULL,224,20,1);
-/*!40000 ALTER TABLE roles ENABLE KEYS */;
+/*!40000 ALTER TABLE roles ENABLE KEYS */
 
 
 --
@@ -677,8 +677,8 @@ CREATE TABLE typ_ul (
 -- Dumping data for table typ_ul
 --
 
-/*!40000 ALTER TABLE typ_ul DISABLE KEYS */;
-/*!40000 ALTER TABLE typ_ul ENABLE KEYS */;
+/*!40000 ALTER TABLE typ_ul DISABLE KEYS */
+/*!40000 ALTER TABLE typ_ul ENABLE KEYS */
 
 
 --
@@ -700,7 +700,7 @@ CREATE TABLE unit (
 
 --this insert works
 
-/*!40000 ALTER TABLE unit DISABLE KEYS */;
+/*!40000 ALTER TABLE unit DISABLE KEYS */
 INSERT INTO unit (id,value) VALUES 
  (5,'%'),
  (8,'-'),
@@ -712,7 +712,7 @@ INSERT INTO unit (id,value) VALUES
  (4,'ml'),
  (6,'nm'),
  (10,'Sec.');
-/*!40000 ALTER TABLE unit ENABLE KEYS */;
+/*!40000 ALTER TABLE unit ENABLE KEYS */
 
 
 --
@@ -743,10 +743,10 @@ CREATE TABLE users (
 
 --this insert is updated to reflect that the table is now called users and not user
 
-/*!40000 ALTER TABLE users DISABLE KEYS */;
+/*!40000 ALTER TABLE users DISABLE KEYS */
 INSERT INTO users (id,user_name,first_name,last_name,password,room_number,removed,telephone,organisation,department,email,user_type_id) VALUES 
  (96,'ADMINISTRATOR','ADMINISTRATOR','ADMINISTRATOR','eb0a191797624dd3a48fa681d3061212','','F','1','--','--','info@chemicalinventory.org',1);
-/*!40000 ALTER TABLE users ENABLE KEYS */;
+/*!40000 ALTER TABLE users ENABLE KEYS */
 
 
 --
@@ -815,12 +815,12 @@ CREATE TABLE user_types (
 
 --this insert works
 
-/*!40000 ALTER TABLE user_types DISABLE KEYS */;
+/*!40000 ALTER TABLE user_types DISABLE KEYS */
 INSERT INTO user_types (user_type_id,name,isAdministrator) VALUES 
  (1,'ADMINISTRATOR',1),
  (2,'NORMAL',0),
  (3,'SUPER USER',0);
-/*!40000 ALTER TABLE user_types ENABLE KEYS */;
+/*!40000 ALTER TABLE user_types ENABLE KEYS */
 
 
 --
@@ -841,7 +841,7 @@ CREATE TABLE user_types_privileges_link (
 
 --this insert works
 
-/*!40000 ALTER TABLE user_types_privileges_link DISABLE KEYS */;
+/*!40000 ALTER TABLE user_types_privileges_link DISABLE KEYS */
 INSERT INTO user_types_privileges_link (user_type_id,privileges_id) VALUES 
  (1,12),
  (1,10),
@@ -879,4 +879,4 @@ INSERT INTO user_types_privileges_link (user_type_id,privileges_id) VALUES
  (3,19),
  (3,17),
  (3,20);
-/*!40000 ALTER TABLE user_types_privileges_link ENABLE KEYS */;
+/*!40000 ALTER TABLE user_types_privileges_link ENABLE KEYS */
