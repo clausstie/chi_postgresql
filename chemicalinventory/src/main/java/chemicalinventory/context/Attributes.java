@@ -97,7 +97,9 @@ public class Attributes {
 	public static final String PRINT_ADMINISTRATION = "http://"+IP_ADDRESS+":"+PORT+APPLICATION+"/print/print_administration/Print_Admin_Controller.jsp";
 
 	//Database definition for structure access
-    public static final String DB_NAME = "jdbc:mysql://"+IP_ADDRESS+":"+DB_PORT+"/"+conf.getDb();//database to use
+    //should be changed so type of database isnt hardcoded here. for now just added a line for postgresql
+    //public static final String DB_NAME = "jdbc:mysql://"+IP_ADDRESS+":"+DB_PORT+"/"+conf.getDb();//database to use
+    public static final String DB_NAME = "jdbc:postgresql://"+IP_ADDRESS+":"+DB_PORT+"/"+conf.getDb();//database to use
     public static final String DB_USER = conf.getDb_structure_user(); // db user to use
     public static final String DB_PWD = conf.getDb_structure_user_password(); //password for the db user
     public static final String DB_STUCTURE_TABLE = conf.getDb_structure_table();//table for structures.
